@@ -1,0 +1,14 @@
+        - language: swift
+          osx_image: xcode11.6
+          xcode_workspace: IssueTracker.xcworkspace
+          xcode_scheme: IssueTracker
+          xcode_destination: platform=iOS Simulator, OS=12.4, name=iPhone 11
+          before_install:
+              - cd iOS/IssueTracker
+              - gem install cocoapods-acknowledgements
+              - gem install cocoapods
+              - pod install --repo-update
+          script:
+              - set -o pipefail
+              - travis_retry xcodebuild -workspace IssueTracker.xcworkspace -scheme IssueTracker -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+              
