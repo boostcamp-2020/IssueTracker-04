@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IssueItem: Codable {
+struct IssueItem: Codable, IssueListCollectionViewCellData {
     let issueNo: Int
     let issueTitle, issueContent: String
     let issueFlag: Bool

@@ -16,7 +16,13 @@ class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueListCollectionViewCell.identifier, for: indexPath)
+        guard let itemCell = cell as? IssueListCollectionViewCell else {
+            return cell
+        }
+        let item = items[indexPath.row]
+        itemCell.configure(with: item)
+        return itemCell
     }
     
 }
