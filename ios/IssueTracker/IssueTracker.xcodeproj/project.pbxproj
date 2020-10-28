@@ -18,6 +18,7 @@
 		3747D4842547EFE1009BA189 /* IssueTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747D4832547EFE1009BA189 /* IssueTrackerTests.swift */; };
 		3747D48F2547EFE1009BA189 /* IssueTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747D48E2547EFE1009BA189 /* IssueTrackerUITests.swift */; };
 		37E82AEB2547F2BC0084DFE1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */; };
+		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		3747D48E2547EFE1009BA189 /* IssueTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTrackerUITests.swift; sourceTree = "<group>"; };
 		3747D4902547EFE1009BA189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EA2F7CB9E4841F8F24D452 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D63AD142EED43ECCDDAF181F /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		3747D4682547EFDF009BA189 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				99A09B522549A24B0082ADF0 /* IssueList */,
 				3747D4692547EFDF009BA189 /* AppDelegate.swift */,
 				3747D46B2547EFDF009BA189 /* SceneDelegate.swift */,
 				3747D46D2547EFDF009BA189 /* ViewController.swift */,
@@ -147,6 +150,14 @@
 				9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99A09B522549A24B0082ADF0 /* IssueList */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B532549A2740082ADF0 /* IssueListViewController.swift */,
+			);
+			path = IssueList;
 			sourceTree = "<group>";
 		};
 		DD7F2DFBF802B89C921F56A0 /* Pods */ = {
@@ -353,6 +364,7 @@
 			files = (
 				3747D46E2547EFDF009BA189 /* ViewController.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,
+				99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */,
 				3747D4742547EFDF009BA189 /* IssueTracker.xcdatamodeld in Sources */,
 				3747D46C2547EFDF009BA189 /* SceneDelegate.swift in Sources */,
 			);
