@@ -12,7 +12,8 @@ struct IssueItem: Codable {
     let issueTitle, issueContent: String
     let issueFlag: Bool
     let issueDate: Date
-    let issueAuthorNo, issueAuthorID: String
+    let issueAuthorNo: Int
+    let issueAuthorID: String
     let milestoneNo: Int
     let milestoneTitle: String
     let assignees: [Assignee]
