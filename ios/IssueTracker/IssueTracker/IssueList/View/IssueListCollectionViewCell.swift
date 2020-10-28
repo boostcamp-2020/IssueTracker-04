@@ -18,7 +18,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var milestoneLabel: UILabel!
+    @IBOutlet weak var milestoneLabel: BadgeLabel!
     
     static var identifier: String {
         String(describing: Self.self)
