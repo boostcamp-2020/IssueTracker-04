@@ -7,6 +7,6 @@
 
 import WebKit
 
-class GithubWebView: WKWebView {
+class GithubLoginWebView: WKWebView {
     
 }

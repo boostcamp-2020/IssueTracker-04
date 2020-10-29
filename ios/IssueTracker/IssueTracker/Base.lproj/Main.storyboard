@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Yy-H9-QTE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CWY-wM-Kl8">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -92,6 +92,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2293" y="-1761"/>
+        </scene>
+        <!--Github Login View Controller-->
+        <scene sceneID="QGG-4T-b8i">
+            <objects>
+                <viewController id="4is-M5-cSt" customClass="GithubLoginViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EQB-TK-Oc8">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJO-00-r7i" customClass="GithubLoginWebView" customModule="IssueTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Scn-lG-uQ5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kJO-00-r7i" secondAttribute="trailing" id="9Cd-bS-0sB"/>
+                            <constraint firstAttribute="bottom" secondItem="kJO-00-r7i" secondAttribute="bottom" id="HAq-Jj-mwa"/>
+                            <constraint firstItem="kJO-00-r7i" firstAttribute="leading" secondItem="EQB-TK-Oc8" secondAttribute="leading" id="We8-iU-4Je"/>
+                            <constraint firstItem="kJO-00-r7i" firstAttribute="top" secondItem="EQB-TK-Oc8" secondAttribute="top" id="mKY-qF-hIv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="githubLoginWebView" destination="kJO-00-r7i" id="bAZ-CA-SIM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DmQ-jH-POn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-165.42056074766353" y="-570.19438444924413"/>
         </scene>
         <!--레이블-->
         <scene sceneID="jo0-RT-jzf">
@@ -198,18 +232,18 @@
         <!--Login View Controller-->
         <scene sceneID="s33-87-gWH">
             <objects>
-                <viewController id="CWY-wM-Kl8" customClass="LoginViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="CWY-wM-Kl8" customClass="LoginViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R12-m1-rjh">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEZ-qe-MeX">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEZ-qe-MeX">
                                 <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cxe-4T-dEW">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cxe-4T-dEW">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="848"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci7-KY-DE9">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ci7-KY-DE9">
                                                 <rect key="frame" x="7" y="127.33333333333331" width="414" height="593.33333333333348"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLm-Lf-rTY">
@@ -271,7 +305,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-kk-UVF">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-kk-UVF">
                                                         <rect key="frame" x="76" y="267" width="39" height="30"/>
                                                         <state key="normal" title="로그인"/>
                                                     </button>
@@ -279,17 +313,16 @@
                                                         <rect key="frame" x="286" y="267" width="52" height="30"/>
                                                         <state key="normal" title="회원가입"/>
                                                     </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fpk-hM-b5x">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fpk-hM-b5x">
                                                         <rect key="frame" x="36" y="321" width="342" height="36"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYb-LA-Ymb">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYb-LA-Ymb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="36"/>
                                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Ioq-R9-uO3"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <state key="normal" title="Sign in with GitHub">
+                                                                <state key="normal" title="Sign in with GitHub" image="github_logo">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -297,6 +330,9 @@
                                                                         <integer key="value" value="7"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="githubIDButtonPress:" destination="CWY-wM-Kl8" eventType="touchUpInside" id="KJV-ap-rtP"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -328,7 +364,7 @@
                                                     <constraint firstItem="fpk-hM-b5x" firstAttribute="top" secondItem="bhS-kk-UVF" secondAttribute="bottom" constant="24" id="vwS-n8-dxp"/>
                                                     <constraint firstItem="BR7-lN-we0" firstAttribute="top" secondItem="ci7-KY-DE9" secondAttribute="top" constant="20" id="wOr-2w-8HZ"/>
                                                     <constraint firstItem="dbf-cL-gAu" firstAttribute="trailing" secondItem="azE-Vb-ekt" secondAttribute="trailing" id="x6d-5w-G2Z"/>
-                                                    <constraint firstAttribute="bottom" secondItem="fpk-hM-b5x" secondAttribute="bottom" priority="250" constant="150" id="zHa-aT-fLH"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fpk-hM-b5x" secondAttribute="bottom" priority="750" constant="150" id="zHa-aT-fLH"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -413,6 +449,7 @@
     </scenes>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="github_logo" width="25" height="25"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="signpost.left" catalog="system" width="128" height="118"/>
         <image name="tag" catalog="system" width="128" height="119"/>

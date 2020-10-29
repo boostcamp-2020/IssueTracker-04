@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import AuthenticationServices
 
 class LoginViewController: UIViewController {
@@ -35,8 +36,20 @@ class LoginViewController: UIViewController {
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
-//        authorizationController.presentationContextProvider = self
+        authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
+    }
+    
+    @IBAction func githubIDButtonPress(_ sender: UIButton) {
+        let requestURLString = "https://github.com/login/oauth/authorize"
+        var requestURLComponents = URLComponents(string: requestURLString)
+        
+        requestURLComponents?.queryItems = [ URLQueryItem(name: "client_id", value: GithubApplication.ClientID),
+                                             URLQueryItem(name: "scope", value: GithubApplication.Scope) ]
+        
+        let requestURL = requestURLComponents?.url
+        
+        UIApplication.shared.open(requestURL!)
     }
     
 }
