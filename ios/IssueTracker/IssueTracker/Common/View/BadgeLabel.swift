@@ -38,6 +38,7 @@ class BadgeLabel: UILabel {
     }
     
     private func setBorder() {
+        clipsToBounds = true
         layer.borderWidth = 1
         layer.cornerRadius = 5
     }

@@ -19,6 +19,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var milestoneLabel: BadgeLabel!
+    @IBOutlet weak var labelContainerView: LabelContainerView!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!    
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
     
@@ -39,5 +40,10 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         titleLabel.text = data.issueTitle
         contentLabel.text = data.issueContent
         milestoneLabel.text = data.milestoneTitle
+        labelContainerView.add(labels: data.labels)
+    }
+    
+    override func prepareForReuse() {
+        labelContainerView.clear()
     }
 }
