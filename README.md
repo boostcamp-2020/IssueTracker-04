@@ -55,6 +55,7 @@
     </ul>
   </div>
 </details>
+
 <details>
   <summary><b>Week 1 IOS</b></summary>
   <div markdown="1">
@@ -65,6 +66,7 @@
     </ul>
   </div>
 </details>
+
 <details>
   <summary><b>Week 2 WEB</b></summary>
   <div markdown="1">
@@ -75,6 +77,7 @@
     </ul>
   </div>
 </details>
+
 <details>
   <summary><b>Week 2 IOS</b></summary>
   <div markdown="1">
@@ -85,6 +88,7 @@
     </ul>
   </div>
 </details>
+
 <details>
   <summary><b>Week 3 WEB</b></summary>
   <div markdown="1">
