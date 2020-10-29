@@ -20,10 +20,9 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var milestoneLabel: BadgeLabel!
     @IBOutlet var labelContainerView: LabelContainerView!
-   
+    
     @IBOutlet weak var labelContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
-    
     static var identifier: String {
         String(describing: Self.self)
     }
@@ -34,8 +33,17 @@ class IssueListCollectionViewCell: UICollectionViewCell {
                 return
             }
             containerViewWidthConstraint.constant = width
-            labelContainerViewHeightConstraint.constant = 18 * CGFloat(labelContainerView.labelRows)
-            
+            labelContainerView.maxWidth = width - 16
+        }
+    }
+    
+    var labelRowCount: CGFloat? {
+        didSet {
+            guard let count = labelRowCount else {
+                return
+            }
+            labelContainerView.translatesAutoresizingMaskIntoConstraints = false
+            labelContainerViewHeightConstraint.constant = 20 * count
         }
     }
     
@@ -44,6 +52,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         contentLabel.text = data.issueContent
         milestoneLabel.text = data.milestoneTitle
         labelContainerView.add(labels: data.labels)
+        labelRowCount = CGFloat(labelContainerView.labelRows)
     }
     
     override func prepareForReuse() {

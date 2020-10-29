@@ -16,6 +16,7 @@ class LabelContainerView: UIView {
         labelStackViews.count
     }
     
+    var maxWidth: CGFloat = 0.0
     var stackViewSpacing: CGFloat = 5.0
     
     override init(frame: CGRect) {
@@ -38,7 +39,6 @@ class LabelContainerView: UIView {
     }
     
     func add(labels: [Label]) {
-        let maxWidth = self.frame.width
         var currentWidth: CGFloat = 0
         
         labels.forEach {

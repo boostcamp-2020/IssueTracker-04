@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueListViewController" customModule="IssueTracker" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueListCollectionViewCell" id="gTV-IL-0wX" customClass="IssueListCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="339" height="110"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="339" height="110"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3C-ba-uik">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                        <rect key="frame" x="0.0" y="0.0" width="339" height="110"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUw-0T-gIa">
                                 <rect key="frame" x="8" y="8" width="33" height="21"/>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MileStoneTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3h-od-0dS" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="281.5" y="8" width="85.5" height="16"/>
+                                <rect key="frame" x="245.5" y="8" width="85.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="7r8-mC-u15"/>
                                 </constraints>
@@ -56,15 +56,15 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IssueContent  with 2 Lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-yR-4Y4">
-                                <rect key="frame" x="8" y="37" width="359" height="36"/>
+                                <rect key="frame" x="8" y="37" width="323" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWr-6f-daR" customClass="LabelContainerView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="81" width="359" height="18"/>
+                                <rect key="frame" x="8" y="81" width="323" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="toe-tA-Y8e"/>
+                                    <constraint firstAttribute="height" constant="20" id="toe-tA-Y8e"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -78,8 +78,8 @@
                             <constraint firstItem="A3h-od-0dS" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" constant="8" id="IUg-x6-h4Q"/>
                             <constraint firstItem="mUw-0T-gIa" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" constant="8" id="Ikk-cl-0Fa"/>
                             <constraint firstItem="A3h-od-0dS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mUw-0T-gIa" secondAttribute="trailing" constant="15" id="Xhx-mq-AMh"/>
-                            <constraint firstItem="SWr-6f-daR" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="8" id="am1-kb-sCR"/>
-                            <constraint firstAttribute="width" constant="375" id="eVv-EF-9HS"/>
+                            <constraint firstItem="SWr-6f-daR" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" priority="750" constant="8" id="am1-kb-sCR"/>
+                            <constraint firstAttribute="width" constant="339" id="imA-oT-g1L"/>
                             <constraint firstItem="RUg-yR-4Y4" firstAttribute="top" secondItem="mUw-0T-gIa" secondAttribute="bottom" constant="8" id="jVm-AN-e8j"/>
                             <constraint firstItem="RUg-yR-4Y4" firstAttribute="leading" secondItem="mUw-0T-gIa" secondAttribute="leading" id="moW-0G-gKZ"/>
                             <constraint firstAttribute="trailing" secondItem="RUg-yR-4Y4" secondAttribute="trailing" constant="8" id="rv9-E0-FCZ"/>
@@ -94,16 +94,16 @@
                 <constraint firstAttribute="bottom" secondItem="d3C-ba-uik" secondAttribute="bottom" id="RXl-PA-P1z"/>
                 <constraint firstItem="d3C-ba-uik" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qTa-PN-LnN"/>
             </constraints>
-            <size key="customSize" width="375" height="110"/>
+            <size key="customSize" width="339" height="110"/>
             <connections>
-                <outlet property="containerViewWidthConstraint" destination="eVv-EF-9HS" id="T8B-gf-ZCV"/>
+                <outlet property="containerViewWidthConstraint" destination="imA-oT-g1L" id="wtz-cY-Soa"/>
                 <outlet property="contentLabel" destination="RUg-yR-4Y4" id="5xZ-cJ-TB7"/>
                 <outlet property="labelContainerView" destination="SWr-6f-daR" id="NGh-QM-cM1"/>
                 <outlet property="labelContainerViewHeightConstraint" destination="toe-tA-Y8e" id="q3B-av-6vU"/>
                 <outlet property="milestoneLabel" destination="A3h-od-0dS" id="uUh-hU-tD4"/>
                 <outlet property="titleLabel" destination="mUw-0T-gIa" id="Tw8-92-59U"/>
             </connections>
-            <point key="canvasLocation" x="219.56521739130437" y="71.651785714285708"/>
+            <point key="canvasLocation" x="245.6521739130435" y="71.651785714285708"/>
         </collectionViewCell>
     </objects>
     <resources>
