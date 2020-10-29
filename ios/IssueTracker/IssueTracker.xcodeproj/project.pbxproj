@@ -18,6 +18,16 @@
 		3747D4842547EFE1009BA189 /* IssueTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747D4832547EFE1009BA189 /* IssueTrackerTests.swift */; };
 		3747D48F2547EFE1009BA189 /* IssueTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747D48E2547EFE1009BA189 /* IssueTrackerUITests.swift */; };
 		37E82AEB2547F2BC0084DFE1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */; };
+		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
+		99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B5B2549A34C0082ADF0 /* IssueItem.swift */; };
+		99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B702549AD230082ADF0 /* DummyDataLoader.swift */; };
+		99A09B792549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B782549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift */; };
+		99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B7E2549B2340082ADF0 /* IssueListCollectionViewCell.swift */; };
+		99A09B812549B2340082ADF0 /* IssueListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A09B7F2549B2340082ADF0 /* IssueListCollectionViewCell.xib */; };
+		99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */; };
+		99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */; };
+		99D99CB7254A5FED008E2BF4 /* LabelContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */; };
+		99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +64,16 @@
 		3747D48E2547EFE1009BA189 /* IssueTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTrackerUITests.swift; sourceTree = "<group>"; };
 		3747D4902547EFE1009BA189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
+		99A09B5B2549A34C0082ADF0 /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
+		99A09B702549AD230082ADF0 /* DummyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
+		99A09B782549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		99A09B7E2549B2340082ADF0 /* IssueListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionViewCell.swift; sourceTree = "<group>"; };
+		99A09B7F2549B2340082ADF0 /* IssueListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueListCollectionViewCell.xib; sourceTree = "<group>"; };
+		99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelContainerView.swift; sourceTree = "<group>"; };
+		99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelContainerView.xib; sourceTree = "<group>"; };
+		99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EA2F7CB9E4841F8F24D452 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D63AD142EED43ECCDDAF181F /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +131,8 @@
 		3747D4682547EFDF009BA189 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				99A09B8A2549C0D60082ADF0 /* Common */,
+				99A09B522549A24B0082ADF0 /* IssueList */,
 				3747D4692547EFDF009BA189 /* AppDelegate.swift */,
 				3747D46B2547EFDF009BA189 /* SceneDelegate.swift */,
 				3747D46D2547EFDF009BA189 /* ViewController.swift */,
@@ -147,6 +169,78 @@
 				9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99A09B522549A24B0082ADF0 /* IssueList */ = {
+			isa = PBXGroup;
+			children = (
+				99D99CCC254ABDF9008E2BF4 /* Adapter */,
+				99A09B7D2549B20F0082ADF0 /* View */,
+				99A09B612549A6E60082ADF0 /* Model */,
+				99A09B602549A6E00082ADF0 /* ViewController */,
+			);
+			path = IssueList;
+			sourceTree = "<group>";
+		};
+		99A09B602549A6E00082ADF0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B532549A2740082ADF0 /* IssueListViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		99A09B612549A6E60082ADF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B5B2549A34C0082ADF0 /* IssueItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99A09B6F2549AD100082ADF0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B702549AD230082ADF0 /* DummyDataLoader.swift */,
+				99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		99A09B7D2549B20F0082ADF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B7E2549B2340082ADF0 /* IssueListCollectionViewCell.swift */,
+				99A09B7F2549B2340082ADF0 /* IssueListCollectionViewCell.xib */,
+				99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */,
+				99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99A09B8A2549C0D60082ADF0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B8B2549C0DE0082ADF0 /* View */,
+				99A09B6F2549AD100082ADF0 /* Util */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		99A09B8B2549C0DE0082ADF0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99D99CCC254ABDF9008E2BF4 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B782549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift */,
+			);
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 		DD7F2DFBF802B89C921F56A0 /* Pods */ = {
@@ -266,8 +360,10 @@
 			files = (
 				37E82AEB2547F2BC0084DFE1 /* .swiftlint.yml in Resources */,
 				3747D4792547EFE1009BA189 /* LaunchScreen.storyboard in Resources */,
+				99A09B812549B2340082ADF0 /* IssueListCollectionViewCell.xib in Resources */,
 				3747D4762547EFE1009BA189 /* Assets.xcassets in Resources */,
 				3747D4712547EFDF009BA189 /* Main.storyboard in Resources */,
+				99D99CB7254A5FED008E2BF4 /* LabelContainerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,9 +447,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */,
+				99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */,
+				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
+				99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */,
 				3747D46E2547EFDF009BA189 /* ViewController.swift in Sources */,
+				99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,
+				99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */,
+				99A09B792549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift in Sources */,
 				3747D4742547EFDF009BA189 /* IssueTracker.xcdatamodeld in Sources */,
+				99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */,
 				3747D46C2547EFDF009BA189 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,7 +564,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -515,7 +619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -573,7 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = IssueTrackerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = IssueTrackerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
