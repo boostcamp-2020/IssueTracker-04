@@ -26,3 +26,24 @@
   <a href="https://github.com/boostcamp-2020/IssueTracker-04/pulls">
     <img alt="pr tracking" src="https://img.shields.io/github/issues-pr/boostcamp-2020/IssueTracker-04"/>
   </a>
+  
+ ---
+
+  
+### 문서
+
+- 🗂  [BackLog](https://docs.google.com/spreadsheets/d/1ICBlr6AFnKSkzpVQsYajE0_k_dBgLBnohmngdtfsJtw/edit#gid=0)
+- 🤝  [API 명세서](https://github.com/boostcamp-2020/IssueTracker-04/wiki/API-%EB%AA%85%EC%84%B8%EC%84%9C)
+- 🔑  [데이터베이스](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
+- 🌴  [브랜치 전략](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5)
+- 🚥  [Ground Rule](https://github.com/boostcamp-2020/IssueTracker-04/wiki/Ground-Rule)
+
+### 데일리 스크럼
+- [Day 2](https://github.com/boostcamp-2020/IssueTracker-04/wiki/DAY-2-SCRUM)
+- [Day 3](https://github.com/boostcamp-2020/IssueTracker-04/wiki/DAY-3-SCRUM)
+- [Day 4](https://github.com/boostcamp-2020/IssueTracker-04/wiki/DAY-4-SCRUM)
+
+### 회고
+- [Week 1](http://)
+- [Week 2](http://)
+- [Week 3](http://)
