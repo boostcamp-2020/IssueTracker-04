@@ -20,10 +20,8 @@ class IssueListViewController: UIViewController {
     
     private func setupCollectionViewFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets.zero
         flowLayout.minimumLineSpacing = 1
-        let width = UIScreen.main.bounds.width
-        flowLayout.itemSize = CGSize(width: width, height: width/3.5)
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 
         self.issueListCollectionView.collectionViewLayout = flowLayout
     }

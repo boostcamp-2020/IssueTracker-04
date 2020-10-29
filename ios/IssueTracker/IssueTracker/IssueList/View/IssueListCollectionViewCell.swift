@@ -19,9 +19,20 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var milestoneLabel: BadgeLabel!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!    
+    @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
     
     static var identifier: String {
         String(describing: Self.self)
+    }
+    
+    var cellWidth: CGFloat? {
+        didSet {
+            guard let width = cellWidth else {
+                return
+            }
+            containerViewWidthConstraint.constant = width
+        }
     }
     
     func configure(with data: IssueListCollectionViewCellData) {

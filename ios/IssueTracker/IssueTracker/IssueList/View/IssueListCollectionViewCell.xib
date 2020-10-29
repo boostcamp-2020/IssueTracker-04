@@ -64,11 +64,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="110" id="4Cg-ft-MXZ"/>
                             <constraint firstItem="mUw-0T-gIa" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="8" id="6EV-BN-Y7A"/>
                             <constraint firstAttribute="trailing" secondItem="A3h-od-0dS" secondAttribute="trailing" constant="8" id="9Hq-4z-M2A"/>
                             <constraint firstItem="A3h-od-0dS" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" constant="8" id="IUg-x6-h4Q"/>
                             <constraint firstItem="mUw-0T-gIa" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" constant="8" id="Ikk-cl-0Fa"/>
                             <constraint firstItem="A3h-od-0dS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mUw-0T-gIa" secondAttribute="trailing" constant="15" id="Xhx-mq-AMh"/>
+                            <constraint firstAttribute="width" constant="375" id="eVv-EF-9HS"/>
                             <constraint firstItem="RUg-yR-4Y4" firstAttribute="top" secondItem="mUw-0T-gIa" secondAttribute="bottom" constant="8" id="jVm-AN-e8j"/>
                             <constraint firstItem="RUg-yR-4Y4" firstAttribute="leading" secondItem="mUw-0T-gIa" secondAttribute="leading" id="moW-0G-gKZ"/>
                             <constraint firstAttribute="trailing" secondItem="RUg-yR-4Y4" secondAttribute="trailing" constant="8" id="rv9-E0-FCZ"/>
@@ -85,6 +87,8 @@
             </constraints>
             <size key="customSize" width="375" height="110"/>
             <connections>
+                <outlet property="containerViewHeightConstraint" destination="4Cg-ft-MXZ" id="5Bt-py-3mi"/>
+                <outlet property="containerViewWidthConstraint" destination="eVv-EF-9HS" id="T8B-gf-ZCV"/>
                 <outlet property="contentLabel" destination="RUg-yR-4Y4" id="5xZ-cJ-TB7"/>
                 <outlet property="milestoneLabel" destination="A3h-od-0dS" id="uUh-hU-tD4"/>
                 <outlet property="titleLabel" destination="mUw-0T-gIa" id="Tw8-92-59U"/>

@@ -22,7 +22,7 @@ class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource, UICo
         }
         let item = items[indexPath.row]
         itemCell.configure(with: item)
+        itemCell.cellWidth = collectionView.frame.width
         return itemCell
     }
-    
 }
