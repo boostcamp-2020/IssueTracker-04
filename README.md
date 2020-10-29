@@ -19,6 +19,3 @@ Group 4
   <a href="https://github.com/boostcamp-2020/IssueTracker-04/pulls">
     <img alt="pr tracking" src="https://img.shields.io/github/issues-pr/boostcamp-2020/IssueTracker-04"/>
   </a>
-  <a href="https://travis-ci.org/boostcamp-2020/IssueTracker-04/">
-    <img alt="pr tracking" src="https://travis-ci.org/boostcamp-2020/IssueTracker-04.svg?branch=master"/>
-  </a>
