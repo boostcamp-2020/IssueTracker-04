@@ -57,18 +57,18 @@
   <summary><b>Week 1 WEB</b></summary>
   <div markdown="1">
     <ul>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-2-Web">Day 2</li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-3-Web">Day 3</li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-Web">Day 4</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-2-Web">Day 2</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-3-Web">Day 3</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-Web">Day 4</a></li>
     </ul>
   </div>
 
   <summary><b>Week 1 IOS</b></summary>
   <div markdown="1">
     <ul>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-2-IOS">Day 2</li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-3-IOS">Day 3</li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-IOS">Day 4</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-2-IOS">Day 2</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-3-IOS">Day 3</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-IOS">Day 4</a></li>
     </ul>
   </div>
 
