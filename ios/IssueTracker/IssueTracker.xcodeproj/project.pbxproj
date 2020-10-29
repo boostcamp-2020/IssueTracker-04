@@ -174,10 +174,10 @@
 		99A09B522549A24B0082ADF0 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
+				99D99CCC254ABDF9008E2BF4 /* Adapter */,
 				99A09B7D2549B20F0082ADF0 /* View */,
 				99A09B612549A6E60082ADF0 /* Model */,
 				99A09B602549A6E00082ADF0 /* ViewController */,
-				99A09B782549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift */,
 			);
 			path = IssueList;
 			sourceTree = "<group>";
@@ -233,6 +233,14 @@
 				99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		99D99CCC254ABDF9008E2BF4 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				99A09B782549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift */,
+			);
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 		DD7F2DFBF802B89C921F56A0 /* Pods */ = {

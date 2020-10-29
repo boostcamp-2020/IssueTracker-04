@@ -21,8 +21,10 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var milestoneLabel: BadgeLabel!
     @IBOutlet var labelContainerView: LabelContainerView!
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var labelContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
+    
     static var identifier: String {
         String(describing: Self.self)
     }
@@ -32,6 +34,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
             guard let width = cellWidth else {
                 return
             }
+            containerView.translatesAutoresizingMaskIntoConstraints = false
             containerViewWidthConstraint.constant = width
             labelContainerView.maxWidth = width - 16
         }

@@ -42,7 +42,6 @@ class LabelContainerView: UIView {
         addStackView()
         labels.forEach {
             let badgeLabel = BadgeLabel(text: $0.labelTitle, backgroundColor: UIColor(hexString: $0.labelColor))
-            print(maxWidth)
             if currentWidth + badgeLabel.estimatedSize < maxWidth {
                 labelStackViews.last?.addArrangedSubview(badgeLabel)
                 currentWidth += badgeLabel.estimatedSize + self.stackViewSpacing
