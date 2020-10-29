@@ -43,6 +43,70 @@
 - [Day 3](https://github.com/boostcamp-2020/IssueTracker-04/wiki/DAY-3-SCRUM)
 - [Day 4](https://github.com/boostcamp-2020/IssueTracker-04/wiki/DAY-4-SCRUM)
 
+### 작업 내역
+
+<details>
+  <summary><b>Week 1 WEB</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week1-Day-2-Web">Day 2</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week1-Day-3-Web">Day 3</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week1-Day-4-Web">Day 4</li>
+    </ul>
+  </div>
+</details>
+<details>
+  <summary><b>Week 1 IOS</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-2-IOS">Day 2</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-3-IOS">Day 3</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-IOS">Day 4</li>
+    </ul>
+  </div>
+</details>
+<details>
+  <summary><b>Week 2 WEB</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="http://">Day 1</li>
+      <li><a href="http://">Day 2</li>
+      <li><a href="http://">Day 3</li>
+    </ul>
+  </div>
+</details>
+<details>
+  <summary><b>Week 2 IOS</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="http://">Day 1</li>
+      <li><a href="http://">Day 2</li>
+      <li><a href="http://">Day 3</li>
+    </ul>
+  </div>
+</details>
+<details>
+  <summary><b>Week 3 WEB</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="http://">Day 1</li>
+      <li><a href="http://">Day 2</li>
+      <li><a href="http://">Day 3</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary><b>Week 3 IOS</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="http://">Day 1</li>
+      <li><a href="http://">Day 2</li>
+      <li><a href="http://">Day 3</li>
+    </ul>
+  </div>
+</details>
+
 ### 회고
 - [Week 1](http://)
 - [Week 2](http://)
