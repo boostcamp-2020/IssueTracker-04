@@ -56,7 +56,6 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        labelContainerView = nil
-        labelContainerView = LabelContainerView()
+        labelContainerView.clear()
     }
 }

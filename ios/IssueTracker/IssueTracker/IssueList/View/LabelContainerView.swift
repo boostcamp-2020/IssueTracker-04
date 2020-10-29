@@ -9,8 +9,8 @@ import UIKit
 
 class LabelContainerView: UIView {
     private let xibName = "LabelContainerView"
-    
-    @IBOutlet weak var firstLabelStackView: UIStackView!
+
+    @IBOutlet weak var labelsStackView: UIStackView!
     var labelStackViews: [UIStackView] = []
     var labelRows: Int {
         labelStackViews.count
@@ -35,34 +35,37 @@ class LabelContainerView: UIView {
         }
         view.frame = self.bounds
         self.addSubview(view)
-        labelStackViews.append(firstLabelStackView)
     }
     
     func add(labels: [Label]) {
         var currentWidth: CGFloat = 0
-        
+        addStackView()
         labels.forEach {
             let badgeLabel = BadgeLabel(text: $0.labelTitle, backgroundColor: UIColor(hexString: $0.labelColor))
+            print(maxWidth)
             if currentWidth + badgeLabel.estimatedSize < maxWidth {
                 labelStackViews.last?.addArrangedSubview(badgeLabel)
                 currentWidth += badgeLabel.estimatedSize + self.stackViewSpacing
             } else {
-                let newStackView = addStackView()
-                newStackView.addArrangedSubview(badgeLabel)
+                addStackView()
+                labelStackViews.last?.addArrangedSubview(badgeLabel)
                 currentWidth = badgeLabel.estimatedSize + self.stackViewSpacing
             }
         }
     }
     
-    private func addStackView() -> UIStackView {
+    func clear() {
+        labelsStackView.subviews.forEach { stackView in
+            stackView.subviews.forEach { $0.removeFromSuperview() }
+            stackView.removeFromSuperview()
+        }
+        labelStackViews = []
+    }
+    
+    private func addStackView() {
         let newStackView = UIStackView()
         newStackView.spacing = stackViewSpacing
-        self.addSubview(newStackView)
-        newStackView.translatesAutoresizingMaskIntoConstraints = false
-        newStackView.topAnchor.constraint(equalTo: labelStackViews.last?.bottomAnchor ?? self.topAnchor, constant: 5).isActive = true
-        newStackView.leadingAnchor.constraint(equalTo: labelStackViews.last?.leadingAnchor ?? self.leadingAnchor).isActive = true
+        labelsStackView.addArrangedSubview(newStackView)
         labelStackViews.append(newStackView)
-        
-        return newStackView
     }
 }
