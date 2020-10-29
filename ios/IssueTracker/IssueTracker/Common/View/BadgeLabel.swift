@@ -28,7 +28,7 @@ class BadgeLabel: UILabel {
         super.backgroundColor = backgroundColor
         self.borderColor = backgroundColor
         super.font = UIFont.preferredFont(forTextStyle: .caption1)
-        super.textColor = .white // 배경 색상에 맞추어 텍스트 색상 변경 필요
+        super.textColor = .black // 배경 색상에 맞추어 텍스트 색상 변경 필요
         setBorder()
     }
     

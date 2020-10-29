@@ -36,7 +36,7 @@ class LabelContainerView: UIView {
     
     func add(labels: [Label]) {
         labels.forEach {
-            let badgeLabel = BadgeLabel(text: $0.labelTitle, backgroundColor: UIColor.systemYellow)
+            let badgeLabel = BadgeLabel(text: $0.labelTitle, backgroundColor: UIColor(hexString: $0.labelColor))
             firstLabelStackView.addArrangedSubview(badgeLabel)
         }
     }

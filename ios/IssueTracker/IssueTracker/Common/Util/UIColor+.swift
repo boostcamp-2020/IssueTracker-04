@@ -10,13 +10,13 @@ import UIKit
 extension UIColor {
     convenience init(hexString: String) {
         var hex = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        var rgbValue:UInt64 = 10066329
+        var rgbValue: UInt64 = 10066329
         
-        if (hex.hasPrefix("#")) {
+        if hex.hasPrefix("#") {
             hex.remove(at: hex.startIndex)
         }
         
-        if (hex.count == 6) {
+        if hex.count == 6 {
             Scanner(string: hex).scanHexInt64(&rgbValue)
         }
         
