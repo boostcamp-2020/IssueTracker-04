@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const auth = require('../../services/auth/github');
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/api/auth/github/', auth.gitLoginCheck);
+
+router.get('/api/auth/github/callback', auth.gitLoginCallback);
 
 module.exports = router;
