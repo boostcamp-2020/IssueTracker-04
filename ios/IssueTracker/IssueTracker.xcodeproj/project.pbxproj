@@ -27,6 +27,7 @@
 		99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */; };
 		99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */; };
 		99D99CB7254A5FED008E2BF4 /* LabelContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */; };
+		99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelContainerView.swift; sourceTree = "<group>"; };
 		99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelContainerView.xib; sourceTree = "<group>"; };
+		99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EA2F7CB9E4841F8F24D452 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D63AD142EED43ECCDDAF181F /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				99A09B702549AD230082ADF0 /* DummyDataLoader.swift */,
+				99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
 				99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */,
 				3747D46E2547EFDF009BA189 /* ViewController.swift in Sources */,
+				99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,
 				99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */,
 				99A09B792549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift in Sources */,
