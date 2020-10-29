@@ -7,6 +7,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const passportConfig = require('./config/passport');
+const models = require('./models');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -41,7 +42,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 passportConfig();
 
-app.use('/', indexRouter);
+models.sequelize
+  .sync()
+  .then(() => {
+    console.log('DB 연결 성공');
+  })
+  .catch((err) => {
+    console.log(err);
+    console.log('DB연결 실패');
+    process.exit();
+  });
+
 app.use('/users', usersRouter);
 app.use(authRouter);
 
