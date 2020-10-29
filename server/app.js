@@ -4,8 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const session = require('express-session');
+const passport = require('passport');
+const passportConfig = require('./config/passport');
+const models = require('./models');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth/github');
 
 const app = express();
 
@@ -15,21 +21,49 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// 세션 저장 불러오기
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function (obj, done) {
+  done(null, obj);
+});
 
-// catch 404 and forward to error handler
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// 세션 초기화
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig();
+
+models.sequelize
+  .sync()
+  .then(() => {
+    console.log('DB 연결 성공');
+  })
+  .catch((err) => {
+    console.log(err);
+    console.log('DB연결 실패');
+    process.exit();
+  });
+
+app.use('/users', usersRouter);
+app.use(authRouter);
+
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'developent' ? err : {};
 
-  // render the error page
   res.status(err.status || 500);
   return;
 });
