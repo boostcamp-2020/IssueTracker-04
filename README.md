@@ -32,14 +32,14 @@
   
 ### 문서
 
-🗂  [BackLog](https://docs.google.com/spreadsheets/d/1ICBlr6AFnKSkzpVQsYajE0_k_dBgLBnohmngdtfsJtw/edit#gid=0)
-🤝  [API 명세서](https://github.com/boostcamp-2020/IssueTracker-04/wiki/API-%EB%AA%85%EC%84%B8%EC%84%9C)
-🔑  [데이터베이스](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
-🌴  [브랜치 전략](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5)
-🚥  [Ground Rule](https://github.com/boostcamp-2020/IssueTracker-04/wiki/Ground-Rule)
+- 🗂  [BackLog](https://docs.google.com/spreadsheets/d/1ICBlr6AFnKSkzpVQsYajE0_k_dBgLBnohmngdtfsJtw/edit#gid=0)
+- 🤝  [API 명세서](https://github.com/boostcamp-2020/IssueTracker-04/wiki/API-%EB%AA%85%EC%84%B8%EC%84%9C)
+- 🔑  [데이터베이스](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4)
+- 🌴  [브랜치 전략](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5)
+- 🚥  [Ground Rule](https://github.com/boostcamp-2020/IssueTracker-04/wiki/Ground-Rule)
 
 ### 데일리 스크럼
-<details>
+
   <summary><b>Week 1</b></summary>
   <div markdown="1">
     <ul>
@@ -48,12 +48,12 @@
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</li>
     </ul>
   </div>
-</details>
+
 
 
 ### 작업 내역
 
-<details>
+
   <summary><b>Week 1 WEB</b></summary>
   <div markdown="1">
     <ul>
@@ -62,8 +62,7 @@
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-Web">Day 4</li>
     </ul>
   </div>
-</details>
-<details>
+
   <summary><b>Week 1 IOS</b></summary>
   <div markdown="1">
     <ul>
@@ -72,7 +71,7 @@
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-1-Day-4-IOS">Day 4</li>
     </ul>
   </div>
-</details>
+
 
 
 
