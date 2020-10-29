@@ -43,9 +43,9 @@
   <summary><b>Week 1</b></summary>
   <div markdown="1">
     <ul>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-2">Day 2</li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-3">Day 3</li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-2">Day 2</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-3">Day 3</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</a></li>
     </ul>
   </div>
 
