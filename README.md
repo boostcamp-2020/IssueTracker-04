@@ -1,5 +1,12 @@
 # IssueTracker-04
-Group 4
+
+## GROUP4
+
+|                            Web                         |                            Web                         |                            Web                         |                            iOS                         |                            iOS                         |
+| :---------------------------------------------------: | :---------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------------: |
+| ![제구님](https://user-images.githubusercontent.com/61405355/97565356-70992c80-1a29-11eb-9a76-b9a22ecc1ba2.png)J085_박제구 | ![image](https://user-images.githubusercontent.com/61405355/97565776-91fa1880-1a29-11eb-97fa-34f2acb4324c.png)J174_장규영 | ![준영님](https://user-images.githubusercontent.com/61405355/97566084-a50ce880-1a29-11eb-9502-bdeb2c495dfb.png)J176_장준영 | ![동건님](https://user-images.githubusercontent.com/61405355/97566130-b229d780-1a29-11eb-9bdb-c12f1ce24aef.png)S033_오동건 | ![병휘님](https://user-images.githubusercontent.com/61405355/97566454-d08fd300-1a29-11eb-9fe1-ebc24d9bc1d0.png)S037_윤병휘 |
+|                        https://github.com/Zigje9                         |                        https://github.com/jangky000                         |                      https://github.com/JunYoung7                       |                        https://github.com/DonggeonOh                         |                        https://github.com/ByoungHwi                         |
+
 
 ![TravisCI](https://travis-ci.org/boostcamp-2020/IssueTracker-04.svg?branch=master)
 ![Swift](https://img.shields.io/badge/swift-v5.1-orange?logo=swift)
