@@ -11,6 +11,12 @@ class LabelContainerView: UIView {
     private let xibName = "LabelContainerView"
     
     @IBOutlet weak var firstLabelStackView: UIStackView!
+    var labelStackViews: [UIStackView] = []
+    var labelRows: Int {
+        labelStackViews.count
+    }
+    
+    var stackViewSpacing: CGFloat = 5.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,16 +34,35 @@ class LabelContainerView: UIView {
         }
         view.frame = self.bounds
         self.addSubview(view)
-    }
-    
-    func clear() {
-        firstLabelStackView.subviews.forEach { $0.removeFromSuperview() }
+        labelStackViews.append(firstLabelStackView)
     }
     
     func add(labels: [Label]) {
+        let maxWidth = self.frame.width
+        var currentWidth: CGFloat = 0
+        
         labels.forEach {
             let badgeLabel = BadgeLabel(text: $0.labelTitle, backgroundColor: UIColor(hexString: $0.labelColor))
-            firstLabelStackView.addArrangedSubview(badgeLabel)
+            if currentWidth + badgeLabel.estimatedSize < maxWidth {
+                labelStackViews.last?.addArrangedSubview(badgeLabel)
+                currentWidth += badgeLabel.estimatedSize + self.stackViewSpacing
+            } else {
+                let newStackView = addStackView()
+                newStackView.addArrangedSubview(badgeLabel)
+                currentWidth = badgeLabel.estimatedSize + self.stackViewSpacing
+            }
         }
+    }
+    
+    private func addStackView() -> UIStackView {
+        let newStackView = UIStackView()
+        newStackView.spacing = stackViewSpacing
+        self.addSubview(newStackView)
+        newStackView.translatesAutoresizingMaskIntoConstraints = false
+        newStackView.topAnchor.constraint(equalTo: labelStackViews.last?.bottomAnchor ?? self.topAnchor, constant: 5).isActive = true
+        newStackView.leadingAnchor.constraint(equalTo: labelStackViews.last?.leadingAnchor ?? self.leadingAnchor).isActive = true
+        labelStackViews.append(newStackView)
+        
+        return newStackView
     }
 }

@@ -19,8 +19,9 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var milestoneLabel: BadgeLabel!
-    @IBOutlet weak var labelContainerView: LabelContainerView!
-    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!    
+    @IBOutlet var labelContainerView: LabelContainerView!
+   
+    @IBOutlet weak var labelContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
     
     static var identifier: String {
@@ -33,6 +34,8 @@ class IssueListCollectionViewCell: UICollectionViewCell {
                 return
             }
             containerViewWidthConstraint.constant = width
+            labelContainerViewHeightConstraint.constant = 18 * CGFloat(labelContainerView.labelRows)
+            
         }
     }
     
@@ -44,6 +47,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        labelContainerView.clear()
+        labelContainerView = nil
+        labelContainerView = LabelContainerView()
     }
 }

@@ -21,6 +21,15 @@ class BadgeLabel: UILabel {
             layer.borderColor = newValue?.cgColor
         }
     }
+    
+    private var estimaedTextSize: CGFloat = 10.5
+    
+    var estimatedSize: CGFloat {
+        guard let text = text else {
+            return leftInset + rightInset
+        }
+        return (CGFloat(text.count) * estimaedTextSize) + leftInset + rightInset
+    }
 
     init(text: String, backgroundColor: UIColor) {
         super.init(frame: CGRect.zero)
