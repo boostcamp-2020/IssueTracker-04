@@ -10,7 +10,7 @@ const passportConfig = require('./config/passport');
 const models = require('./models');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth/github');
 
 const app = express();
@@ -57,7 +57,7 @@ models.sequelize
     process.exit();
   });
 
-app.use('/users', usersRouter);
+app.use(indexRouter);
 app.use(authRouter);
 
 app.use(function (req, res, next) {
