@@ -31,9 +31,12 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWC-ob-1li">
-                                <rect key="frame" x="374" y="771" width="20" height="22"/>
-                                <state key="normal" image="plus.circle" catalog="system"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWC-ob-1li" customClass="RoundAddButton" customModule="IssueTracker" customModuleProvider="target">
+                                <rect key="frame" x="352" y="751" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="4HT-fx-E3C"/>
+                                    <constraint firstAttribute="height" constant="42" id="dT4-Rx-YkF"/>
+                                </constraints>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -67,6 +70,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="cWC-ob-1li" id="thL-ts-t74"/>
+                        <outlet property="addButtonTrailingConstraint" destination="3og-XQ-UhE" id="43o-ZT-hhf"/>
                         <outlet property="issueListCollectionView" destination="adi-xF-VDs" id="kqM-dk-FNc"/>
                         <segue destination="8B9-Hs-unh" kind="show" id="8gQ-MF-YBo"/>
                         <segue destination="lWJ-qa-oZ7" kind="presentation" id="XpI-OJ-UbU"/>
@@ -499,7 +504,6 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="github_logo" width="25" height="25"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="signpost.left" catalog="system" width="128" height="118"/>
         <image name="tag" catalog="system" width="128" height="119"/>
         <image name="title_black" width="762" height="128"/>

@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="339" height="113"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUw-0T-gIa">
-                                <rect key="frame" x="8" y="8" width="33" height="20.5"/>
+                                <rect key="frame" x="12" y="16" width="33" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="HKU-PW-hnk"/>
                                 </constraints>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MileStoneTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3h-od-0dS" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="245.5" y="8" width="85.5" height="16"/>
+                                <rect key="frame" x="241.5" y="18.5" width="85.5" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="7r8-mC-u15"/>
                                 </constraints>
@@ -56,13 +56,13 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="IssueContent  with 2 Lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-yR-4Y4">
-                                <rect key="frame" x="8" y="36.5" width="323" height="36"/>
+                                <rect key="frame" x="12" y="44.5" width="315" height="28.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="SWr-6f-daR" customClass="LabelContainerView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="80.5" width="323" height="20"/>
+                                <rect key="frame" x="12" y="85" width="315" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="20" id="4OT-hT-Djv"/>
                                 </constraints>
@@ -70,19 +70,19 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="A3h-od-0dS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mUw-0T-gIa" secondAttribute="trailing" constant="16" id="3ig-BA-OP4"/>
+                            <constraint firstItem="A3h-od-0dS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mUw-0T-gIa" secondAttribute="trailing" constant="8" id="3ig-BA-OP4"/>
                             <constraint firstAttribute="width" priority="750" constant="339" id="3ur-8Q-wEk"/>
-                            <constraint firstItem="SWr-6f-daR" firstAttribute="top" secondItem="RUg-yR-4Y4" secondAttribute="bottom" priority="750" constant="8" id="B6i-OS-fNA"/>
-                            <constraint firstAttribute="trailing" secondItem="RUg-yR-4Y4" secondAttribute="trailing" constant="8" id="BCK-7x-MKf"/>
-                            <constraint firstItem="mUw-0T-gIa" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="8" id="I04-qG-d9q"/>
-                            <constraint firstAttribute="trailing" secondItem="A3h-od-0dS" secondAttribute="trailing" constant="8" id="J1Y-Lr-ANO"/>
-                            <constraint firstItem="A3h-od-0dS" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" priority="750" constant="8" id="Nku-qh-Ak0"/>
-                            <constraint firstItem="mUw-0T-gIa" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" priority="750" constant="8" id="SBw-ef-dlS"/>
+                            <constraint firstItem="SWr-6f-daR" firstAttribute="top" secondItem="RUg-yR-4Y4" secondAttribute="bottom" priority="750" constant="12" id="B6i-OS-fNA"/>
+                            <constraint firstAttribute="trailing" secondItem="RUg-yR-4Y4" secondAttribute="trailing" constant="12" id="BCK-7x-MKf"/>
+                            <constraint firstItem="mUw-0T-gIa" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="12" id="I04-qG-d9q"/>
+                            <constraint firstAttribute="trailing" secondItem="A3h-od-0dS" secondAttribute="trailing" constant="12" id="J1Y-Lr-ANO"/>
+                            <constraint firstItem="mUw-0T-gIa" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" priority="750" constant="16" id="SBw-ef-dlS"/>
+                            <constraint firstItem="A3h-od-0dS" firstAttribute="centerY" secondItem="mUw-0T-gIa" secondAttribute="centerY" id="Zvi-8J-lIi"/>
                             <constraint firstItem="RUg-yR-4Y4" firstAttribute="top" secondItem="mUw-0T-gIa" secondAttribute="bottom" priority="750" constant="8" id="d8b-52-Nvh"/>
-                            <constraint firstItem="SWr-6f-daR" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="8" id="kfQ-LL-sfw"/>
+                            <constraint firstItem="SWr-6f-daR" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="12" id="kfQ-LL-sfw"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SWr-6f-daR" secondAttribute="bottom" priority="750" constant="8" id="onb-u6-NU6"/>
-                            <constraint firstAttribute="trailing" secondItem="SWr-6f-daR" secondAttribute="trailing" constant="8" id="wYi-Hq-r5j"/>
-                            <constraint firstItem="RUg-yR-4Y4" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="8" id="yef-ks-xAs"/>
+                            <constraint firstAttribute="trailing" secondItem="SWr-6f-daR" secondAttribute="trailing" constant="12" id="wYi-Hq-r5j"/>
+                            <constraint firstItem="RUg-yR-4Y4" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" constant="12" id="yef-ks-xAs"/>
                         </constraints>
                     </view>
                 </subviews>

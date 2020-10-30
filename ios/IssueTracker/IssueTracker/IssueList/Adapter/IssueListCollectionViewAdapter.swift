@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource {
     
     var items: [IssueItem] = []
     
