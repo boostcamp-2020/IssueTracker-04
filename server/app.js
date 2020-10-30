@@ -25,15 +25,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
-passport.deserializeUser(function (obj, done) {
-  done(null, obj);
+passport.deserializeUser(function (user, done) {
+  done(null, user);
 });
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: false, // 매번 세션 강제 저장
+    saveUninitialized: false, // 빈 값도 저장
+    secret: process.env.SESSION_SECRET, // cookie 암호화 키. dotenv 라이브러리로 감춤
+    cookie: {
+      httpOnly: true, // javascript로 cookie에 접근하지 못하게 하는 옵션
+      secure: false, // https 프로토콜만 허락하는 지 여부
+    },
   })
 );
 
