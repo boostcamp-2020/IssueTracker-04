@@ -7,11 +7,19 @@
 
 import UIKit
 
+@IBDesignable
 class RoundAddButton: UIButton {
+    
+    @IBInspectable
+    var buttonColor: UIColor?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         updateLayerProperties()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
 
     override func draw(_ rect: CGRect) {
@@ -20,7 +28,7 @@ class RoundAddButton: UIButton {
         let offset = rect.width * 0.5 / 2
         
         let circlePath = UIBezierPath(ovalIn: rect)
-        UIColor.systemBlue.set()
+        (buttonColor ?? UIColor.systemBlue).set()
         circlePath.fill()
         
         let plusPath = UIBezierPath()
