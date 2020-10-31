@@ -16,6 +16,7 @@ class IssueListViewController: UIViewController {
     
     var isOnAddButtonHideAnimation = false
     var isOnAddButtonShowAnimation = false
+    var addButtonRightConstant: CGFloat = 20.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class IssueListViewController: UIViewController {
 
 extension IssueListViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.addButtonTrailingConstraint.constant = -62.0
+        self.addButtonTrailingConstraint.constant = -(addButtonRightConstant + addButton.frame.width)
         if !isOnAddButtonHideAnimation {
             UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) { [weak self] in
                 self?.isOnAddButtonHideAnimation = true
@@ -55,7 +56,7 @@ extension IssueListViewController: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        self.addButtonTrailingConstraint.constant = 20
+        self.addButtonTrailingConstraint.constant = addButtonRightConstant
         if !isOnAddButtonShowAnimation {
             UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) { [weak self] in
                 self?.isOnAddButtonShowAnimation = true
