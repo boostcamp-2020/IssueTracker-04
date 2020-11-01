@@ -8,6 +8,7 @@
 import UIKit
 
 protocol IssueListCollectionViewCellData {
+    var issueNo: Int { get }
     var issueTitle: String { get }
     var issueContent: String { get }
     var milestoneTitle: String { get }
@@ -32,6 +33,8 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     static var identifier: String {
         String(describing: Self.self)
     }
+    
+    var issueNo: Int?
     
     var cellMainWidth: CGFloat? {
         didSet {
@@ -83,6 +86,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         labelContainerView.add(labels: data.labels)
         labelRowCount = CGFloat(labelContainerView.labelRows)
         setSelectionButton(isSelected: isSelected)
+        issueNo = data.issueNo
     }
     
     private func addSwipeGesture() {
@@ -119,6 +123,20 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         labelContainerView.clear()
+    }
+    
+    @IBAction func closeButtonTouched(_ sender: UIButton) {
+        guard let issueNo = issueNo else {
+            return
+        }
+        NotificationCenter.default.post(name: .cellCloseButtonDidTouch, object: nil, userInfo: ["IssueNo": issueNo])
+    }
+    
+    @IBAction func deleteButtonTouched(_ sender: UIButton) {
+        guard let issueNo = issueNo else {
+            return
+        }
+        NotificationCenter.default.post(name: .cellDeleteButtonDidTouch, object: nil, userInfo: ["IssueNo": issueNo])
     }
 }
 

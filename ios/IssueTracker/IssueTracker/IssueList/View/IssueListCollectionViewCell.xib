@@ -102,29 +102,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgT-Iy-njt">
                                 <rect key="frame" x="345" y="0.0" width="105" height="105"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIj-fl-8vU">
+                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="105"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButtonTouched:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QSc-Pz-NaJ"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0Y-Zz-b8s">
                                         <rect key="frame" x="52.5" y="0.0" width="52.5" height="105"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="Delete">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteButtonTouched:" destination="gTV-IL-0wX" eventType="touchUpInside" id="1kV-ap-LUx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstItem="T0Y-Zz-b8s" firstAttribute="width" secondItem="LgT-Iy-njt" secondAttribute="width" multiplier="0.5" id="AXi-lG-N6D"/>
+                                    <constraint firstItem="oIj-fl-8vU" firstAttribute="leading" secondItem="LgT-Iy-njt" secondAttribute="leading" id="LOq-dD-sxP"/>
                                     <constraint firstAttribute="trailing" secondItem="T0Y-Zz-b8s" secondAttribute="trailing" id="UzK-jC-p8h"/>
+                                    <constraint firstItem="oIj-fl-8vU" firstAttribute="top" secondItem="LgT-Iy-njt" secondAttribute="top" id="aY6-5A-qxz"/>
+                                    <constraint firstItem="oIj-fl-8vU" firstAttribute="height" secondItem="LgT-Iy-njt" secondAttribute="height" id="bbs-k9-qNp"/>
                                     <constraint firstItem="T0Y-Zz-b8s" firstAttribute="height" secondItem="LgT-Iy-njt" secondAttribute="height" id="jBg-yI-bpC"/>
+                                    <constraint firstItem="oIj-fl-8vU" firstAttribute="width" secondItem="LgT-Iy-njt" secondAttribute="width" multiplier="0.5" id="rYw-SK-eem"/>
                                     <constraint firstItem="T0Y-Zz-b8s" firstAttribute="top" secondItem="LgT-Iy-njt" secondAttribute="top" id="vnu-lU-jIH"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIj-fl-8vU">
-                                <rect key="frame" x="345" y="0.0" width="52.5" height="105"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <state key="normal" title="Close">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -132,15 +142,11 @@
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" id="DfP-au-2Ux"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="width" secondItem="qf2-zy-KwB" secondAttribute="width" multiplier="0.15" id="Eok-qQ-rti"/>
                             <constraint firstItem="qf2-zy-KwB" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="HzO-ZN-kiZ"/>
-                            <constraint firstItem="oIj-fl-8vU" firstAttribute="width" secondItem="LgT-Iy-njt" secondAttribute="width" multiplier="0.5" id="JeL-zu-shn"/>
-                            <constraint firstItem="oIj-fl-8vU" firstAttribute="height" secondItem="LgT-Iy-njt" secondAttribute="height" id="K6k-q3-EWT"/>
                             <constraint firstItem="LgT-Iy-njt" firstAttribute="width" secondItem="qf2-zy-KwB" secondAttribute="width" multiplier="0.35" id="NGi-SI-dXb"/>
                             <constraint firstItem="LgT-Iy-njt" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="Qu8-1W-MgQ"/>
-                            <constraint firstItem="oIj-fl-8vU" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="abZ-RR-aqL"/>
                             <constraint firstItem="qf2-zy-KwB" firstAttribute="leading" secondItem="zh1-VM-vYD" secondAttribute="trailing" id="chh-ve-Lfn"/>
                             <constraint firstAttribute="bottom" secondItem="qf2-zy-KwB" secondAttribute="bottom" id="iAH-Xk-j5J"/>
                             <constraint firstItem="LgT-Iy-njt" firstAttribute="height" secondItem="qf2-zy-KwB" secondAttribute="height" id="nP9-M5-zAZ"/>
-                            <constraint firstItem="oIj-fl-8vU" firstAttribute="leading" secondItem="qf2-zy-KwB" secondAttribute="trailing" id="od0-zj-hua"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="height" secondItem="qf2-zy-KwB" secondAttribute="height" id="smf-hh-QPp"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="uur-95-yae"/>
                             <constraint firstItem="LgT-Iy-njt" firstAttribute="leading" secondItem="qf2-zy-KwB" secondAttribute="trailing" id="vBU-ZS-0gd"/>

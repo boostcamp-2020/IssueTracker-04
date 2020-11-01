@@ -45,6 +45,7 @@ class IssueListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        configureCellObserver()
         navigationItem.rightBarButtonItem = editButtonItem
         setSelectResultView(editing: false)
     }
@@ -75,6 +76,25 @@ class IssueListViewController: UIViewController {
         issueListCollectionView.dataSource = collectionViewAdapter
         issueListCollectionView.delegate = self
         setupCollectionViewFlowLayout()
+    }
+    
+    private func configureCellObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(closeIssue(notification:)), name: .cellCloseButtonDidTouch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteIssue(notification:)), name: .cellDeleteButtonDidTouch, object: nil)
+    }
+    
+    @objc func deleteIssue(notification: Notification) {
+        guard let issueNo = notification.userInfo?["IssueNo"] else {
+            return
+        }
+        print("\(issueNo) delete")
+    }
+    
+    @objc func closeIssue(notification: Notification) {
+        guard let issueNo = notification.userInfo?["IssueNo"] else {
+            return
+        }
+        print("\(issueNo) close")
     }
     
     private func selectAllItems() {
