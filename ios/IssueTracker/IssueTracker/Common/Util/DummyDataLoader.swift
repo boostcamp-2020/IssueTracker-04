@@ -7,9 +7,13 @@
 
 import UIKit
 
-struct DummyDataLoader {
+protocol NetworkManager {
+    func loadItems() -> [IssueItem]
+}
+
+struct DummyDataLoader: NetworkManager {
     
-    func loadIssueItems() -> [IssueItem] {
+    func loadItems() -> [IssueItem] {
         
         guard let dataAsset = NSDataAsset.init(name: "dummyIssueList") else {
             return []

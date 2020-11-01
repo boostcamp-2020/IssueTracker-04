@@ -70,9 +70,7 @@ class IssueListViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        let items = DummyDataLoader().loadIssueItems()
-        collectionViewAdapter = IssueListCollectionViewAdapter()
-        collectionViewAdapter?.items = items
+        collectionViewAdapter = IssueListCollectionViewAdapter(dataSourceManager: IssueListDataSourceManager(networkManager: DummyDataLoader()))
         issueListCollectionView.register(UINib(nibName: IssueListCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: IssueListCollectionViewCell.identifier)
         issueListCollectionView.dataSource = collectionViewAdapter
         issueListCollectionView.delegate = self
@@ -80,7 +78,7 @@ class IssueListViewController: UIViewController {
     }
     
     private func selectAllItems() {
-        collectionViewAdapter?.items.indices.forEach {
+        collectionViewAdapter?.dataSourceManager.items.indices.forEach {
             issueListCollectionView.selectItem(at: IndexPath(row: $0, section: 0), animated: false, scrollPosition: .left)
         }
     }
