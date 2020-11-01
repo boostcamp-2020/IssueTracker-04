@@ -23,7 +23,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="adi-xF-VDs">
                                 <rect key="frame" x="0.0" y="196" width="414" height="617"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Of-Zh-Nz5">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Of-Zh-Nz5">
                                     <size key="itemSize" width="413" height="117"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -43,6 +43,56 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5s-vG-8Wc">
+                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개의 이슈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmE-Hb-JPa">
+                                        <rect key="frame" x="70" y="13" width="88.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91X-Ew-ilQ">
+                                        <rect key="frame" x="208.5" y="13" width="60" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="8ov-OX-8Yf"/>
+                                        </constraints>
+                                        <state key="normal" title="닫기">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAc-Q8-Z3l">
+                                        <rect key="frame" x="278.5" y="13" width="60" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="O47-VG-oYM"/>
+                                        </constraints>
+                                        <state key="normal" title="삭제">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzl-Ds-8kr">
+                                        <rect key="frame" x="46.5" y="13.5" width="15.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstItem="91X-Ew-ilQ" firstAttribute="centerY" secondItem="BmE-Hb-JPa" secondAttribute="centerY" id="AwQ-oB-94H"/>
+                                    <constraint firstItem="LAc-Q8-Z3l" firstAttribute="leading" secondItem="91X-Ew-ilQ" secondAttribute="trailing" constant="10" id="EpT-CZ-3Al"/>
+                                    <constraint firstItem="LAc-Q8-Z3l" firstAttribute="centerY" secondItem="BmE-Hb-JPa" secondAttribute="centerY" id="OkD-4B-GTz"/>
+                                    <constraint firstItem="Uzl-Ds-8kr" firstAttribute="centerY" secondItem="BmE-Hb-JPa" secondAttribute="centerY" id="csv-6u-s1P"/>
+                                    <constraint firstItem="LAc-Q8-Z3l" firstAttribute="height" secondItem="BmE-Hb-JPa" secondAttribute="height" id="ehF-3Z-RQJ"/>
+                                    <constraint firstItem="BmE-Hb-JPa" firstAttribute="leading" secondItem="v5s-vG-8Wc" secondAttribute="leading" constant="70" id="fp6-jm-SEY"/>
+                                    <constraint firstItem="91X-Ew-ilQ" firstAttribute="height" secondItem="BmE-Hb-JPa" secondAttribute="height" id="jpU-AO-3WV"/>
+                                    <constraint firstItem="BmE-Hb-JPa" firstAttribute="centerY" secondItem="v5s-vG-8Wc" secondAttribute="centerY" id="oVo-rB-0t4"/>
+                                    <constraint firstItem="91X-Ew-ilQ" firstAttribute="leading" secondItem="BmE-Hb-JPa" secondAttribute="trailing" constant="50" id="ve1-4E-9Su"/>
+                                    <constraint firstItem="BmE-Hb-JPa" firstAttribute="leading" secondItem="Uzl-Ds-8kr" secondAttribute="trailing" constant="8" id="xR3-90-oos"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,9 +102,13 @@
                             <constraint firstItem="adi-xF-VDs" firstAttribute="top" secondItem="xwC-ny-3ed" secondAttribute="bottom" id="B0w-Su-aif"/>
                             <constraint firstItem="adi-xF-VDs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DM9-SU-apq"/>
                             <constraint firstItem="xwC-ny-3ed" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="H8F-Fx-p4m"/>
+                            <constraint firstItem="v5s-vG-8Wc" firstAttribute="leading" secondItem="xwC-ny-3ed" secondAttribute="leading" id="MTs-gX-L5D"/>
                             <constraint firstItem="xwC-ny-3ed" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Osy-hX-xqD"/>
                             <constraint firstItem="xwC-ny-3ed" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dTa-Rk-9Kw"/>
                             <constraint firstItem="adi-xF-VDs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="epK-PZ-t84"/>
+                            <constraint firstItem="v5s-vG-8Wc" firstAttribute="top" secondItem="xwC-ny-3ed" secondAttribute="top" id="fWD-Xp-yVz"/>
+                            <constraint firstItem="v5s-vG-8Wc" firstAttribute="width" secondItem="xwC-ny-3ed" secondAttribute="width" id="hmw-KY-HMZ"/>
+                            <constraint firstItem="v5s-vG-8Wc" firstAttribute="height" secondItem="xwC-ny-3ed" secondAttribute="height" id="iH4-dI-TES"/>
                             <constraint firstItem="adi-xF-VDs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qLA-Fq-FZu"/>
                         </constraints>
                     </view>
@@ -64,20 +118,22 @@
                                 <rect key="frame" x="20" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="leftBarButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjF-dA-rJ5"/>
+                                </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="lYS-QA-SsW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VAc-M4-1MM">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Edit"/>
-                            </button>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="lYS-QA-SsW"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="cWC-ob-1li" id="thL-ts-t74"/>
                         <outlet property="addButtonTrailingConstraint" destination="3og-XQ-UhE" id="43o-ZT-hhf"/>
                         <outlet property="issueListCollectionView" destination="adi-xF-VDs" id="kqM-dk-FNc"/>
+                        <outlet property="leftBarButton" destination="t4d-9b-qFo" id="i5I-P5-EGS"/>
+                        <outlet property="searchBar" destination="xwC-ny-3ed" id="x7O-CU-bj9"/>
+                        <outlet property="selectedIssueCountLabel" destination="Uzl-Ds-8kr" id="Sih-aa-xr7"/>
+                        <outlet property="selectionResultView" destination="v5s-vG-8Wc" id="YuX-UI-cIg"/>
+                        <outlet property="selectionResultViewLeadingConstraint" destination="MTs-gX-L5D" id="L6F-ux-pOA"/>
                         <segue destination="8B9-Hs-unh" kind="show" id="8gQ-MF-YBo"/>
                         <segue destination="lWJ-qa-oZ7" kind="presentation" id="XpI-OJ-UbU"/>
                         <segue destination="Ady-S4-UFq" kind="presentation" id="G0G-rh-lZh"/>
@@ -336,6 +392,12 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

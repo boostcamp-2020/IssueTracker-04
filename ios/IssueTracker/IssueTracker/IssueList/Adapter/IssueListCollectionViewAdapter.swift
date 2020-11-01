@@ -10,6 +10,7 @@ import UIKit
 class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource {
     
     var items: [IssueItem] = []
+    var mode: IssueListViewController.Mode = .normal
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
@@ -21,8 +22,17 @@ class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource {
             return cell
         }
         let item = items[indexPath.row]
-        itemCell.cellWidth = collectionView.frame.width
+        itemCell.cellMainWidth = collectionView.frame.width
         itemCell.configure(with: item)
+        switch mode {
+        case .normal:
+            itemCell.showMainView()
+        case .edit:
+            itemCell.showLeftContainerView()
+            let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
+            itemCell.isSelected = isSelected
+        }
+        
         return itemCell
     }
 }
