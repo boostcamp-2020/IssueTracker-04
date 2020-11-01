@@ -28,6 +28,7 @@ class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource {
         let item = dataSourceManager[indexPath]
         itemCell.cellMainWidth = collectionView.frame.width
         itemCell.configure(with: item)
+        itemCell.mode = mode
         switch mode {
         case .normal:
             itemCell.showMainView()

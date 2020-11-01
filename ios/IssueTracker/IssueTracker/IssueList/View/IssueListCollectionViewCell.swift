@@ -35,6 +35,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     }
     
     var issueNo: Int?
+    var mode: IssueListViewController.Mode = .normal
     
     var cellMainWidth: CGFloat? {
         didSet {
@@ -100,10 +101,12 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func onSwipeLeft(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        guard mode == .normal else { return }
         rightContainerViewShowAnimate()
     }
     
     @objc private func onSwipeRight(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        guard mode == .normal else { return }
         resetViewAnimate()
     }
     

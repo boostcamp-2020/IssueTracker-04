@@ -55,6 +55,7 @@ class IssueListViewController: UIViewController {
         deselectAllItems()
         setSelectedIssueCountLabel()
         mode = editing ? .edit : .normal
+        changeVisibleCellMode()
         issueListCollectionView.animateVisibleCells { cell in
             guard let cell = cell as? LeftContainerContaining else {
                 return
@@ -173,6 +174,16 @@ class IssueListViewController: UIViewController {
 }
 
 extension IssueListViewController: UICollectionViewDelegate {
+    
+    func changeVisibleCellMode() {
+        issueListCollectionView.visibleCells.forEach {
+            guard let cell =  $0 as? IssueListCollectionViewCell else {
+                return
+            }
+            cell.mode = mode
+        }
+    }
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if mode == .normal {
             addButtonAnimate(showing: false)
