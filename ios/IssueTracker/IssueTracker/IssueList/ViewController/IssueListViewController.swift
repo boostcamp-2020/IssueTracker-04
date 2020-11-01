@@ -85,14 +85,16 @@ class IssueListViewController: UIViewController {
     }
     
     @objc func deleteIssue(notification: Notification) {
-        guard let issueNo = notification.userInfo?["IssueNo"] else {
+        guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
             return
         }
-        print("\(issueNo) delete")
+        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] in
+            self?.issueListCollectionView.deleteItems(at: [$0])
+        }
     }
     
     @objc func closeIssue(notification: Notification) {
-        guard let issueNo = notification.userInfo?["IssueNo"] else {
+        guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
             return
         }
         print("\(issueNo) close")

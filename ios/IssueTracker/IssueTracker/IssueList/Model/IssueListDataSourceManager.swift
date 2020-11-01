@@ -32,9 +32,13 @@ class IssueListDataSourceManager {
         items = networkManager.loadItems()
     }
     
-    func deleteIssue(indexPath: IndexPath) {
-        //let issueNo = self[indexPath].issueNo
-        items.remove(at: indexPath.row)
+    func deleteIssue(by issueNo: Int, completion: (IndexPath) -> Void) {
+        guard let index = (items.firstIndex { $0.issueNo == issueNo}) else {
+            return
+        }
+        items.remove(at: index)
+        let indexPath = IndexPath(row: index, section: 0)
+        completion(indexPath)
     }
     
     func deleteIssues(indexPaths: [IndexPath]) {
