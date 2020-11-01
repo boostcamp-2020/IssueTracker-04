@@ -61,6 +61,9 @@
                                         <state key="normal" title="닫기">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="issueCloseButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hyu-NE-3BL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAc-Q8-Z3l">
                                         <rect key="frame" x="278.5" y="13" width="60" height="30"/>
@@ -71,6 +74,9 @@
                                         <state key="normal" title="삭제">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="issueDeleteButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hG7-a7-uMp"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzl-Ds-8kr">
                                         <rect key="frame" x="46.5" y="13.5" width="15.5" height="29"/>

@@ -132,6 +132,23 @@ class IssueListViewController: UIViewController {
             setSelectedIssueCountLabel()
         }
     }
+    @IBAction func issueCloseButtonTouched(_ sender: UIButton) {
+        guard let selectedIndexPaths = issueListCollectionView.indexPathsForSelectedItems, selectedIndexPaths.count != 0 else {
+            return
+        }
+        collectionViewAdapter?.dataSourceManager.closeIssues(indexPaths: selectedIndexPaths)
+    }
+    
+    @IBAction func issueDeleteButtonTouched(_ sender: UIButton) {
+        guard let selectedIndexPaths = issueListCollectionView.indexPathsForSelectedItems, selectedIndexPaths.count != 0 else {
+            return
+        }
+        collectionViewAdapter?.dataSourceManager.deleteIssues(indexPaths: selectedIndexPaths)
+        issueListCollectionView.performBatchUpdates {
+            issueListCollectionView.deleteItems(at: selectedIndexPaths)
+        }
+        setSelectedIssueCountLabel()
+    }
     
 }
 
@@ -153,6 +170,7 @@ extension IssueListViewController: UICollectionViewDelegate {
         case .normal:
             print(indexPath)
         case .edit:
+            print(indexPath)
             setSelectedIssueCountLabel()
         }
     }

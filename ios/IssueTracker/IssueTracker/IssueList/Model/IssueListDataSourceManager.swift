@@ -34,10 +34,15 @@ class IssueListDataSourceManager {
     
     func deleteIssue(indexPath: IndexPath) {
         //let issueNo = self[indexPath].issueNo
+        items.remove(at: indexPath.row)
     }
     
     func deleteIssues(indexPaths: [IndexPath]) {
         //let issueNoList = self[indexPaths].map { $0.issueNo }
+        let deleteIndex = indexPaths.map { $0.row }
+        items = items.indices
+            .filter { !deleteIndex.contains($0) }
+            .map { items[$0] }
     }
     
     func closeIssue(indexPath: IndexPath) {
