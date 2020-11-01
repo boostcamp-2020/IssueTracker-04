@@ -28,6 +28,7 @@ class IssueListViewController: UIViewController {
     var isOnAddButtonHideAnimation = false
     var isOnAddButtonShowAnimation = false
     var addButtonRightConstant: CGFloat = 20.0
+    var maximumSafetyAreaInset: CGFloat = 40.0
     
     var mode: Mode = .normal {
         didSet {
@@ -50,6 +51,10 @@ class IssueListViewController: UIViewController {
         setSelectResultView(editing: false)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        updateLayout(viewWidth: size.width)
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         deselectAllItems()
@@ -62,6 +67,15 @@ class IssueListViewController: UIViewController {
             }
             editing ? cell.leftContainerViewShowAnimate() : cell.resetViewAnimate()
         }
+    }
+    
+    private func updateLayout(viewWidth: CGFloat) {
+        if mode == .normal {
+            selectionResultViewLeadingConstraint.constant = -viewWidth
+        }
+        
+        issueListCollectionView.collectionViewLayout.invalidateLayout()
+        setVisibleCellWidth(width: viewWidth)
     }
     
     private func setupCollectionViewFlowLayout() {
@@ -84,35 +98,8 @@ class IssueListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(deleteIssue(notification:)), name: .cellDeleteButtonDidTouch, object: nil)
     }
     
-    @objc func deleteIssue(notification: Notification) {
-        guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
-            return
-        }
-        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] in
-            self?.issueListCollectionView.deleteItems(at: [$0])
-        }
-    }
-    
-    @objc func closeIssue(notification: Notification) {
-        guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
-            return
-        }
-        print("\(issueNo) close")
-    }
-    
-    private func selectAllItems() {
-        collectionViewAdapter?.dataSourceManager.items.indices.forEach {
-            issueListCollectionView.selectItem(at: IndexPath(row: $0, section: 0), animated: false, scrollPosition: .left)
-        }
-    }
-    
-    private func deselectAllItems() {
-        issueListCollectionView.indexPathsForSelectedItems?.forEach { issueListCollectionView.deselectItem(at: $0, animated: false)
-        }
-    }
-    
     private func addButtonAnimate(showing: Bool) {
-        addButtonTrailingConstraint.constant = showing ? addButtonRightConstant : -(addButtonRightConstant + addButton.frame.width)
+        addButtonTrailingConstraint.constant = showing ? addButtonRightConstant : -(addButtonRightConstant + addButton.frame.width + maximumSafetyAreaInset)
         let isOnAnimation = showing ? isOnAddButtonShowAnimation : isOnAddButtonHideAnimation
         
         guard !isOnAnimation else { return }
@@ -126,7 +113,7 @@ class IssueListViewController: UIViewController {
     }
     
     private func setSelectResultView(editing: Bool) {
-        selectionResultViewLeadingConstraint.constant = editing ? 0 : -searchBar.frame.width
+        selectionResultViewLeadingConstraint.constant = editing ? 0 : -(searchBar.frame.width + maximumSafetyAreaInset)
     }
     
     private func selectResultViewAnimate(editing: Bool) {
@@ -138,6 +125,33 @@ class IssueListViewController: UIViewController {
     
     private func setSelectedIssueCountLabel() {
         selectedIssueCountLabel.text = String(issueListCollectionView.indexPathsForSelectedItems?.count ?? 0)
+    }
+    
+    private func selectAllItems() {
+        collectionViewAdapter?.dataSourceManager.items.indices.forEach {
+            issueListCollectionView.selectItem(at: IndexPath(row: $0, section: 0), animated: false, scrollPosition: .left)
+        }
+    }
+    
+    private func deselectAllItems() {
+        issueListCollectionView.indexPathsForSelectedItems?.forEach { issueListCollectionView.deselectItem(at: $0, animated: false)
+        }
+    }
+    
+    @objc private func deleteIssue(notification: Notification) {
+        guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
+            return
+        }
+        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] in
+            self?.issueListCollectionView.deleteItems(at: [$0])
+        }
+    }
+    
+    @objc private func closeIssue(notification: Notification) {
+        guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
+            return
+        }
+        print("\(issueNo) close")
     }
     
     @IBAction func leftBarButtonTouched(_ sender: UIButton) {
@@ -177,12 +191,27 @@ class IssueListViewController: UIViewController {
 
 extension IssueListViewController: UICollectionViewDelegate {
     
-    func changeVisibleCellMode() {
+    private func changeVisibleCellMode() {
         issueListCollectionView.visibleCells.forEach {
             guard let cell =  $0 as? IssueListCollectionViewCell else {
                 return
             }
             cell.mode = mode
+        }
+    }
+    
+    private func setVisibleCellWidth(width: CGFloat) {
+        issueListCollectionView.visibleCells.forEach {
+            guard let cell = $0 as? IssueListCollectionViewCell else {
+                return
+            }
+            cell.cellMainWidth = width
+            switch mode {
+            case .edit:
+                cell.showLeftContainerView()
+            case .normal:
+                cell.showMainView()
+            }
         }
     }
     

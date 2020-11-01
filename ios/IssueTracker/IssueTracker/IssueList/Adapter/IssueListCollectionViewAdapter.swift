@@ -36,6 +36,7 @@ class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource {
             itemCell.showLeftContainerView()
             let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
             itemCell.isSelected = isSelected
+            itemCell.setSelectionButton(isSelected: isSelected)
         }
         
         return itemCell
