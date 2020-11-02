@@ -46,6 +46,8 @@
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-2">Day 2</a></li>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-3">Day 3</a></li>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-5">Day 5</a></li>
     </ul>
   </div>
 
@@ -75,9 +77,29 @@
   </div>
 </details>
 
+<details>
+  <summary><b>Week 2 WEB</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-1-Web">Day 1</a></li>
+    </ul>
+  </div>
+</details>
 
+<details>
+  <summary><b>Week 2 IOS</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-1-IOS">Day 1</a></li>
+    </ul>
+  </div>
+</details>
+<details>
 
 ### 회고
 - [Week 1](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EA%B7%B8%EB%A3%B9%ED%9A%8C%EA%B3%A0-Week-1)
 - [Week 2](http://)
 - [Week 3](http://)
+
+### 스프린트 계획 회의
+- [Week 2](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-%EA%B3%84%ED%9A%8D-%ED%9A%8C%EC%9D%98-Week-2)
