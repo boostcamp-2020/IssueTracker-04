@@ -24,6 +24,10 @@
 		37C205FE254A9A130004D8B5 /* GithubLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C205FD254A9A130004D8B5 /* GithubLoginViewController.swift */; };
 		37C20603254A9B4C0004D8B5 /* GithubApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C20602254A9B4C0004D8B5 /* GithubApplication.swift */; };
 		37E82AEB2547F2BC0084DFE1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */; };
+		995E0AE5254E7AE600811D49 /* LeftContainerContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AE4254E7AE600811D49 /* LeftContainerContaining.swift */; };
+		995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AF0254E8D6100811D49 /* IssueListDataSourceManager.swift */; };
+		995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AF6254EA4B500811D49 /* Notification+.swift */; };
+		995E0AFF254EF29800811D49 /* IssueListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AFE254EF29800811D49 /* IssueListCollectionView.swift */; };
 		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
 		99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B5B2549A34C0082ADF0 /* IssueItem.swift */; };
 		99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B702549AD230082ADF0 /* DummyDataLoader.swift */; };
@@ -78,6 +82,10 @@
 		37C205FD254A9A130004D8B5 /* GithubLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubLoginViewController.swift; sourceTree = "<group>"; };
 		37C20602254A9B4C0004D8B5 /* GithubApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubApplication.swift; sourceTree = "<group>"; };
 		37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		995E0AE4254E7AE600811D49 /* LeftContainerContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftContainerContaining.swift; sourceTree = "<group>"; };
+		995E0AF0254E8D6100811D49 /* IssueListDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListDataSourceManager.swift; sourceTree = "<group>"; };
+		995E0AF6254EA4B500811D49 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
+		995E0AFE254EF29800811D49 /* IssueListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionView.swift; sourceTree = "<group>"; };
 		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		99A09B5B2549A34C0082ADF0 /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
 		99A09B702549AD230082ADF0 /* DummyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
@@ -241,9 +249,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		995E0AE3254E7A5700811D49 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		995E0AEC254E7D0E00811D49 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				995E0AE4254E7AE600811D49 /* LeftContainerContaining.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		995E0AF5254EA49900811D49 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				995E0AF6254EA4B500811D49 /* Notification+.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		99A09B522549A24B0082ADF0 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
+				995E0AF5254EA49900811D49 /* Notification */,
 				99D99CCC254ABDF9008E2BF4 /* Adapter */,
 				99A09B7D2549B20F0082ADF0 /* View */,
 				99A09B612549A6E60082ADF0 /* Model */,
@@ -264,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				99A09B5B2549A34C0082ADF0 /* IssueItem.swift */,
+				995E0AF0254E8D6100811D49 /* IssueListDataSourceManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				99A09B702549AD230082ADF0 /* DummyDataLoader.swift */,
-				99D99CC4254A6EAF008E2BF4 /* UIColor+.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -285,6 +318,7 @@
 				99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */,
 				99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */,
 				99D99CD3254BB05D008E2BF4 /* RoundAddButton.swift */,
+				995E0AFE254EF29800811D49 /* IssueListCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,6 +326,8 @@
 		99A09B8A2549C0D60082ADF0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				995E0AEC254E7D0E00811D49 /* Protocol */,
+				995E0AE3254E7A5700811D49 /* Extension */,
 				99A09B8B2549C0DE0082ADF0 /* View */,
 				99A09B6F2549AD100082ADF0 /* Util */,
 			);
@@ -520,10 +556,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */,
+				995E0AE5254E7AE600811D49 /* LeftContainerContaining.swift in Sources */,
 				99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */,
 				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
 				99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */,
 				3747D46E2547EFDF009BA189 /* ViewController.swift in Sources */,
+				995E0AFF254EF29800811D49 /* IssueListCollectionView.swift in Sources */,
 				99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */,
 				99D99CD4254BB05D008E2BF4 /* RoundAddButton.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,
@@ -535,8 +573,10 @@
 				37C205FE254A9A130004D8B5 /* GithubLoginViewController.swift in Sources */,
 				375C901325497800009E33D1 /* LoginViewController.swift in Sources */,
 				37C20603254A9B4C0004D8B5 /* GithubApplication.swift in Sources */,
+				995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */,
 				99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */,
 				3747D46C2547EFDF009BA189 /* SceneDelegate.swift in Sources */,
+				995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
