@@ -44,7 +44,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
             }
             containerView.translatesAutoresizingMaskIntoConstraints = false
             mainViewWidthConstraint.constant = width
-            containerViewWidthConstraint.constant = width * 1.5
+            containerViewWidthConstraint.constant = width + 195
             labelContainerView.maxWidth = width - 16
         }
     }
@@ -146,7 +146,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
 extension IssueListCollectionViewCell: LeftContainerContaining {
     
     private var leftContainerViewWidth: CGFloat {
-        (cellMainWidth ?? 0 ) * 0.15
+        65.0
     }
     
     func showLeftContainerView() {
@@ -163,7 +163,7 @@ extension IssueListCollectionViewCell: LeftContainerContaining {
 extension IssueListCollectionViewCell: RightContainerContaining {
     
     private var rightContainerViewWidth: CGFloat {
-        (cellMainWidth ?? 0 ) * 0.35
+        130.0
     }
     
     private var rightShowOrigin: CGPoint {

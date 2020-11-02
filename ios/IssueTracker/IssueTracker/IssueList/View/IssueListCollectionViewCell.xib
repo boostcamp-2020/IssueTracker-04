@@ -11,30 +11,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueListViewController" customModule="IssueTracker" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueListCollectionViewCell" id="gTV-IL-0wX" customClass="IssueListCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="450" height="105"/>
+            <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="450" height="105"/>
+                <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3C-ba-uik">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="105"/>
+                        <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-VM-vYD">
-                                <rect key="frame" x="0.0" y="0.0" width="45" height="105"/>
+                                <rect key="frame" x="0.0" y="0.0" width="65" height="105"/>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-1i-JiT">
-                                        <rect key="frame" x="12.5" y="41.5" width="20" height="22"/>
+                                        <rect key="frame" x="22.5" y="41.5" width="20" height="22"/>
                                         <state key="normal" image="checkmark.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="WYz-1i-JiT" firstAttribute="centerX" secondItem="zh1-VM-vYD" secondAttribute="centerX" id="6uh-8V-0AO"/>
                                     <constraint firstItem="WYz-1i-JiT" firstAttribute="centerY" secondItem="zh1-VM-vYD" secondAttribute="centerY" id="ZFe-1e-G3v"/>
+                                    <constraint firstAttribute="width" constant="65" id="t1J-Fq-qte"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf2-zy-KwB">
-                                <rect key="frame" x="45" y="0.0" width="300" height="105"/>
+                                <rect key="frame" x="65" y="0.0" width="300" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MileStoneTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3h-od-0dS" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
                                         <rect key="frame" x="202.5" y="18.5" width="85.5" height="16"/>
@@ -100,10 +101,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgT-Iy-njt">
-                                <rect key="frame" x="345" y="0.0" width="105" height="105"/>
+                                <rect key="frame" x="365" y="0.0" width="130" height="105"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIj-fl-8vU">
-                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="105"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="105"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
@@ -113,7 +114,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0Y-Zz-b8s">
-                                        <rect key="frame" x="52.5" y="0.0" width="52.5" height="105"/>
+                                        <rect key="frame" x="65" y="0.0" width="65" height="105"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="Delete">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
@@ -126,6 +127,7 @@
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstItem="T0Y-Zz-b8s" firstAttribute="width" secondItem="LgT-Iy-njt" secondAttribute="width" multiplier="0.5" id="AXi-lG-N6D"/>
+                                    <constraint firstAttribute="width" constant="130" id="G2n-SG-cJf"/>
                                     <constraint firstItem="oIj-fl-8vU" firstAttribute="leading" secondItem="LgT-Iy-njt" secondAttribute="leading" id="LOq-dD-sxP"/>
                                     <constraint firstAttribute="trailing" secondItem="T0Y-Zz-b8s" secondAttribute="trailing" id="UzK-jC-p8h"/>
                                     <constraint firstItem="oIj-fl-8vU" firstAttribute="top" secondItem="LgT-Iy-njt" secondAttribute="top" id="aY6-5A-qxz"/>
@@ -140,9 +142,7 @@
                         <constraints>
                             <constraint firstAttribute="width" priority="750" constant="339" id="3ur-8Q-wEk"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" id="DfP-au-2Ux"/>
-                            <constraint firstItem="zh1-VM-vYD" firstAttribute="width" secondItem="qf2-zy-KwB" secondAttribute="width" multiplier="0.15" id="Eok-qQ-rti"/>
                             <constraint firstItem="qf2-zy-KwB" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="HzO-ZN-kiZ"/>
-                            <constraint firstItem="LgT-Iy-njt" firstAttribute="width" secondItem="qf2-zy-KwB" secondAttribute="width" multiplier="0.35" id="NGi-SI-dXb"/>
                             <constraint firstItem="LgT-Iy-njt" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="Qu8-1W-MgQ"/>
                             <constraint firstItem="qf2-zy-KwB" firstAttribute="leading" secondItem="zh1-VM-vYD" secondAttribute="trailing" id="chh-ve-Lfn"/>
                             <constraint firstAttribute="bottom" secondItem="qf2-zy-KwB" secondAttribute="bottom" id="iAH-Xk-j5J"/>
@@ -161,7 +161,7 @@
                 <constraint firstItem="d3C-ba-uik" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gEZ-lu-480"/>
                 <constraint firstItem="d3C-ba-uik" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uiJ-rL-Zqr"/>
             </constraints>
-            <size key="customSize" width="450" height="105"/>
+            <size key="customSize" width="495" height="105"/>
             <connections>
                 <outlet property="containerView" destination="d3C-ba-uik" id="Lap-Wp-6Dk"/>
                 <outlet property="containerViewWidthConstraint" destination="3ur-8Q-wEk" id="W68-oU-UIL"/>
@@ -175,7 +175,7 @@
                 <outlet property="selectionButton" destination="WYz-1i-JiT" id="XRN-Bh-657"/>
                 <outlet property="titleLabel" destination="mUw-0T-gIa" id="Tw8-92-59U"/>
             </connections>
-            <point key="canvasLocation" x="-44.927536231884062" y="67.96875"/>
+            <point key="canvasLocation" x="-12.318840579710146" y="67.96875"/>
         </collectionViewCell>
     </objects>
     <resources>
