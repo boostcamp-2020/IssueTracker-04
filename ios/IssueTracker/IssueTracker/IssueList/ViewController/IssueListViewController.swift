@@ -99,7 +99,7 @@ class IssueListViewController: UIViewController {
     }
     
     private func setSelectResultView(editing: Bool) {
-        selectionResultViewLeadingConstraint.constant = editing ? 0 : -(searchBar.frame.width + maximumSafetyAreaInset)
+        selectionResultViewLeadingConstraint.constant = editing ? 0 : -(view.frame.width + maximumSafetyAreaInset)
     }
     
     private func selectResultViewAnimate(editing: Bool) {
