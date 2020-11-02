@@ -10,7 +10,7 @@ const passportConfig = require('./config/passport');
 const models = require('./models');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users/users');
 const authRouter = require('./routes/auth/github');
 
 const app = express();
@@ -25,15 +25,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 passport.serializeUser(function (user, done) {
   done(null, user);
 });
-passport.deserializeUser(function (obj, done) {
-  done(null, obj);
+passport.deserializeUser(function (user, done) {
+  done(null, user);
 });
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: false, // 매번 세션 강제 저장
+    saveUninitialized: false, // 빈 값도 저장
+    secret: process.env.SESSION_SECRET, // cookie 암호화 키. dotenv 라이브러리로 감춤
+    cookie: {
+      httpOnly: true, // javascript로 cookie에 접근하지 못하게 하는 옵션
+      secure: false, // https 프로토콜만 허락하는 지 여부
+    },
   })
 );
 
@@ -53,8 +57,9 @@ models.sequelize
     process.exit();
   });
 
-app.use('/users', usersRouter);
+app.use(indexRouter);
 app.use(authRouter);
+app.use(usersRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

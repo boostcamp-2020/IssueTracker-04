@@ -14,9 +14,6 @@ module.exports = () => {
       function (accessToken, refreshToken, profile, done) {
         let err, user, msg;
 
-        // console.log(accessToken);
-        // console.log(profile);
-
         if (accessToken) {
           err = false;
           user = profile;
@@ -28,9 +25,11 @@ module.exports = () => {
         }
         done(err, user, msg);
 
-        // User.findOrCreate({ githubId: profile.username }, function (err, user) {
-        //   return done(err, user);
-        // });
+        // todo:
+        // if 유저정보
+        // DB 정보 접근 -> 찾아서 return done(err, user);
+        // if not 유저정보
+        // 회원 등록 및 return done(err, user)
       }
     )
   );
