@@ -94,7 +94,7 @@
     </ul>
   </div>
 </details>
-<details>
+
 
 ### 회고
 - [Week 1](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EA%B7%B8%EB%A3%B9%ED%9A%8C%EA%B3%A0-Week-1)
