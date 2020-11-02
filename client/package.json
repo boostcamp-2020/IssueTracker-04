@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --progress & open http://localhost:3000/",
+    "dev": "webpack-dev-server --progress",
     "build": "webpack --progress"
   },
   "keywords": [],
