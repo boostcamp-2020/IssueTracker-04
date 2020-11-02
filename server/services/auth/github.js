@@ -6,53 +6,54 @@ exports.gitLoginCheck = (req, res, next) => {
 };
 
 exports.gitLoginCallback = (req, res, next) => {
-  passport.authenticate('github', async (err, user, msg) => {
+  passport.authenticate('github', async (err, userGitHub, msg) => {
     if (err) {
       res.status(400).json({ success: false, msg: msg });
     } else {
-      let userData;
+      let userDB;
+      let userNo;
       try {
-        userData = await userModel.findOne({
-          where: { user_id: user.username, oauth_site: 'GITHUB' },
+        userDB = await userModel.findOne({
+          where: { user_id: userGitHub.username, oauth_site: 'GITHUB' },
         });
-        // console.log('유저 데이터: ', userData.dataValues.user_no);
-        // res.status(201).json({ success: true, user: result.dataValues });
+        userNo = userDB.dataValues.user_no;
       } catch (error) {
         res.status(400).json({ success: false, message: "can't find user" });
       }
-      if (!userData) {
-        console.log('회원 가입');
-        // gitSignup();
+      if (!userDB) {
+        userNo = gitSignup(userGitHub);
       }
-      console.log('세션 추가');
-      // gitLogin(); // 세션 추가
-
-      // 1. 공통 DB 조회
-      // 2. 선택적 DB추가
-      // 3. 공통 세션 등록
-
-      // 세션 등록
-      // todo: 데이터 가공을 해서 세션에 추가
-      req.login(user, (err) => {
-        if (err) {
-          console.log('세션 등록 실패');
-        }
-      });
+      gitLogin(req, userNo);
 
       res.status(200).json({
         success: true,
         msg: msg,
-        user_no: 0,
-        session: req.user,
+        user_no: req.user,
       });
     }
   })(req, res, next);
 };
 
-// 함수 작성 시
-// function func1(){}
-// const func1 = ()=>{} -> 통일
+const gitSignup = async (user) => {
+  console.log('유저', user._json);
+  const userData = {
+    user_id: user._json.login,
+    user_name: user._json.login,
+    user_img: user._json.avatar_url,
+    oauth_site: 'GITHUB',
+  };
+  try {
+    const result = await userModel.create(userData);
+    return result.dataValues.user_no;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const gitSignup = () => {};
-
-const gitLogin = () => {};
+const gitLogin = (req, userNo) => {
+  req.login(userNo, (err) => {
+    if (err) {
+      console.log('세션 등록 실패');
+    }
+  });
+};
