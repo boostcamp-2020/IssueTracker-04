@@ -52,7 +52,9 @@ class IssueListViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        updateLayout(viewWidth: size.width)
+        coordinator.animate { [weak self] _ in
+            self?.updateLayout(viewWidth: size.width)
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -68,9 +70,9 @@ class IssueListViewController: UIViewController {
         if mode == .normal {
             selectionResultViewLeadingConstraint.constant = -viewWidth
         }
-        
+        let cellWidth = viewWidth - view.safeAreaInsets.left - view.safeAreaInsets.right
         issueListCollectionView.collectionViewLayout.invalidateLayout()
-        issueListCollectionView.setVisibleCellWidth(width: viewWidth)
+        issueListCollectionView.setVisibleCellWidth(width: cellWidth)
     }
     
     private func configureCollectionView() {

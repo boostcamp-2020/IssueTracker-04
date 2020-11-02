@@ -162,12 +162,12 @@ extension IssueListCollectionViewCell: LeftContainerContaining {
 
 extension IssueListCollectionViewCell: RightContainerContaining {
     
-    private var rigthContainerViewWidth: CGFloat {
+    private var rightContainerViewWidth: CGFloat {
         (cellMainWidth ?? 0 ) * 0.35
     }
     
     private var rightShowOrigin: CGPoint {
-        CGPoint(x: leftContainerViewWidth + rigthContainerViewWidth, y: 0)
+        CGPoint(x: leftContainerViewWidth + rightContainerViewWidth, y: 0)
     }
     
     func showRightContainerView() {
