@@ -32,6 +32,7 @@
         "react/prefer-stateless-function": 0,
         "react/jsx-filename-extension": [0],
         "import/extensions": "off",
+        "import/no-unresolved" : "off",
         "react/jsx-one-expression-per-line": 0,
         "linebreak-style": 0,
         "no-unused-vars": 0,
