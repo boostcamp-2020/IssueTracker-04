@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import Axios from 'axios'
 import './style.scss';
 import Titles from '../../components/issueCreateView/title';
 import Contents from '../../components/issueCreateView/content';
@@ -23,8 +24,14 @@ const issueCreateView = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    console.log(Title);
-    console.log(Content);
+    let body={
+      issue_title:Title,
+      issue_content:Content,
+      issue_date:Date.now()
+    }
+    Axios.post('http://localhost:5000/api/issue/create', body).then(response => {
+      console.log(response);
+    })
 
   };
 
