@@ -126,6 +126,7 @@
                                 <state key="normal" title="Filter"/>
                                 <connections>
                                     <action selector="leftBarButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjF-dA-rJ5"/>
+                                    <segue destination="8B9-Hs-unh" kind="show" id="HRf-hF-nDo"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -200,14 +201,29 @@
         <!--이슈 상세-->
         <scene sceneID="n53-4E-aNO">
             <objects>
-                <viewController id="8B9-Hs-unh" sceneMemberID="viewController">
+                <viewController id="8B9-Hs-unh" customClass="IssueDetailViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KNQ-WV-rnr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="713" width="414" height="717"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="WdK-Jq-GEN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="xN1-FY-nm0" secondAttribute="top" constant="100" id="KBW-96-scd"/>
+                            <constraint firstItem="xN1-FY-nm0" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="RL7-mV-w03"/>
+                            <constraint firstItem="xN1-FY-nm0" firstAttribute="width" secondItem="KNQ-WV-rnr" secondAttribute="width" id="aKm-0b-q60"/>
+                            <constraint firstItem="xN1-FY-nm0" firstAttribute="height" secondItem="KNQ-WV-rnr" secondAttribute="height" multiplier="0.8" id="uzL-zb-bHF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="이슈 상세" id="muH-kd-AgS"/>
+                    <connections>
+                        <outlet property="slideView" destination="xN1-FY-nm0" id="LMG-S7-ZZK"/>
+                        <outlet property="slideViewTobConstraint" destination="KBW-96-scd" id="gdZ-yI-zkW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -572,6 +588,9 @@
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="8gQ-MF-YBo"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="github_logo" width="25" height="25"/>
