@@ -16,7 +16,6 @@ class IssueDetailViewController: UIViewController {
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         gesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
