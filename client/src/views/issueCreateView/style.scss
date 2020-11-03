@@ -1,0 +1,56 @@
+.create-view {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    top:7%;
+    bottom:4%;
+    left:0;
+    right:0;
+}
+
+.input-column {
+}
+
+.register-column {
+    display: flex;
+    flex-direction: column;
+    margin-left:1vw;
+}
+
+.create-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 71vw;
+    border-radius: 5px;
+    border: 0.5px solid #818991;
+    background-color: white;
+
+}
+
+.create-form-submit {
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    align-items: center;
+    width: 68vw;
+    margin-left:1vw;
+    margin-top:1vw;
+    margin-bottom:1vh;
+}
+
+.create-register {
+    height: 9vh;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.thin-line {
+    border:thin 1px;
+    width:100%;
+    
+}
