@@ -2,36 +2,32 @@ import React, { useState, useRef } from 'react';
 import './style.scss';
 
 const submitButton = () => {
-  const [Id, setId] = useState("")
-  const [Password, setPassword] = useState("");
+  const [Id, setId] = useState('');
+  const [Password, setPassword] = useState('');
 
   const onIdHandler = (e) => {
-      setId(e.currentTarget.value)
-  }
+    setId(e.currentTarget.value);
+  };
 
   const onPasswordHandler = (e) => {
-      setPassword(e.currentTarget.value)
-  }
+    setPassword(e.currentTarget.value);
+  };
 
   const onSubmitHandler = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      console.log(Id)
-      console.log(Password)
-      let body = {
+    console.log(Id);
+    console.log(Password);
+    const body = {};
 
-      }
-
-      /*
+    /*
       Axios.post('/api/users/login', body).then(response => {
 
       })
       */
-  }
+  };
 
-  return (
-    <button type="submit">Login</button>
-  );
+  return <button type="submit">Login</button>;
 };
 
 export default submitButton;

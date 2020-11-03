@@ -1,0 +1,41 @@
+// .eslintrc
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "commonjs": true
+    },
+    "extends": [
+        "airbnb",
+        "prettier",
+        "prettier/react"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "plugins": [
+        "react",
+        "prettier"
+    ],
+    "rules": {
+        "react/prop-types": 0,
+        "no-underscore-dangle": 0,
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "import/newline-after-import": "error",
+        "import/prefer-default-export": 0,
+        "react/prefer-stateless-function": 0,
+        "react/jsx-filename-extension": [0],
+        "import/extensions": "off",
+        "react/jsx-one-expression-per-line": 0,
+        "linebreak-style": 0,
+        "no-unused-vars": 0,
+        "jsx-a11y/label-has-associated-control": "off"
+        // ❗️error off : 0 , warning 1,❗️
+    }
+}

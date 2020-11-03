@@ -1,43 +1,57 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
 
-import Input from '../../components/loginView/input'
+import Input from '../../components/loginView/input';
 
 const loginView = () => {
-  const [Id, setId] = useState("")
-  const [Password, setPassword] = useState("");
+  const [Id, setId] = useState('');
+  const [Password, setPassword] = useState('');
 
   const onIdHandler = (e) => {
-      setId(e.currentTarget.value)
-  }
+    setId(e.currentTarget.value);
+  };
 
   const onPasswordHandler = (e) => {
-      setPassword(e.currentTarget.value)
-  }
+    setPassword(e.currentTarget.value);
+  };
 
   const onSubmitHandler = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      console.log(Id)
-      console.log(Password)
-      let body = {
+    console.log(Id);
+    console.log(Password);
+    const body = {};
 
-      }
-
-      /*
+    /*
       Axios.post('/api/users/login', body).then(response => {
 
       })
       */
-  }
+  };
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', widyh: '100%', height: '100vh'}}>
-      <form style={{display:'flex', flexDirection: 'cloumn'}} onSubmit={onSubmitHandler}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        widyh: '100%',
+        height: '100vh',
+      }}
+    >
+      <form
+        style={{ display: 'flex', flexDirection: 'cloumn' }}
+        onSubmit={onSubmitHandler}
+      >
         <label>Id</label>
-        <Input placeholder = "id" type="id" value={Id} onChange={onIdHandler}/>
+        <Input placeholder="id" type="id" value={Id} onChange={onIdHandler} />
         <label>Password</label>
-        <Input placeholder = "password" type="password" value={Password} onChange={onPasswordHandler}/>
+        <Input
+          placeholder="password"
+          type="password"
+          value={Password}
+          onChange={onPasswordHandler}
+        />
         <button type="submit">Login</button>
       </form>
     </div>
