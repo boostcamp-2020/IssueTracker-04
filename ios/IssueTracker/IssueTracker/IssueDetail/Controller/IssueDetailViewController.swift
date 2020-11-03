@@ -11,8 +11,11 @@ class IssueDetailViewController: UIViewController {
 
     var gesture = UIPanGestureRecognizer()
     
-    @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
     @IBOutlet weak var slideView: IssueDetailSlideView!
+    @IBOutlet weak var detailCollectionView: UICollectionView!
+    
+    @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

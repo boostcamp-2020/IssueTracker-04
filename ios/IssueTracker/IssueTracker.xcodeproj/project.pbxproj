@@ -31,6 +31,8 @@
 		9965DC2F2550F41400F92FFC /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC2E2550F41400F92FFC /* IssueDetailViewController.swift */; };
 		9965DC442550F75700F92FFC /* IssueDetailSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC432550F75700F92FFC /* IssueDetailSlideView.swift */; };
 		9965DC492550F76B00F92FFC /* IssueDetailSlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9965DC482550F76B00F92FFC /* IssueDetailSlideView.xib */; };
+		9965DC5525512B7B00F92FFC /* IssueDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */; };
+		9965DC5D25512BC500F92FFC /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC5C25512BC500F92FFC /* CommentItem.swift */; };
 		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
 		99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B5B2549A34C0082ADF0 /* IssueItem.swift */; };
 		99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B702549AD230082ADF0 /* DummyDataLoader.swift */; };
@@ -92,6 +94,8 @@
 		9965DC2E2550F41400F92FFC /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
 		9965DC432550F75700F92FFC /* IssueDetailSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailSlideView.swift; sourceTree = "<group>"; };
 		9965DC482550F76B00F92FFC /* IssueDetailSlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailSlideView.xib; sourceTree = "<group>"; };
+		9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailItem.swift; sourceTree = "<group>"; };
+		9965DC5C25512BC500F92FFC /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
 		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		99A09B5B2549A34C0082ADF0 /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
 		99A09B702549AD230082ADF0 /* DummyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 		9965DC2D2550F3EB00F92FFC /* IssueDetail */ = {
 			isa = PBXGroup;
 			children = (
+				9965DC5325512B6400F92FFC /* Model */,
 				9965DC372550F44500F92FFC /* View */,
 				9965DC332550F43800F92FFC /* Controller */,
 			);
@@ -304,6 +309,15 @@
 				9965DC482550F76B00F92FFC /* IssueDetailSlideView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9965DC5325512B6400F92FFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */,
+				9965DC5C25512BC500F92FFC /* CommentItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		99A09B522549A24B0082ADF0 /* IssueList */ = {
@@ -606,12 +620,14 @@
 				99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */,
 				99A09B792549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift in Sources */,
 				3747D4742547EFDF009BA189 /* IssueTracker.xcdatamodeld in Sources */,
+				9965DC5525512B7B00F92FFC /* IssueDetailItem.swift in Sources */,
 				37C205FE254A9A130004D8B5 /* GithubLoginViewController.swift in Sources */,
 				375C901325497800009E33D1 /* LoginViewController.swift in Sources */,
 				37C20603254A9B4C0004D8B5 /* GithubApplication.swift in Sources */,
 				995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */,
 				99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */,
 				3747D46C2547EFDF009BA189 /* SceneDelegate.swift in Sources */,
+				9965DC5D25512BC500F92FFC /* CommentItem.swift in Sources */,
 				995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

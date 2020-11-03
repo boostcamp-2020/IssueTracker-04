@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -209,25 +210,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="713" width="414" height="717"/>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-hm-IEb">
+                                <rect key="frame" x="0.0" y="140" width="414" height="573"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rqS-zP-uFH">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4pG-1T-gYt">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zZi-Vq-gvq">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WdK-Jq-GEN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="xN1-FY-nm0" secondAttribute="top" constant="100" id="KBW-96-scd"/>
                             <constraint firstItem="xN1-FY-nm0" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="RL7-mV-w03"/>
+                            <constraint firstItem="mSs-hm-IEb" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="VxL-SK-Q3N"/>
                             <constraint firstItem="xN1-FY-nm0" firstAttribute="width" secondItem="KNQ-WV-rnr" secondAttribute="width" id="aKm-0b-q60"/>
+                            <constraint firstItem="mSs-hm-IEb" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="p4Q-to-u94"/>
                             <constraint firstItem="xN1-FY-nm0" firstAttribute="height" secondItem="KNQ-WV-rnr" secondAttribute="height" multiplier="0.8" id="uzL-zb-bHF"/>
+                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="mSs-hm-IEb" secondAttribute="bottom" constant="100" id="xFe-Be-rn0"/>
+                            <constraint firstItem="mSs-hm-IEb" firstAttribute="top" secondItem="WdK-Jq-GEN" secondAttribute="top" id="xJR-Y8-xY1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="이슈 상세" id="muH-kd-AgS"/>
                     <connections>
+                        <outlet property="detailCollectionView" destination="mSs-hm-IEb" id="rdV-GV-I61"/>
                         <outlet property="slideView" destination="xN1-FY-nm0" id="LMG-S7-ZZK"/>
                         <outlet property="slideViewTobConstraint" destination="KBW-96-scd" id="gdZ-yI-zkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2293" y="-1761"/>
+            <point key="canvasLocation" x="2292.753623188406" y="-1761.1607142857142"/>
         </scene>
         <!--Github Login View Controller-->
         <scene sceneID="QGG-4T-b8i">
