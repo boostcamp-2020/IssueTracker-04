@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="474" height="158"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xs-2O-BkN">
+                    <rect key="frame" x="16" y="16" width="442" height="126"/>
+                    <subviews>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FMN-CL-RrM">
+                            <rect key="frame" x="20" y="107" width="402" height="4"/>
+                        </progressView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마일스톤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzC-2p-eXh">
+                            <rect key="frame" x="20" y="16" width="402" height="75"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="NzC-2p-eXh" secondAttribute="trailing" constant="20" id="DGz-rI-kz2"/>
+                        <constraint firstAttribute="bottom" secondItem="FMN-CL-RrM" secondAttribute="bottom" constant="15" id="F7a-1I-Asn"/>
+                        <constraint firstItem="FMN-CL-RrM" firstAttribute="top" secondItem="NzC-2p-eXh" secondAttribute="bottom" constant="16" id="Q4P-tv-qQw"/>
+                        <constraint firstItem="NzC-2p-eXh" firstAttribute="leading" secondItem="3xs-2O-BkN" secondAttribute="leading" constant="20" id="Tjd-5F-p3j"/>
+                        <constraint firstItem="FMN-CL-RrM" firstAttribute="leading" secondItem="3xs-2O-BkN" secondAttribute="leading" constant="20" id="WyE-1i-OfI"/>
+                        <constraint firstAttribute="trailing" secondItem="FMN-CL-RrM" secondAttribute="trailing" constant="20" id="Xb2-tz-tTa"/>
+                        <constraint firstItem="NzC-2p-eXh" firstAttribute="top" secondItem="3xs-2O-BkN" secondAttribute="top" constant="16" id="pLi-Jh-kYu"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+            <constraints>
+                <constraint firstItem="3xs-2O-BkN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="38J-j5-45d"/>
+                <constraint firstAttribute="trailing" secondItem="3xs-2O-BkN" secondAttribute="trailing" constant="16" id="jKP-jr-Ta9"/>
+                <constraint firstItem="3xs-2O-BkN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="lYH-HF-v8p"/>
+                <constraint firstAttribute="bottom" secondItem="3xs-2O-BkN" secondAttribute="bottom" constant="16" id="rEb-Id-29c"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="181.15942028985509" y="-108.48214285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
