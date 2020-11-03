@@ -207,12 +207,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="713" width="414" height="717"/>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-hm-IEb">
-                                <rect key="frame" x="0.0" y="140" width="414" height="573"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-hm-IEb" customClass="IssueDetailCollectionView" customModule="IssueTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="625"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rqS-zP-uFH">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -230,6 +227,9 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="713" width="414" height="717"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WdK-Jq-GEN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -244,7 +244,7 @@
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="top" secondItem="WdK-Jq-GEN" secondAttribute="top" id="xJR-Y8-xY1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="이슈 상세" id="muH-kd-AgS"/>
+                    <navigationItem key="navigationItem" title="이슈 상세" largeTitleDisplayMode="never" id="muH-kd-AgS"/>
                     <connections>
                         <outlet property="detailCollectionView" destination="mSs-hm-IEb" id="rdV-GV-I61"/>
                         <outlet property="slideView" destination="xN1-FY-nm0" id="LMG-S7-ZZK"/>

@@ -16,6 +16,7 @@ protocol CommentCellData {
 
 class CommentCell: UICollectionViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -35,13 +36,13 @@ class CommentCell: UICollectionViewCell {
             }
             containerViewWidthConstraint.constant = cellWidth
             
-            let sizeToFitIn = CGSize(width: cellWidth - 16, height: CGFloat(MAXFLOAT))
-            let newSize = commentLabel.sizeThatFits(sizeToFitIn)
-            commentLabelHeightConstraint.constant = newSize.height
+            let sizeToFitIn = CGSize(width: cellWidth - 32, height: CGFloat(MAXFLOAT))
+            let commentLabeSize = commentLabel.sizeThatFits(sizeToFitIn)
+            commentLabelHeightConstraint.constant = commentLabeSize.height
         }
     }
     
-    func configure(with data: CommentCellData) {
+    func configure() {
         authorImageView.image = UIImage.checkmark //http 통신으로 로드
         authorLabel.text = "JK"
         dateLabel.text = "27 minutes ago"

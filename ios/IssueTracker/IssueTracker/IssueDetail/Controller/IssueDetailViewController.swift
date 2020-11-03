@@ -12,7 +12,7 @@ class IssueDetailViewController: UIViewController {
     var gesture = UIPanGestureRecognizer()
     
     @IBOutlet weak var slideView: IssueDetailSlideView!
-    @IBOutlet weak var detailCollectionView: UICollectionView!
+    @IBOutlet weak var detailCollectionView: IssueDetailCollectionView!
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
 
@@ -21,6 +21,8 @@ class IssueDetailViewController: UIViewController {
         gesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
         slideView.addGestureRecognizer(gesture)
         
+        detailCollectionView.delegate = self
+        detailCollectionView.dataSource = self
     }
     
     @objc func onAction() {
@@ -29,5 +31,22 @@ class IssueDetailViewController: UIViewController {
 
         slideViewTobConstraint.constant = view.frame.height - yLocationTouched
         view.layoutIfNeeded()
+    }
+}
+
+extension IssueDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configure()
+        cell.cellWidth = collectionView.frame.width
+        
+        return cell
     }
 }
