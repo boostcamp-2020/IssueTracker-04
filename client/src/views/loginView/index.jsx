@@ -15,6 +15,8 @@ const loginView = () => {
     setPassword(e.currentTarget.value);
   };
 
+  console.log(Id);
+  
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
