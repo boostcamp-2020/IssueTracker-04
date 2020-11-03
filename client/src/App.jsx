@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import LoginPage from './views/loginPage/loginPage.jsx';
+import LoginPage from './views/loginView';
 
 const App = () => {
   return (
