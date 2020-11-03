@@ -22,7 +22,7 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(jpeg|jpg)$/,
+        test: /\.(jpeg|jpg|svg)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
@@ -36,6 +36,7 @@ module.exports = {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
       '@views': path.resolve(__dirname, 'src/views'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
     },
   },
   // output: 번들링 된 결과물을 어디다 둘 것인지에 대한 설정이 가능.
