@@ -31,12 +31,18 @@ module.exports = {
     ],
   },
   // resolve: 웹팩이 해석할 확장자를 지정.
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@views': path.resolve(__dirname, 'src/views'),
+    },
+  },
   // output: 번들링 된 결과물을 어디다 둘 것인지에 대한 설정이 가능.
   output: {
     path: path.resolve(__dirname, 'dist'),
     // 번들이 생기는 경로를 지정. webpack-dev-server도 이를 참조
-    //publicPath: '/dist/',
+    // publicPath: '/dist/',
     filename: 'bundle.js',
   },
   devtool: 'eval-cheap-source-map',
