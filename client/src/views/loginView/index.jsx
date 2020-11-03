@@ -4,6 +4,7 @@ import imgSrc from '@assets/svg/github-icon.svg';
 import Input from '@components/loginView/input';
 
 const loginView = () => {
+  const urlForGitHubOAuth = 'http://localhost:5000/api/auth/github/';
   const [Id, setId] = useState('');
   const [Password, setPassword] = useState('');
 
@@ -15,20 +16,25 @@ const loginView = () => {
     setPassword(e.currentTarget.value);
   };
 
-  console.log(Id);
-
   const onSubmitHandler = e => {
     e.preventDefault();
-
-    console.log(Id);
-    console.log(Password);
-    const body = {};
-
+    // const body = { id: Id, password: Password };
     /*
       Axios.post('/api/users/login', body).then(response => {
-
       })
       */
+  };
+
+  const onGitHubLoginHandler = async e => {
+    e.preventDefault();
+    console.log('test');
+    // try {
+    //   const body = { id: Id, password: Password };
+    //   const result = await Axios.post(urlForGitHubOAuth, body, { withCredentials: true });
+    //   console.log(result);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -50,7 +56,7 @@ const loginView = () => {
               </button>
             </div>
           </form>
-          <a className="gitHubLogin" href="#">
+          <a className="gitHubLogin" onClick={onGitHubLoginHandler}>
             Sign with GitHub
             <img className="gitHubMark" src={imgSrc} />
           </a>
