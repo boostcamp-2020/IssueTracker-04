@@ -9,6 +9,9 @@ import UIKit
 
 class IssueDetailCollectionView: UICollectionView {
     
+    private let headerTitleFontSize: CGFloat = 24.0
+    private let headerBaseHeight: CGFloat = 116.0
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         commonInit()
@@ -21,6 +24,7 @@ class IssueDetailCollectionView: UICollectionView {
     
     func commonInit() {
         register(UINib(nibName: CommentCell.identifier, bundle: nil), forCellWithReuseIdentifier: CommentCell.identifier)
+        register(UINib(nibName: IssueDetailCollectionViewHeader.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: IssueDetailCollectionViewHeader.identifier)
         setFlowLayout()
     }
     
@@ -28,6 +32,15 @@ class IssueDetailCollectionView: UICollectionView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 20
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout.sectionInset = UIEdgeInsets(top: 20.0, left: 0, bottom: 0, right: 0)
         collectionViewLayout = flowLayout
+    }
+    
+    func setHeaderSize(with titleText: String, width: CGFloat) {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        let height = titleText.estimatedLabelHeight(width: width, fontSize: headerTitleFontSize)
+        flowLayout.headerReferenceSize = CGSize(width: width, height: headerBaseHeight + height)
     }
 }
