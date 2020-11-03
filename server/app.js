@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
+const hpp = require('hpp');
+const helmet = require('helmet');
 
 const session = require('express-session');
 const passport = require('passport');
@@ -10,11 +13,14 @@ const passportConfig = require('./config/passport');
 const models = require('./models');
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users/users');
 const authRouter = require('./routes/auth/github');
 
 const app = express();
 
+app.use(cors({ origin: true, credentials: true }));
+app.use(hpp());
+app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -59,6 +65,7 @@ models.sequelize
 
 app.use(indexRouter);
 app.use(authRouter);
+app.use(usersRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
