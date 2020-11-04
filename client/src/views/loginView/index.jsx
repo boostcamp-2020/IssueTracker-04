@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import './style.scss';
 import imgSrc from '@assets/svg/github-icon.svg';
 import Input from '@components/loginView/input';
+import axios from 'axios';
 
 const urlForGitHubOAuth = '/api/auth/github/';
 const clientUrl = 'http://localhost:3000/issues-list';
