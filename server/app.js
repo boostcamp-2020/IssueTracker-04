@@ -53,7 +53,7 @@ app.use(passport.session());
 passportConfig();
 
 models.sequelize
-  .sync()
+  .sync({ logging: false })
   .then(() => {
     console.log('DB 연결 성공');
   })

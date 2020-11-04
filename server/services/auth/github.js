@@ -9,25 +9,36 @@ exports.gitLoginCheck = (req, res, next) => {
 exports.gitLoginCallback = (req, res, next) => {
   passport.authenticate('github', async (err, userGitHub, msg) => {
     if (err) {
-      // 에러 페이지로 이동
-      res.status(400).json({ success: false, message: msg });
+      // todo: 인증 에러 페이지 띄우기
+      return res.status(400).json({ success: false, message: msg });
     } else {
-      let userNo = await findUserOne(userGitHub);
-
-      if (!userNo) {
-        userNo = await gitSignup(userGitHub);
+      if (!(await createSession(req, userGitHub))) {
+        // todo: 세션 에러 페이지 띄우기
+        return res
+          .status(400)
+          .json({ success: false, message: '세션 생성 실패' });
       }
-
-      // 세션 등록
-      gitLogin(req, userNo);
     }
     next();
   })(req, res, next);
 };
 
 exports.gitRedirect = (req, res, next) => {
-  console.log(req.user);
   res.redirect(req.session.oauthRedirect);
+};
+
+const createSession = async (req, userGitHub) => {
+  try {
+    let userNo = await findUserOne(userGitHub);
+    if (!userNo) {
+      userNo = await gitSignup(userGitHub);
+    }
+    if (userNo) return await gitLogin(req, userNo);
+    return false;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };
 
 const findUserOne = async (userGitHub) => {
@@ -38,13 +49,12 @@ const findUserOne = async (userGitHub) => {
     if (userDB) return userDB.dataValues.user_no;
     else return null;
   } catch (error) {
-    console.log("can't find user");
+    console.log(error);
     return null;
   }
 };
 
 const gitSignup = async (user) => {
-  console.log('유저', user._json);
   const userData = {
     user_id: user._json.login,
     user_name: user._json.login,
@@ -56,13 +66,17 @@ const gitSignup = async (user) => {
     return result.dataValues.user_no;
   } catch (error) {
     console.log(error);
+    return null;
   }
 };
 
 const gitLogin = (req, userNo) => {
-  req.login({ userNo: userNo }, (err) => {
-    if (err) {
-      console.log('세션 등록 실패');
-    }
+  return new Promise((resolve) => {
+    req.login({ userNo: userNo }, (err) => {
+      if (err) {
+        console.log('세션 등록 실패');
+        resolve(false);
+      } else resolve(true);
+    });
   });
 };
