@@ -24,12 +24,15 @@ const issueCreateView = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    const body={
+    const body ={
       issue_title:Title,
       issue_content:Content,
       issue_date:Date.now()
     }
-    Axios.post('http://localhost:5000/api/issue/create', body).then(response => {
+
+    console.log(Title, Content, body)
+    
+    Axios.post('http://101.101.217.9:5000/api/issue/create', body).then(response => {
       console.log(response);
     })
 
