@@ -82,6 +82,8 @@
   <div markdown="1">
     <ul>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-1-Web">Day 1</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-2-Web">Day 2</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-3-Web">Day 3</a></li>
     </ul>
   </div>
 </details>
@@ -91,6 +93,8 @@
   <div markdown="1">
     <ul>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-1-IOS">Day 1</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-2-IOS">Day 2</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%9E%91%EC%97%85%EB%82%B4%EC%97%AD-Week-2-Day-3-IOS">Day 3</a></li>
     </ul>
   </div>
 </details>
