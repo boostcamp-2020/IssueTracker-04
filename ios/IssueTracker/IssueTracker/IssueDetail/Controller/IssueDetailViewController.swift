@@ -9,6 +9,7 @@ import UIKit
 
 class IssueDetailViewController: UIViewController {
 
+    let mockData = DetailSlideMockData()
     var gesture = UIPanGestureRecognizer()
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
@@ -19,11 +20,13 @@ class IssueDetailViewController: UIViewController {
         gesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
         slideView.addGestureRecognizer(gesture)
         
+        slideView.collectionView.delegate = self
+        slideView.collectionView.dataSource = self
     }
     
     @objc func onAction() {
         let yLocationTouched = gesture.location(in: self.view).y
-        print("\(yLocationTouched)")
+//        print("\(yLocationTouched)")
 
         slideViewTobConstraint.constant = view.frame.height - yLocationTouched
         view.layoutIfNeeded()
