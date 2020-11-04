@@ -56,6 +56,7 @@ module.exports = {
     // devserver 에서만 핫로딩 가능하게
     hotOnly: true,
     open: true,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

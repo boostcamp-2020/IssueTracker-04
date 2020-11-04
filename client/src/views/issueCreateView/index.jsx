@@ -24,7 +24,7 @@ const issueCreateView = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    let body={
+    const body={
       issue_title:Title,
       issue_content:Content,
       issue_date:Date.now()
@@ -42,18 +42,18 @@ const issueCreateView = () => {
           <Titles placeholder="Title" type="title" value={Title} onChange={onTitleHandler}/>
           <Contents placeholder="Leave a comment" type="content" value={Content} onChange={onContentHandler}/>
           <div className="create-form-submit">
-            <Cancels></Cancels>
-            <SubmitButton></SubmitButton>
+            <Cancels />
+            <SubmitButton />
           </div>
         </form>
       </div>
       <div className="register-column">
-        <Assignees></Assignees>
-        <hr className="thin-line"></hr>
-        <Labels></Labels>
-        <hr className="thin-line"></hr>
-        <Milestones></Milestones>
-        <hr className="thin-line"></hr>
+        <Assignees />
+        <hr className="thin-line" />
+        <Labels />
+        <hr className="thin-line" />
+        <Milestones />
+        <hr className="thin-line" />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
 
-import image from "../../asset/images/header-imgs.JPG"
+import image from "../../assets/images/header-imgs.JPG"
 
 const input = () => {
   return (
