@@ -10,7 +10,7 @@ exports.issueCreate = async (req, res, next) => {
       issue_date: new Date(),
     };
     const result = await issueModel.create(issueData);
-    res.json({ success: 'True', result: result });
+    res.json({ success: 'True', result: result, req:req.user});
   } else {
     res.json({ success: 'Fail' });
   }
