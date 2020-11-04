@@ -63,7 +63,9 @@ module.exports = {
     // publicPath: '/dist/',
     filename: 'bundle.js',
   },
-  devtool: 'cheap-module-eval-source-map',
+
+  devtool: 'inline-source-map',
+
   // webpack-dev-server의 옵션을 설정
   devServer: {
     // 정적 파일 경로 설정
