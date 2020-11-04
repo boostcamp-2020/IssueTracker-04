@@ -69,10 +69,12 @@ module.exports = {
     // 정적 파일 경로 설정
     contentBase: path.join(__dirname, 'dist'),
     port: 3000,
-    publicPath: '/',
     // devserver 에서만 핫로딩 가능하게
     hotOnly: true,
     open: true,
+    proxy: {
+      '/api': 'http://localhost:5000',
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

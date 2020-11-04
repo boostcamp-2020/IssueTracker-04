@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react';
 import './style.scss';
 import imgSrc from '@assets/svg/github-icon.svg';
 import Input from '@components/loginView/input';
+import axios from 'axios';
 
 const loginView = () => {
-  const urlForGitHubOAuth = 'http://localhost:5000/api/auth/github/';
+  const urlForGitHubOAuth = '/api/auth/github/';
   const [Id, setId] = useState('');
   const [Password, setPassword] = useState('');
 
@@ -18,23 +19,16 @@ const loginView = () => {
 
   const onSubmitHandler = e => {
     e.preventDefault();
-    // const body = { id: Id, password: Password };
-    /*
-      Axios.post('/api/users/login', body).then(response => {
-      })
-      */
   };
 
   const onGitHubLoginHandler = async e => {
     e.preventDefault();
-    console.log('test');
-    // try {
-    //   const body = { id: Id, password: Password };
-    //   const result = await Axios.post(urlForGitHubOAuth, body, { withCredentials: true });
-    //   console.log(result);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const result = await axios.get(urlForGitHubOAuth);
+      console.log(result.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -67,26 +61,3 @@ const loginView = () => {
 };
 
 export default loginView;
-
-/*
-<div className="loginContainer">
-      <h1>이슈 트래커</h1>
-      <div className="loginBox">
-        <div>
-          아이디
-          <input id="id" type="text" />
-        </div>
-        <div>
-          비밀번호
-          <input id="password" type="password" />
-        </div>
-        <div>
-          <a href="#">로그인</a>
-          <a href="#">회원가입</a>
-        </div>
-        <div>
-          <a href="#">GitHub 회원가입</a>
-        </div>
-      </div>
-    </div>
-    */
