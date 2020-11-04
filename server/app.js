@@ -15,6 +15,7 @@ const models = require('./models');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users/users');
 const authRouter = require('./routes/auth/github');
+const issueRouter = require('./routes/issue/issue');
 
 const app = express();
 
@@ -66,6 +67,7 @@ models.sequelize
 app.use(indexRouter);
 app.use(authRouter);
 app.use(usersRouter);
+app.use(issueRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
