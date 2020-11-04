@@ -42,13 +42,10 @@ class CommentCell: UICollectionViewCell {
         }
     }
     
-    func configure() {
+    func configure(with data: CommentCellData) {
         authorImageView.image = UIImage.checkmark //http 통신으로 로드
-        authorLabel.text = "JK"
-        dateLabel.text = "27 minutes ago"
-        commentLabel.text = "안녕하세요 JK입니다 \n 하하하 하하하하\n 감사합니다. \n 안녕하세요 JK입니다 \n 하하하 하하하하\n 감사합니다. \n 안녕하세요 JK입니다 \n 하하하 하하하하\n 감사합니다. \n 안녕하세요 JK입니다 \n 하하하 하하하하\n 감사합니다. \n 안녕하세요 JK입니다 \n 하하하 하하하하\n 감사합니다. \n  "
-//        authorLabel.text = String(data.authorNo)
-//        dateLabel.text = data.commentDate.string
-//        commentLabel.text = data.comment
+        authorLabel.text = String(data.authorNo)
+        dateLabel.text = data.commentDate.string
+        commentLabel.text = data.comment
     }
 }

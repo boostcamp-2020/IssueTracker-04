@@ -7,6 +7,15 @@
 
 import UIKit
 
+protocol DetailHeaderData {
+    var issueNo: Int { get }
+    var issueTitle: String { get }
+    var issueContent: String { get }
+    var issueFlag: Bool { get }
+    var issueDate: Date { get }
+    var issueAuthorID: String { get }
+}
+
 class IssueDetailCollectionViewHeader: UICollectionReusableView {
 
     static var identifier: String {
@@ -33,5 +42,12 @@ class IssueDetailCollectionViewHeader: UICollectionReusableView {
             let issueTitleLabelSize = issueTitleLabel.sizeThatFits(sizeToFitIn)
             issueTitleLableHeightConstraint.constant = issueTitleLabelSize.height
         }
+    }
+    
+    func configure(with data: DetailHeaderData) {
+        authorImageView.image = UIImage.checkmark
+        authorNameLabel.text = data.issueAuthorID
+        issueTitleLabel.text = data.issueTitle
+        issueNumberLabel.text = "#\(data.issueNo)"
     }
 }

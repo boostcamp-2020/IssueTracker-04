@@ -27,8 +27,16 @@ class IssueDetailViewController: UIViewController {
         slideViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
         slideView.addGestureRecognizer(slideViewPanGesture)
         
+        configureCollectionView()
+    }
+    
+    private func configureCollectionView() {
+        
+        let dataManager = IssueDetailDataSourceManager()
+        let adpater = IssueDetailCollectionViewAdapter(dataManager: dataManager)
+        
         detailCollectionView.delegate = self
-        detailCollectionView.dataSource = self
+        detailCollectionView.dataSource = adpater
         detailCollectionView.setHeaderSize(with: issueTitle, width: detailCollectionView.frame.width)
     }
     
@@ -69,32 +77,6 @@ class IssueDetailViewController: UIViewController {
     }
 }
 
-extension IssueDetailViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: IssueDetailCollectionViewHeader.identifier, for: indexPath) as? IssueDetailCollectionViewHeader else {
-            return UICollectionReusableView()
-        }
-        header.viewWidth = collectionView.frame.width
-        header.issueTitleLabel.text = issueTitle
-        return header
-    }
+extension IssueDetailViewController: UICollectionViewDelegate {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommentCell.identifier, for: indexPath) as? CommentCell else {
-            return UICollectionViewCell()
-        }
-        
-        cell.configure()
-        cell.cellWidth = collectionView.frame.width
-        
-        return cell
-    }
 }

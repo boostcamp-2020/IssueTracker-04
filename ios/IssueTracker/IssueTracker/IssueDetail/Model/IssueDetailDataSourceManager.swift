@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IssueInfo {
+struct IssueInfo: DetailHeaderData {
     let issueNo: Int
     let issueTitle, issueContent: String
     let issueFlag: Bool

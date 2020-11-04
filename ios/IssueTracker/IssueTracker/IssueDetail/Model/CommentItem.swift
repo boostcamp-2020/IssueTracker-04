@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CommentItem: Codable {
+struct CommentItem: Codable, CommentCellData {
     var commentNo: Int
     var comment: String
     var authorNo: Int
