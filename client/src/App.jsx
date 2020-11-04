@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.scss';
 import LoginPage from './views/loginView';
-import IssueListPage from './views/issueListView'
+
+import IssueCreatePage from './views/issueCreateView';
 
 const App = () => (
   <div className="container">
-    <IssueListPage />
+    <IssueCreatePage />
   </div>
 );
 
