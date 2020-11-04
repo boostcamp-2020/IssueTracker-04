@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mSs-hm-IEb" customClass="IssueDetailCollectionView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="625"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="633"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rqS-zP-uFH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -232,19 +232,19 @@
                                 </collectionReusableView>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="713" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="721" width="414" height="725"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WdK-Jq-GEN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="xN1-FY-nm0" secondAttribute="top" constant="100" id="KBW-96-scd"/>
+                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="xN1-FY-nm0" secondAttribute="top" constant="92" id="KBW-96-scd"/>
                             <constraint firstItem="xN1-FY-nm0" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="RL7-mV-w03"/>
+                            <constraint firstItem="xN1-FY-nm0" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="Tfb-cX-LOH"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="VxL-SK-Q3N"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="width" secondItem="KNQ-WV-rnr" secondAttribute="width" id="aKm-0b-q60"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="p4Q-to-u94"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="height" secondItem="KNQ-WV-rnr" secondAttribute="height" multiplier="0.8" id="uzL-zb-bHF"/>
-                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="mSs-hm-IEb" secondAttribute="bottom" constant="100" id="xFe-Be-rn0"/>
+                            <constraint firstItem="xN1-FY-nm0" firstAttribute="height" secondItem="WdK-Jq-GEN" secondAttribute="height" id="uzL-zb-bHF"/>
+                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="mSs-hm-IEb" secondAttribute="bottom" constant="92" id="xFe-Be-rn0"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="top" secondItem="WdK-Jq-GEN" secondAttribute="top" id="xJR-Y8-xY1"/>
                         </constraints>
                     </view>

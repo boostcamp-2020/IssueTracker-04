@@ -37,5 +37,4 @@ class IssueDetailSlideView: UIView {
         clipsToBounds = true
         layer.cornerRadius = 20
     }
-    
 }
