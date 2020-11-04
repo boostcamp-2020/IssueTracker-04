@@ -2,12 +2,14 @@ const passport = require('passport');
 const userModel = require('../../models').user;
 
 exports.gitLoginCheck = (req, res, next) => {
+  req.session.oauthRedirect = req.query.redirect;
   passport.authenticate('github', { scope: ['user:email'] })(req, res, next);
 };
 
 exports.gitLoginCallback = (req, res, next) => {
   passport.authenticate('github', async (err, userGitHub, msg) => {
     if (err) {
+      // 에러 페이지로 이동
       res.status(400).json({ success: false, message: msg });
     } else {
       let userNo = await findUserOne(userGitHub);
@@ -15,16 +17,17 @@ exports.gitLoginCallback = (req, res, next) => {
       if (!userNo) {
         userNo = await gitSignup(userGitHub);
       }
-      console.log(userNo);
-      gitLogin(req, userNo);
 
-      res.status(200).json({
-        success: true,
-        message: msg,
-        user_no: req.user,
-      });
+      // 세션 등록
+      gitLogin(req, userNo);
     }
+    next();
   })(req, res, next);
+};
+
+exports.gitRedirect = (req, res, next) => {
+  console.log(req.user);
+  res.redirect(req.session.oauthRedirect);
 };
 
 const findUserOne = async (userGitHub) => {
@@ -57,7 +60,7 @@ const gitSignup = async (user) => {
 };
 
 const gitLogin = (req, userNo) => {
-  req.login(userNo, (err) => {
+  req.login({ userNo: userNo }, (err) => {
     if (err) {
       console.log('세션 등록 실패');
     }

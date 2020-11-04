@@ -52,6 +52,7 @@ router.get('/api/users/user:userNo', async (req, res, next) => {
 router.get('/api/users/logout', function (req, res) {
   req.logout();
   res.clearCookie('connect.sid');
+  console.log(req.user);
   res.status(200).json({ success: true, message: '로그아웃 성공' });
 });
 

@@ -5,6 +5,10 @@ const auth = require('../../services/auth/github');
 
 router.get('/api/auth/github/', auth.gitLoginCheck);
 
-router.get('/api/auth/github/callback', auth.gitLoginCallback);
+router.get(
+  '/api/auth/github/callback',
+  auth.gitLoginCallback,
+  auth.gitRedirect
+);
 
 module.exports = router;
