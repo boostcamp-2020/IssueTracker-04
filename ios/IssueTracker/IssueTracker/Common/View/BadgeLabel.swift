@@ -33,12 +33,16 @@ class BadgeLabel: UILabel {
 
     init(text: String, backgroundColor: UIColor) {
         super.init(frame: CGRect.zero)
-        super.text = text
-        super.backgroundColor = backgroundColor
+        self.text = text
+        self.backgroundColor = backgroundColor
         self.borderColor = backgroundColor
-        super.font = UIFont.preferredFont(forTextStyle: .caption1)
-        super.textColor = .black // 배경 색상에 맞추어 텍스트 색상 변경 필요
+        self.font = UIFont.preferredFont(forTextStyle: .caption1)
+        self.textColor = backgroundColor.visibleTextColor
         setBorder()
+    }
+    
+    convenience init(label: Label) {
+        self.init(text: label.labelTitle, backgroundColor: UIColor(hexString: label.labelColor))
     }
     
     required init?(coder: NSCoder) {
@@ -63,4 +67,6 @@ class BadgeLabel: UILabel {
         contentSize.width += leftInset + rightInset
         return contentSize
     }
+    
+    
 }
