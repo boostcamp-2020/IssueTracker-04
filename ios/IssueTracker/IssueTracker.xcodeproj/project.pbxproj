@@ -40,6 +40,8 @@
 		9965DC81255152EF00F92FFC /* IssueDetailCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC7F255152EF00F92FFC /* IssueDetailCollectionViewHeader.swift */; };
 		9965DC82255152EF00F92FFC /* IssueDetailCollectionViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9965DC80255152EF00F92FFC /* IssueDetailCollectionViewHeader.xib */; };
 		9965DC8B25517CD200F92FFC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC8A25517CD200F92FFC /* String+.swift */; };
+		9965DCA0255294A600F92FFC /* IssueDetailCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC9F255294A500F92FFC /* IssueDetailCollectionViewAdapter.swift */; };
+		9965DCA8255294F700F92FFC /* IssueDetailDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DCA7255294F700F92FFC /* IssueDetailDataSourceManager.swift */; };
 		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
 		99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B5B2549A34C0082ADF0 /* IssueItem.swift */; };
 		99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B702549AD230082ADF0 /* DummyDataLoader.swift */; };
@@ -110,6 +112,8 @@
 		9965DC7F255152EF00F92FFC /* IssueDetailCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCollectionViewHeader.swift; sourceTree = "<group>"; };
 		9965DC80255152EF00F92FFC /* IssueDetailCollectionViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailCollectionViewHeader.xib; sourceTree = "<group>"; };
 		9965DC8A25517CD200F92FFC /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		9965DC9F255294A500F92FFC /* IssueDetailCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCollectionViewAdapter.swift; sourceTree = "<group>"; };
+		9965DCA7255294F700F92FFC /* IssueDetailDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailDataSourceManager.swift; sourceTree = "<group>"; };
 		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		99A09B5B2549A34C0082ADF0 /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
 		99A09B702549AD230082ADF0 /* DummyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 		9965DC2D2550F3EB00F92FFC /* IssueDetail */ = {
 			isa = PBXGroup;
 			children = (
+				9965DC9E2552947300F92FFC /* Adapter */,
 				9965DC5325512B6400F92FFC /* Model */,
 				9965DC372550F44500F92FFC /* View */,
 				9965DC332550F43800F92FFC /* Controller */,
@@ -337,8 +342,17 @@
 			children = (
 				9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */,
 				9965DC5C25512BC500F92FFC /* CommentItem.swift */,
+				9965DCA7255294F700F92FFC /* IssueDetailDataSourceManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9965DC9E2552947300F92FFC /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				9965DC9F255294A500F92FFC /* IssueDetailCollectionViewAdapter.swift */,
+			);
+			path = Adapter;
 			sourceTree = "<group>";
 		};
 		99A09B522549A24B0082ADF0 /* IssueList */ = {
@@ -626,11 +640,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9965DCA8255294F700F92FFC /* IssueDetailDataSourceManager.swift in Sources */,
 				9965DC81255152EF00F92FFC /* IssueDetailCollectionViewHeader.swift in Sources */,
 				99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */,
 				995E0AE5254E7AE600811D49 /* LeftContainerContaining.swift in Sources */,
 				99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */,
 				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
+				9965DCA0255294A600F92FFC /* IssueDetailCollectionViewAdapter.swift in Sources */,
 				99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */,
 				3747D46E2547EFDF009BA189 /* ViewController.swift in Sources */,
 				995E0AFF254EF29800811D49 /* IssueListCollectionView.swift in Sources */,
