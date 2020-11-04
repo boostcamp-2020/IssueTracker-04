@@ -7,12 +7,17 @@
 
 import UIKit
 
-class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource {
     
-    var items: [IssueItem] = []
+    var dataSourceManager: IssueListDataSourceManager
+    var mode: IssueListViewController.Mode = .normal
+    
+    init(dataSourceManager: IssueListDataSourceManager) {
+        self.dataSourceManager = dataSourceManager
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return dataSourceManager.itemCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -20,9 +25,20 @@ class IssueListCollectionViewAdapter: NSObject, UICollectionViewDataSource, UICo
         guard let itemCell = cell as? IssueListCollectionViewCell else {
             return cell
         }
-        let item = items[indexPath.row]
-        itemCell.cellWidth = collectionView.frame.width
+        let item = dataSourceManager[indexPath]
+        itemCell.cellMainWidth = collectionView.frame.width
         itemCell.configure(with: item)
+        itemCell.mode = mode
+        switch mode {
+        case .normal:
+            itemCell.showMainView()
+        case .edit:
+            itemCell.showLeftContainerView()
+            let isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
+            itemCell.isSelected = isSelected
+            itemCell.setSelectionButton(isSelected: isSelected)
+        }
+        
         return itemCell
     }
 }

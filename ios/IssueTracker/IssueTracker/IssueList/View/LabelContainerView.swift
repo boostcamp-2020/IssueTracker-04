@@ -8,7 +8,9 @@
 import UIKit
 
 class LabelContainerView: UIView {
-    private let xibName = "LabelContainerView"
+    private var xibName: String {
+        String(describing: Self.self)
+    }
 
     @IBOutlet weak var labelsStackView: UIStackView!
     var labelStackViews: [UIStackView] = []
