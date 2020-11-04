@@ -4,7 +4,7 @@ import imgSrc from '@assets/svg/github-icon.svg';
 import Input from '@components/loginView/input';
 import axios from 'axios';
 
-const urlForGitHubOAuth = '/api/auth/github/';
+const urlForGitHubOAuth = 'http://101.101.217.9:5000/api/auth/github/';
 const clientUrl = 'http://localhost:3000/issues-list';
 
 const loginView = () => {
@@ -42,7 +42,7 @@ const loginView = () => {
               </button>
             </div>
           </form>
-          <a className="gitHubLogin" href={urlForGitHubOAuth + '?redirect=' + clientUrl}>
+          <a className="gitHubLogin" href={`${urlForGitHubOAuth  }?redirect=${  clientUrl}`}>
             Sign with GitHub
             <img className="gitHubMark" src={imgSrc} />
           </a>
