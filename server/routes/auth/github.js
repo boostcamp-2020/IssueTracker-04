@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const auth = require('../../services/auth/github');
 
 router.get('/api/auth/github/', auth.gitLoginCheck);

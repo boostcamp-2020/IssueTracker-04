@@ -8,30 +8,36 @@ exports.gitLoginCheck = (req, res, next) => {
 exports.gitLoginCallback = (req, res, next) => {
   passport.authenticate('github', async (err, userGitHub, msg) => {
     if (err) {
-      res.status(400).json({ success: false, msg: msg });
+      res.status(400).json({ success: false, message: msg });
     } else {
-      let userDB;
-      let userNo;
-      try {
-        userDB = await userModel.findOne({
-          where: { user_id: userGitHub.username, oauth_site: 'GITHUB' },
-        });
-        userNo = userDB.dataValues.user_no;
-      } catch (error) {
-        res.status(400).json({ success: false, message: "can't find user" });
+      let userNo = await findUserOne(userGitHub);
+
+      if (!userNo) {
+        userNo = await gitSignup(userGitHub);
       }
-      if (!userDB) {
-        userNo = gitSignup(userGitHub);
-      }
+      console.log(userNo);
       gitLogin(req, userNo);
 
       res.status(200).json({
         success: true,
-        msg: msg,
+        message: msg,
         user_no: req.user,
       });
     }
   })(req, res, next);
+};
+
+const findUserOne = async (userGitHub) => {
+  try {
+    const userDB = await userModel.findOne({
+      where: { user_id: userGitHub.username, oauth_site: 'GITHUB' },
+    });
+    if (userDB) return userDB.dataValues.user_no;
+    else return null;
+  } catch (error) {
+    console.log("can't find user");
+    return null;
+  }
 };
 
 const gitSignup = async (user) => {
