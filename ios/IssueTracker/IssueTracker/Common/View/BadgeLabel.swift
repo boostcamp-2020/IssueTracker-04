@@ -33,16 +33,9 @@ class BadgeLabel: UILabel {
 
     init(text: String, backgroundColor: UIColor) {
         super.init(frame: CGRect.zero)
-        self.text = text
-        self.backgroundColor = backgroundColor
-        self.borderColor = backgroundColor
+        configure(text: text, backgroundColor: backgroundColor)
         self.font = UIFont.preferredFont(forTextStyle: .caption1)
-        self.textColor = backgroundColor.visibleTextColor
         setBorder()
-    }
-    
-    convenience init(label: Label) {
-        self.init(text: label.labelTitle, backgroundColor: UIColor(hexString: label.labelColor))
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +49,17 @@ class BadgeLabel: UILabel {
         layer.cornerRadius = 5
     }
     
+    private func configure(text: String, backgroundColor: UIColor) {
+        self.text = text
+        self.backgroundColor = backgroundColor
+        self.borderColor = backgroundColor
+        self.textColor = backgroundColor.visibleTextColor
+    }
+    
+    func configure(with label: Label) {
+        configure(text: label.labelTitle, backgroundColor: UIColor(hexString: label.labelColor))
+    }
+    
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
         super.drawText(in: rect.inset(by: insets))
@@ -67,6 +71,5 @@ class BadgeLabel: UILabel {
         contentSize.width += leftInset + rightInset
         return contentSize
     }
-    
     
 }
