@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const userModel = require('../../models').user;
+const auth = require('../../services/auth');
 
 router.post('/api/users/signup', async (req, res, next) => {
   // const { id, pw, name} = req.query;
@@ -49,11 +50,13 @@ router.get('/api/users/user:userNo', async (req, res, next) => {
   }
 });
 
-router.get('/api/users/logout', function (req, res) {
+router.get('/api/users/logout', auth.isLogged, function (req, res) {
   req.logout();
   res.clearCookie('connect.sid');
-  console.log(req.user);
-  res.status(200).json({ success: true, message: '로그아웃 성공' });
+  if (!req.user)
+    return res.status(200).json({ success: true, message: '로그아웃 성공' });
+  else
+    return res.status(400).json({ success: false, message: '로그아웃 실패' });
 });
 
 module.exports = router;

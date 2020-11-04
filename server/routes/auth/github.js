@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const auth = require('../../services/auth/github');
+const gitAuth = require('../../services/auth/github');
 
-router.get('/api/auth/github/', auth.gitLoginCheck);
+router.get('/api/auth/github/', gitAuth.gitLoginCheck);
 
 router.get(
   '/api/auth/github/callback',
-  auth.gitLoginCallback,
-  auth.gitRedirect
+  gitAuth.gitLoginCallback,
+  gitAuth.gitRedirect
 );
 
 module.exports = router;
