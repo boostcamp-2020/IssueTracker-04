@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="AssigneeCollectionViewCell" id="iN0-l3-epB" customClass="AssigneeCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="u5T-vC-HA5">
+                    <rect key="frame" x="8" y="8.5" width="30" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="dXi-p0-HGX"/>
+                        <constraint firstAttribute="height" constant="30" id="vFN-k7-3wD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignee name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUD-tR-dkE">
+                    <rect key="frame" x="46" y="12.5" width="333" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="u5T-vC-HA5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="GFS-uv-mNx"/>
+                <constraint firstItem="u5T-vC-HA5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Hlh-lV-XZ6"/>
+                <constraint firstAttribute="trailing" secondItem="bUD-tR-dkE" secondAttribute="trailing" constant="8" id="ICT-Rp-c4D"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="u5T-vC-HA5" secondAttribute="bottom" constant="8" id="eog-Wc-30b"/>
+                <constraint firstItem="bUD-tR-dkE" firstAttribute="leading" secondItem="u5T-vC-HA5" secondAttribute="trailing" constant="8" symbolic="YES" id="mBf-YE-bEF"/>
+                <constraint firstItem="bUD-tR-dkE" firstAttribute="centerY" secondItem="u5T-vC-HA5" secondAttribute="centerY" id="xdY-oe-7aP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="u5T-vC-HA5" id="WEI-C7-XI1"/>
+                <outlet property="label" destination="bUD-tR-dkE" id="Uze-Sm-XNY"/>
+            </connections>
+            <point key="canvasLocation" x="118.11594202898551" y="-140.625"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
