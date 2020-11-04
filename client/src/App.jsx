@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import LoginPage from './views/loginView';
+
 import IssueCreatePage from './views/issueCreateView';
 
 const App = () => (

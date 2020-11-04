@@ -1,0 +1,27 @@
+.issueListView-body {
+  width: 80%;
+  margin: 2% auto;
+}
+
+.issueListView-body-topNav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
+}
+
+.issueListView-body-topNav-searchArea {
+  flex: 2;
+  margin: 0px 20px 0px 0px;
+  display: flex;
+}
+
+.issueListView-body-opNav-labelMilestones {
+  flex: 1;
+  margin: 0 20px;
+  display: flex;
+}
+
+#MakeIssueButton {
+  flex: 1;
+  margin: 0 20px;
+}

@@ -1,0 +1,29 @@
+.issue {
+  display: flex;
+  border: solid black;
+}
+
+.issue-checkBoxArea {
+  flex: 1;
+}
+
+.issue-openCheckArea {
+  flex: 1;
+}
+
+.issue-contentsArea {
+  flex: 10;
+}
+
+.issue-assigneesArea {
+  flex: 1;
+}
+
+.issue-contentsArea-bottom {
+  display: flex;
+}
+
+.issue-contentsArea-top {
+  margin-top: 0;
+  margin-bottom: 0;
+}
