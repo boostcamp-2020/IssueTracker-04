@@ -1,23 +1,23 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
-
-import Input from '../../components/loginView/input';
+import imgSrc from '@assets/svg/github-icon.svg';
+import Input from '@components/loginView/input';
 
 const loginView = () => {
   const [Id, setId] = useState('');
   const [Password, setPassword] = useState('');
 
-  const onIdHandler = (e) => {
+  const onIdHandler = e => {
     setId(e.currentTarget.value);
   };
 
-  const onPasswordHandler = (e) => {
+  const onPasswordHandler = e => {
     setPassword(e.currentTarget.value);
   };
 
   console.log(Id);
-  
-  const onSubmitHandler = (e) => {
+
+  const onSubmitHandler = e => {
     e.preventDefault();
 
     console.log(Id);
@@ -32,30 +32,30 @@ const loginView = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        widyh: '100%',
-        height: '100vh',
-      }}
-    >
-      <form
-        style={{ display: 'flex', flexDirection: 'cloumn' }}
-        onSubmit={onSubmitHandler}
-      >
-        <label>Id</label>
-        <Input placeholder="id" type="id" value={Id} onChange={onIdHandler} />
-        <label>Password</label>
-        <Input
-          placeholder="password"
-          type="password"
-          value={Password}
-          onChange={onPasswordHandler}
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="loginLayout">
+      <div className="loginContainer">
+        <h1>이슈 트래커</h1>
+        <div className="loginBox">
+          <form onSubmit={onSubmitHandler}>
+            <div className="loginLabel">아이디</div>
+            <Input placeholder="id" type="id" value={Id} onChange={onIdHandler} />
+            <div className="loginLabel">패스워드</div>
+            <Input placeholder="password" type="password" value={Password} onChange={onPasswordHandler} />
+            <div className="localLogin">
+              <button className="localLoginBtn" type="submit">
+                로그인
+              </button>
+              <button className="localLoginBtn" type="submit">
+                회원가입
+              </button>
+            </div>
+          </form>
+          <a className="gitHubLogin" href="#">
+            Sign with GitHub
+            <img className="gitHubMark" src={imgSrc} />
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

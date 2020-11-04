@@ -1,5 +1,77 @@
+.loginLayout {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+}
+
 .loginContainer {
-  margin: 0 auto;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 40%;
-  background-color: rgb(230, 132, 132);
+  min-width: fit-content;
+  height: fit-content;
+  h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+.loginBox {
+  padding: 20px;
+  border: 1px solid #b6b6b6;
+  box-shadow: 0 0 5px #9c9c9c;
+}
+
+.loginLabel {
+  font-weight: bold;
+}
+
+.localLogin {
+  width: 100%;
+  display: flex;
+}
+
+.localLoginBtn {
+  all: unset;
+  flex: auto;
+  text-align: center;
+  margin: 10px;
+  color: rgb(13, 146, 199);
+  &:hover {
+    color: rgb(0, 50, 70);
+    cursor: pointer;
+  }
+  &:focus {
+    //
+  }
+}
+
+.gitHubLogin {
+  all: unset;
+  color: white;
+  display: block;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: rgb(161, 161, 161);
+  border-radius: 5px;
+
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
+  }
+  &:focus {
+    //
+  }
+}
+
+.gitHubMark {
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
 }
