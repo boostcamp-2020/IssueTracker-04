@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-//home
-router.get('/', function (req, res, next) {
-  res.status(200).json({ ab: 'c' });
-  return;
-});
+const auth = require('../services/auth');
 
-router.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/');
+//home
+router.get('/', auth.isAuth, (req, res, next) => {
+  return res
+    .status(200)
+    .json({ message: 'welcome home', userNo: res.locals.userNo });
 });
 
 module.exports = router;
