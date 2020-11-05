@@ -17,27 +17,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        URLContexts.forEach { URLContext in
-            let code = URLContext.url.absoluteString.components(separatedBy: "code=").last ?? ""
-            requestAccessToken(code: code)
+        guard let context = URLContexts.first,
+              let code = context.url.absoluteString.components(separatedBy: "code=").last else {
+            return
         }
-    }
-    
-    func requestAccessToken(code: String) {
-        let requestURLString = "https://github.com/login/oauth/access_token"
-        var requestURLComponents = URLComponents(string: requestURLString)
-        
-        requestURLComponents?.queryItems = [ URLQueryItem(name: "client_id", value: GithubApplication.ClientID),
-                                             URLQueryItem(name: "client_secret", value: GithubApplication.ClientSecret),
-                                             URLQueryItem(name: "code", value: code) ]
-        
-        let requestUrl = requestURLComponents!.url!
-        
-        URLSession(configuration: .default).dataTask(with: requestUrl) { (data, response, error) in
-            print(String(data: data!, encoding: .utf8))
-            print(response?.description)
-            print(error?.localizedDescription)
-        }.resume()
+        NetworkManagers.requestLogin(code: code) { (data, error) in
+            guard let data = data,
+                  let JWT = String(data: data, encoding: .utf8) else {
+                return
+            }
+            UserDefaults.standard.set(JWT, forKey: "JWT")
+        }
     }
     
     func checkCredentialState() {
@@ -58,4 +48,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 }
-
