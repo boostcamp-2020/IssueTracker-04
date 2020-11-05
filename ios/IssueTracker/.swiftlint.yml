@@ -1,0 +1,11 @@
+disabled_rules:
+- line_length
+- trailing_whitespace
+- multiple_closures_with_trailing_closure
+
+included:
+
+excluded:
+- Pods
+- IssueTracker/SceneDelegate.swift
+- IssueTracker/AppDelegate.swift
