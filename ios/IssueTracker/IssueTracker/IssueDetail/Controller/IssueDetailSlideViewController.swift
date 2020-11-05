@@ -83,7 +83,7 @@ extension IssueDetailSlideViewController: UICollectionViewDelegateFlowLayout {
              DetailSlideKeyword.HeaderSection.option.rawValue:
             return CGSize(width: collectionView.frame.width, height: 48)
         case DetailSlideKeyword.HeaderSection.label.rawValue:
-            let width = mockData.labels[indexPath.item].labelTitle.estimatedLabelHeight(height: 30, fontSize: 17)
+            let width = mockData.labels[indexPath.item].labelTitle.estimatedLabelWidth(height: 30, fontSize: 17)
             return CGSize(width: width + 12, height: 30)
         case DetailSlideKeyword.HeaderSection.milestone.rawValue:
             return CGSize(width: collectionView.frame.width, height: 120)
