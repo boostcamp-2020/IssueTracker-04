@@ -9,19 +9,14 @@ import UIKit
 
 class IssueDetailViewController: UIViewController {
 
-    let mockData = DetailSlideMockData()
     var gesture = UIPanGestureRecognizer()
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
-    @IBOutlet weak var slideView: IssueDetailSlideView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
         slideView.addGestureRecognizer(gesture)
-        
-        slideView.collectionView.delegate = self
-        slideView.collectionView.dataSource = self
     }
     
     @objc func onAction() {

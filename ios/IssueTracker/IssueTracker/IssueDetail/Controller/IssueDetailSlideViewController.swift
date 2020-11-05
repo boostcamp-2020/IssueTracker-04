@@ -1,13 +1,23 @@
 //
-//  IssueDetailSlideCollectionViewManager.swift
+//  IssueDetailSlideViewController.swift
 //  IssueTracker
 //
-//  Created by Oh Donggeon on 2020/11/03.
+//  Created by Oh Donggeon on 2020/11/05.
 //
 
 import UIKit
 
-extension IssueDetailViewController: UICollectionViewDataSource {
+class IssueDetailSlideViewController: UIViewController {
+
+    let mockData = DetailSlideMockData()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+}
+
+extension IssueDetailSlideViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueDetailSlideViewHeader", for: indexPath) as? IssueDetailSlideViewHeader,
@@ -61,7 +71,7 @@ extension IssueDetailViewController: UICollectionViewDataSource {
     }
 }
 
-extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
+extension IssueDetailSlideViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 58)
@@ -97,12 +107,4 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
         return 4
     }
     
-}
-
-extension String {
-    func estimatedLabelHeight(height: CGFloat, fontSize: CGFloat) -> CGFloat {
-        let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
-        let estimatedSize = self.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin], attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil)
-        return estimatedSize.width
-    }
 }
