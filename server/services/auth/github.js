@@ -35,8 +35,12 @@ const gitSignup = async (user) => {
 };
 
 exports.gitCode = async (req, res, next) => {
-  const clientID = process.env.GITHUB_CLIENT_ID;
-  const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+  let clientID = process.env.GITHUB_CLIENT_ID;
+  let clientSecret = process.env.GITHUB_CLIENT_SECRET;
+  if (req.body.client === 'ios') {
+    clientID = process.env.IOS_GITHUB_CLIENT_ID;
+    clientSecret = process.env.IOS_GITHUB_CLIENT_SECRET;
+  }
   const json = await axios({
     method: 'post',
     url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${req.body.code}`,
