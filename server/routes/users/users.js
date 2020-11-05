@@ -4,6 +4,7 @@ const router = express.Router();
 const userModel = require('../../models').user;
 const auth = require('../../services/auth');
 
+// 로컬 회원가입
 router.post('/api/users/signup', async (req, res, next) => {
   // const { id, pw, name} = req.query;
 
@@ -39,8 +40,8 @@ router.delete('/api/users/signup', async (req, res, next) => {
 });
 
 // 조회, API 이름 바꿀 것
-router.get('/api/users/user:userNo', async (req, res, next) => {
-  const userNo = req.params.userNo;
+router.get('/api/users/user', auth.isAuth, async (req, res, next) => {
+  const userNo = res.locals.userNo;
   try {
     const result = await userModel.findOne({ where: { user_no: userNo } });
     res.status(201).json({ success: true, user: result.dataValues });
@@ -50,13 +51,9 @@ router.get('/api/users/user:userNo', async (req, res, next) => {
   }
 });
 
-router.get('/api/users/logout', auth.isLogged, function (req, res) {
-  req.logout();
-  res.clearCookie('connect.sid');
-  if (!req.user)
-    return res.status(200).json({ success: true, message: '로그아웃 성공' });
-  else
-    return res.status(400).json({ success: false, message: '로그아웃 실패' });
+router.get('/api/users/logout', (req, res) => {
+  // 삭제된 jwt 관리하기
+  res.status(200).json({ success: true, message: '로그아웃' });
 });
 
 module.exports = router;
