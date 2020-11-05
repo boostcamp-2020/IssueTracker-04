@@ -1,0 +1,69 @@
+{
+    "issue": {
+        "issue_no":    1,
+        "issue_title":    "첫번째 이슈",
+        "issue_content": "첫번째 이슈 입니다.",
+        "issue_flag":    false,
+        "issue_date":    "2013-07-21T19:32:00Z",
+        "issue_author_no":    1,
+        "issue_author_name": "JK",
+    },
+    "detailInfo": {
+        "authorImg": "http//image/3128471984798"
+    },
+    "milestone": {
+        "milestone_no":    1,
+        "milestone_title":    "Week1",
+    },
+    "labels": [{
+            "il_relation_no":1,
+            "label_no":    1,
+            "label_title":    "ios",
+            "label_color":    "#FFFFDD"
+    }],
+    "assignees": [{
+            "iu_relation_no": 1,
+            "user_no": 2,
+            "user_name": "crong",
+            "user_img": "imageURL"
+    },
+    {
+            "iu_relation_no": 2,
+            "user_no": 3,
+            "user_name": "honux",
+            "user_img": "imageURL"
+    }],
+    "comments": [{
+        "comment_no": 1,
+        "comment": "첫번째 댓글입니다.",
+        "author_name": "JK",
+        "author_img": "http//image/3128471984798",
+        "comment_date": "2013-07-21T19:32:00Z",
+        
+    },
+    {
+        "comment_no": 2,
+        "comment": "두번째 댓글입니다. 엔터를 치지 않고 길게 써볼게요. 이러면 어떻게 나올지 정말로 궁금하군요. 잘 나왔으면 좋겠어요",
+        "author_name": "crong",
+        "author_img": "http//image/3128471984798",
+        "comment_date": "2013-07-21T19:32:00Z",
+        
+    },
+    {
+        "comment_no": 3,
+        "comment": "세번째 댓글입니다. \n 이번에는 엔터를 칠꺼에요 \n 여러줄로 나오겠죠? \n 이거때문에 셀 높이가 동적으로 나와야해서 너무 화가났어요. \n 그래도 잘 나오네요?",
+        "author_name": "Honux",
+        "author_img": "http//image/3128471984798",
+        "comment_date": "2013-07-21T19:32:00Z",
+        
+    },
+    {
+        "comment_no": 4,
+        "comment": "네번째 댓글입니다. 참 잘나오죠?",
+        "author_name": "JK",
+        "author_img": "http//image/3128471984798",
+        "comment_date": "2013-07-21T19:32:00Z",
+        
+    }
+    ]
+}
