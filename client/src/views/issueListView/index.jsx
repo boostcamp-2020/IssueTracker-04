@@ -24,7 +24,7 @@ const issueListView = () => {
       try {
          sampleIssues = [];
          const result = await axios.get('http://localhost:5000/api/issue/list');
-        
+
         for (let i = 0; i < result.data.length; i++){
           const newIssue = {
             id : {i},
@@ -40,8 +40,7 @@ const issueListView = () => {
             assignees : result.data[i].data[0].assignees,
             labels : result.data[i].data[0].labels
           }
-          sampleIssues.push(newIssue);
-          
+          sampleIssues.push(newIssue);  
         }
         setIssueList(sampleIssues);
         

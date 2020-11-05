@@ -3,7 +3,7 @@ import './style.scss';
 
 const input = () => {
   return (
-    <button id = "filter-button" type = "button">filter</button>
+    <button id = "filter-button" type = "button">filter ∨</button>
   );
 };
 
