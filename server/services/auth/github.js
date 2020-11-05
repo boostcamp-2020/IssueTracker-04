@@ -1,6 +1,7 @@
 const passport = require('passport');
 const userModel = require('../../models').user;
 const axios = require('axios');
+const { createJWT } = require('../utils/jwt');
 
 const findUserOne = async (userGitHub) => {
   console.log(userGitHub);
@@ -44,6 +45,6 @@ exports.gitIosLogin = async (req, res, next) => {
   if (!userNo) {
     userNo = await gitSignup(data);
   }
-  //jwt 생성
-  return res.status(200).json({ jwt: 'asdasd', userNo: userNo });
+  const jwt = createJWT({ userNo: userNo });
+  return res.status(200).json({ jwt: jwt });
 };

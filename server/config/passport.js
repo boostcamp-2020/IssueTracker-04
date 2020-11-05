@@ -13,7 +13,7 @@ module.exports = () => {
       },
       function (accessToken, refreshToken, profile, done) {
         let err, user, msg;
-        console.log(accessToken);
+
         if (accessToken) {
           err = false;
           user = profile;
