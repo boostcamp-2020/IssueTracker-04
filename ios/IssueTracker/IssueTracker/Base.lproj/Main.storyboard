@@ -231,19 +231,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="721" width="414" height="725"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WdK-Jq-GEN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="xN1-FY-nm0" secondAttribute="top" constant="92" id="KBW-96-scd"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="RL7-mV-w03"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="Tfb-cX-LOH"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="VxL-SK-Q3N"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="p4Q-to-u94"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="height" secondItem="WdK-Jq-GEN" secondAttribute="height" id="uzL-zb-bHF"/>
                             <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="mSs-hm-IEb" secondAttribute="bottom" constant="92" id="xFe-Be-rn0"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="top" secondItem="WdK-Jq-GEN" secondAttribute="top" id="xJR-Y8-xY1"/>
                         </constraints>
@@ -251,8 +244,6 @@
                     <navigationItem key="navigationItem" title="이슈 상세" largeTitleDisplayMode="never" id="muH-kd-AgS"/>
                     <connections>
                         <outlet property="detailCollectionView" destination="mSs-hm-IEb" id="rdV-GV-I61"/>
-                        <outlet property="slideView" destination="xN1-FY-nm0" id="LMG-S7-ZZK"/>
-                        <outlet property="slideViewTobConstraint" destination="KBW-96-scd" id="gdZ-yI-zkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -266,13 +257,108 @@
                     <view key="view" contentMode="scaleToFill" id="OTK-tL-kJh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fM-G6-nuz" userLabel="Button Content View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="62"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TNz-ey-dEN">
+                                        <rect key="frame" x="290" y="16" width="100" height="46"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iC-jO-23k" userLabel="Up Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="EHF-lk-iS8"/>
+                                                </constraints>
+                                                <state key="normal" image="chevron.up" catalog="system"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHe-eU-BWT" userLabel="Down Button">
+                                                <rect key="frame" x="54" y="0.0" width="46" height="46"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="Izc-FD-w4J"/>
+                                                </constraints>
+                                                <state key="normal" image="chevron.down" catalog="system"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="Whq-SI-i9r"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koe-dX-n56" userLabel="Add Comment Button">
+                                        <rect key="frame" x="24" y="16" width="246" height="46"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="ixe-i8-ewa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="add comment"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="koe-dX-n56" firstAttribute="leading" secondItem="9fM-G6-nuz" secondAttribute="leading" constant="24" id="74P-kN-sSv"/>
+                                    <constraint firstAttribute="trailing" secondItem="TNz-ey-dEN" secondAttribute="trailing" constant="24" id="89G-qc-YJU"/>
+                                    <constraint firstItem="TNz-ey-dEN" firstAttribute="leading" secondItem="koe-dX-n56" secondAttribute="trailing" constant="20" id="ELE-0g-9jm"/>
+                                    <constraint firstAttribute="bottom" secondItem="TNz-ey-dEN" secondAttribute="bottom" id="HzH-fd-S9j"/>
+                                    <constraint firstItem="koe-dX-n56" firstAttribute="top" secondItem="9fM-G6-nuz" secondAttribute="top" constant="16" id="IWm-Kp-LLf"/>
+                                    <constraint firstItem="TNz-ey-dEN" firstAttribute="top" secondItem="9fM-G6-nuz" secondAttribute="top" constant="16" id="L0t-dS-7cr"/>
+                                    <constraint firstAttribute="bottom" secondItem="koe-dX-n56" secondAttribute="bottom" id="RTl-MG-kzf"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="amH-bc-Thi">
+                                <rect key="frame" x="0.0" y="106" width="414" height="736"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5MT-On-BEj">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-hy-z4L">
+                                <rect key="frame" x="0.0" y="842" width="414" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="wk5-PH-7VE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="nRA-Wv-i4C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9fM-G6-nuz" firstAttribute="top" secondItem="nRA-Wv-i4C" secondAttribute="top" id="6DY-Ue-kum"/>
+                            <constraint firstItem="zWr-hy-z4L" firstAttribute="bottom" secondItem="nRA-Wv-i4C" secondAttribute="bottom" id="77K-yB-IQC"/>
+                            <constraint firstItem="9fM-G6-nuz" firstAttribute="leading" secondItem="nRA-Wv-i4C" secondAttribute="leading" id="Cdq-vt-sSj"/>
+                            <constraint firstItem="9fM-G6-nuz" firstAttribute="trailing" secondItem="nRA-Wv-i4C" secondAttribute="trailing" id="Ig8-xp-Zl9"/>
+                            <constraint firstItem="amH-bc-Thi" firstAttribute="leading" secondItem="nRA-Wv-i4C" secondAttribute="leading" id="Nfa-8b-YUu"/>
+                            <constraint firstItem="zWr-hy-z4L" firstAttribute="leading" secondItem="nRA-Wv-i4C" secondAttribute="leading" id="Qa5-sk-zLy"/>
+                            <constraint firstItem="zWr-hy-z4L" firstAttribute="top" secondItem="amH-bc-Thi" secondAttribute="bottom" id="aum-QD-agh"/>
+                            <constraint firstItem="nRA-Wv-i4C" firstAttribute="trailing" secondItem="zWr-hy-z4L" secondAttribute="trailing" id="k1d-1u-bDU"/>
+                            <constraint firstItem="amH-bc-Thi" firstAttribute="top" secondItem="9fM-G6-nuz" secondAttribute="bottom" id="l4z-3K-S2u"/>
+                            <constraint firstItem="nRA-Wv-i4C" firstAttribute="trailing" secondItem="amH-bc-Thi" secondAttribute="trailing" id="pcE-I7-RKa"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kN-VF-ur5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3009" y="-1761"/>
+            <point key="canvasLocation" x="3008.6956521739135" y="-1761.1607142857142"/>
         </scene>
         <!--Github Login View Controller-->
         <scene sceneID="QGG-4T-b8i">
@@ -637,6 +723,8 @@
         <segue reference="8gQ-MF-YBo"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="chevron.up" catalog="system" width="128" height="72"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="github_logo" width="25" height="25"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
