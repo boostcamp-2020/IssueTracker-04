@@ -24,12 +24,12 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelContainerView: LabelContainerView!
     @IBOutlet weak var rightContainerView: UIView!
     @IBOutlet weak var leftContainerView: UIView!
-    @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var mainViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelContainerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainViewWidthConstraint: NSLayoutConstraint!
-    
+   
     static var identifier: String {
         String(describing: Self.self)
     }
@@ -42,16 +42,9 @@ class IssueListCollectionViewCell: UICollectionViewCell {
             guard let width = cellMainWidth else {
                 return
             }
-            containerView.translatesAutoresizingMaskIntoConstraints = false
             mainViewWidthConstraint.constant = width
-            containerViewWidthConstraint.constant = width + 195
             labelContainerView.maxWidth = width - 16
         }
-    }
-    
-    private var leftShowOrigin: CGPoint = .zero
-    private var mainShowOrigin: CGPoint {
-        CGPoint(x: leftContainerViewWidth, y: 0)
     }
     
     var labelRowCount: CGFloat? {
@@ -110,14 +103,20 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         resetViewAnimate()
     }
     
+    func animateAfterConstraintChanged() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.layoutIfNeeded()
+        }
+    }
+    
     func showMainView() {
-        bounds.origin = mainShowOrigin
+        mainViewLeadingConstraint.constant = 0
+        mainViewTrailingConstraint.constant = 0
     }
     
     func resetViewAnimate() {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.showMainView()
-        }
+        showMainView()
+        animateAfterConstraintChanged()
     }
     
     func setSelectionButton(isSelected: Bool) {
@@ -146,24 +145,24 @@ class IssueListCollectionViewCell: UICollectionViewCell {
 extension IssueListCollectionViewCell: LeftContainerContaining {
     
     private var leftContainerViewWidth: CGFloat {
-        65.0
+        leftContainerView.frame.width
     }
     
     func showLeftContainerView() {
-        bounds.origin = leftShowOrigin
+        mainViewLeadingConstraint.constant = leftContainerViewWidth
+        mainViewTrailingConstraint.constant = -leftContainerViewWidth
     }
     
     func leftContainerViewShowAnimate() {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.showLeftContainerView()
-        }
+        showLeftContainerView()
+        animateAfterConstraintChanged()
     }
 }
 
 extension IssueListCollectionViewCell: RightContainerContaining {
     
     private var rightContainerViewWidth: CGFloat {
-        130.0
+        rightContainerView.frame.width
     }
     
     private var rightShowOrigin: CGPoint {
@@ -171,12 +170,12 @@ extension IssueListCollectionViewCell: RightContainerContaining {
     }
     
     func showRightContainerView() {
-        bounds.origin = rightShowOrigin
+        mainViewLeadingConstraint.constant = -rightContainerViewWidth
+        mainViewTrailingConstraint.constant = rightContainerViewWidth
     }
     
     func rightContainerViewShowAnimate() {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) { [weak self] in
-            self?.showRightContainerView()
-        }
+        showRightContainerView()
+        animateAfterConstraintChanged()
     }
 }
