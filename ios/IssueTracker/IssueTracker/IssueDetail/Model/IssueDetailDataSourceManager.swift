@@ -15,33 +15,37 @@ struct IssueInfo: DetailHeaderData {
     let issueAuthorNo: Int
     let issueAuthorID: String
     
-    init(issue: IssueItem) {
-        issueNo = issue.issueNo
-        issueTitle = issue.issueTitle
-        issueContent = issue.issueContent
-        issueFlag = issue.issueFlag
-        issueDate = issue.issueDate
-        issueAuthorNo = issue.issueAuthorNo
-        issueAuthorID = issue.issueAuthorID
+    init(detail: IssueDetail) {
+        issueNo = detail.issue.issueNo
+        issueTitle = detail.issue.issueTitle
+        issueContent = detail.issue.issueContent
+        issueFlag = detail.issue.issueFlag
+        issueDate = detail.issue.issueDate
+        issueAuthorNo = detail.issue.issueAuthorNo
+        issueAuthorID = detail.issue.issueAuthorName
     }
 }
 
 class IssueDetailDataSourceManager {
     
-    var detailItem: IssueDetailItem?
+    init() {
+        detailItem = DummyDataLoader().loadDetail()
+    }
+    
+    var detailItem: IssueDetail?
     
     var issueInfo: IssueInfo? {
-        guard let issue = detailItem?.issue else {
+        guard let detail = detailItem else {
             return nil
         }
-        return IssueInfo(issue: issue)
+        return IssueInfo(detail: detail)
     }
     
     var commentCount: Int {
         detailItem?.comments.count ?? 0
     }
     
-    subscript(indexPath: IndexPath) -> CommentItem? {
+    subscript(indexPath: IndexPath) -> Comment? {
         return detailItem?.comments[indexPath.row]
     }
 }

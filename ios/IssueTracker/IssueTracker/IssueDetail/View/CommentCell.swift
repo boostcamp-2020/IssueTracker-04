@@ -9,7 +9,7 @@ import UIKit
 
 protocol CommentCellData {
     var comment: String { get }
-    var authorNo: Int { get }
+    var authorName: String { get }
     var authorImg: String { get }
     var commentDate: Date { get }
 }
@@ -44,7 +44,7 @@ class CommentCell: UICollectionViewCell {
     
     func configure(with data: CommentCellData) {
         authorImageView.image = UIImage.checkmark //http 통신으로 로드
-        authorLabel.text = String(data.authorNo)
+        authorLabel.text = data.authorName
         dateLabel.text = data.commentDate.string
         commentLabel.text = data.comment
     }

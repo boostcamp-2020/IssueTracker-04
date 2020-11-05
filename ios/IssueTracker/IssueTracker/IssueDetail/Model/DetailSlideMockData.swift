@@ -14,9 +14,9 @@ struct DetailSlideMockData {
     private(set) var mileStone: [MileStone] = []
     
     init() {
-        assignees.append(Assignee(iuRelationNo: 0, userNo: 0, userID: "Oh Donggeon", userImg: "asdfasdf"))
-        assignees.append(Assignee(iuRelationNo: 0, userNo: 0, userID: "Oh Donggeon", userImg: "asdfasdf"))
-        assignees.append(Assignee(iuRelationNo: 0, userNo: 0, userID: "Oh Donggeon", userImg: "asdfasdf"))
+        assignees.append(Assignee(iuRelationNo: 0, userNo: 0, userName: "Oh Donggeon", userImg: "asdfasdf"))
+        assignees.append(Assignee(iuRelationNo: 0, userNo: 0, userName: "Oh Donggeon", userImg: "asdfasdf"))
+        assignees.append(Assignee(iuRelationNo: 0, userNo: 0, userName: "Oh Donggeon", userImg: "asdfasdf"))
         
         labels.append(Label(ilRelationNo: 0, labelNo: 0, labelTitle: "라벨1", labelColor: "#AAAAAA"))
         labels.append(Label(ilRelationNo: 0, labelNo: 0, labelTitle: "라벨222", labelColor: "#AAAAAA"))

@@ -2,9 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,7 +28,6 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="u5T-vC-HA5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="GFS-uv-mNx"/>
                 <constraint firstItem="u5T-vC-HA5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Hlh-lV-XZ6"/>
@@ -41,15 +39,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imageView" destination="u5T-vC-HA5" id="WEI-C7-XI1"/>
-                <outlet property="label" destination="bUD-tR-dkE" id="Uze-Sm-XNY"/>
+                <outlet property="nameLabel" destination="bUD-tR-dkE" id="d9d-57-BPT"/>
             </connections>
             <point key="canvasLocation" x="118.11594202898551" y="-140.625"/>
         </view>
     </objects>
     <resources>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

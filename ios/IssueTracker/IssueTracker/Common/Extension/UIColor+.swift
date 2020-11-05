@@ -27,4 +27,15 @@ extension UIColor {
             alpha: 1
         )
     }
+    
+    var visibleTextColor: UIColor {
+        let ciColor = CIColor(color: self)
+        let red = ciColor.red
+        let green = ciColor.green
+        let blue = ciColor.blue
+        
+        let yiq = ((red * 299) + (green * 587) + (blue * 114))/1000
+        
+        return yiq >= 128/255 ? UIColor.black : UIColor.white
+    }
 }

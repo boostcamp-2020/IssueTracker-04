@@ -9,13 +9,14 @@ import UIKit
 
 class IssueDetailViewController: UIViewController {
     
-    @IBOutlet weak var slideView: IssueDetailSlideView!
+    @IBOutlet weak var slideView: UIView!
     @IBOutlet weak var detailCollectionView: IssueDetailCollectionView!
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
 
     var slideViewPanGesture = UIPanGestureRecognizer()
     var issueTitle: String = "IssueTitle"
+    var detailCollectionViewAdapter: IssueDetailCollectionViewAdapter!
     
     var minimumSlideViewVisibleHeight: CGFloat = 92
     var maximumSlideViewVisibleHeight: CGFloat {
@@ -26,18 +27,29 @@ class IssueDetailViewController: UIViewController {
         super.viewDidLoad()
         slideViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
         slideView.addGestureRecognizer(slideViewPanGesture)
-        
         configureCollectionView()
+        
+        guard let slideViewController = children.first as? IssueDetailSlideViewController,
+              let detailItem = detailCollectionViewAdapter.dataManager.detailItem else {
+            return
+        }
+        
+        let slideViewDataManager = IssueSlideViewDataSourceManager()
+        slideViewDataManager.assignees = detailItem.assignees
+        slideViewDataManager.labels = detailItem.labels
+        slideViewDataManager.mileStone = detailItem.milestone
+        
+        slideViewController.dataManager = slideViewDataManager
     }
     
     private func configureCollectionView() {
         
         let dataManager = IssueDetailDataSourceManager()
-        let adpater = IssueDetailCollectionViewAdapter(dataManager: dataManager)
-        
+        detailCollectionViewAdapter = IssueDetailCollectionViewAdapter(dataManager: dataManager)
         detailCollectionView.delegate = self
-        detailCollectionView.dataSource = adpater
+        detailCollectionView.dataSource = detailCollectionViewAdapter
         detailCollectionView.setHeaderSize(with: issueTitle, width: detailCollectionView.frame.width)
+        detailCollectionView.reloadData()
     }
     
     @objc func onAction() {
