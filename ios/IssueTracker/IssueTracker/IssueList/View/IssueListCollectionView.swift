@@ -31,10 +31,10 @@ class IssueListCollectionView: UICollectionView {
     
     private func commonInit() {
         register(UINib(nibName: IssueListCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: IssueListCollectionViewCell.identifier)
-        setupCollectionViewFlowLayout()
+        setCollectionViewFlowLayout()
     }
     
-    private func setupCollectionViewFlowLayout() {
+    private func setCollectionViewFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 1
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
