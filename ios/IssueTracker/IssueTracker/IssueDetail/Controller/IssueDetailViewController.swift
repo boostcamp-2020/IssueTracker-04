@@ -16,6 +16,7 @@ class IssueDetailViewController: UIViewController {
 
     var slideViewPanGesture = UIPanGestureRecognizer()
     var issueTitle: String = "IssueTitle"
+    var detailCollectionViewAdapter: IssueDetailCollectionViewAdapter!
     
     var minimumSlideViewVisibleHeight: CGFloat = 92
     var maximumSlideViewVisibleHeight: CGFloat {
@@ -28,16 +29,17 @@ class IssueDetailViewController: UIViewController {
         slideView.addGestureRecognizer(slideViewPanGesture)
         configureCollectionView()
         
+        
     }
     
     private func configureCollectionView() {
         
         let dataManager = IssueDetailDataSourceManager()
-        let adpater = IssueDetailCollectionViewAdapter(dataManager: dataManager)
-        
+        detailCollectionViewAdapter = IssueDetailCollectionViewAdapter(dataManager: dataManager)
         detailCollectionView.delegate = self
-        detailCollectionView.dataSource = adpater
+        detailCollectionView.dataSource = detailCollectionViewAdapter
         detailCollectionView.setHeaderSize(with: issueTitle, width: detailCollectionView.frame.width)
+        detailCollectionView.reloadData()
     }
     
     @objc func onAction() {

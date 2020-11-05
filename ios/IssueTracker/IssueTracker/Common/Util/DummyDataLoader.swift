@@ -19,6 +19,7 @@ struct DummyDataLoader: NetworkManager {
             return []
         }
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         var items = [IssueItem]()
         do {
@@ -27,5 +28,21 @@ struct DummyDataLoader: NetworkManager {
             print(error.localizedDescription)
         }
         return items
+    }
+    
+    func loadDetail() -> IssueDetail? {
+        guard let dataAsset = NSDataAsset.init(name: "dummyIssueDetail") else {
+            return nil
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        var item: IssueDetail?
+        do {
+            item = try decoder.decode(IssueDetail.self, from: dataAsset.data)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return item
     }
 }

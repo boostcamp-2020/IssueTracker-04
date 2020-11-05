@@ -43,8 +43,6 @@
 		995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AF6254EA4B500811D49 /* Notification+.swift */; };
 		995E0AFF254EF29800811D49 /* IssueListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AFE254EF29800811D49 /* IssueListCollectionView.swift */; };
 		9965DC2F2550F41400F92FFC /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC2E2550F41400F92FFC /* IssueDetailViewController.swift */; };
-		9965DC5525512B7B00F92FFC /* IssueDetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */; };
-		9965DC5D25512BC500F92FFC /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC5C25512BC500F92FFC /* CommentItem.swift */; };
 		9965DC6D25512F2200F92FFC /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC6B25512F2200F92FFC /* CommentCell.swift */; };
 		9965DC6E25512F2200F92FFC /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9965DC6C25512F2200F92FFC /* CommentCell.xib */; };
 		9965DC73255138E000F92FFC /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC72255138E000F92FFC /* Date+.swift */; };
@@ -54,6 +52,7 @@
 		9965DC8B25517CD200F92FFC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC8A25517CD200F92FFC /* String+.swift */; };
 		9965DCA0255294A600F92FFC /* IssueDetailCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DC9F255294A500F92FFC /* IssueDetailCollectionViewAdapter.swift */; };
 		9965DCA8255294F700F92FFC /* IssueDetailDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DCA7255294F700F92FFC /* IssueDetailDataSourceManager.swift */; };
+		9965DCFF2553DE8500F92FFC /* IssueDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DCFE2553DE8500F92FFC /* IssueDetail.swift */; };
 		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
 		99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B5B2549A34C0082ADF0 /* IssueItem.swift */; };
 		99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B702549AD230082ADF0 /* DummyDataLoader.swift */; };
@@ -127,8 +126,6 @@
 		995E0AF6254EA4B500811D49 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		995E0AFE254EF29800811D49 /* IssueListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionView.swift; sourceTree = "<group>"; };
 		9965DC2E2550F41400F92FFC /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
-		9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailItem.swift; sourceTree = "<group>"; };
-		9965DC5C25512BC500F92FFC /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
 		9965DC6B25512F2200F92FFC /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		9965DC6C25512F2200F92FFC /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		9965DC72255138E000F92FFC /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -138,6 +135,7 @@
 		9965DC8A25517CD200F92FFC /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		9965DC9F255294A500F92FFC /* IssueDetailCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		9965DCA7255294F700F92FFC /* IssueDetailDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailDataSourceManager.swift; sourceTree = "<group>"; };
+		9965DCFE2553DE8500F92FFC /* IssueDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetail.swift; sourceTree = "<group>"; };
 		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		99A09B5B2549A34C0082ADF0 /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
 		99A09B702549AD230082ADF0 /* DummyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
@@ -384,9 +382,8 @@
 		9965DC5325512B6400F92FFC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9965DC5425512B7B00F92FFC /* IssueDetailItem.swift */,
-				9965DC5C25512BC500F92FFC /* CommentItem.swift */,
 				9965DCA7255294F700F92FFC /* IssueDetailDataSourceManager.swift */,
+				9965DCFE2553DE8500F92FFC /* IssueDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -706,6 +703,7 @@
 				9965DC2F2550F41400F92FFC /* IssueDetailViewController.swift in Sources */,
 				99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */,
 				99D99CD4254BB05D008E2BF4 /* RoundAddButton.swift in Sources */,
+				9965DCFF2553DE8500F92FFC /* IssueDetail.swift in Sources */,
 				3756A1C42551427100703715 /* IssueDetailSlideViewHeader.swift in Sources */,
 				37CA36932551362C0076CB57 /* LabelCollectionViewCell.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,
@@ -716,7 +714,6 @@
 				99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */,
 				99A09B792549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift in Sources */,
 				3747D4742547EFDF009BA189 /* IssueTracker.xcdatamodeld in Sources */,
-				9965DC5525512B7B00F92FFC /* IssueDetailItem.swift in Sources */,
 				37C205FE254A9A130004D8B5 /* GithubLoginViewController.swift in Sources */,
 				375C901325497800009E33D1 /* LoginViewController.swift in Sources */,
 				9965DC8B25517CD200F92FFC /* String+.swift in Sources */,
@@ -727,7 +724,6 @@
 				995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */,
 				99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */,
 				3747D46C2547EFDF009BA189 /* SceneDelegate.swift in Sources */,
-				9965DC5D25512BC500F92FFC /* CommentItem.swift in Sources */,
 				995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
