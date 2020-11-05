@@ -29,7 +29,17 @@ class IssueDetailViewController: UIViewController {
         slideView.addGestureRecognizer(slideViewPanGesture)
         configureCollectionView()
         
+        guard let slideViewController = children.first as? IssueDetailSlideViewController,
+              let detailItem = detailCollectionViewAdapter.dataManager.detailItem else {
+            return
+        }
         
+        let slideViewDataManager = IssueSlideViewDataSourceManager()
+        slideViewDataManager.assignees = detailItem.assignees
+        slideViewDataManager.labels = detailItem.labels
+        slideViewDataManager.mileStone = detailItem.milestone
+        
+        slideViewController.dataManager = slideViewDataManager
     }
     
     private func configureCollectionView() {
@@ -43,7 +53,6 @@ class IssueDetailViewController: UIViewController {
     }
     
     @objc func onAction() {
-        print("gesture")
         if slideViewPanGesture.state == .ended {
             let velocity = slideViewPanGesture.velocity(in: slideView).y
             gestureDidFinish(velocity: velocity)

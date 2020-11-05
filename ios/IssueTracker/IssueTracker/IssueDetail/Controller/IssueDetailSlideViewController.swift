@@ -12,6 +12,8 @@ class IssueDetailSlideViewController: UIViewController {
     let mockData = DetailSlideMockData()
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var dataManager: IssueSlideViewDataSourceManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.clipsToBounds = true
@@ -19,7 +21,6 @@ class IssueDetailSlideViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         
         collectionView.register(UINib(nibName: "IssueDetailSlideViewHeader", bundle: nil), forCellWithReuseIdentifier: "IssueDetailSlideViewHeader")
         collectionView.register(UINib(nibName: "AssigneeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AssigneeCollectionViewCell")
@@ -48,11 +49,11 @@ extension IssueDetailSlideViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case DetailSlideKeyword.HeaderSection.assignee.rawValue:
-            return mockData.assignees.count
+            return dataManager.assignees.count
         case DetailSlideKeyword.HeaderSection.label.rawValue:
-            return mockData.labels.count
+            return dataManager.labels.count
         case DetailSlideKeyword.HeaderSection.milestone.rawValue:
-            return mockData.mileStone.count
+            return dataManager.labels.count
         case DetailSlideKeyword.HeaderSection.option.rawValue:
             return 0
         default:
@@ -65,15 +66,26 @@ extension IssueDetailSlideViewController: UICollectionViewDataSource {
         
         switch indexPath.section {
         case DetailSlideKeyword.HeaderSection.assignee.rawValue:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath)
+            guard let assigneeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as? AssigneeCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            assigneeCell.nameLabel.text = dataManager.assignees[indexPath.row].userName
+            return assigneeCell
+            
         case DetailSlideKeyword.HeaderSection.label.rawValue:
             guard let labelCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell", for: indexPath) as? LabelCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            labelCell.setLabel(data: mockData.labels[indexPath.item])
+            labelCell.setLabel(data: dataManager.labels[indexPath.row])
             return labelCell
+            
         case DetailSlideKeyword.HeaderSection.milestone.rawValue:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MileStoneCollectionViewCell", for: indexPath)
+            guard let milestoneCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MileStoneCollectionViewCell", for: indexPath) as? MileStoneCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            milestoneCell.mileStoneLabel.text = dataManager.mileStone.milestoneTitle
+            return milestoneCell
+            
         case DetailSlideKeyword.HeaderSection.option.rawValue:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyDetailSlideViewHeader", for: indexPath)
         default:

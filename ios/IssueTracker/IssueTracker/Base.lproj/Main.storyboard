@@ -241,7 +241,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAE-J0-7dT">
                                 <rect key="frame" x="0.0" y="762" width="414" height="774"/>
                                 <connections>
-                                    <segue destination="nBV-p1-dLl" kind="embed" id="ly5-rP-bJy"/>
+                                    <segue destination="nBV-p1-dLl" kind="embed" identifier="DetailToContainer" id="ly5-rP-bJy"/>
                                 </connections>
                             </containerView>
                         </subviews>
