@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Yy-H9-QTE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -231,19 +231,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-FY-nm0" customClass="IssueDetailSlideView" customModule="IssueTracker" customModuleProvider="target">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAE-J0-7dT">
                                 <rect key="frame" x="0.0" y="721" width="414" height="725"/>
-                            </view>
+                                <color key="backgroundColor" red="0.3729785531" green="0.81343358759999995" blue="0.38017585059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <segue destination="nBV-p1-dLl" kind="embed" id="ly5-rP-bJy"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WdK-Jq-GEN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="xN1-FY-nm0" secondAttribute="top" constant="92" id="KBW-96-scd"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="RL7-mV-w03"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="Tfb-cX-LOH"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="VxL-SK-Q3N"/>
+                            <constraint firstItem="oAE-J0-7dT" firstAttribute="leading" secondItem="WdK-Jq-GEN" secondAttribute="leading" id="ZGE-l4-PPQ"/>
+                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="oAE-J0-7dT" secondAttribute="top" constant="92" id="agV-Ms-GLP"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="trailing" secondItem="WdK-Jq-GEN" secondAttribute="trailing" id="p4Q-to-u94"/>
-                            <constraint firstItem="xN1-FY-nm0" firstAttribute="height" secondItem="WdK-Jq-GEN" secondAttribute="height" id="uzL-zb-bHF"/>
+                            <constraint firstItem="WdK-Jq-GEN" firstAttribute="trailing" secondItem="oAE-J0-7dT" secondAttribute="trailing" id="qh9-SV-uAU"/>
+                            <constraint firstItem="oAE-J0-7dT" firstAttribute="height" secondItem="WdK-Jq-GEN" secondAttribute="height" id="qpG-un-53H"/>
                             <constraint firstItem="WdK-Jq-GEN" firstAttribute="bottom" secondItem="mSs-hm-IEb" secondAttribute="bottom" constant="92" id="xFe-Be-rn0"/>
                             <constraint firstItem="mSs-hm-IEb" firstAttribute="top" secondItem="WdK-Jq-GEN" secondAttribute="top" id="xJR-Y8-xY1"/>
                         </constraints>
@@ -251,8 +255,8 @@
                     <navigationItem key="navigationItem" title="이슈 상세" largeTitleDisplayMode="never" id="muH-kd-AgS"/>
                     <connections>
                         <outlet property="detailCollectionView" destination="mSs-hm-IEb" id="rdV-GV-I61"/>
-                        <outlet property="slideView" destination="xN1-FY-nm0" id="LMG-S7-ZZK"/>
-                        <outlet property="slideViewTobConstraint" destination="KBW-96-scd" id="gdZ-yI-zkW"/>
+                        <outlet property="slideView" destination="oAE-J0-7dT" id="ZC1-d0-0db"/>
+                        <outlet property="slideViewTobConstraint" destination="xFe-Be-rn0" id="Ig0-oH-rel"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -626,6 +630,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1d-dH-pgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="605.79710144927537" y="-1038.6160714285713"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iww-vk-gNs">
+            <objects>
+                <viewController id="nBV-p1-dLl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kdw-UE-w2g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ZW-N2-Ue9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2457" y="-2177"/>
         </scene>
     </scenes>
     <designables>

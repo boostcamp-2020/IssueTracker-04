@@ -9,7 +9,7 @@ import UIKit
 
 class IssueDetailViewController: UIViewController {
     
-    @IBOutlet weak var slideView: IssueDetailSlideView!
+    @IBOutlet weak var slideView: UIView!
     @IBOutlet weak var detailCollectionView: IssueDetailCollectionView!
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
@@ -41,6 +41,7 @@ class IssueDetailViewController: UIViewController {
     }
     
     @objc func onAction() {
+        print("gesture")
         if slideViewPanGesture.state == .ended {
             let velocity = slideViewPanGesture.velocity(in: slideView).y
             gestureDidFinish(velocity: velocity)
