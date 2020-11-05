@@ -127,7 +127,6 @@
                                 <state key="normal" title="Filter"/>
                                 <connections>
                                     <action selector="leftBarButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjF-dA-rJ5"/>
-                                    <segue destination="8B9-Hs-unh" kind="show" id="HRf-hF-nDo"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -142,7 +141,7 @@
                         <outlet property="selectedIssueCountLabel" destination="Uzl-Ds-8kr" id="Sih-aa-xr7"/>
                         <outlet property="selectionResultView" destination="v5s-vG-8Wc" id="YuX-UI-cIg"/>
                         <outlet property="selectionResultViewLeadingConstraint" destination="MTs-gX-L5D" id="L6F-ux-pOA"/>
-                        <segue destination="8B9-Hs-unh" kind="show" id="8gQ-MF-YBo"/>
+                        <segue destination="8B9-Hs-unh" kind="show" identifier="ListToDetail" id="8gQ-MF-YBo"/>
                         <segue destination="lWJ-qa-oZ7" kind="presentation" id="XpI-OJ-UbU"/>
                         <segue destination="Ady-S4-UFq" kind="presentation" id="G0G-rh-lZh"/>
                     </connections>
@@ -733,9 +732,6 @@
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="8gQ-MF-YBo"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>

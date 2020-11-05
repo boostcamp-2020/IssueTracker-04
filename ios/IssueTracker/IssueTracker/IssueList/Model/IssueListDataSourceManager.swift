@@ -9,7 +9,7 @@ import Foundation
 
 class IssueListDataSourceManager {
     
-    var items: [IssueItem] = []
+    var items: [IssueListCellData] = []
     var itemCount: Int {
         items.count
     }
@@ -20,16 +20,16 @@ class IssueListDataSourceManager {
         loadIssueList()
     }
     
-    subscript(indexPath: IndexPath) -> IssueItem {
+    subscript(indexPath: IndexPath) -> IssueListCellData {
         items[indexPath.row]
     }
     
-    subscript(indexPaths: [IndexPath]) -> [IssueItem] {
+    subscript(indexPaths: [IndexPath]) -> [IssueListCellData] {
         indexPaths.map { self[$0] }
     }
     
     func loadIssueList() {
-        items = networkManager.loadItems()
+        items = networkManager.loadItems().map { $0.cellData() }
     }
     
     func deleteIssue(by issueNo: Int, completion: (IndexPath) -> Void) {

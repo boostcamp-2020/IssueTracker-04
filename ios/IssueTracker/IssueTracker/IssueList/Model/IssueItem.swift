@@ -7,17 +7,24 @@
 
 import Foundation
 
-struct IssueItem: Codable, IssueListCollectionViewCellData {
-    let issueNo: Int
-    let issueTitle, issueContent: String
-    let issueFlag: Bool
-    let issueDate: Date
-    let issueAuthorNo: Int
-    let issueAuthorId: String
-    let milestoneNo: Int
-    let milestoneTitle: String
+struct IssueListCellData: IssueListCollectionViewCellData {
+    var issueNo: Int
+    var issueTitle: String
+    var issueContent: String
+    var milestoneTitle: String
+    var labels: [Label]
+}
+
+
+struct IssueItem: Codable {
+    let issue: Issue
     let assignees: [Assignee]
     let labels: [Label]
+    let milestone: Milestone
+    
+    func cellData() -> IssueListCellData {
+        return IssueListCellData(issueNo: issue.issueNo, issueTitle: issue.issueTitle, issueContent: issue.issueTitle, milestoneTitle: milestone.milestoneTitle, labels: labels)
+    }
 }
 
 struct Assignee: Codable {

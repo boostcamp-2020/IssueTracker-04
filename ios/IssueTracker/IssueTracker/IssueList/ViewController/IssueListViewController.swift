@@ -66,6 +66,16 @@ class IssueListViewController: UIViewController {
         issueListCollectionView.animateVisibleCells()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "ListToDetail":
+            //set Issue ID for Detail
+            return
+        default:
+            return
+        }
+    }
+    
     private func updateLayout(viewWidth: CGFloat) {
         if mode == .normal {
             selectionResultViewLeadingConstraint.constant = -viewWidth
@@ -185,9 +195,8 @@ extension IssueListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mode {
         case .normal:
-            print(indexPath)
+            performSegue(withIdentifier: "ListToDetail", sender: nil) // send selectedIssue ID
         case .edit:
-            print(indexPath)
             setSelectedIssueCountLabel()
         }
     }
