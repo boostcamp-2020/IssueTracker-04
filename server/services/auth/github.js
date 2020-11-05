@@ -2,9 +2,10 @@ const passport = require('passport');
 const userModel = require('../../models').user;
 const axios = require('axios');
 const { createJWT } = require('../utils/jwt');
+require('dotenv').config('../../config/.env');
 
 const findUserOne = async (userGitHub) => {
-  console.log(userGitHub);
+  //console.log(userGitHub);
   try {
     const userDB = await userModel.findOne({
       where: { user_id: userGitHub.login, oauth_site: 'GITHUB' },
@@ -33,8 +34,22 @@ const gitSignup = async (user) => {
   }
 };
 
+exports.gitCode = async (req, res, next) => {
+  const clientID = process.env.GITHUB_CLIENT_ID;
+  const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+  const json = await axios({
+    method: 'post',
+    url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${req.body.code}`,
+    headers: {
+      accept: 'application/json',
+    },
+  });
+  res.locals.accessToken = json.data.access_token;
+  next();
+};
+
 exports.gitIosLogin = async (req, res, next) => {
-  const accessToken = req.body.accessToken;
+  const accessToken = res.locals.accessToken;
 
   const { data } = await axios.get('https://api.github.com/user', {
     headers: {
