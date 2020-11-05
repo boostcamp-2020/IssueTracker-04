@@ -17,10 +17,6 @@ protocol DetailHeaderData {
 }
 
 class IssueDetailCollectionViewHeader: UICollectionReusableView {
-
-    static var identifier: String {
-        String(describing: Self.self)
-    }
     
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!

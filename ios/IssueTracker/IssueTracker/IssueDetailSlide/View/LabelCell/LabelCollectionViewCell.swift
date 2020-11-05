@@ -12,8 +12,7 @@ class LabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var badgeLabel: BadgeLabel!
     
     func setLabel(data label: Label) {
-        badgeLabel.text = label.labelTitle
-        badgeLabel.backgroundColor = UIColor(hexString: label.labelColor)
+        badgeLabel.configure(with: label)
     }
     
 }
