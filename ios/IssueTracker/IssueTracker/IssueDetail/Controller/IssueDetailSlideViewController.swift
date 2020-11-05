@@ -10,9 +10,22 @@ import UIKit
 class IssueDetailSlideViewController: UIViewController {
 
     let mockData = DetailSlideMockData()
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 20.0
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        
+        collectionView.register(UINib(nibName: "IssueDetailSlideViewHeader", bundle: nil), forCellWithReuseIdentifier: "IssueDetailSlideViewHeader")
+        collectionView.register(UINib(nibName: "AssigneeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AssigneeCollectionViewCell")
+        collectionView.register(UINib(nibName: "LabelCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LabelCollectionViewCell")
+        collectionView.register(UINib(nibName: "MileStoneCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MileStoneCollectionViewCell")
+        collectionView.register(UINib(nibName: "EmptyDetailSlideViewHeader", bundle: nil), forCellWithReuseIdentifier: "EmptyDetailSlideViewHeader")
     }
 
 }

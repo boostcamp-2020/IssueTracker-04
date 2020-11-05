@@ -26,8 +26,8 @@ class IssueDetailViewController: UIViewController {
         super.viewDidLoad()
         slideViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
         slideView.addGestureRecognizer(slideViewPanGesture)
-        
         configureCollectionView()
+        
     }
     
     private func configureCollectionView() {
