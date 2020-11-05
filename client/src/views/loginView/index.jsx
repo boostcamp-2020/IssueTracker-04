@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './style.scss';
 import imgSrc from '@assets/svg/github-icon.svg';
 import Input from '@components/loginView/input';
 import axios from 'axios';
+import qs from 'qs';
 
-const urlForGitHubOAuth = '/api/auth/github/';
-const clientUrl = 'http://localhost:3000/issues-list';
+const client_id = 'f9cee2fa1bd2cbe70a42';
+const redirectUrl = 'http://localhost:3000/';
+const urlForCode = `https://github.com/login/oauth/authorize?client_id=${client_id}&redirect_uri=${redirectUrl}`;
+const urlForJwt = 'http://101.101.217.9:5000/api/auth/github/code';
 
 const loginView = () => {
   const [id, setId] = useState('');
@@ -22,6 +25,21 @@ const loginView = () => {
   const onSubmitHandler = e => {
     e.preventDefault();
   };
+
+  useEffect(async () => {
+    const { code } = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+
+    if (code) {
+      const json = await axios.post(urlForJwt, { code: code });
+      localStorage.setItem('jwt', json.data.jwt);
+
+      if (localStorage.getItem('jwt')) {
+        location.href = '/issues-list';
+      }
+    }
+  }, []);
 
   return (
     <div className="loginLayout">
@@ -42,7 +60,7 @@ const loginView = () => {
               </button>
             </div>
           </form>
-          <a className="gitHubLogin" href={urlForGitHubOAuth + '?redirect=' + clientUrl}>
+          <a className="gitHubLogin" href={urlForCode}>
             Sign with GitHub
             <img className="gitHubMark" src={imgSrc} />
           </a>
