@@ -25,10 +25,6 @@ class CommentCell: UICollectionViewCell {
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentLabelHeightConstraint: NSLayoutConstraint!
     
-    static var identifier: String {
-        String(describing: Self.self)
-    }
-    
     var cellWidth: CGFloat? {
         didSet {
             guard let cellWidth = cellWidth else {

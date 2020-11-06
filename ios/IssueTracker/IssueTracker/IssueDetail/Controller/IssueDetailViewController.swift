@@ -25,10 +25,18 @@ class IssueDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        slideViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(onAction))
-        slideView.addGestureRecognizer(slideViewPanGesture)
+        configureGestureRecognizer()
         configureCollectionView()
+        configureSlideView()
         
+    }
+    
+    private func configureGestureRecognizer() {
+        slideViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(slideViewPanned))
+        slideView.addGestureRecognizer(slideViewPanGesture)
+    }
+    
+    private func configureSlideView() {
         guard let slideViewController = children.first as? IssueDetailSlideViewController,
               let detailItem = detailCollectionViewAdapter.dataManager.detailItem else {
             return
@@ -37,10 +45,13 @@ class IssueDetailViewController: UIViewController {
         let slideViewDataManager = IssueSlideViewDataSourceManager()
         slideViewDataManager.assignees = detailItem.assignees
         slideViewDataManager.labels = detailItem.labels
-        slideViewDataManager.mileStone = detailItem.milestone
+        slideViewDataManager.milestone = detailItem.milestone
         
-        slideViewController.dataManager = slideViewDataManager
+        slideViewController.adapter = IssueSlideVIewCollectionViewAdapter(dataManager: slideViewDataManager)
+        slideViewController.reloadData()
     }
+    
+    
     
     private func configureCollectionView() {
         
@@ -52,7 +63,7 @@ class IssueDetailViewController: UIViewController {
         detailCollectionView.reloadData()
     }
     
-    @objc func onAction() {
+    @objc func slideViewPanned() {
         if slideViewPanGesture.state == .ended {
             let velocity = slideViewPanGesture.velocity(in: slideView).y
             gestureDidFinish(velocity: velocity)

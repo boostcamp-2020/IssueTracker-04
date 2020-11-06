@@ -23,7 +23,7 @@
                     <rect key="frame" x="482" y="16" width="30" height="37"/>
                     <state key="normal" title="edit"/>
                     <connections>
-                        <action selector="headerButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="G1U-tx-fBi"/>
+                        <action selector="editButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="G1U-tx-fBi"/>
                     </connections>
                 </button>
             </subviews>
@@ -38,8 +38,8 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="headerButton" destination="S2p-T7-Oz1" id="eVu-T8-IXn"/>
-                <outlet property="headerLabel" destination="97D-7J-5c3" id="VbF-Y7-cg2"/>
+                <outlet property="editButton" destination="S2p-T7-Oz1" id="eVu-T8-IXn"/>
+                <outlet property="title" destination="97D-7J-5c3" id="VbF-Y7-cg2"/>
             </connections>
             <point key="canvasLocation" x="276.81159420289856" y="-402.79017857142856"/>
         </view>

@@ -23,8 +23,8 @@ class IssueDetailCollectionView: UICollectionView {
     }
     
     func commonInit() {
-        register(UINib(nibName: CommentCell.identifier, bundle: nil), forCellWithReuseIdentifier: CommentCell.identifier)
-        register(UINib(nibName: IssueDetailCollectionViewHeader.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: IssueDetailCollectionViewHeader.identifier)
+        registerCell(identifier: CommentCell.identifier)
+        registerHeader(identifier: IssueDetailCollectionViewHeader.identifier)
         setFlowLayout()
     }
     

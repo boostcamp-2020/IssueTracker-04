@@ -29,10 +29,6 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainViewWidthConstraint: NSLayoutConstraint!
-   
-    static var identifier: String {
-        String(describing: Self.self)
-    }
     
     var issueNo: Int?
     var mode: IssueListViewController.Mode = .normal

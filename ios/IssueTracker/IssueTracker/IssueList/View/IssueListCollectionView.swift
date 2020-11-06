@@ -30,7 +30,7 @@ class IssueListCollectionView: UICollectionView {
     }
     
     private func commonInit() {
-        register(UINib(nibName: IssueListCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: IssueListCollectionViewCell.identifier)
+        registerCell(identifier: IssueListCollectionViewCell.identifier)
         setCollectionViewFlowLayout()
     }
     
