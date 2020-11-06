@@ -46,11 +46,19 @@
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-2">Day 2</a></li>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-3">Day 3</a></li>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</a></li>
-      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-4">Day 4</a></li>
       <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-1-Day-5">Day 5</a></li>
     </ul>
   </div>
-
+  
+  <summary><b>Week 2</b></summary>
+  <div markdown="1">
+    <ul>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-2-Day-2">Day 2</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-2-Day-3">Day 3</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-2-Day-4">Day 4</a></li>
+      <li><a href="https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EB%8D%B0%EC%9D%BC%EB%A6%AC%EC%8A%A4%ED%81%AC%EB%9F%BC-Week-2-Day-5">Day 5</a></li>
+    </ul>
+  </div>
 
 
 ### 작업 내역
