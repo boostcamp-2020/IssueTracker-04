@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol NetworkManager {
+protocol NetworkManaging {
     func loadItems() -> [IssueItem]
 }
 
-struct DummyDataLoader: NetworkManager {
+struct DummyDataLoader: NetworkManaging {
     
     func loadItems() -> [IssueItem] {
         

@@ -13,9 +13,9 @@ class IssueListDataSourceManager {
     var itemCount: Int {
         items.count
     }
-    var networkManager: NetworkManager
+    var networkManager: NetworkManaging
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManaging) {
         self.networkManager = networkManager
         loadIssueList()
     }

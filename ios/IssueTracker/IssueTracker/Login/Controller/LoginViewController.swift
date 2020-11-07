@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setAppleLoginButton()
         loginManager = LoginManager()
+        addTapToDissmissKeyBoard()
     }
     
     private func setAppleLoginButton() {

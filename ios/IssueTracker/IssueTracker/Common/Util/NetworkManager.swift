@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class NetworkManagers {
+final class NetworkManager {
     
     private init() { }
     
