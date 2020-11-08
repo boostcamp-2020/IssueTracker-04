@@ -1,0 +1,12 @@
+//
+//  LableListCell.swift
+//  IssueTracker
+//
+//  Created by Byoung-Hwi Yoon on 2020/11/08.
+//
+
+import UIKit
+
+class LabelListCell: UICollectionViewCell {
+    
+}
