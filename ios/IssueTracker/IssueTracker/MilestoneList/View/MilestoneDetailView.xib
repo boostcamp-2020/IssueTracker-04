@@ -10,7 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MilestoneDetailView" customModule="IssueTracker" customModuleProvider="target">
             <connections>
-                <outlet property="titleLabel" destination="v9p-Vx-AwP" id="ZnM-d2-hMs"/>
+                <outlet property="closedLabel" destination="cFy-Bl-MSn" id="JXh-dV-Eaz"/>
+                <outlet property="dateLabel" destination="s3A-Os-C9M" id="Bg9-o5-upE"/>
+                <outlet property="descriptionLabel" destination="5ws-4T-DJf" id="qjy-5P-Lk4"/>
+                <outlet property="openLabel" destination="1rB-eG-mmm" id="b89-br-yCg"/>
+                <outlet property="percentLabel" destination="xfq-GZ-b6W" id="tmT-t2-uJu"/>
+                <outlet property="progressView" destination="TXI-T7-rtF" id="DcI-TF-vmD"/>
+                <outlet property="titleLabel" destination="v9p-Vx-AwP" id="KLF-eC-ooc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

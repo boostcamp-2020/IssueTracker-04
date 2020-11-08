@@ -9,6 +9,8 @@ import UIKit
 
 class MilestoneListCell: SwipableCollectionViewCell {
     
+    var milestoneView: MilestoneDetailView?
+    
     override func commonInit() {
         super.commonInit()
         addMilestoneDetailView()
@@ -29,7 +31,7 @@ class MilestoneListCell: SwipableCollectionViewCell {
                            milestoneView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor)]
         NSLayoutConstraint.activate(constraints)
         
-        milestoneView.titleLabel.text = "HAHAHA"
+        self.milestoneView = milestoneView
     }
     
     private func addDeleteButton() {
@@ -53,5 +55,9 @@ class MilestoneListCell: SwipableCollectionViewCell {
     }
     
     @objc private func deleteButtonDidTouched() {
+    }
+    
+    func configure(with data: MilestoneDetailViewData) {
+        milestoneView?.configure(with: data)
     }
 }
