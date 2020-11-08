@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+class MilestoneDatasourceManager {
+    var items: [MilestoneDetail] = []
+    var itemCount: Int {
+        items.count
+    }
+    
+    subscript(indexPath: IndexPath) -> MilestoneDetail {
+        items[indexPath.row]
+    }
+    
+    func loadData() {
+        items = DummyDataLoader().loadMilestones()
+    }
+}
