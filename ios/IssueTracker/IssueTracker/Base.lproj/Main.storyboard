@@ -186,7 +186,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="49i-6a-Mcw" customClass="IssueMarkdownTextView" customModule="IssueTracker" customModuleProvider="target">
                                 <rect key="frame" x="16" y="252" width="382" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">asdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfasdfasasdfasdfsfasdfsadfas</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -194,6 +193,16 @@
                                     <outlet property="delegate" destination="lWJ-qa-oZ7" id="KkT-Ur-32s"/>
                                 </connections>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="첫번째 코멘트를 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSd-hL-acy">
+                                <rect key="frame" x="21" y="262" width="169.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="2Jn-Us-mad"/>
+                                    <constraint firstAttribute="height" constant="17" id="oGi-Eb-4uT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZv-pJ-fOM">
                                 <rect key="frame" x="16" y="179" width="382" height="2"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
@@ -215,6 +224,7 @@
                         <constraints>
                             <constraint firstItem="MbA-B9-Ox9" firstAttribute="leading" secondItem="hTf-h1-RGG" secondAttribute="leading" constant="16" id="2uT-4J-Qv0"/>
                             <constraint firstItem="49i-6a-Mcw" firstAttribute="bottom" secondItem="hTf-h1-RGG" secondAttribute="bottom" id="4mf-6N-drD"/>
+                            <constraint firstItem="pSd-hL-acy" firstAttribute="top" secondItem="49i-6a-Mcw" secondAttribute="top" constant="10" id="5sj-W2-kro"/>
                             <constraint firstItem="hTf-h1-RGG" firstAttribute="trailing" secondItem="MbA-B9-Ox9" secondAttribute="trailing" constant="16" id="88e-jA-Wjj"/>
                             <constraint firstItem="sM0-GZ-I6W" firstAttribute="centerX" secondItem="MbA-B9-Ox9" secondAttribute="centerX" id="DMo-8J-MQo"/>
                             <constraint firstItem="MbA-B9-Ox9" firstAttribute="top" secondItem="hTf-h1-RGG" secondAttribute="top" constant="8" id="GSE-tr-P5p"/>
@@ -224,6 +234,7 @@
                             <constraint firstItem="49i-6a-Mcw" firstAttribute="top" secondItem="sM0-GZ-I6W" secondAttribute="bottom" constant="16" id="MIc-zu-N2W"/>
                             <constraint firstItem="0oP-r3-NZz" firstAttribute="leading" secondItem="hTf-h1-RGG" secondAttribute="leading" constant="16" id="QiY-ig-rr7"/>
                             <constraint firstItem="49i-6a-Mcw" firstAttribute="leading" secondItem="hTf-h1-RGG" secondAttribute="leading" constant="16" id="TdJ-mi-frA"/>
+                            <constraint firstItem="pSd-hL-acy" firstAttribute="leading" secondItem="49i-6a-Mcw" secondAttribute="leading" constant="5" id="WLa-Li-r7Z"/>
                             <constraint firstItem="0oP-r3-NZz" firstAttribute="bottom" secondItem="hTf-h1-RGG" secondAttribute="bottom" id="YVT-QK-g8M"/>
                             <constraint firstItem="WZv-pJ-fOM" firstAttribute="top" secondItem="MbA-B9-Ox9" secondAttribute="bottom" constant="8" id="nwR-nE-fPx"/>
                             <constraint firstItem="WZv-pJ-fOM" firstAttribute="trailing" secondItem="MbA-B9-Ox9" secondAttribute="trailing" id="qBo-Kg-h9w"/>
@@ -244,7 +255,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="issueNavItem" destination="cV1-O7-y5b" id="7N0-Z1-Zn1"/>
+                        <outlet property="markDownTextViewPlaceHolder" destination="pSd-hL-acy" id="N2f-fb-ZK6"/>
                         <outlet property="markdownTextView" destination="49i-6a-Mcw" id="mVC-bI-TBr"/>
+                        <outlet property="markdownTextViewBottomConstraint" destination="4mf-6N-drD" id="eAj-Xg-cl5"/>
                         <outlet property="markdownWebView" destination="0oP-r3-NZz" id="EVt-Io-JFm"/>
                     </connections>
                 </viewController>

@@ -52,7 +52,7 @@ class MilestoneDetailView: UIView {
     func configure(with data: MilestoneDetailViewData) {
         titleLabel.text = data.milestoneTitle
         descriptionLabel.text = data.milestoneDescription
-        dateLabel.text = data.dueDate.string
+        dateLabel.text = Date().difference(with: data.dueDate)
         percentLabel.text = "\(data.percent)"
         openLabel.text = "open \(data.openIssueCount)"
         closedLabel.text = "closed \(data.closedIssueCount)"

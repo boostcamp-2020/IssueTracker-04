@@ -24,7 +24,7 @@
 		3756A1E225515FE400703715 /* MileStoneCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3756A1E025515FE400703715 /* MileStoneCollectionViewCell.xib */; };
 		375C43B42554045900C5BE27 /* AppleIDLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43B32554045900C5BE27 /* AppleIDLoginButton.swift */; };
 		375C43C3255404FB00C5BE27 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43C2255404FB00C5BE27 /* LoginManager.swift */; };
-		375C43D52554054400C5BE27 /* NetworkManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43D32554054400C5BE27 /* NetworkManagers.swift */; };
+		375C43D52554054400C5BE27 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43D32554054400C5BE27 /* NetworkManager.swift */; };
 		375C43D62554054400C5BE27 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43D42554054400C5BE27 /* Constant.swift */; };
 		375C43DB2554056000C5BE27 /* GithubApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43DA2554056000C5BE27 /* GithubApplication.swift */; };
 		375C901325497800009E33D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C901225497800009E33D1 /* LoginViewController.swift */; };
@@ -59,6 +59,7 @@
 		9916EA342557FF6F005A2359 /* ColorBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916EA332557FF6F005A2359 /* ColorBox.swift */; };
 		9916EA3C255802D1005A2359 /* ColorTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916EA3B255802D1005A2359 /* ColorTextFieldManager.swift */; };
 		9916EA4925582AE3005A2359 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916EA4825582AE3005A2359 /* CancelButton.swift */; };
+		9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9562556E805005A2359 /* UIVIewController+.swift */; };
 		995E0AE5254E7AE600811D49 /* LeftContainerContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AE4254E7AE600811D49 /* LeftContainerContaining.swift */; };
 		995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AF0254E8D6100811D49 /* IssueListDataSourceManager.swift */; };
 		995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0AF6254EA4B500811D49 /* Notification+.swift */; };
@@ -78,6 +79,7 @@
 		9965DD7C255484BE00F92FFC /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DD7B255484BE00F92FFC /* UICollectionReusableView+.swift */; };
 		9965DD9625548D9A00F92FFC /* IssueSlideVIewCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DD9525548D9A00F92FFC /* IssueSlideVIewCollectionViewAdapter.swift */; };
 		9965DD9F2554A70C00F92FFC /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DD9E2554A70C00F92FFC /* UICollectionView+.swift */; };
+		9965DDB82556D11200F92FFC /* MarkDownRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9965DDB72556D11200F92FFC /* MarkDownRendering.swift */; };
 		99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B532549A2740082ADF0 /* IssueListViewController.swift */; };
 		99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B5B2549A34C0082ADF0 /* IssueItem.swift */; };
 		99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B702549AD230082ADF0 /* DummyDataLoader.swift */; };
@@ -132,7 +134,7 @@
 		3756A1E025515FE400703715 /* MileStoneCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MileStoneCollectionViewCell.xib; sourceTree = "<group>"; };
 		375C43B32554045900C5BE27 /* AppleIDLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppleIDLoginButton.swift; path = IssueTracker/Login/view/AppleIDLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		375C43C2255404FB00C5BE27 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		375C43D32554054400C5BE27 /* NetworkManagers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagers.swift; sourceTree = "<group>"; };
+		375C43D32554054400C5BE27 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		375C43D42554054400C5BE27 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		375C43DA2554056000C5BE27 /* GithubApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubApplication.swift; sourceTree = "<group>"; };
 		375C901225497800009E33D1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		9916EA332557FF6F005A2359 /* ColorBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBox.swift; sourceTree = "<group>"; };
 		9916EA3B255802D1005A2359 /* ColorTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTextFieldManager.swift; sourceTree = "<group>"; };
 		9916EA4825582AE3005A2359 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		9916E9562556E805005A2359 /* UIVIewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+.swift"; sourceTree = "<group>"; };
 		995E0AE4254E7AE600811D49 /* LeftContainerContaining.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftContainerContaining.swift; sourceTree = "<group>"; };
 		995E0AF0254E8D6100811D49 /* IssueListDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListDataSourceManager.swift; sourceTree = "<group>"; };
 		995E0AF6254EA4B500811D49 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 		9965DD7B255484BE00F92FFC /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		9965DD9525548D9A00F92FFC /* IssueSlideVIewCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueSlideVIewCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		9965DD9E2554A70C00F92FFC /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
+		9965DDB72556D11200F92FFC /* MarkDownRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkDownRendering.swift; sourceTree = "<group>"; };
 		99A09B532549A2740082ADF0 /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		99A09B5B2549A34C0082ADF0 /* IssueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueItem.swift; sourceTree = "<group>"; };
 		99A09B702549AD230082ADF0 /* DummyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
@@ -323,18 +327,11 @@
 		376005A9255280F2007DC1C9 /* AddIssue */ = {
 			isa = PBXGroup;
 			children = (
-				376005AA25528102007DC1C9 /* Model */,
+				9965DDB62556D10400F92FFC /* Model */,
 				376005AB25528107007DC1C9 /* View */,
 				376005AC2552810B007DC1C9 /* Controller */,
 			);
 			path = AddIssue;
-			sourceTree = "<group>";
-		};
-		376005AA25528102007DC1C9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		376005AB25528107007DC1C9 /* View */ = {
@@ -514,6 +511,7 @@
 				9965DC8A25517CD200F92FFC /* String+.swift */,
 				9965DD7B255484BE00F92FFC /* UICollectionReusableView+.swift */,
 				9965DD9E2554A70C00F92FFC /* UICollectionView+.swift */,
+				9916E9562556E805005A2359 /* UIVIewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -666,6 +664,14 @@
 			path = Adapter;
 			sourceTree = "<group>";
 		};
+		9965DDB62556D10400F92FFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9965DDB72556D11200F92FFC /* MarkDownRendering.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		99A09B522549A24B0082ADF0 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,7 +706,7 @@
 			children = (
 				375C43DA2554056000C5BE27 /* GithubApplication.swift */,
 				375C43D42554054400C5BE27 /* Constant.swift */,
-				375C43D32554054400C5BE27 /* NetworkManagers.swift */,
+				375C43D32554054400C5BE27 /* NetworkManager.swift */,
 				99A09B702549AD230082ADF0 /* DummyDataLoader.swift */,
 				375C901825497921009E33D1 /* KeychainItem.swift */,
 			);
@@ -965,10 +971,12 @@
 				9965DCA8255294F700F92FFC /* IssueDetailDataSourceManager.swift in Sources */,
 				9965DC81255152EF00F92FFC /* IssueDetailCollectionViewHeader.swift in Sources */,
 				9965DD9F2554A70C00F92FFC /* UICollectionView+.swift in Sources */,
+				9965DDB82556D11200F92FFC /* MarkDownRendering.swift in Sources */,
 				370739562553C1F30024D75F /* IssueDetailSlideViewController.swift in Sources */,
 				9965DD9625548D9A00F92FFC /* IssueSlideVIewCollectionViewAdapter.swift in Sources */,
 				9965DD0A2553EA0B00F92FFC /* IssueSlideViewDataSourceManager.swift in Sources */,
-				375C43D52554054400C5BE27 /* NetworkManagers.swift in Sources */,
+				375C43D52554054400C5BE27 /* NetworkManager.swift in Sources */,
+				9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */,
 				375C43DB2554056000C5BE27 /* GithubApplication.swift in Sources */,
 				99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */,
 				995E0AE5254E7AE600811D49 /* LeftContainerContaining.swift in Sources */,
