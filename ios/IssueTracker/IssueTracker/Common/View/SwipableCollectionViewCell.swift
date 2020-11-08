@@ -35,7 +35,7 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         configureContainerView()
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onGesture))
-        panGesture.cancelsTouchesInView = false
+        panGesture.cancelsTouchesInView = true
         panGesture.delegate = self
         addGestureRecognizer(panGesture)
         self.panGesture = panGesture
