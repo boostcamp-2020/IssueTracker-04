@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol LabelListCellData {
+    var label: Label { get }
+    var labelDescription: String { get }
+}
+
 class LabelListCell: SwipableCollectionViewCell {
     
     var badgeLabel: BadgeLabel?
@@ -94,5 +99,10 @@ class LabelListCell: SwipableCollectionViewCell {
     }
     
     @objc private func deleteButtonDidTouched() {
+    }
+    
+    func configure(with data: LabelListCellData) {
+        badgeLabel?.configure(with: data.label)
+        descriptionLabel?.text = data.labelDescription
     }
 }
