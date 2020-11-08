@@ -35,6 +35,8 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         configureContainerView()
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onGesture))
+        panGesture.cancelsTouchesInView = false
+        panGesture.delegate = self
         addGestureRecognizer(panGesture)
         self.panGesture = panGesture
     }
@@ -113,4 +115,17 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         }
     }
     
+}
+
+extension SwipableCollectionViewCell: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let gesture = panGesture else {
+            return false
+        }
+        return abs((gesture.velocity(in: gestureRecognizer.view)).x) > abs((gesture.velocity(in: gestureRecognizer.view)).y)
+    }
 }
