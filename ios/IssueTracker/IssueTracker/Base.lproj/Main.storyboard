@@ -458,21 +458,50 @@
         <!--마일스톤-->
         <scene sceneID="nLi-ZA-NQz">
             <objects>
-                <viewController id="XQH-Z7-ym9" sceneMemberID="viewController">
+                <viewController id="XQH-Z7-ym9" customClass="MilestoneListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZA-Ui-E7i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QaO-Ap-P2Z">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J2x-Om-0rc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FhK-9g-a5u">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QV6-ry-m2f">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AOl-Wm-DfI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QaO-Ap-P2Z" firstAttribute="leading" secondItem="AOl-Wm-DfI" secondAttribute="leading" id="2cr-H2-wA3"/>
+                            <constraint firstItem="AOl-Wm-DfI" firstAttribute="trailing" secondItem="QaO-Ap-P2Z" secondAttribute="trailing" id="DDo-8V-VUv"/>
+                            <constraint firstItem="QaO-Ap-P2Z" firstAttribute="top" secondItem="AOl-Wm-DfI" secondAttribute="top" id="Xfh-rh-G8g"/>
+                            <constraint firstItem="AOl-Wm-DfI" firstAttribute="bottom" secondItem="QaO-Ap-P2Z" secondAttribute="bottom" id="d0p-3f-paG"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="마일스톤" image="signpost.left" catalog="system" id="aVi-nf-sEu"/>
+                    <navigationItem key="navigationItem" title="마일스톤" largeTitleDisplayMode="always" id="jPb-hx-RcZ"/>
                     <connections>
+                        <outlet property="collectionView" destination="QaO-Ap-P2Z" id="5Ot-dG-WX5"/>
                         <segue destination="M8g-FA-PQe" kind="presentation" id="WiY-dH-BHA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LoU-wU-hbo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="548"/>
+            <point key="canvasLocation" x="1515.9420289855075" y="547.76785714285711"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Fmy-jG-oQu">
@@ -496,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohx-SK-7Zx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1435" y="548"/>
+            <point key="canvasLocation" x="2344.9275362318845" y="547.76785714285711"/>
         </scene>
         <!--설정-->
         <scene sceneID="4AJ-Ka-hYL">
@@ -719,7 +748,7 @@
                     <connections>
                         <segue destination="Yqr-de-vQq" kind="relationship" relationship="viewControllers" id="5mL-0q-BGB"/>
                         <segue destination="xPX-Dq-vN2" kind="relationship" relationship="viewControllers" id="w6F-G9-h3j"/>
-                        <segue destination="XQH-Z7-ym9" kind="relationship" relationship="viewControllers" id="vgf-Lv-zeg"/>
+                        <segue destination="hNr-oQ-p9O" kind="relationship" relationship="viewControllers" id="vgf-Lv-zeg"/>
                         <segue destination="wGm-YX-pZx" kind="relationship" relationship="viewControllers" id="3T2-Rg-4O5"/>
                     </connections>
                 </tabBarController>
@@ -730,7 +759,6 @@
         <!--이슈-->
         <scene sceneID="MYA-2b-8vc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K1d-dH-pgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yqr-de-vQq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="이슈" image="list.dash" catalog="system" id="jPD-Z0-EJP"/>
                     <toolbarItems/>
@@ -743,6 +771,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vuZ-eP-vtw"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1d-dH-pgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="605.79710144927537" y="-1038.6160714285713"/>
         </scene>
@@ -867,11 +896,27 @@
             </objects>
             <point key="canvasLocation" x="605.79710144927537" y="-266.51785714285711"/>
         </scene>
+        <!--마일스톤-->
+        <scene sceneID="PEF-Z4-InX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hNr-oQ-p9O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="마일스톤" image="signpost.left" catalog="system" id="aVi-nf-sEu"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="uen-OM-noN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XQH-Z7-ym9" kind="relationship" relationship="rootViewController" id="Q0R-aD-K8Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGL-y6-4vL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="605.79710144927537" y="547.76785714285711"/>
+        </scene>
     </scenes>
     <designables>
-        <designable name="a2V-1B-ZNl">
-            <size key="intrinsicContentSize" width="130" height="30"/>
-        </designable>
         <designable name="cWC-ob-1li">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
