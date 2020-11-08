@@ -15,7 +15,6 @@ struct IssueListCellData: IssueListCollectionViewCellData {
     var labels: [Label]
 }
 
-
 struct IssueItem: Codable {
     let issue: Issue
     let assignees: [Assignee]
@@ -28,11 +27,11 @@ struct IssueItem: Codable {
 }
 
 struct Assignee: Codable {
-    let iuRelationNo, userNo: Int
+    let userNo: Int
     let userName, userImg: String
 }
 
 struct Label: Codable {
-    let ilRelationNo, labelNo: Int
+    let labelNo: Int
     let labelTitle, labelColor: String
 }
