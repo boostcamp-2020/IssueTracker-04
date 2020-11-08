@@ -32,6 +32,6 @@ struct Assignee: Codable {
 }
 
 struct Label: Codable {
-    let labelNo: Int
-    let labelTitle, labelColor: String
+    var labelNo: Int
+    var labelTitle, labelColor: String
 }

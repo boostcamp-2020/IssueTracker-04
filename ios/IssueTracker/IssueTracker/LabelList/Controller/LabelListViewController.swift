@@ -22,6 +22,28 @@ class LabelListViewController: UIViewController {
         self.adapter = adapter
         collectionView.dataSource = adapter
     }
+    
+    private func presentLabelAddView(isUpdate: Bool, indexPath: IndexPath?) {
+        guard let labelAddViewController = storyboard?.instantiateViewController(identifier: LabelAddViewController.identifier) as? LabelAddViewController else {
+            return
+        }
+        
+        if let indexPath = indexPath,
+           let adapter = adapter,
+           isUpdate {
+            labelAddViewController.indexPath = indexPath
+            labelAddViewController.labelData = adapter.dataManager[indexPath]
+        }
+        
+        labelAddViewController.modalPresentationStyle = .pageSheet
+        labelAddViewController.modalTransitionStyle = .coverVertical
+        labelAddViewController.delegate = self
+        present(labelAddViewController, animated: true)
+    }
+    
+    @IBAction func addButtonTouched(_ sender: UIBarButtonItem) {
+        presentLabelAddView(isUpdate: false, indexPath: nil)
+    }
 }
 
 extension LabelListViewController: UICollectionViewDelegateFlowLayout {
@@ -37,4 +59,23 @@ extension LabelListViewController: UICollectionViewDelegateFlowLayout {
         1
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presentLabelAddView(isUpdate: true, indexPath: indexPath)
+    }
+    
+}
+
+extension LabelListViewController: LabelDataDelegate {
+    func labelDidAdd(label: LabelDetail) {
+        adapter?.dataManager.add(label: label) { [weak self] indexPath in
+            self?.collectionView.reloadSections([0])
+            self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+    
+    func labelDidUpdate(label: LabelDetail, indexPath: IndexPath) {
+        adapter?.dataManager.update(label: label, indexPath: indexPath) { [weak self] indexPath in
+            self?.collectionView.reloadItems(at: [indexPath])
+        }
+    }
 }
