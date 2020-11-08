@@ -45,4 +45,21 @@ struct DummyDataLoader: NetworkManager {
         }
         return item
     }
+    
+    func loadMilestones() -> [MilestoneDetail] {
+        guard let dataAsset = NSDataAsset.init(name: "dummyMilestones") else {
+            return []
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        var items: [MilestoneDetail] = []
+        do {
+            items = try decoder.decode([MilestoneDetail].self, from: dataAsset.data)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return items
+    }
+    
 }
