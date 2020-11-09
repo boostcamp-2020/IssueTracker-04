@@ -38,5 +38,7 @@ class SwipeToDeleteCollectionViewCell: SwipableCollectionViewCell {
         
     }
     
-    
+    override func didFullSwipe() {
+        deleteButtonDidTouched()
+    }
 }

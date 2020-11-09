@@ -11,12 +11,14 @@ import UIKit
 class SwipableCollectionViewCell: UICollectionViewCell {
     
     var mainLeadingConstraint: NSLayoutConstraint?
+    var rightContainerViewWidthConstraint: NSLayoutConstraint?
     var mainView: UIView?
     var rightContainerView: UIView?
     var panGesture: UIPanGestureRecognizer?
     var rightContentWidth: CGFloat = 80.0
     var maximumSwipeWidth: CGFloat {
-        rightContentWidth * 2
+        //rightContentWidth * 2
+        contentView.frame.width * 0.6
     }
     
     override init(frame: CGRect) {
@@ -65,11 +67,11 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        rightContainerViewWidthConstraint = containerView.widthAnchor.constraint(equalToConstant: rightContentWidth)
         let constraints = [
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: mainView?.trailingAnchor ?? NSLayoutXAxisAnchor()),
-            containerView.widthAnchor.constraint(equalToConstant: rightContentWidth),
+            rightContainerViewWidthConstraint ?? NSLayoutConstraint(),
             containerView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
         ]
 
@@ -92,14 +94,40 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         }
         
         var newConstant = leadingAnchor.constant + gesture.translation(in: mainView).x
-        if newConstant > 0 {
+        
+        switch newConstant {
+        case (-maximumSwipeWidth...0):
+            leadingAnchor.constant = newConstant
+            panGesture?.setTranslation(.zero, in: mainView)
+            
+        case _ where newConstant > 0:
             newConstant = 0
+            leadingAnchor.constant = newConstant
+            panGesture?.setTranslation(.zero, in: mainView)
+        
+        case _ where newConstant < -maximumSwipeWidth:
+            if gesture.translation(in: mainView).x > 0 {
+                newConstant = -maximumSwipeWidth
+                leadingAnchor.constant = newConstant
+                rightContainerViewWidthConstraint?.constant = rightContentWidth
+            } else {
+                if -newConstant > contentView.frame.width {
+                    panGesture?.setTranslation(.zero, in: mainView)
+                    return
+                }
+                newConstant = -contentView.frame.width
+                leadingAnchor.constant = newConstant
+                rightContainerViewWidthConstraint?.constant = contentView.frame.width
+            }
+            
+            panGesture?.setTranslation(.zero, in: mainView)
+            UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve) { [weak self] in
+                self?.layoutIfNeeded()
+            }
+        
+        default:
+            return
         }
-        if abs(newConstant) > maximumSwipeWidth {
-            newConstant = -maximumSwipeWidth
-        }
-        leadingAnchor.constant = newConstant
-        panGesture?.setTranslation(.zero, in: mainView)
     }
     
     private func gestureDidFinish(velocity: CGFloat) {
@@ -107,7 +135,11 @@ class SwipableCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        let newConstant: CGFloat = velocity < 0 ? -rightContentWidth : 0.0
+        if abs(leadingAnchor.constant) > maximumSwipeWidth && velocity < 0 {
+            didFullSwipe()
+        }
+        
+        let newConstant: CGFloat = (velocity > 0 && abs(leadingAnchor.constant) < contentView.frame.width/2) ? 0.0 : -rightContentWidth
         
         leadingAnchor.constant = newConstant
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
@@ -115,13 +147,13 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func didFullSwipe() {
+        
+    }
+    
 }
 
 extension SwipableCollectionViewCell: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let gesture = panGesture else {
             return false
