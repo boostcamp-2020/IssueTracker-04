@@ -12,37 +12,22 @@ protocol LabelListCellData {
     var labelDescription: String { get }
 }
 
-class LabelListCell: SwipableCollectionViewCell {
+class LabelListCell: SwipeToDeleteCollectionViewCell {
     
     var badgeLabel: BadgeLabel?
     var descriptionLabel: UILabel?
+    var labelNo: Int?
     
     override func commonInit() {
         super.commonInit()
-        addDeleteButton()
         addBadgeLabel()
         addDescriptionLabel()
         addAccessory()
     }
     
-    private func addDeleteButton() {
-        guard let rightContainerView = rightContainerView else {
-            return
-        }
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        rightContainerView.addSubview(button)
-        
-        let constraints = [button.topAnchor.constraint(equalTo: rightContainerView.topAnchor),
-                           button.heightAnchor.constraint(equalTo: rightContainerView.heightAnchor),
-                           button.leadingAnchor.constraint(equalTo: rightContainerView.leadingAnchor),
-                           button.trailingAnchor.constraint(equalTo: rightContainerView.trailingAnchor)]
-        NSLayoutConstraint.activate(constraints)
-        
-        button.backgroundColor = .systemRed
-        button.setTitle("Delete", for: .normal)
-        button.tintColor = .white
-        button.addTarget(self, action: #selector(deleteButtonDidTouched), for: .touchUpInside)
+    override func prepareForReuse() {
+        mainLeadingConstraint?.constant = 0
+        layoutIfNeeded()
     }
     
     private func addBadgeLabel() {
@@ -98,11 +83,17 @@ class LabelListCell: SwipableCollectionViewCell {
         accessory.tintColor = .systemGray2
     }
     
-    @objc private func deleteButtonDidTouched() {
-    }
-    
     func configure(with data: LabelListCellData) {
         badgeLabel?.configure(with: data.label)
         descriptionLabel?.text = data.labelDescription
+        labelNo = data.label.labelNo
+    }
+    
+    override func deleteButtonDidTouched() {
+        guard let labelNo = labelNo else {
+            return
+        }
+        
+        NotificationCenter.default.post(name: .labelDeleteButtonDidTouch, object: nil, userInfo: ["LabelNo": labelNo])
     }
 }

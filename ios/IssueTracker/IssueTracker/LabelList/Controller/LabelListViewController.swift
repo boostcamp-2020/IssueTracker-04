@@ -21,6 +21,8 @@ class LabelListViewController: UIViewController {
         let adapter = LabelCollectionViewAdapter(dataManager: LabelDatasourceManager())
         self.adapter = adapter
         collectionView.dataSource = adapter
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(labelDeleteButtonTouched(notification:)), name: .labelDeleteButtonDidTouch, object: nil)
     }
     
     private func presentLabelAddView(isUpdate: Bool, indexPath: IndexPath?) {
@@ -39,6 +41,16 @@ class LabelListViewController: UIViewController {
         labelAddViewController.modalTransitionStyle = .coverVertical
         labelAddViewController.delegate = self
         present(labelAddViewController, animated: true)
+    }
+    
+    @objc private func labelDeleteButtonTouched(notification: Notification) {
+        guard let labelNo = notification.userInfo?["LabelNo"] as? Int else {
+            return
+        }
+        
+        adapter?.dataManager.delete(with: labelNo) { [weak self] indexPath in
+            self?.collectionView.deleteItems(at: [indexPath])
+        }
     }
     
     @IBAction func addButtonTouched(_ sender: UIBarButtonItem) {
@@ -68,8 +80,8 @@ extension LabelListViewController: UICollectionViewDelegateFlowLayout {
 extension LabelListViewController: LabelDataDelegate {
     func labelDidAdd(label: LabelDetail) {
         adapter?.dataManager.add(label: label) { [weak self] indexPath in
-            self?.collectionView.reloadSections([0])
-            self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+            self?.collectionView.insertItems(at: [indexPath])
+            self?.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
     

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9p-Vx-AwP" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                    <rect key="frame" x="16" y="8" width="33" height="16"/>
+                    <rect key="frame" x="16" y="8" width="43" height="26"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="6RA-gX-nLd"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="DUF-iU-5fE"/>
@@ -52,13 +52,13 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Milestone Description Field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ws-4T-DJf">
-                    <rect key="frame" x="16" y="32" width="175" height="17"/>
+                    <rect key="frame" x="16" y="42" width="175" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3A-Os-C9M">
-                    <rect key="frame" x="65" y="8" width="59.5" height="16"/>
+                    <rect key="frame" x="75" y="13" width="59.5" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="65z-2P-8p8"/>
                     </constraints>
@@ -75,13 +75,13 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rB-eG-mmm">
                     <rect key="frame" x="336" y="34" width="45" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 close" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFy-Bl-MSn">
                     <rect key="frame" x="332" y="51" width="49" height="15"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TXI-T7-rtF">
@@ -94,10 +94,10 @@
             <constraints>
                 <constraint firstItem="xfq-GZ-b6W" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="08V-cy-6Fh"/>
                 <constraint firstItem="cFy-Bl-MSn" firstAttribute="top" secondItem="1rB-eG-mmm" secondAttribute="bottom" constant="2" id="9Jh-P7-eC1"/>
+                <constraint firstItem="s3A-Os-C9M" firstAttribute="centerY" secondItem="v9p-Vx-AwP" secondAttribute="centerY" id="9el-aD-VBV"/>
                 <constraint firstItem="cFy-Bl-MSn" firstAttribute="trailing" secondItem="xfq-GZ-b6W" secondAttribute="trailing" id="BNi-rv-QHb"/>
                 <constraint firstItem="5ws-4T-DJf" firstAttribute="top" secondItem="v9p-Vx-AwP" secondAttribute="bottom" constant="8" id="BgY-qK-yo7"/>
                 <constraint firstItem="v9p-Vx-AwP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Bxc-aW-xQc"/>
-                <constraint firstItem="s3A-Os-C9M" firstAttribute="top" secondItem="v9p-Vx-AwP" secondAttribute="top" id="C7V-1m-v8V"/>
                 <constraint firstItem="5ws-4T-DJf" firstAttribute="leading" secondItem="v9p-Vx-AwP" secondAttribute="leading" id="QUt-72-xep"/>
                 <constraint firstItem="xfq-GZ-b6W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s3A-Os-C9M" secondAttribute="trailing" constant="8" id="RlW-aH-qPz"/>
                 <constraint firstItem="TXI-T7-rtF" firstAttribute="top" secondItem="cFy-Bl-MSn" secondAttribute="bottom" constant="8" id="UWV-32-BBx"/>
@@ -116,7 +116,7 @@
     </objects>
     <designables>
         <designable name="v9p-Vx-AwP">
-            <size key="intrinsicContentSize" width="33" height="16"/>
+            <size key="intrinsicContentSize" width="43" height="26"/>
         </designable>
     </designables>
     <resources>

@@ -37,4 +37,13 @@ class LabelDatasourceManager {
         items[indexPath.row] = label
         completion?(indexPath)
     }
+    
+    func delete(with labelNo: Int, completion: ((IndexPath) -> Void)?) {
+        //self[indexPath].label.labelNo
+        guard let index = (items.firstIndex { $0.label.labelNo == labelNo }) else {
+            return
+        }
+        items.remove(at: index)
+        completion?(IndexPath(row: index, section: 0))
+    }
 }
