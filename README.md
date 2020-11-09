@@ -115,3 +115,4 @@
 
 ### 스프린트 계획 회의
 - [Week 2](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-%EA%B3%84%ED%9A%8D-%ED%9A%8C%EC%9D%98-Week-2)
+- [Week 3](https://github.com/boostcamp-2020/IssueTracker-04/wiki/%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-%EA%B3%84%ED%9A%8D-%ED%9A%8C%EC%9D%98-Week-3)
