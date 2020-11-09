@@ -8,7 +8,6 @@ import SubmitButton from '../../components/issueCreateView/submitButton';
 import Assignees from '../../components/sideAssignee';
 import Labels from '../../components/sideLabel';
 import Milestones from '../../components/sideMilestone';
-import Dropdown from '../../components/dropDown';
 
 const issueCreateView = () => {
   const [Title, setTitle] = useState('');
@@ -40,15 +39,15 @@ const issueCreateView = () => {
   const items = [
     {
       id: 1,
-      value: 'Pulp Fiction',
+      value: 'Zigje9',
     },
     {
       id: 2,
-      value: 'The Prestige',
+      value: 'jk',
     },
     {
       id: 3,
-      value: 'Blade Runner 2049',
+      value: 'crong',
     },
   ];
 

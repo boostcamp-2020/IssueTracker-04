@@ -1,14 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.scss';
 import Dropdown from '../dropDown'
 
 const assignees = (props) => {
+  const [Member, setMember] = useState([]);
+  useEffect(() => {
+    console.log(Member)
+    return () => {
+      console.log("???");
+    };
+  }, [Member]);
 
   return (
     <div className="create-register">
-      <Dropdown title="Assignees" items={props.items} />
+      <Dropdown title="Assignees" items={props.items} member={Member} setmember={setMember}/>
       <div>
-        <span>No one—</span>
+        <span>{Member}No one—</span>
         <button className="assign-button">assign yourself</button>
       </div>
     </div>
