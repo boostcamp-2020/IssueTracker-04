@@ -45,6 +45,10 @@ class IssueDetailDataSourceManager {
         detailItem?.comments.count ?? 0
     }
     
+    func setIssueFlag(_ flag: Bool) {
+        detailItem?.issue.issueFlag = flag
+    }
+    
     subscript(indexPath: IndexPath) -> Comment? {
         return detailItem?.comments[indexPath.row]
     }

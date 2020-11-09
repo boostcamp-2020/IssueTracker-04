@@ -65,7 +65,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         let fullName = appleIDCredential.fullName
         let email = appleIDCredential.email
         
-        /// - TODO: 서버에 데이터 전달
+        /// - TODO: 서버에 데이터 전달 및 뷰 이동
         
         saveUserInKeychain(userIdentifier)
     }
@@ -89,19 +89,6 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
-    }
-    
-}
-
-extension UIViewController {
-    
-    func showLoginViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController {
-            loginViewController.modalPresentationStyle = .formSheet
-            loginViewController.isModalInPresentation = true
-            self.present(loginViewController, animated: true, completion: nil)
-        }
     }
     
 }

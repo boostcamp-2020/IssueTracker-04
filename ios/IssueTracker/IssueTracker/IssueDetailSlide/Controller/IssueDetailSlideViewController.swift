@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol IssueDetailSlideViewControllerDelegate: class {
+    func didIssueButtonTouched(flag: Bool)
+}
+
 class IssueDetailSlideViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    weak var delegate: IssueDetailSlideViewControllerDelegate?
     
     var adapter: IssueSlideVIewCollectionViewAdapter? {
         didSet {
@@ -19,8 +24,20 @@ class IssueDetailSlideViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNotification()
         configureLayer()
         configureCollectionView()
+    }
+    
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(editButtonTouched(_:)),
+                                               name: .editButtonTouched,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(closedButtonTouched(_:)),
+                                               name: .closedButtonTouched,
+                                               object: nil)
     }
     
     private func configureLayer() {
@@ -35,11 +52,25 @@ class IssueDetailSlideViewController: UIViewController {
         collectionView.registerCell(identifier: AssigneeCollectionViewCell.identifier)
         collectionView.registerCell(identifier: LabelCollectionViewCell.identifier)
         collectionView.registerCell(identifier: MileStoneCollectionViewCell.identifier)
+        collectionView.registerCell(identifier: ClosedCollectionViewCell.identifier)
         collectionView.registerHeader(identifier: "EmptyDetailSlideViewHeader")
     }
     
     func reloadData() {
         collectionView.reloadData()
+    }
+    
+    @objc func editButtonTouched(_ notification: Notification) {
+        guard let section = notification.userInfo?["section"] as? Int else {
+            return
+        }
+    }
+    
+    @objc func closedButtonTouched(_ notification: Notification) {
+        if let flag = adapter?.dataManager.issueFlag {
+            adapter?.dataManager.issueFlag = !flag
+            delegate?.didIssueButtonTouched(flag: !flag)
+        }
     }
 }
 
@@ -56,13 +87,15 @@ extension IssueDetailSlideViewController: UICollectionViewDelegateFlowLayout {
         }
         
         switch adapter.dataManager.section(of: indexPath) {
-        case .assignee, .option:
+        case .assignee:
             return CGSize(width: collectionView.frame.width - 32, height: 48)
         case .label:
             let width = adapter.dataManager.labelTitle(of: indexPath).estimatedLabelWidth(height: 30, fontSize: 17)
             return CGSize(width: width + 12, height: 30)
         case .milestone:
             return CGSize(width: collectionView.frame.width - 32, height: 120)
+        case .option:
+            return CGSize(width: collectionView.frame.width - 32, height: 64)
         case.none:
             return .zero
         }

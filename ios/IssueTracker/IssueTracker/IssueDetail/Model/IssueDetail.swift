@@ -8,7 +8,7 @@
 import Foundation
 
 struct IssueDetail: Codable {
-    let issue: Issue
+    var issue: Issue
     let detailInfo: DetailInfo
     let milestone: Milestone
     let labels: [Label]
@@ -29,7 +29,7 @@ struct DetailInfo: Codable {
 struct Issue: Codable {
     let issueNo: Int
     let issueTitle, issueContent: String
-    let issueFlag: Bool
+    var issueFlag: Bool
     let issueDate: Date
     let issueAuthorNo: Int
     let issueAuthorName: String

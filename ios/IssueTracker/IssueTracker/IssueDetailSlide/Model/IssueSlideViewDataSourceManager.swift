@@ -32,6 +32,7 @@ class IssueSlideViewDataSourceManager {
     var assignees: [Assignee] = []
     var labels: [Label] = []
     var milestone: Milestone = Milestone(milestoneNo: 0, milestoneTitle: "")
+    var issueFlag: Bool = false
     
     var numberOfSection: Int {
         Section.allCases.count
@@ -51,7 +52,7 @@ class IssueSlideViewDataSourceManager {
         case .milestone:
             return 1
         case .option:
-            return 0
+            return 1
         }
     }
     

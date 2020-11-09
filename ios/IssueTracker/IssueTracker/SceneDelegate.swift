@@ -13,7 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        checkCredentialState()
+        guard UserDefaults.standard.string(forKey: "JWT") != nil else {
+            presentLoginViewController()
+            return
+        }
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -27,24 +30,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 return
             }
             UserDefaults.standard.set(JWT, forKey: "JWT")
+            guard let controller = self.window?.rootViewController as? IssueListViewController else {
+                return
+            }
+            controller.presentingViewController?.dismiss(animated: true)
         }
     }
     
-    func checkCredentialState() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        
-        appleIDProvider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
-            switch credentialState {
-            case .authorized:
-                break // The Apple ID credential is valid.
-            case .revoked, .notFound:
-                // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
-                DispatchQueue.main.async {
-                    self.window?.rootViewController?.showLoginViewController()
-                }
-            default:
-                break
-            }
+    func presentLoginViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController {
+            loginViewController.modalPresentationStyle = .formSheet
+            loginViewController.isModalInPresentation = true
+            window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
         }
     }
+    
 }
