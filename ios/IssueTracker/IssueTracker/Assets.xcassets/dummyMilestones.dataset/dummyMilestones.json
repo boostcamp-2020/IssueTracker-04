@@ -1,0 +1,56 @@
+[
+    {
+        "milestone_no": 1,
+        "milestone_title": "Week1",
+        "due_date": "2019-07-21T19:32:00Z",
+        "milestone_description": "첫번째 주 작업 내용을 위한 마일스톤",
+        "percent": 50.0,
+        "open_issue_count": 16,
+        "closed_issue_count": 16
+    },
+    {
+        "milestone_no": 2,
+        "milestone_title": "Sprint1",
+        "due_date": "2019-11-08T19:32:00Z",
+        "milestone_description": "스프린트 프로젝트 1주차",
+        "percent": 66.6,
+        "open_issue_count": 1,
+        "closed_issue_count": 2
+    },
+    {
+        "milestone_no": 3,
+        "milestone_title": "Week2",
+        "due_date": "2019-11-09T19:32:00Z",
+        "milestone_description": "두번째 주 작업 내용을 위한 마일스톤",
+        "percent": 100.0,
+        "open_issue_count": 0,
+        "closed_issue_count": 32
+    },
+    {
+        "milestone_no": 4,
+        "milestone_title": "Sprint2",
+        "due_date": "2019-12-21T19:32:00Z",
+        "milestone_description": "스프린트 프로젝트 2주차",
+        "percent": 0.0,
+        "open_issue_count": 42,
+        "closed_issue_count": 0
+    },
+    {
+        "milestone_no": 5,
+        "milestone_title": "Week3",
+        "due_date": "2020-07-21T19:32:00Z",
+        "milestone_description": "세번째 주 작업 내용을 위한 마일스톤",
+        "percent": 0.1,
+        "open_issue_count": 48,
+        "closed_issue_count": 4
+    },
+    {
+        "milestone_no": 6,
+        "milestone_title": "RXSwift 학습",
+        "due_date": "2020-11-08T23:32:00Z",
+        "milestone_description": "Rx 언제하냐...",
+        "percent": 0.0,
+        "open_issue_count": 514,
+        "closed_issue_count": 0
+    }
+]

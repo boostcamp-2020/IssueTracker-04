@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol NetworkManager {
+protocol NetworkManaging {
     func loadItems() -> [IssueItem]
 }
 
-struct DummyDataLoader: NetworkManager {
+struct DummyDataLoader: NetworkManaging {
     
     func loadItems() -> [IssueItem] {
         
@@ -45,4 +45,37 @@ struct DummyDataLoader: NetworkManager {
         }
         return item
     }
+    
+    func loadMilestones() -> [MilestoneDetail] {
+        guard let dataAsset = NSDataAsset.init(name: "dummyMilestones") else {
+            return []
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        var items: [MilestoneDetail] = []
+        do {
+            items = try decoder.decode([MilestoneDetail].self, from: dataAsset.data)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return items
+    }
+    
+    func loadLabels() -> [LabelDetail] {
+        guard let dataAsset = NSDataAsset.init(name: "dummyLabels") else {
+            return []
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        var items: [LabelDetail] = []
+        do {
+            items = try decoder.decode([LabelDetail].self, from: dataAsset.data)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return items
+    }
+    
 }

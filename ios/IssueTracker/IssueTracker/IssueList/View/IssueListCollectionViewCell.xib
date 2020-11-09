@@ -180,6 +180,11 @@
             <point key="canvasLocation" x="-12.318840579710146" y="67.96875"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="A3h-od-0dS">
+            <size key="intrinsicContentSize" width="85.5" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">

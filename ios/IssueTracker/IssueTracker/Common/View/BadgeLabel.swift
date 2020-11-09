@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class BadgeLabel: UILabel {
 
     @IBInspectable var topInset: CGFloat = 2.0
@@ -40,6 +41,11 @@ class BadgeLabel: UILabel {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setBorder()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setBorder()
     }
     

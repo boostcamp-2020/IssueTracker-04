@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let code = context.url.absoluteString.components(separatedBy: "code=").last else {
             return
         }
-        NetworkManagers.requestLogin(code: code) { (data, error) in
+        NetworkManager.requestLogin(code: code) { (data, error) in
             guard let data = data,
                   let JWT = String(data: data, encoding: .utf8) else {
                 return

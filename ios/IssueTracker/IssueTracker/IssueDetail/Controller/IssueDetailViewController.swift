@@ -51,8 +51,6 @@ class IssueDetailViewController: UIViewController {
         slideViewController.reloadData()
     }
     
-    
-    
     private func configureCollectionView() {
         
         let dataManager = IssueDetailDataSourceManager()
