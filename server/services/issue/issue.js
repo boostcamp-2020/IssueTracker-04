@@ -92,7 +92,7 @@ exports.issueListGet = async (req, res, next) => {
         issue_flag: issueMilestone.dataValues.issue_flag,
         issue_date: issueMilestone.dataValues.issue_date,
         issue_author_no: issueMilestone.dataValues.issue_author_no,
-        issue_author_name: issue_author_name,
+        issue_author_name: issue_author_name.user_name,
       });
       milestone.push({
         milestone_no: issueMilestone.milestone.dataValues.milestone_no,
