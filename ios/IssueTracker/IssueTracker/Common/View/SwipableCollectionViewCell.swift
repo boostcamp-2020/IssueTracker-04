@@ -17,7 +17,6 @@ class SwipableCollectionViewCell: UICollectionViewCell {
     var panGesture: UIPanGestureRecognizer?
     var rightContentWidth: CGFloat = 80.0
     var maximumSwipeWidth: CGFloat {
-        //rightContentWidth * 2
         contentView.frame.width * 0.6
     }
     

@@ -25,7 +25,11 @@ extension LabelCollectionViewAdapter: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabelListCell.identifier, for: indexPath) as? LabelListCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: dataManager[indexPath])
+        let item = dataManager[indexPath]
+        cell.configure(with: item)
+        cell.deleteHandler = {
+            NotificationCenter.default.post(name: .labelDeleteButtonDidTouch, object: nil, userInfo: ["LabelNo": item.label.labelNo])
+        }
         return cell
     }
 }

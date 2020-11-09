@@ -47,7 +47,6 @@ class LabelListViewController: UIViewController {
         guard let labelNo = notification.userInfo?["LabelNo"] as? Int else {
             return
         }
-        
         adapter?.dataManager.delete(with: labelNo) { [weak self] indexPath in
             self?.collectionView.deleteItems(at: [indexPath])
         }

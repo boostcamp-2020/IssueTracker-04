@@ -14,6 +14,8 @@ class SwipeToDeleteCollectionViewCell: SwipableCollectionViewCell {
         addDeleteButton()
     }
     
+    var deleteHandler: (() -> Void)?
+    
     private func addDeleteButton() {
         guard let rightContainerView = rightContainerView else {
             return
@@ -35,10 +37,10 @@ class SwipeToDeleteCollectionViewCell: SwipableCollectionViewCell {
     }
     
     @objc open func deleteButtonDidTouched() {
-        
+        deleteHandler?()
     }
     
     override func didFullSwipe() {
-        deleteButtonDidTouched()
+        deleteHandler?()
     }
 }
