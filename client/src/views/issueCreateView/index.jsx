@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Axios from 'axios'
+import axios from 'axios'
 import './style.scss';
 import Titles from '../../components/issueCreateView/title';
 import Contents from '../../components/content';
@@ -8,6 +8,7 @@ import SubmitButton from '../../components/issueCreateView/submitButton';
 import Assignees from '../../components/sideAssignee';
 import Labels from '../../components/sideLabel';
 import Milestones from '../../components/sideMilestone';
+import Dropdown from '../../components/dropDown';
 
 const issueCreateView = () => {
   const [Title, setTitle] = useState('');
@@ -27,14 +28,29 @@ const issueCreateView = () => {
     const body={
       issue_title:Title,
       issue_content:Content,
-      issue_date:Date.now()
+      issue_authoer_no:0
     }
-    console.log(body);
-    Axios.post('http://localhost:5000/api/issue/create', body).then(response => {
+
+    axios.post('http://localhost:5000/api/issue/create', body).then(response => {
       console.log(response);
     })
 
   };
+
+  const items = [
+    {
+      id: 1,
+      value: 'Pulp Fiction',
+    },
+    {
+      id: 2,
+      value: 'The Prestige',
+    },
+    {
+      id: 3,
+      value: 'Blade Runner 2049',
+    },
+  ];
 
   return (
     <div className="create-view">
@@ -49,7 +65,7 @@ const issueCreateView = () => {
         </div>
       </div>
       <div className="register-column">
-        <Assignees />
+        <Assignees items={items}/>
         <hr className="thin-line" />
         <Labels />
         <hr className="thin-line" />

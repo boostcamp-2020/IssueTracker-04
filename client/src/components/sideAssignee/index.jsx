@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
+import Dropdown from '../dropDown'
 
-const assignees = () => {
+const assignees = (props) => {
 
   return (
     <div className="create-register">
-      <summary>
-        Assignees
-      </summary>
+      <Dropdown title="Assignees" items={props.items} />
       <div>
         <span>No one—</span>
         <button className="assign-button">assign yourself</button>
