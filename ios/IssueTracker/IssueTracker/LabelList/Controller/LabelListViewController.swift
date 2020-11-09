@@ -22,7 +22,7 @@ class LabelListViewController: UIViewController {
         self.adapter = adapter
         collectionView.dataSource = adapter
         
-        NotificationCenter.default.addObserver(self, selector: #selector(labelDeleteButtonTouched(notification:)), name: .labelDeleteButtonDidTouch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(labelDeleteButtonTouched(notification:)), name: .labelDeleteRequested, object: nil)
     }
     
     private func presentLabelAddView(isUpdate: Bool, indexPath: IndexPath?) {

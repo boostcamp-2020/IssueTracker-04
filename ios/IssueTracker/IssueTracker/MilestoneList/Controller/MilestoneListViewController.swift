@@ -22,6 +22,17 @@ class MilestoneListViewController: UIViewController {
         adapter.loadData()
         collectionView.dataSource = adapter
         collectionView.register(MilestoneListCell.self, forCellWithReuseIdentifier: MilestoneListCell.identifier)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(milestoneDeleteRequested(notification:)), name: .milestoneDeleteRequested, object: nil)
+    }
+    
+    @objc private func milestoneDeleteRequested(notification: Notification) {
+        guard let milestoneNo = notification.userInfo?["MilestoneNo"] as? Int else {
+            return
+        }
+        adapter?.dataManager.delete(with: milestoneNo) { [weak self] in
+            self?.collectionView.deleteItems(at: [$0])
+        }
     }
 }
 

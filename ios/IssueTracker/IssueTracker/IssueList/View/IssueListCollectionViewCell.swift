@@ -127,14 +127,14 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         guard let issueNo = issueNo else {
             return
         }
-        NotificationCenter.default.post(name: .cellCloseButtonDidTouch, object: nil, userInfo: ["IssueNo": issueNo])
+        NotificationCenter.default.post(name: .issueCloseRequested, object: nil, userInfo: ["IssueNo": issueNo])
     }
     
     @IBAction func deleteButtonTouched(_ sender: UIButton) {
         guard let issueNo = issueNo else {
             return
         }
-        NotificationCenter.default.post(name: .cellDeleteButtonDidTouch, object: nil, userInfo: ["IssueNo": issueNo])
+        NotificationCenter.default.post(name: .issueDeleteRequested, object: nil, userInfo: ["IssueNo": issueNo])
     }
 }
 

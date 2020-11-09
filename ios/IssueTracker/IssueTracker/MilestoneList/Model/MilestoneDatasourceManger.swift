@@ -20,4 +20,30 @@ class MilestoneDatasourceManager {
     func loadData() {
         items = DummyDataLoader().loadMilestones()
     }
+    
+    func add(item: MilestoneDetail, completion: ((IndexPath) -> Void)?) {
+        //api add
+        //api response == 200
+        items.append(item)
+        completion?(IndexPath(row: items.count - 1, section: 0))
+    }
+    
+    func update(item: MilestoneDetail, indexPath: IndexPath, completion: ((IndexPath) -> Void)?) {
+        guard item.milestoneNo == self[indexPath].milestoneNo else {
+            return
+        }
+        //api add
+        //api response == 200
+        items[indexPath.row] = item
+        completion?(indexPath)
+    }
+    
+    func delete(with milestoneNo: Int, completion: ((IndexPath) -> Void)?) {
+        //self[indexPath].label.labelNo
+        guard let index = (items.firstIndex { $0.milestoneNo == milestoneNo }) else {
+            return
+        }
+        items.remove(at: index)
+        completion?(IndexPath(row: index, section: 0))
+    }
 }

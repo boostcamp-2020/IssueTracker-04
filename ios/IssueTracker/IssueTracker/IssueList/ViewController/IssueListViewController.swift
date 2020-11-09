@@ -92,8 +92,8 @@ class IssueListViewController: UIViewController {
     }
   
     private func configureCellObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .cellCloseButtonDidTouch, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .cellDeleteButtonDidTouch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .issueCloseRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .issueDeleteRequested, object: nil)
     }
     
     private func addButtonAnimate(showing: Bool) {

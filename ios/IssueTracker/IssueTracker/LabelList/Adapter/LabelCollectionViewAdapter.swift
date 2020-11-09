@@ -28,7 +28,7 @@ extension LabelCollectionViewAdapter: UICollectionViewDataSource {
         let item = dataManager[indexPath]
         cell.configure(with: item)
         cell.deleteHandler = {
-            NotificationCenter.default.post(name: .labelDeleteButtonDidTouch, object: nil, userInfo: ["LabelNo": item.label.labelNo])
+            NotificationCenter.default.post(name: .labelDeleteRequested, object: nil, userInfo: ["LabelNo": item.label.labelNo])
         }
         return cell
     }

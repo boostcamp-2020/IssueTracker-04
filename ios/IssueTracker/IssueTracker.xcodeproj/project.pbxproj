@@ -87,7 +87,6 @@
 		99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B7E2549B2340082ADF0 /* IssueListCollectionViewCell.swift */; };
 		99A09B812549B2340082ADF0 /* IssueListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A09B7F2549B2340082ADF0 /* IssueListCollectionViewCell.xib */; };
 		99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */; };
-		99C5B1A52558410700218152 /* Notification++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5B1A42558410700218152 /* Notification++.swift */; };
 		99D977342558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D977332558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift */; };
 		99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */; };
 		99D99CB7254A5FED008E2BF4 /* LabelContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */; };
@@ -199,7 +198,6 @@
 		99A09B7E2549B2340082ADF0 /* IssueListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCollectionViewCell.swift; sourceTree = "<group>"; };
 		99A09B7F2549B2340082ADF0 /* IssueListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueListCollectionViewCell.xib; sourceTree = "<group>"; };
 		99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
-		99C5B1A42558410700218152 /* Notification++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification++.swift"; sourceTree = "<group>"; };
 		99D977332558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToDeleteCollectionViewCell.swift; sourceTree = "<group>"; };
 		99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelContainerView.swift; sourceTree = "<group>"; };
 		99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelContainerView.xib; sourceTree = "<group>"; };
@@ -388,7 +386,6 @@
 				9916E97625575AA6005A2359 /* View */,
 				9916E97A25575AB2005A2359 /* Controller */,
 				9916EA062557C896005A2359 /* Adapter */,
-				99C5B1A3255840D500218152 /* Notification */,
 			);
 			path = LabelList;
 			sourceTree = "<group>";
@@ -680,7 +677,6 @@
 		99A09B522549A24B0082ADF0 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
-				995E0AF5254EA49900811D49 /* Notification */,
 				99D99CCC254ABDF9008E2BF4 /* Adapter */,
 				99A09B7D2549B20F0082ADF0 /* View */,
 				99A09B612549A6E60082ADF0 /* Model */,
@@ -734,6 +730,7 @@
 		99A09B8A2549C0D60082ADF0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				995E0AF5254EA49900811D49 /* Notification */,
 				995E0AEC254E7D0E00811D49 /* Protocol */,
 				995E0AE3254E7A5700811D49 /* Extension */,
 				99A09B8B2549C0DE0082ADF0 /* View */,
@@ -750,14 +747,6 @@
 				99D977332558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		99C5B1A3255840D500218152 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				99C5B1A42558410700218152 /* Notification++.swift */,
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		99D99CCC254ABDF9008E2BF4 /* Adapter */ = {
@@ -1004,7 +993,6 @@
 				99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */,
 				99D977342558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift in Sources */,
 				378F460A255295D800C94324 /* IssueTextSegmentControl.swift in Sources */,
-				99C5B1A52558410700218152 /* Notification++.swift in Sources */,
 				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
 				9965DCA0255294A600F92FFC /* IssueDetailCollectionViewAdapter.swift in Sources */,
 				99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */,
