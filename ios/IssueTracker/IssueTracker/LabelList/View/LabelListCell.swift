@@ -16,7 +16,6 @@ class LabelListCell: SwipeToDeleteCollectionViewCell {
     
     var badgeLabel: BadgeLabel?
     var descriptionLabel: UILabel?
-    var labelNo: Int?
     
     override func commonInit() {
         super.commonInit()
@@ -86,14 +85,5 @@ class LabelListCell: SwipeToDeleteCollectionViewCell {
     func configure(with data: LabelListCellData) {
         badgeLabel?.configure(with: data.label)
         descriptionLabel?.text = data.labelDescription
-        labelNo = data.label.labelNo
-    }
-    
-    override func deleteButtonDidTouched() {
-        guard let labelNo = labelNo else {
-            return
-        }
-        
-        NotificationCenter.default.post(name: .labelDeleteButtonDidTouch, object: nil, userInfo: ["LabelNo": labelNo])
     }
 }
