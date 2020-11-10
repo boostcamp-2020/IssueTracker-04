@@ -10,7 +10,7 @@ import UIKit
 protocol MilestoneDetailViewData {
     var milestoneNo: Int { get }
     var milestoneTitle: String { get }
-    var dueDate: Date { get }
+    var dueDate: Date? { get }
     var milestoneDescription: String { get }
     var percent: Float { get }
     var openIssueCount: Int { get }
@@ -52,11 +52,17 @@ class MilestoneDetailView: UIView {
     func configure(with data: MilestoneDetailViewData) {
         titleLabel.text = data.milestoneTitle
         descriptionLabel.text = data.milestoneDescription
-        dateLabel.text = data.dueDate.string + " 까지"
-        dateLabel.textColor = (data.dueDate > Date()) ? .systemGray : .systemRed
         percentLabel.text = "\(data.percent)%"
         openLabel.text = "open \(data.openIssueCount)"
         closedLabel.text = "closed \(data.closedIssueCount)"
         progressView.progress = data.percent/100
+        
+        if let dueDate = data.dueDate {
+            dateLabel.text = dueDate.string + " 까지"
+            dateLabel.textColor = (dueDate > Date()) ? .systemGray : .systemRed
+        } else {
+            dateLabel.text = nil
+            
+        }
     }
 }

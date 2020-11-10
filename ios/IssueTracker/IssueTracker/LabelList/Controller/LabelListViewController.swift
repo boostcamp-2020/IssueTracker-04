@@ -22,39 +22,29 @@ class LabelListViewController: UIViewController {
         self.adapter = adapter
         collectionView.dataSource = adapter
         
-        NotificationCenter.default.addObserver(self, selector: #selector(labelDeleteButtonTouched(notification:)), name: .labelDeleteButtonDidTouch, object: nil)
-    }
-    
-    private func presentLabelAddView(isUpdate: Bool, indexPath: IndexPath?) {
-        guard let labelAddViewController = storyboard?.instantiateViewController(identifier: LabelAddViewController.identifier) as? LabelAddViewController else {
-            return
-        }
-        
-        if let indexPath = indexPath,
-           let adapter = adapter,
-           isUpdate {
-            labelAddViewController.indexPath = indexPath
-            labelAddViewController.labelData = adapter.dataManager[indexPath]
-        }
-        
-        labelAddViewController.modalPresentationStyle = .pageSheet
-        labelAddViewController.modalTransitionStyle = .coverVertical
-        labelAddViewController.delegate = self
-        present(labelAddViewController, animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(labelDeleteButtonTouched(notification:)), name: .labelDeleteRequested, object: nil)
     }
     
     @objc private func labelDeleteButtonTouched(notification: Notification) {
         guard let labelNo = notification.userInfo?["LabelNo"] as? Int else {
             return
         }
-        
         adapter?.dataManager.delete(with: labelNo) { [weak self] indexPath in
             self?.collectionView.deleteItems(at: [indexPath])
         }
     }
     
-    @IBAction func addButtonTouched(_ sender: UIBarButtonItem) {
-        presentLabelAddView(isUpdate: false, indexPath: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "LabelListToAdd",
+              let labelAddViewController = segue.destination as? LabelAddViewController else {
+            return
+        }
+        if let indexPath = sender as? IndexPath,
+           let adapter = adapter {
+            labelAddViewController.indexPath = indexPath
+            labelAddViewController.labelData = adapter.dataManager[indexPath]
+        }
+        labelAddViewController.delegate = self
     }
 }
 
@@ -72,7 +62,7 @@ extension LabelListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentLabelAddView(isUpdate: true, indexPath: indexPath)
+        performSegue(withIdentifier: "LabelListToAdd", sender: indexPath)
     }
     
 }
@@ -80,8 +70,11 @@ extension LabelListViewController: UICollectionViewDelegateFlowLayout {
 extension LabelListViewController: LabelDataDelegate {
     func labelDidAdd(label: LabelDetail) {
         adapter?.dataManager.add(label: label) { [weak self] indexPath in
-            self?.collectionView.insertItems(at: [indexPath])
-            self?.collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+            self?.collectionView.performBatchUpdates({
+                self?.collectionView.insertItems(at: [indexPath])
+            }, completion: { _ in
+                self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+            })
         }
     }
     

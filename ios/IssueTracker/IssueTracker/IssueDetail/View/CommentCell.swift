@@ -41,7 +41,7 @@ class CommentCell: UICollectionViewCell {
     func configure(with data: CommentCellData) {
         authorImageView.image = UIImage.checkmark //http 통신으로 로드
         authorLabel.text = data.authorName
-        dateLabel.text = data.commentDate.string
+        dateLabel.text = Date().difference(with: data.commentDate)
         commentLabel.text = data.comment
     }
 }

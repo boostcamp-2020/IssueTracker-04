@@ -11,6 +11,10 @@ extension Date {
     
     static let formatter = DateFormatter()
     
+    static func make(string: String) -> Date? {
+        return Date.formatter.date(from: string)
+    }
+    
     var string: String {
         Date.formatter.dateFormat = "yyyy-MM-dd"
         return Date.formatter.string(from: self)

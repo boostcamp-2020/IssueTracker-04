@@ -28,7 +28,11 @@ extension MilestoneCollectionViewAdapter: UICollectionViewDataSource {
         guard let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: MilestoneListCell.identifier, for: indexPath) as? MilestoneListCell else {
             return UICollectionViewCell()
         }
-        cell.configure(with: dataManager[indexPath])
+        let item = dataManager[indexPath]
+        cell.configure(with: item)
+        cell.deleteHandler = {
+            NotificationCenter.default.post(name: .milestoneDeleteRequested, object: nil, userInfo: ["MilestoneNo": item.milestoneNo])
+        }
         return cell
     }
 }
