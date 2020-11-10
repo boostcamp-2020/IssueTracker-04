@@ -1,0 +1,22 @@
+.label-list {
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  margin: 20px 0;
+}
+
+.label-list-head {
+  background-color: #f6f8fa;
+  padding: 10px;
+}
+
+.label-row div {
+  flex: auto;
+}
+
+.col-2 {
+  width: calc(2 / 12 * 100%);
+}
+
+.col-3 {
+  width: calc(3 / 12 * 100%);
+}

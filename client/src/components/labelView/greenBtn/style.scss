@@ -1,0 +1,13 @@
+.green-btn {
+  all: unset;
+  border-radius: 5px;
+  background-color: #2ea44f;
+  padding: 10px;
+  color: #ffffff;
+  box-shadow: 0 -2px 3px inset #0000003d;
+  &:hover {
+    cursor: pointer;
+    background-color: #258340;
+    box-shadow: 0 2px 3px inset #0000003d;
+  }
+}
