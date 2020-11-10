@@ -45,10 +45,11 @@ class RoundAddButton: UIButton {
     }
     
     func updateLayerProperties() {
-        self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
-        self.layer.shadowOffset = CGSize(width: 2, height: 6)
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 2.0
-        self.layer.masksToBounds = false
+        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
+        layer.shadowOffset = CGSize(width: 2, height: 6)
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 2.0
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.width).cgPath
+        layer.masksToBounds = false
     }
 }

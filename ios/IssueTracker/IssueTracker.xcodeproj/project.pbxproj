@@ -837,7 +837,6 @@
 				99A09B7F2549B2340082ADF0 /* IssueListCollectionViewCell.xib */,
 				99D99CB1254A5FDA008E2BF4 /* LabelContainerView.swift */,
 				99D99CB6254A5FED008E2BF4 /* LabelContainerView.xib */,
-				99D99CD3254BB05D008E2BF4 /* RoundAddButton.swift */,
 				995E0AFE254EF29800811D49 /* IssueListCollectionView.swift */,
 			);
 			path = View;
@@ -864,6 +863,7 @@
 				99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */,
 				9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */,
 				99D977332558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift */,
+				99D99CD3254BB05D008E2BF4 /* RoundAddButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
