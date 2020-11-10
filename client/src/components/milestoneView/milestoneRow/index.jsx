@@ -16,7 +16,7 @@ const milestoneRow = ({ title, date, description, percent, iOpenCnt, iClosedCnt 
       <div className="milestone-right">
         <div>
           <svg className="barChart">
-            <rect x="0" y="0" width={percent + '%'} height="100%" fill="#1ee280" />
+            <rect x="0" y="0" width={`${percent  }%`} height="100%" fill="#1ee280" />
           </svg>
         </div>
         <div>

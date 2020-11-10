@@ -4,6 +4,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './style.scss';
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import FilterButton from '../../components/issueListView/FilterButton'
@@ -19,26 +20,31 @@ const issueListView = () => {
   const [issueList, setIssueList] = useState([]);
 
   useEffect(() => {
-    console.log(2);
     (async function () {
       try {
          sampleIssues = [];
-         const result = await axios.get('http://localhost:5000/api/issue/list');
+
+         const jwt = await localStorage.getItem('jwt');
+
+
+         const result = await axios.get('http://101.101.217.9:5000/api/issue/list', {
+           headers: {Authorization: `Bearer ${jwt}`},
+         });
+
 
         for (let i = 0; i < result.data.length; i++){
           const newIssue = {
-            id : {i},
-            issue_no : result.data[i].data[0].issue_no,
-            issue_title : result.data[i].data[0].issue_title,
-            issue_content : result.data[i].data[0].issue_content,
-            issue_flag: result.data[i].data[0].issue_flag,
-            issue_date: result.data[i].data[0].issue_date,
-            issue_author_no : result.data[i].data[0].issue_author_no,
-            issue_author_id : result.data[i].data[0].issue_author_id,
-            milestone_no : result.data[i].data[0].milestone_no,
-            milestone_title : result.data[i].data[0].milestone_title,
-            assignees : result.data[i].data[0].assignees,
-            labels : result.data[i].data[0].labels
+            issue_no : result.data[i].issue.issue_no,
+            issue_title : result.data[i].issue.issue_title,
+            issue_content : result.data[i].issue.issue_content,
+            issue_flag: result.data[i].issue.issue_flag,
+            issue_date: result.data[i].issue.issue_date,
+            issue_author_no : result.data[i].issue.issue_author_no,
+            issue_author_name : result.data[i].issue.issue_author_name,
+            milestone_no : result.data[i].milestone.milestone_no,
+            milestone_title : result.data[i].milestone.milestone_title,
+            assignees : result.data[i].assignees,
+            labels : result.data[i].labels
           }
           sampleIssues.push(newIssue);  
         }
@@ -49,32 +55,6 @@ const issueListView = () => {
       }
     })()
   },[]);
-    /*
-  const [Id, setId] = useState('');
-  const [Password, setPassword] = useState('');
-
-  const onIdHandler = (e) => {
-    setId(e.currentTarget.value);
-  };
-
-  const onPasswordHandler = (e) => {
-    setPassword(e.currentTarget.value);
-  };
-
-  console.log(Id);
-  
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-
-    console.log(Id);
-    console.log(Password);
-    const body = {};
-
-    
-      Axios.post('/api/users/login', body).then(response => {
-
-      })
-      */
   
 
   return (
@@ -90,7 +70,9 @@ const issueListView = () => {
               <LabelButton />
               <MilestoneButton />
             </div>
-            <MakeIssueButton />
+            <Link to = '/issues-create'>
+              <MakeIssueButton />
+            </Link>
         </div>
 
         <div className = "issueListView-contents">
@@ -99,7 +81,7 @@ const issueListView = () => {
           </div>
           <div className = "issueListView-contents-issueList">
             {
-            issueList.map(({issue_flag, issue_title, milestone_title, labels, issue_no, issue_date, issue_author_id, assignees})=> (
+            issueList.map(({issue_flag, issue_title, milestone_title, labels, issue_no, issue_date, issue_author_name, assignees})=> (
               <Issue
               isOpened = {issue_flag}
               title = {issue_title}
@@ -107,7 +89,7 @@ const issueListView = () => {
               labels = {labels}
               issueNum = {issue_no}
               time = {issue_date}
-              author = {issue_author_id}
+              author = {issue_author_name}
               assignees = {assignees}
             />
             ))
