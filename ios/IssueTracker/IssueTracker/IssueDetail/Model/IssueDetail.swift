@@ -13,7 +13,7 @@ struct IssueDetail: Codable {
     let milestone: Milestone
     let labels: [Label]
     let assignees: [Assignee]
-    let comments: [Comment]
+    var comments: [Comment]
 }
 
 struct Comment: Codable, CommentCellData {

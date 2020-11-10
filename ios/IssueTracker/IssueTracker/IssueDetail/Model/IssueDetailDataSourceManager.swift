@@ -28,7 +28,10 @@ struct IssueInfo: DetailHeaderData {
 
 class IssueDetailDataSourceManager {
     
-    init() {
+    private let networkManager: IssueDetailNetworkManager
+    
+    init(networkManager: IssueDetailNetworkManager = IssueDetailNetworkManager()) {
+        self.networkManager = networkManager
         detailItem = DummyDataLoader().loadDetail()
     }
     
@@ -43,6 +46,19 @@ class IssueDetailDataSourceManager {
     
     var commentCount: Int {
         detailItem?.comments.count ?? 0
+    }
+    // - TODO: UserDefault로 authorName, Img 가져오도록 해야 함
+    func addComment(text: String, completion: @escaping (Bool) -> Void) {
+        networkManager.addComment(text: text) { [weak self] comment in
+            switch comment {
+            case .success(let comment):
+                self?.detailItem?.comments.append(comment)
+                completion(true)
+            case .failure(let error):
+                completion(false)
+            }
+            
+        }
     }
     
     func setIssueFlag(_ flag: Bool) {

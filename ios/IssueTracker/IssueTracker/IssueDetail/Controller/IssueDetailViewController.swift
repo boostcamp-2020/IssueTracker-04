@@ -13,7 +13,7 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var detailCollectionView: IssueDetailCollectionView!
     
     @IBOutlet weak var slideViewTobConstraint: NSLayoutConstraint!
-
+    
     var slideViewPanGesture = UIPanGestureRecognizer()
     var issueTitle: String = "IssueTitle"
     var detailCollectionViewAdapter: IssueDetailCollectionViewAdapter!
@@ -55,7 +55,6 @@ class IssueDetailViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        
         let dataManager = IssueDetailDataSourceManager()
         detailCollectionViewAdapter = IssueDetailCollectionViewAdapter(dataManager: dataManager)
         detailCollectionView.delegate = self
@@ -90,7 +89,7 @@ class IssueDetailViewController: UIViewController {
     func gestureDidFinish(velocity: CGFloat) {
         let isDown: Bool = abs(velocity) > 700 ?
             velocity > 0 : slideViewTobConstraint.constant < maximumSlideViewVisibleHeight/2
-
+        
         slideViewTobConstraint.constant = isDown ? minimumSlideViewVisibleHeight : maximumSlideViewVisibleHeight
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut) { [weak self] in
@@ -102,7 +101,8 @@ class IssueDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "IssueDetailAddComment" {
-            guard let commentAddViewController = segue.destination as? CommentAddViewController else {
+            guard let navController = segue.destination as? UINavigationController,
+                  let commentAddViewController = navController.viewControllers.first as? CommentAddViewController else {
                 return
             }
             commentAddViewController.delegate = self
@@ -125,7 +125,14 @@ extension IssueDetailViewController: UICollectionViewDelegate {
 extension IssueDetailViewController: CommentAddViewControllerDelegate {
     
     func sendButtonDidTouch(text: String) {
-        
+        detailCollectionViewAdapter.dataManager.addComment(text: text) { [weak self] isSuccess in
+            guard isSuccess,
+                  let item = self?.detailCollectionViewAdapter.dataManager.detailItem?.comments.count else {
+                return
+            }
+            self?.detailCollectionView.reloadItems(at: [IndexPath(item: item - 2, section: 0)])
+            self?.gestureDidFinish(velocity: 800)
+        }
     }
 }
 
