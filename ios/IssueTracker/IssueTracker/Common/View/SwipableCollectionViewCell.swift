@@ -150,6 +150,11 @@ class SwipableCollectionViewCell: UICollectionViewCell {
         
     }
     
+    override func prepareForReuse() {
+        mainLeadingConstraint?.constant = 0
+        rightContainerViewWidthConstraint?.constant = rightContentWidth
+    }
+    
 }
 
 extension SwipableCollectionViewCell: UIGestureRecognizerDelegate {

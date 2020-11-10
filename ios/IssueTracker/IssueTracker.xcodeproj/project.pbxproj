@@ -41,6 +41,9 @@
 		37F541C125512B570087B428 /* IssueDetailSlideViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F541C025512B570087B428 /* IssueDetailSlideViewHeader.xib */; };
 		37F541C625512C930087B428 /* AssigneeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F541C525512C930087B428 /* AssigneeCollectionViewCell.xib */; };
 		37F541CB25512C9F0087B428 /* LabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F541CA25512C9F0087B428 /* LabelCollectionViewCell.xib */; };
+		9911FB9E255947B300E02E4C /* MilestoneAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FB9D255947B300E02E4C /* MilestoneAddViewController.swift */; };
+		9911FBA3255951B800E02E4C /* CusorFixTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FBA2255951B800E02E4C /* CusorFixTextField.swift */; };
+		9911FBAA255953EF00E02E4C /* DateTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */; };
 		9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9562556E805005A2359 /* UIVIewController+.swift */; };
 		9916E97C25575AD1005A2359 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E97B25575AD1005A2359 /* LabelListViewController.swift */; };
 		9916E98725575F2D005A2359 /* SwipableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */; };
@@ -152,6 +155,9 @@
 		37F541C025512B570087B428 /* IssueDetailSlideViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailSlideViewHeader.xib; sourceTree = "<group>"; };
 		37F541C525512C930087B428 /* AssigneeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssigneeCollectionViewCell.xib; sourceTree = "<group>"; };
 		37F541CA25512C9F0087B428 /* LabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		9911FB9D255947B300E02E4C /* MilestoneAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneAddViewController.swift; sourceTree = "<group>"; };
+		9911FBA2255951B800E02E4C /* CusorFixTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusorFixTextField.swift; sourceTree = "<group>"; };
+		9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextFieldManager.swift; sourceTree = "<group>"; };
 		9916E9562556E805005A2359 /* UIVIewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+.swift"; sourceTree = "<group>"; };
 		9916E97B25575AD1005A2359 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
 		9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 				9916E964255757FF005A2359 /* LabelList */,
 				9916EA122557D6A5005A2359 /* LabelAdd */,
 				9916E9B5255793C9005A2359 /* MilestoneList */,
+				9911FB9B2559478600E02E4C /* MilestoneAdd */,
 				37C205CC254A6BEE0004D8B5 /* LICENSE */,
 				371B0FEE25495A8D00AFF5E4 /* IssueTracker.entitlements */,
 				3747D4692547EFDF009BA189 /* AppDelegate.swift */,
@@ -377,6 +384,31 @@
 				9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9911FB9B2559478600E02E4C /* MilestoneAdd */ = {
+			isa = PBXGroup;
+			children = (
+				9911FBA7255952FB00E02E4C /* Model */,
+				9911FB9C2559479500E02E4C /* Controller */,
+			);
+			path = MilestoneAdd;
+			sourceTree = "<group>";
+		};
+		9911FB9C2559479500E02E4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9911FB9D255947B300E02E4C /* MilestoneAddViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9911FBA7255952FB00E02E4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9916E964255757FF005A2359 /* LabelList */ = {
@@ -490,9 +522,7 @@
 		9916EA1F2557F4C5005A2359 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9916EA2E2557FC47005A2359 /* RandomButton.swift */,
 				9916EA332557FF6F005A2359 /* ColorBox.swift */,
-				9916EA4825582AE3005A2359 /* CancelButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -742,6 +772,9 @@
 		99A09B8B2549C0DE0082ADF0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9916EA2E2557FC47005A2359 /* RandomButton.swift */,
+				9916EA4825582AE3005A2359 /* CancelButton.swift */,
+				9911FBA2255951B800E02E4C /* CusorFixTextField.swift */,
 				99A09B8C2549C0F90082ADF0 /* BadgeLabel.swift */,
 				9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */,
 				99D977332558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift */,
@@ -1002,8 +1035,10 @@
 				995E0AFF254EF29800811D49 /* IssueListCollectionView.swift in Sources */,
 				9965DC73255138E000F92FFC /* Date+.swift in Sources */,
 				9965DC2F2550F41400F92FFC /* IssueDetailViewController.swift in Sources */,
+				9911FBA3255951B800E02E4C /* CusorFixTextField.swift in Sources */,
 				9916E98C255779B9005A2359 /* LabelListCell.swift in Sources */,
 				99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */,
+				9911FB9E255947B300E02E4C /* MilestoneAddViewController.swift in Sources */,
 				9916E98725575F2D005A2359 /* SwipableCollectionViewCell.swift in Sources */,
 				99D99CD4254BB05D008E2BF4 /* RoundAddButton.swift in Sources */,
 				9916E9CF25579693005A2359 /* MilestoneDetailView.swift in Sources */,
@@ -1031,6 +1066,7 @@
 				9916E9E82557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift in Sources */,
 				378F460025528DB000C94324 /* IssueMarkdownTextView.swift in Sources */,
 				995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */,
+				9911FBAA255953EF00E02E4C /* DateTextFieldManager.swift in Sources */,
 				99A09B712549AD230082ADF0 /* DummyDataLoader.swift in Sources */,
 				9916E9DA2557B5FD005A2359 /* MilestoneDetail.swift in Sources */,
 				9916E9BF25579455005A2359 /* MilestoneListViewController.swift in Sources */,

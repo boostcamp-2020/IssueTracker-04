@@ -21,6 +21,7 @@ class IssueDetailSlideViewController: UIViewController {
         super.viewDidLoad()
         configureLayer()
         configureCollectionView()
+        
     }
     
     private func configureLayer() {
@@ -78,5 +79,11 @@ extension IssueDetailSlideViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
+    }
+}
+
+extension IssueDetailSlideViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        collectionView.contentOffset.y <= 0
     }
 }

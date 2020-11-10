@@ -33,6 +33,7 @@ class IssueDetailViewController: UIViewController {
     
     private func configureGestureRecognizer() {
         slideViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(slideViewPanned))
+        slideViewPanGesture.cancelsTouchesInView = false
         slideView.addGestureRecognizer(slideViewPanGesture)
     }
     
@@ -49,6 +50,7 @@ class IssueDetailViewController: UIViewController {
         
         slideViewController.adapter = IssueSlideVIewCollectionViewAdapter(dataManager: slideViewDataManager)
         slideViewController.reloadData()
+        slideViewPanGesture.delegate = slideViewController
     }
     
     private func configureCollectionView() {

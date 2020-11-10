@@ -13,4 +13,7 @@ class CusorFixTextField: UITextField {
         let end = position(from: start, offset: text?.count ?? 0)
         return end
     }
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
 }
