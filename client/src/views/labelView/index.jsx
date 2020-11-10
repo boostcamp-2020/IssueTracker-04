@@ -6,16 +6,6 @@ import GreenBtn from '@components/labelView/greenBtn';
 import WhiteBtn from '@components/labelView/WhiteBtn';
 
 const loginView = () => {
-  const [filter, setFilter] = useState('');
-
-  const onFilterHandler = e => {
-    setFilter(e.target.value);
-  };
-
-  // const onSubmitHandler = e => {
-  //   e.preventDefault();
-  // };
-
   const labels = [
     {
       title: 'bug',

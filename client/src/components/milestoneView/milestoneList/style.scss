@@ -1,0 +1,19 @@
+.milestone-list {
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  margin: 20px 0;
+}
+
+.milestone-list-head {
+  background-color: #f6f8fa;
+  padding: 10px;
+}
+
+.open-closed-btn {
+  all: unset;
+  &:hover {
+    text-decoration: underline;
+    color: #3493ff;
+    cursor: pointer;
+  }
+}

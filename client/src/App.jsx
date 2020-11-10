@@ -5,6 +5,7 @@ import LoginPage from './views/loginView';
 import IssueListPage from './views/issueListView';
 import IssueCreatePage from './views/issueCreateView';
 import LabelPage from './views/labelView';
+import MilestonePage from './views/milestoneView';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/issues-list" component={IssueListPage} />
         <Route path="/issues-create" component={IssueCreatePage} />
         <Route path="/labels" component={LabelPage} />
+        <Route path="/milestones" component={MilestonePage} />
         <Redirect path="*" to="/" />
       </Switch>
     </BrowserRouter>

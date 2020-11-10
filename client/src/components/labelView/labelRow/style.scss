@@ -26,3 +26,15 @@
     cursor: pointer;
   }
 }
+
+.label-row div {
+  flex: auto;
+}
+
+.col-3 {
+  width: calc(3 / 12 * 100%);
+}
+
+.col-2 {
+  width: calc(2 / 12 * 100%);
+}
