@@ -41,12 +41,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func presentLoginViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController {
-            loginViewController.modalPresentationStyle = .formSheet
-            loginViewController.isModalInPresentation = true
-            window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
-        }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController {
+//            loginViewController.modalPresentationStyle = .formSheet
+//            loginViewController.isModalInPresentation = true
+//            window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
+//        }
     }
     
 }

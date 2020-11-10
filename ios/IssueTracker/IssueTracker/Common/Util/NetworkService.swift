@@ -69,9 +69,4 @@ class NetworkService {
             completion(.success(data))
         }.resume()
     }
-    
-    func post() {
-        
-    }
-    
 }

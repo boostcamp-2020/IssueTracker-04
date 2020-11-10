@@ -13,11 +13,11 @@ class IssueListDataSourceManager {
     var itemCount: Int {
         items.count
     }
-    var networkManager: NetworkManaging
+    var networkManager: IssueListNetworkManager
     
-    init(networkManager: NetworkManaging) {
+    init(networkManager: IssueListNetworkManager) {
         self.networkManager = networkManager
-        loadIssueList()
+        //loadIssueList()
     }
     
     subscript(indexPath: IndexPath) -> IssueListCellData {
@@ -28,8 +28,19 @@ class IssueListDataSourceManager {
         indexPaths.map { self[$0] }
     }
     
-    func loadIssueList() {
-        items = networkManager.loadItems().map { $0.cellData() }
+    func loadIssueList(completion: @escaping  (Bool) -> ()) {
+        networkManager.requestIssueList { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let issues):
+                    self?.items = issues.map { $0.cellData() }
+                    completion(true)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completion(false)
+                }
+            }
+        }
     }
     
     func deleteIssue(by issueNo: Int, completion: (IndexPath) -> Void) {

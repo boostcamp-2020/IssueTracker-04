@@ -11,7 +11,7 @@ protocol DetailHeaderData {
     var issueNo: Int { get }
     var issueTitle: String { get }
     var issueContent: String { get }
-    var issueFlag: Bool { get }
+    var isOpen: Bool { get }
     var issueDate: Date { get }
     var issueAuthorID: String { get }
 }
@@ -46,8 +46,8 @@ class IssueDetailCollectionViewHeader: UICollectionReusableView {
         authorNameLabel.text = data.issueAuthorID
         issueTitleLabel.text = data.issueTitle
         issueNumberLabel.text = "#\(data.issueNo)"
-        let title = data.issueFlag ? "closed" : "open"
-        let image = data.issueFlag ? UIImage(systemName: "checkmark") : UIImage(systemName: "exclamationmark.circle")
+        let title = data.isOpen ? "closed" : "open"
+        let image = data.isOpen ? UIImage(systemName: "checkmark") : UIImage(systemName: "exclamationmark.circle")
         issueStatusButton.setAttributedTitle(NSAttributedString(string: title), for: .normal)
         issueStatusButton.setImage(image, for: .normal)
     }

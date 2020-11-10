@@ -10,7 +10,7 @@ import Foundation
 struct IssueInfo: DetailHeaderData {
     let issueNo: Int
     let issueTitle, issueContent: String
-    let issueFlag: Bool
+    let isOpen: Bool
     let issueDate: Date
     let issueAuthorNo: Int
     let issueAuthorID: String
@@ -19,7 +19,7 @@ struct IssueInfo: DetailHeaderData {
         issueNo = detail.issue.issueNo
         issueTitle = detail.issue.issueTitle
         issueContent = detail.issue.issueContent
-        issueFlag = detail.issue.issueFlag
+        isOpen = detail.issue.isOpen
         issueDate = detail.issue.issueDate
         issueAuthorNo = detail.issue.issueAuthorNo
         issueAuthorID = detail.issue.issueAuthorName
@@ -46,7 +46,7 @@ class IssueDetailDataSourceManager {
     }
     
     func setIssueFlag(_ flag: Bool) {
-        detailItem?.issue.issueFlag = flag
+        detailItem?.issue.isOpen = flag
     }
     
     subscript(indexPath: IndexPath) -> Comment? {
