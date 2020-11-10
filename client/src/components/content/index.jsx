@@ -5,8 +5,8 @@ const content = (props) => {
   const {placeholder, value, type, onChange, } = props;
 
   return (
-    <div>
-      <input className="create-content"
+    <div className="content-form">
+      <textarea className="create-content"
         placeholder={placeholder || ''}
         value={value}
         type={type}

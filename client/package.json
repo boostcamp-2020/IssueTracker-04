@@ -40,6 +40,7 @@
     "lint-staged": "^10.5.1",
     "mini-css-extract-plugin": "^1.2.1",
     "prettier": "^2.1.2",
+    "react-onclickoutside": "^6.9.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "sass": "^1.28.0",

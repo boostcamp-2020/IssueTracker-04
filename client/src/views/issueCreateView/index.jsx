@@ -1,13 +1,13 @@
-import React, { useState, useRef } from 'react';
-import Axios from 'axios'
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios'
 import './style.scss';
 import Titles from '../../components/issueCreateView/title';
-import Contents from '../../components/issueCreateView/content';
+import Contents from '../../components/content';
 import Cancels from '../../components/issueCreateView/cancel';
 import SubmitButton from '../../components/issueCreateView/submitButton';
-import Assignees from '../../components/issueCreateView/assignees';
-import Labels from '../../components/issueCreateView/labels';
-import Milestones from '../../components/issueCreateView/milestone';
+import Assignees from '../../components/sideAssignee';
+import Labels from '../../components/sideLabel';
+import Milestones from '../../components/sideMilestone';
 
 const issueCreateView = () => {
   const [Title, setTitle] = useState('');
@@ -21,34 +21,50 @@ const issueCreateView = () => {
     setContent(e.currentTarget.value);
   };
 
-  const onSubmitHandler = (e) => {
+  const onClickHandler = (e) => {
     e.preventDefault();
 
     const body={
       issue_title:Title,
       issue_content:Content,
-      issue_date:Date.now()
+      issue_authoer_no:0
     }
-    Axios.post('http://localhost:5000/api/issue/create', body).then(response => {
+
+    axios.post('http://localhost:5000/api/issue/create', body).then(response => {
       console.log(response);
     })
 
   };
 
+  const items = [
+    {
+      id: 1,
+      value: 'Zigje9',
+    },
+    {
+      id: 2,
+      value: 'jk',
+    },
+    {
+      id: 3,
+      value: 'crong',
+    },
+  ];
+
   return (
     <div className="create-view">
       <div className="input-column">
-        <form className="create-form" onSubmit={onSubmitHandler}>
+        <div className="create-form" >
           <Titles placeholder="Title" type="title" value={Title} onChange={onTitleHandler}/>
           <Contents placeholder="Leave a comment" type="content" value={Content} onChange={onContentHandler}/>
           <div className="create-form-submit">
             <Cancels />
-            <SubmitButton />
+            <SubmitButton onClick={onClickHandler}/>
           </div>
-        </form>
+        </div>
       </div>
       <div className="register-column">
-        <Assignees />
+        <Assignees items={items}/>
         <hr className="thin-line" />
         <Labels />
         <hr className="thin-line" />

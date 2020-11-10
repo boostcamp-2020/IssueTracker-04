@@ -1,6 +1,7 @@
-.create-content {
-    height: 60vh;
-    width: 68vw;
+
+.comment-create-content {
+    height: 15vh;
+    width: 75vw;
     border-radius: 5px;
     border: 0.5px solid #818991;
     background-color: #fafbfc;
@@ -8,9 +9,9 @@
     margin-top:1vw;
 }
 
-.create-image {
+.comment-create-image {
     height: 5vh;
-    width: 68vw;
+    width: 75vw;
     color: #818991;
     display:flex;
     align-items: center;
