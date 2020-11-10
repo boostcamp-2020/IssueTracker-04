@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
 
-const submitButton = () => {
-
+const submitButton = ({onClick}) => {
   return (
-    <button className="submit-button">
+    <button className="submit-button" onClick={onClick}>
         Submit new issue
     </button>
   );

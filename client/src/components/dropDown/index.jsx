@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import './style.scss';
+import { MemberContext } from '../../views/issueCreateView';
+
 
 function Dropdown(props) {
-  const {items, member, title, setmember} = props
+  const {memberState, memberDispatch} = useContext(MemberContext)
+  const {items, title} = props
   const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState([]);
+//   const [selection, setSelection] = useState([]);
   const toggle = () => setOpen(!open);
   Dropdown.handleClickOutside = () => setOpen(false);
 
   const selectItem = (item) => {
-    if (selection.some(ele => ele.id === item.id)){
-      setSelection(selection.filter(ele => ele.id !== item.id))
+    if (memberState.some(ele => ele.id === item.id)){
+      const payload = memberState.filter(ele => ele.id !== item.id);
+      memberDispatch({type: "UPDATE", payload})
     } else {
-      setSelection([...selection, item])
+      memberDispatch({type: "UPDATE", payload:[...memberState,item]})
     }
-    setmember(["ab","123"])
-    console.log("자식멤버", member);
   }
   
   const checkItem = (item) => {
-    return selection.includes(item)
+    return memberState.some(ele => ele.id === item.id)
   }
-
 
   return (
     <div>
@@ -38,8 +39,8 @@ function Dropdown(props) {
         {items.map(item => (
           <div className="dropdown-item" key={item.id}>
           <button className="dropdown-button" type="button" onClick={() => selectItem(item)}>
+          <span>{checkItem(item)&&"✔️"}</span>
           <span>{item.value}</span>
-          <span>{checkItem(item)&&'✔️'}</span>
           </button>
           </div>
         ))}
