@@ -356,6 +356,7 @@
                         <outlet property="detailCollectionView" destination="mSs-hm-IEb" id="rdV-GV-I61"/>
                         <outlet property="slideView" destination="oAE-J0-7dT" id="ZC1-d0-0db"/>
                         <outlet property="slideViewTobConstraint" destination="agV-Ms-GLP" id="Ow3-ny-hXk"/>
+                        <segue destination="Zn3-tX-qoF" kind="presentation" identifier="IssueDetailAddComment" id="ji9-Ow-t4K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -963,7 +964,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="Ioq-R9-uO3"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Sign in with GitHub" image="github_logo">
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <state key="normal" title="Sign in GitHub" image="github_logo">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -1145,6 +1147,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addCommentButtonTouched:" destination="nBV-p1-dLl" eventType="touchUpInside" id="Hdr-NW-H2Q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1189,6 +1194,62 @@
             </objects>
             <point key="canvasLocation" x="3160.8695652173915" y="-1898.1026785714284"/>
         </scene>
+        <!--Comment-->
+        <scene sceneID="Ked-VF-xAw">
+            <objects>
+                <viewController id="JQn-M2-7dg" customClass="CommentAddViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lbX-s6-kKK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ef7-qh-RtM">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. </mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jBk-nY-uvk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ef7-qh-RtM" firstAttribute="leading" secondItem="jBk-nY-uvk" secondAttribute="leading" id="7wh-TD-NcO"/>
+                            <constraint firstItem="Ef7-qh-RtM" firstAttribute="top" secondItem="jBk-nY-uvk" secondAttribute="top" id="Nxa-cw-sv3"/>
+                            <constraint firstItem="Ef7-qh-RtM" firstAttribute="trailing" secondItem="jBk-nY-uvk" secondAttribute="trailing" id="e45-AK-DlQ"/>
+                            <constraint firstItem="jBk-nY-uvk" firstAttribute="bottom" secondItem="Ef7-qh-RtM" secondAttribute="bottom" id="g35-MM-pcg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Comment" id="ilQ-cg-sOr">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="L4Z-Tf-KFi">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aEU-D4-tal">
+                                <rect key="frame" x="20" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTouched:" destination="JQn-M2-7dg" eventType="touchUpInside" id="f10-Fb-FjR"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="caK-UK-mCg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aX4-Ms-2DH">
+                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendButtonTouched:" destination="JQn-M2-7dg" eventType="touchUpInside" id="Mpr-ca-CKJ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentTextView" destination="Ef7-qh-RtM" id="Z9e-UW-6Sm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jim-8V-MWu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3878" y="-1283"/>
+        </scene>
         <!--레이블-->
         <scene sceneID="Ori-8T-8iu">
             <objects>
@@ -1227,16 +1288,34 @@
             </objects>
             <point key="canvasLocation" x="605.79710144927537" y="547.76785714285711"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wro-B7-zvW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zn3-tX-qoF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iZu-bH-KAg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JQn-M2-7dg" kind="relationship" relationship="rootViewController" id="66S-sn-gWu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K37-lE-f2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3157.971014492754" y="-1283.0357142857142"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="7SO-kW-x2s">
             <size key="intrinsicContentSize" width="18" height="22"/>
         </designable>
-        <designable name="a2V-1B-ZNl">
-            <size key="intrinsicContentSize" width="130" height="30"/>
-        </designable>
         <designable name="PTW-2r-D7f">
             <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="a2V-1B-ZNl">
+            <size key="intrinsicContentSize" width="130" height="30"/>
         </designable>
         <designable name="cWC-ob-1li">
             <size key="intrinsicContentSize" width="30" height="34"/>

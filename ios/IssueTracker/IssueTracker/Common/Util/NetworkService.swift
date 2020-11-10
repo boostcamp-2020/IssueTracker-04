@@ -37,7 +37,7 @@ class NetworkService {
         self.session = session
     }
     
-    func request(request: Request, completion: @escaping (Result<Data, NetworkError>)-> Void) {
+    func request(request: Request, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = request.url else {
             completion(.failure(NetworkError.invalidURL))
             return
@@ -49,6 +49,8 @@ class NetworkService {
         request.headers?.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
+        
+        print(urlRequest.allHTTPHeaderFields)
         
         session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {

@@ -99,6 +99,15 @@ class IssueDetailViewController: UIViewController {
         
         return
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "IssueDetailAddComment" {
+            guard let commentAddViewController = segue.destination as? CommentAddViewController else {
+                return
+            }
+            commentAddViewController.delegate = self
+        }
+    }
 }
 
 extension IssueDetailViewController: UICollectionViewDelegate {
@@ -113,6 +122,13 @@ extension IssueDetailViewController: UICollectionViewDelegate {
     
 }
 
+extension IssueDetailViewController: CommentAddViewControllerDelegate {
+    
+    func sendButtonDidTouch(text: String) {
+        
+    }
+}
+
 extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
     
     func didIssueButtonTouched(flag: Bool) {
@@ -120,4 +136,9 @@ extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
         detailCollectionView.reloadSections([0])
         gestureDidFinish(velocity: 800)
     }
+    
+    func didAddCommentButtonTouched() {
+        performSegue(withIdentifier: "IssueDetailAddComment", sender: self)
+    }
+    
 }

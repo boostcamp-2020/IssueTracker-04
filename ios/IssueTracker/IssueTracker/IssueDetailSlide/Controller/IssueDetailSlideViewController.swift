@@ -9,6 +9,7 @@ import UIKit
 
 protocol IssueDetailSlideViewControllerDelegate: class {
     func didIssueButtonTouched(flag: Bool)
+    func didAddCommentButtonTouched()
 }
 
 class IssueDetailSlideViewController: UIViewController {
@@ -27,7 +28,6 @@ class IssueDetailSlideViewController: UIViewController {
         configureNotification()
         configureLayer()
         configureCollectionView()
-        
     }
     
     private func configureNotification() {
@@ -73,6 +73,11 @@ class IssueDetailSlideViewController: UIViewController {
             delegate?.didIssueButtonTouched(flag: !flag)
         }
     }
+    
+    @IBAction func addCommentButtonTouched(_ sender: Any) {
+        delegate?.didAddCommentButtonTouched()
+    }
+    
 }
 
 extension IssueDetailSlideViewController: UICollectionViewDelegateFlowLayout {

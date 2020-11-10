@@ -24,16 +24,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let code = context.url.absoluteString.components(separatedBy: "code=").last else {
             return
         }
-        NetworkManager.requestLogin(code: code) { (data, error) in
-            guard let data = data,
-                  let JWT = String(data: data, encoding: .utf8) else {
-                return
+        NetworkManager.requestLogin(code: code) { result in
+            switch result {
+            case .success(let data):
+                let JWT = String(data: data, encoding: .utf8)
+                print(JWT)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-            UserDefaults.standard.set(JWT, forKey: "JWT")
-            guard let controller = self.window?.rootViewController as? IssueListViewController else {
-                return
-            }
-            controller.presentingViewController?.dismiss(animated: true)
+//            UserDefaults.standard.set(JWT, forKey: "JWT")
+//            guard let controller = self.window?.rootViewController as? IssueListViewController else {
+//                return
+//            }
+//            controller.presentingViewController?.dismiss(animated: true)
         }
     }
     
