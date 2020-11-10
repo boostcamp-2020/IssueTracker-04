@@ -67,8 +67,8 @@ exports.issueListGet = async (req, res, next) => {
     const issuesMilestonesData = await getIssuesMilestones();
 
     let resDatas = [];
-    let issue = [];
-    let milestone = [];
+    let issue = {};
+    let milestone = {};
     let assignees = [];
     let labels = [];
 
@@ -85,7 +85,7 @@ exports.issueListGet = async (req, res, next) => {
       );
 
       console.log(issuelabelsData);
-      issue.push({
+      issue = {
         issue_no: issueMilestone.dataValues.issue_no,
         issue_title: issueMilestone.dataValues.issue_title,
         issue_content: issueMilestone.dataValues.issue_content,
@@ -93,11 +93,11 @@ exports.issueListGet = async (req, res, next) => {
         issue_date: issueMilestone.dataValues.issue_date,
         issue_author_no: issueMilestone.dataValues.issue_author_no,
         issue_author_name: issue_author_name.user_name,
-      });
-      milestone.push({
+      };
+      milestone = {
         milestone_no: issueMilestone.milestone.dataValues.milestone_no,
         milestone_title: issueMilestone.milestone.dataValues.milestone_title,
-      });
+      };
 
       if (issueAssigneesData.length != 0) {
         for (const issueAssignee of issueAssigneesData) {
