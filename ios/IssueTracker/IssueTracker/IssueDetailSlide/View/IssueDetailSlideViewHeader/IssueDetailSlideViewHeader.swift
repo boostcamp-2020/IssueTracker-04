@@ -12,7 +12,9 @@ class IssueDetailSlideViewHeader: UICollectionReusableView {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var editButton: UIButton!
     
-    @IBAction func editButtonTouched(_ sender: UIButton) {
-        
+    var buttonHandler: (() -> Void)?
+    
+    @IBAction func editButtonTouched(_ sender: Any) {
+        buttonHandler?()
     }
 }

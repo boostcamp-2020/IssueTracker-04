@@ -14,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEw-MQ-GmM" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                    <rect key="frame" x="29.5" y="10.5" width="41.5" height="20.5"/>
+                    <rect key="frame" x="24.5" y="8.5" width="51.5" height="24.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -32,4 +32,9 @@
             <point key="canvasLocation" x="-89.855072463768124" y="-147.65625"/>
         </view>
     </objects>
+    <designables>
+        <designable name="kEw-MQ-GmM">
+            <size key="intrinsicContentSize" width="51.5" height="24.5"/>
+        </designable>
+    </designables>
 </document>

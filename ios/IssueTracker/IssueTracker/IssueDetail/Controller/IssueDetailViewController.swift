@@ -28,7 +28,6 @@ class IssueDetailViewController: UIViewController {
         configureGestureRecognizer()
         configureCollectionView()
         configureSlideView()
-        
     }
     
     private func configureGestureRecognizer() {
@@ -39,14 +38,16 @@ class IssueDetailViewController: UIViewController {
     
     private func configureSlideView() {
         guard let slideViewController = children.first as? IssueDetailSlideViewController,
-              let detailItem = detailCollectionViewAdapter.dataManager.detailItem else {
+              let detailItem = detailCollectionViewAdapter.dataManager.detailItem,
+              let issueInfo = detailCollectionViewAdapter.dataManager.issueInfo else {
             return
         }
-        
         let slideViewDataManager = IssueSlideViewDataSourceManager()
+        slideViewController.delegate = self
         slideViewDataManager.assignees = detailItem.assignees
         slideViewDataManager.labels = detailItem.labels
         slideViewDataManager.milestone = detailItem.milestone
+        slideViewDataManager.issueFlag = issueInfo.issueFlag
         
         slideViewController.adapter = IssueSlideVIewCollectionViewAdapter(dataManager: slideViewDataManager)
         slideViewController.reloadData()
@@ -102,4 +103,21 @@ class IssueDetailViewController: UIViewController {
 
 extension IssueDetailViewController: UICollectionViewDelegate {
     
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        print("top offset")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+    }
+    
+}
+
+extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
+    
+    func didIssueButtonTouched(flag: Bool) {
+        detailCollectionViewAdapter.dataManager.setIssueFlag(flag)
+        detailCollectionView.reloadSections([0])
+        gestureDidFinish(velocity: 800)
+    }
 }

@@ -30,6 +30,11 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "EmptyDetailSlideViewHeader", for: indexPath)
         }
         header.title.text = dataManager.title(of: indexPath)
+        header.buttonHandler = {
+            NotificationCenter.default.post(name: .editButtonTouched,
+                                            object: nil,
+                                            userInfo: ["section" : indexPath.section])
+        }
         return header
     }
     
@@ -58,7 +63,19 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
             milestoneCell.mileStoneLabel.text = dataManager.milestone.milestoneTitle
             return milestoneCell
             
-        case .option, .none:
+        case .option:
+            guard let optionCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClosedCollectionViewCell.identifier, for: indexPath) as? ClosedCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            optionCell.closedHandler = { [weak self] in
+                if let flag = self?.dataManager.issueFlag {
+                    optionCell.setClosedButtonLabel(flag: !flag)
+                }
+                NotificationCenter.default.post(name: .closedButtonTouched,
+                                                object: nil)
+            }
+            return optionCell
+        case .none:
             return UICollectionViewCell()
         }
     }
