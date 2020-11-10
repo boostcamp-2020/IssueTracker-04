@@ -30,6 +30,7 @@ class IssueDetailDataSourceManager {
     
     init() {
         detailItem = DummyDataLoader().loadDetail()
+        
     }
     
     var detailItem: IssueDetail?

@@ -26,7 +26,6 @@
 		3756A1E225515FE400703715 /* MileStoneCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3756A1E025515FE400703715 /* MileStoneCollectionViewCell.xib */; };
 		375C43B42554045900C5BE27 /* AppleIDLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43B32554045900C5BE27 /* AppleIDLoginButton.swift */; };
 		375C43C3255404FB00C5BE27 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43C2255404FB00C5BE27 /* LoginManager.swift */; };
-		375C43D52554054400C5BE27 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43D32554054400C5BE27 /* NetworkManager.swift */; };
 		375C43D62554054400C5BE27 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43D42554054400C5BE27 /* Constant.swift */; };
 		375C43DB2554056000C5BE27 /* GithubApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C43DA2554056000C5BE27 /* GithubApplication.swift */; };
 		375C901325497800009E33D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C901225497800009E33D1 /* LoginViewController.swift */; };
@@ -53,6 +52,8 @@
 		9911FBA3255951B800E02E4C /* CusorFixTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FBA2255951B800E02E4C /* CusorFixTextField.swift */; };
 		9911FBAA255953EF00E02E4C /* DateTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */; };
 		9911FC01255A6C5400E02E4C /* IssueListNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */; };
+		9911FC11255A8ED200E02E4C /* LoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC10255A8ED200E02E4C /* LoginNetworkManager.swift */; };
+		9911FC19255A8F7F00E02E4C /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC18255A8F7F00E02E4C /* JWTToken.swift */; };
 		9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9562556E805005A2359 /* UIVIewController+.swift */; };
 		9916E97C25575AD1005A2359 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E97B25575AD1005A2359 /* LabelListViewController.swift */; };
 		9916E98725575F2D005A2359 /* SwipableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */; };
@@ -149,7 +150,6 @@
 		3756A1E025515FE400703715 /* MileStoneCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MileStoneCollectionViewCell.xib; sourceTree = "<group>"; };
 		375C43B32554045900C5BE27 /* AppleIDLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppleIDLoginButton.swift; path = IssueTracker/Login/view/AppleIDLoginButton.swift; sourceTree = SOURCE_ROOT; };
 		375C43C2255404FB00C5BE27 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		375C43D32554054400C5BE27 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		375C43D42554054400C5BE27 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		375C43DA2554056000C5BE27 /* GithubApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubApplication.swift; sourceTree = "<group>"; };
 		375C901225497800009E33D1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +176,8 @@
 		9911FBA2255951B800E02E4C /* CusorFixTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusorFixTextField.swift; sourceTree = "<group>"; };
 		9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextFieldManager.swift; sourceTree = "<group>"; };
 		9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListNetworkManager.swift; sourceTree = "<group>"; };
+		9911FC10255A8ED200E02E4C /* LoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkManager.swift; sourceTree = "<group>"; };
+		9911FC18255A8F7F00E02E4C /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
 		9916E9562556E805005A2359 /* UIVIewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+.swift"; sourceTree = "<group>"; };
 		9916E97B25575AD1005A2359 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
 		9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -374,6 +376,8 @@
 			isa = PBXGroup;
 			children = (
 				375C43C2255404FB00C5BE27 /* LoginManager.swift */,
+				9911FC10255A8ED200E02E4C /* LoginNetworkManager.swift */,
+				9911FC18255A8F7F00E02E4C /* JWTToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -819,7 +823,6 @@
 			children = (
 				375C43DA2554056000C5BE27 /* GithubApplication.swift */,
 				375C43D42554054400C5BE27 /* Constant.swift */,
-				375C43D32554054400C5BE27 /* NetworkManager.swift */,
 				99A09B702549AD230082ADF0 /* DummyDataLoader.swift */,
 				375C901825497921009E33D1 /* KeychainItem.swift */,
 				37E95CAC25596F9D00FE3A3E /* NetworkService.swift */,
@@ -1095,7 +1098,6 @@
 				370739562553C1F30024D75F /* IssueDetailSlideViewController.swift in Sources */,
 				9965DD9625548D9A00F92FFC /* IssueSlideVIewCollectionViewAdapter.swift in Sources */,
 				9965DD0A2553EA0B00F92FFC /* IssueSlideViewDataSourceManager.swift in Sources */,
-				375C43D52554054400C5BE27 /* NetworkManager.swift in Sources */,
 				9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */,
 				375C43DB2554056000C5BE27 /* GithubApplication.swift in Sources */,
 				99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */,
@@ -1137,6 +1139,7 @@
 				375C43B42554045900C5BE27 /* AppleIDLoginButton.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,
 				9916EA342557FF6F005A2359 /* ColorBox.swift in Sources */,
+				9911FC11255A8ED200E02E4C /* LoginNetworkManager.swift in Sources */,
 				375C901925497921009E33D1 /* KeychainItem.swift in Sources */,
 				9916EA3C255802D1005A2359 /* ColorTextFieldManager.swift in Sources */,
 				9965DC6D25512F2200F92FFC /* CommentCell.swift in Sources */,
@@ -1163,6 +1166,7 @@
 				9916E9DA2557B5FD005A2359 /* MilestoneDetail.swift in Sources */,
 				9916E9BF25579455005A2359 /* MilestoneListViewController.swift in Sources */,
 				378F46172552BD0E00C94324 /* IssueNavigationItem.swift in Sources */,
+				9911FC19255A8F7F00E02E4C /* JWTToken.swift in Sources */,
 				3747D46C2547EFDF009BA189 /* SceneDelegate.swift in Sources */,
 				995E0AF7254EA4B600811D49 /* Notification+.swift in Sources */,
 			);

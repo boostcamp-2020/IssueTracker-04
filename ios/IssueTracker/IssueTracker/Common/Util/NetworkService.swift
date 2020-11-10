@@ -49,9 +49,6 @@ class NetworkService {
         request.headers?.forEach { key, value in
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
-        
-        print(urlRequest.allHTTPHeaderFields)
-        
         session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completion(.failure(NetworkError.requestFailed(error: error)))

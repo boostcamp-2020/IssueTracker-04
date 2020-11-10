@@ -36,7 +36,7 @@ struct DummyDataLoader: NetworkManaging {
         }
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.custom)
         var item: IssueDetail?
         do {
             item = try decoder.decode(IssueDetail.self, from: dataAsset.data)
