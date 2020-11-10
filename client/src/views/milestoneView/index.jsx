@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
-import MilestoneList from '@components/milestoneView/milestoneList';
-import Header from '@components/labelView/header';
-import GreenBtn from '@components/labelView/greenBtn';
-import WhiteBtn from '@components/labelView/WhiteBtn';
+import MilestoneList from '../../components/milestoneView/milestoneList';
+import Header from '../../components/labelView/header';
+import GreenBtn from '../../components/labelView/greenBtn';
+import WhiteBtn from '../../components/labelView/WhiteBtn';
 
 const milestoneView = () => {
   const mOpenCnt = 2;
