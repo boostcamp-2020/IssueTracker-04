@@ -3,7 +3,7 @@ import './style.scss';
 import MilestoneList from '../../components/milestoneView/milestoneList';
 import Header from '../../components/labelView/header';
 import GreenBtn from '../../components/labelView/greenBtn';
-import WhiteBtn from '../../components/labelView/WhiteBtn';
+import WhiteBtn from '../../components/labelView/whiteBtn';
 
 const milestoneView = () => {
   const mOpenCnt = 2;
