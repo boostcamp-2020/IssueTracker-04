@@ -58,9 +58,9 @@ class MilestoneAddViewController: UIViewController {
                                               milestoneTitle: titleTextField.text ?? "",
                                               dueDate: Date.make(string: dateTextField.text ?? ""),
                                               milestoneDescription: descriptionTextField.text ?? "",
-                                              percent: 0.0,
-                                              openIssueCount: 0,
-                                              closedIssueCount: 0)
+                                              percent: milestoneData?.percent ?? 0.0,
+                                              openIssueCount: milestoneData?.openIssueCount ?? 0,
+                                              closedIssueCount: milestoneData?.closedIssueCount ?? 0)
         if let indexPath = indexPath {
             delegate?.milestoneDidUpdate(milestoneDetail: milestoneDetail, indexPath: indexPath)
         } else {
