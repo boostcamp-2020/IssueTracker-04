@@ -50,6 +50,7 @@
 		9911FB9E255947B300E02E4C /* MilestoneAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FB9D255947B300E02E4C /* MilestoneAddViewController.swift */; };
 		9911FBA3255951B800E02E4C /* CusorFixTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FBA2255951B800E02E4C /* CusorFixTextField.swift */; };
 		9911FBAA255953EF00E02E4C /* DateTextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */; };
+		9911FC01255A6C5400E02E4C /* IssueListNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */; };
 		9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9562556E805005A2359 /* UIVIewController+.swift */; };
 		9916E97C25575AD1005A2359 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E97B25575AD1005A2359 /* LabelListViewController.swift */; };
 		9916E98725575F2D005A2359 /* SwipableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */; };
@@ -170,6 +171,7 @@
 		9911FB9D255947B300E02E4C /* MilestoneAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneAddViewController.swift; sourceTree = "<group>"; };
 		9911FBA2255951B800E02E4C /* CusorFixTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CusorFixTextField.swift; sourceTree = "<group>"; };
 		9911FBA9255953EF00E02E4C /* DateTextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextFieldManager.swift; sourceTree = "<group>"; };
+		9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListNetworkManager.swift; sourceTree = "<group>"; };
 		9916E9562556E805005A2359 /* UIVIewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+.swift"; sourceTree = "<group>"; };
 		9916E97B25575AD1005A2359 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
 		9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 			children = (
 				99A09B5B2549A34C0082ADF0 /* IssueItem.swift */,
 				995E0AF0254E8D6100811D49 /* IssueListDataSourceManager.swift */,
+				9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1120,6 +1123,7 @@
 				9965DC8B25517CD200F92FFC /* String+.swift in Sources */,
 				3756A1E125515FE400703715 /* MileStoneCollectionViewCell.swift in Sources */,
 				9916E9E82557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift in Sources */,
+				9911FC01255A6C5400E02E4C /* IssueListNetworkManager.swift in Sources */,
 				378F460025528DB000C94324 /* IssueMarkdownTextView.swift in Sources */,
 				995E0AF1254E8D6100811D49 /* IssueListDataSourceManager.swift in Sources */,
 				9911FBAA255953EF00E02E4C /* DateTextFieldManager.swift in Sources */,

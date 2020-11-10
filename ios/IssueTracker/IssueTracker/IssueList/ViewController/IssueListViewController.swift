@@ -49,6 +49,15 @@ class IssueListViewController: UIViewController {
         configureCellObserver()
         navigationItem.rightBarButtonItem = editButtonItem
         setSelectResultView(editing: false)
+        
+        collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
+            if isSuccess {
+                self?.issueListCollectionView.reloadData()
+            } else {
+                print("error")
+            }
+            
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -86,7 +95,12 @@ class IssueListViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        collectionViewAdapter = IssueListCollectionViewAdapter(dataSourceManager: IssueListDataSourceManager(networkManager: DummyDataLoader()))
+        let networkService = NetworkService()
+        let networkManager = IssueListNetworkManager(service: networkService)
+        
+        let dataSourceManager = IssueListDataSourceManager(networkManager: networkManager)
+        
+        collectionViewAdapter = IssueListCollectionViewAdapter(dataSourceManager: dataSourceManager)
         issueListCollectionView.dataSource = collectionViewAdapter
         issueListCollectionView.delegate = self
     }

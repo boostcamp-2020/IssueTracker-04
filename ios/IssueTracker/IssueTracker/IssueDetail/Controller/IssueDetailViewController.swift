@@ -47,7 +47,7 @@ class IssueDetailViewController: UIViewController {
         slideViewDataManager.assignees = detailItem.assignees
         slideViewDataManager.labels = detailItem.labels
         slideViewDataManager.milestone = detailItem.milestone
-        slideViewDataManager.issueFlag = issueInfo.issueFlag
+        slideViewDataManager.issueFlag = issueInfo.isOpen
         
         slideViewController.adapter = IssueSlideVIewCollectionViewAdapter(dataManager: slideViewDataManager)
         slideViewController.reloadData()
