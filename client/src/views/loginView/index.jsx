@@ -34,10 +34,9 @@ const loginView = () => {
     if (code) {
       const json = await axios.post(urlForJwt, { code });
       localStorage.setItem('jwt', json.data.jwt);
-
-      if (localStorage.getItem('jwt')) {
-        location.href = '/issues-list';
-      }
+    }
+    if (localStorage.getItem('jwt')) {
+      location.href = '/issues-list';
     }
   }, []);
 

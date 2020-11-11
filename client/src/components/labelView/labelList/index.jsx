@@ -4,7 +4,13 @@ import LabelRow from '@components/labelView/labelRow';
 
 const labelList = ({ labelCnt, labels }) => {
   const labelRows = labels.map((label, index) => (
-    <LabelRow key={index} title={label.title} description={label.description} color={label.color} />
+    <LabelRow
+      key={index}
+      title={label.label_title}
+      description={label.label_description}
+      color={label.label_color}
+      labelNo={label.label_no}
+    />
   ));
   return (
     <div className="label-list">

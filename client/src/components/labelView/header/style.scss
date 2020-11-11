@@ -7,3 +7,12 @@
   justify-content: center;
   font-weight: bold;
 }
+
+.home-link {
+  all: unset;
+  color: inherit;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

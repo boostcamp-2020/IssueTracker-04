@@ -32,11 +32,11 @@ const milestoneView = () => {
       <Header />
       <div className="milestone-container">
         <div className="label-milestone-btns">
-          <WhiteBtn addClass={['checked', 'label-list-btn']} title="Labels" />
-          <WhiteBtn addClass={['milestone-list-btn']} title="Milestones" />
+          <WhiteBtn addClass={['label-list-btn']} title="Labels" link="/labels" />
+          <WhiteBtn addClass={['checked', 'milestone-list-btn']} title="Milestones" link="/milestones" />
         </div>
         <div className="absolute-right">
-          <GreenBtn addClass={['new-label']} title="New Label" />
+          <GreenBtn addClass={['new-label']} title="New Milestone" />
         </div>
         <MilestoneList mOpenCnt={mOpenCnt} mClosedCnt={mClosedCnt} milestones={milestones} />
       </div>
