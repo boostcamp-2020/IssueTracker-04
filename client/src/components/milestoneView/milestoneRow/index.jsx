@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import './style.scss';
 
-const milestoneRow = ({ title, date, description, percent, iOpenCnt, iClosedCnt }) => {
+const milestoneRow = ({ milestoneNo, title, description, date, percent, iOpenCnt, iClosedCnt }) => {
   return (
-    <div className="milestone-row">
+    <div className="milestone-row" data-milestoneno={milestoneNo}>
       <div className="milestone-left">
         <div>
           <a href="#" className="milestone-title">
@@ -16,7 +16,7 @@ const milestoneRow = ({ title, date, description, percent, iOpenCnt, iClosedCnt 
       <div className="milestone-right">
         <div>
           <svg className="barChart">
-            <rect x="0" y="0" width={`${percent  }%`} height="100%" fill="#1ee280" />
+            <rect x="0" y="0" width={`${percent}%`} height="100%" fill="#1ee280" />
           </svg>
         </div>
         <div>

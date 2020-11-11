@@ -3,17 +3,23 @@ import './style.scss';
 import MilestoneRow from '@components/milestoneView/milestoneRow';
 
 const milestoneList = ({ mOpenCnt, mClosedCnt, milestones }) => {
-  const milestoneRows = milestones.map(({ title, date, description, percent, iOpenCnt, iClosedCnt }, index) => (
-    <MilestoneRow
-      key={index}
-      title={title}
-      description={description}
-      date={date}
-      percent={percent}
-      iOpenCnt={iOpenCnt}
-      iClosedCnt={iClosedCnt}
-    />
-  ));
+  const milestoneRows = milestones.map(
+    (
+      { milestone_no, milestone_title, milestone_description, due_date, percent, open_issue_count, closed_issue_count },
+      index,
+    ) => (
+      <MilestoneRow
+        key={index}
+        milestoneNo={milestone_no}
+        title={milestone_title}
+        description={milestone_description}
+        date={due_date}
+        percent={percent}
+        iOpenCnt={open_issue_count}
+        iClosedCnt={closed_issue_count}
+      />
+    ),
+  );
   return (
     <div className="milestone-list">
       <div className="milestone-list-head">
