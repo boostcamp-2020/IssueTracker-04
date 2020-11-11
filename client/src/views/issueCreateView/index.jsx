@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import axios from 'axios'
 import './style.scss';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Titles from '../../components/issueCreateView/title';
 import Contents from '../../components/content';
 import Cancels from '../../components/issueCreateView/cancel';
@@ -55,18 +56,20 @@ const issueCreateView = () => {
   const [User, setUser] = useState([]);
   const [Label, setLabel] = useState([]);
   const [Milestone, setMilestone] = useState([]);
+  const [Count, setCount] = useState(0);
 
   const onTitleHandler = (e) => {
     setTitle(e.currentTarget.value);
   };
 
   const onContentHandler = (e) => {
+    setCount(e.currentTarget.value.length)
     setContent(e.currentTarget.value);
   };
 
   const onClickHandler = (e) => {
     e.preventDefault();
-    console.log("answer",memberState, Title, Content);
+    console.log("answer",labelState, milestoneState, memberState, Title, Content);
     console.log("asdfasdf");
     const body={
       issue_title:Title,
@@ -135,8 +138,10 @@ const issueCreateView = () => {
               <div className="create-form" >
                 <Titles placeholder="Title" type="title" value={Title} onChange={onTitleHandler}/>
                 <Contents placeholder="Leave a comment" type="content" value={Content} onChange={onContentHandler}/>
+                <div>{Count}chracters</div>
                 <div className="create-form-submit">
-                  <Cancels />
+                  <Link to = 'issues-list'><Cancels />
+                  </Link>
                   <SubmitButton onClick={onClickHandler}/>
                 </div>
               </div>
