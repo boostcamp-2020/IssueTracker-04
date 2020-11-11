@@ -138,14 +138,32 @@ extension IssueDetailViewController: CommentAddViewControllerDelegate {
 
 extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
     
-    func didIssueButtonTouched(flag: Bool) {
+    func issueButtonDidTouch(flag: Bool) {
         detailCollectionViewAdapter.dataManager.setIssueFlag(flag)
         detailCollectionView.reloadSections([0])
         gestureDidFinish(velocity: 800)
     }
     
-    func didAddCommentButtonTouched() {
+    func addCommentButtonDidTouch() {
         performSegue(withIdentifier: "IssueDetailAddComment", sender: self)
+    }
+    
+    func moveAboveCellButtonDidTouch() {
+        if let topVisibleCell = detailCollectionView.visibleCells.first {
+            scrollCell(to: topVisibleCell)
+        }
+    }
+    
+    func moveBelowCellButtonDidTouch() {
+        if let bottomVisibleCell = detailCollectionView.visibleCells.last {
+            scrollCell(to: bottomVisibleCell)
+        }
+    }
+    
+    func scrollCell(to cell: UICollectionViewCell) {
+        if let indexPath = detailCollectionView.indexPath(for: cell) {
+            detailCollectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        }
     }
     
 }
