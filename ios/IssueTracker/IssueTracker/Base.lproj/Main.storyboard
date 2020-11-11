@@ -1238,7 +1238,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="amH-bc-Thi">
-                                <rect key="frame" x="0.0" y="62" width="414" height="712"/>
+                                <rect key="frame" x="0.0" y="62" width="414" height="682"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5MT-On-BEj">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1252,7 +1252,7 @@
                         <viewLayoutGuide key="safeArea" id="uKB-hs-PRg"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="uKB-hs-PRg" firstAttribute="bottom" secondItem="amH-bc-Thi" secondAttribute="bottom" id="4zQ-ta-GNJ"/>
+                            <constraint firstItem="uKB-hs-PRg" firstAttribute="bottom" secondItem="amH-bc-Thi" secondAttribute="bottom" constant="30" id="4zQ-ta-GNJ"/>
                             <constraint firstItem="9fM-G6-nuz" firstAttribute="top" secondItem="Kdw-UE-w2g" secondAttribute="top" id="XH1-Sf-kWU"/>
                             <constraint firstItem="amH-bc-Thi" firstAttribute="leading" secondItem="uKB-hs-PRg" secondAttribute="leading" id="XHm-a8-pgs"/>
                             <constraint firstItem="9fM-G6-nuz" firstAttribute="trailing" secondItem="uKB-hs-PRg" secondAttribute="trailing" id="YCE-Uj-yR4"/>

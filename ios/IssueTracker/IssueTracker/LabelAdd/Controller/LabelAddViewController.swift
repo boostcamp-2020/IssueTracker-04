@@ -44,6 +44,19 @@ class LabelAddViewController: UIViewController {
         colorTextField.text = nil
     }
     
+    override func keyboardWillShow(keyboardHeight: CGFloat) {
+        let topOfkeyboard = view.frame.height - keyboardHeight
+        let bottomOfView = containerView.frame.origin.y + containerView.frame.size.height
+        
+        if bottomOfView > topOfkeyboard {
+            containerView.frame.origin.y += topOfkeyboard - bottomOfView
+        }
+    }
+    
+    override func keyboardWillHide(notification: NSNotification) {
+        containerView.frame.origin.y = view.center.y - containerView.frame.height/2 - 30
+    }
+    
     func prepareForUpdate(data: LabelDetail) {
         titleTextField.text = data.label.labelTitle
         descriptionTextField.text = data.labelDescription
