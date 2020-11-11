@@ -110,6 +110,10 @@ class IssueDetailViewController: UIViewController {
     }
 }
 
+extension IssueDetailViewController: UICollectionViewDelegate {
+    
+}
+
 extension IssueDetailViewController: CommentAddViewControllerDelegate {
     
     func sendButtonDidTouch(text: String) {
@@ -149,7 +153,6 @@ extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
     }
     
     func scrollCell(to cell: UICollectionViewCell) {
-        //
         if let indexPath = detailCollectionView.indexPath(for: cell) {
             detailCollectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }

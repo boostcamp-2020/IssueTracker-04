@@ -366,40 +366,6 @@
             </objects>
             <point key="canvasLocation" x="2292.753623188406" y="-1761.1607142857142"/>
         </scene>
-        <!--Github Login View Controller-->
-        <scene sceneID="QGG-4T-b8i">
-            <objects>
-                <viewController id="4is-M5-cSt" customClass="GithubLoginViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EQB-TK-Oc8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJO-00-r7i" customClass="GithubLoginWebView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Scn-lG-uQ5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="kJO-00-r7i" secondAttribute="trailing" id="9Cd-bS-0sB"/>
-                            <constraint firstAttribute="bottom" secondItem="kJO-00-r7i" secondAttribute="bottom" id="HAq-Jj-mwa"/>
-                            <constraint firstItem="kJO-00-r7i" firstAttribute="leading" secondItem="EQB-TK-Oc8" secondAttribute="leading" id="We8-iU-4Je"/>
-                            <constraint firstItem="kJO-00-r7i" firstAttribute="top" secondItem="EQB-TK-Oc8" secondAttribute="top" id="mKY-qF-hIv"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="githubLoginWebView" destination="kJO-00-r7i" id="bAZ-CA-SIM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DmQ-jH-POn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-165.42056074766353" y="-570.19438444924413"/>
-        </scene>
         <!--레이블-->
         <scene sceneID="jo0-RT-jzf">
             <objects>
