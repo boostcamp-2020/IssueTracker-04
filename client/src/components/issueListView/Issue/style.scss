@@ -1,29 +1,42 @@
 .issue {
   display: flex;
-  border: solid black;
+  border: solid #dfe6e9;
+  border-radius: 10px;
+  height: 80px;
 }
 
 .issue-checkBoxArea {
   flex: 1;
+  display: flex;
+  padding-top: 10px;
 }
 
 .issue-openCheckArea {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
 }
 
 .issue-contentsArea {
-  flex: 10;
+  flex: 28;
+  display: flex;
+  flex-direction: column;
 }
 
 .issue-assigneesArea {
-  flex: 1;
+  flex: 6;
 }
 
 .issue-contentsArea-bottom {
+  flex: 1;
   display: flex;
+  line-height: 40px;
 }
 
 .issue-contentsArea-top {
+  flex: 1;
   margin-top: 0;
   margin-bottom: 0;
+  line-height: 40px;
 }

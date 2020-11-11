@@ -13,6 +13,7 @@ import LabelButton from '../../components/issueListView/LabelButton'
 import MilestoneButton from '../../components/issueListView/MilestoneButton'
 import MakeIssueButton from '../../components/issueListView/MakeIssueButton'
 import Issue from '../../components/issueListView/Issue'
+import ContentsFilterNav from '../../components/issueListView/Contents-FilterNav'
 
 let sampleIssues = [];
 
@@ -67,8 +68,12 @@ const issueListView = () => {
               <SearchBar />
              </div>
             <div className = "issueListView-body-opNav-labelMilestones">
-              <LabelButton />
-              <MilestoneButton />
+              <Link id = 'labelLink' to = '/labels'>
+                <LabelButton />
+              </Link>
+              <Link id = 'milestoneLink' to = '/milestones'>
+                <MilestoneButton />
+              </Link>
             </div>
             <Link to = '/issues-create'>
               <MakeIssueButton />
@@ -77,12 +82,13 @@ const issueListView = () => {
 
         <div className = "issueListView-contents">
           <div className = 'issueListView-contents-filterNav'>
-            <h1>test</h1>
+            <ContentsFilterNav />
           </div>
           <div className = "issueListView-contents-issueList">
             {
             issueList.map(({issue_flag, issue_title, milestone_title, labels, issue_no, issue_date, issue_author_name, assignees})=> (
               <Issue
+              key = {issue_no}
               isOpened = {issue_flag}
               title = {issue_title}
               milestone = {milestone_title}
@@ -100,11 +106,7 @@ const issueListView = () => {
         </div>
 
       </div>
-    </div>
-      
-
-      
-      
+    </div>      
   );
 };
 
