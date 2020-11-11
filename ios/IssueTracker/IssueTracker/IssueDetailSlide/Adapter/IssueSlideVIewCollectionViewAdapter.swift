@@ -24,20 +24,25 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: IssueDetailSlideViewHeader.identifier, for: indexPath) as? IssueDetailSlideViewHeader,
-            dataManager.section(of: indexPath) != .option else {
-            
+        
+        switch dataManager.section(of: indexPath) {
+        
+        case .assignee, .label, .milestone:
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: IssueDetailSlideViewHeader.identifier, for: indexPath) as? IssueDetailSlideViewHeader else {
+                return UICollectionReusableView()
+            }
+            header.title.text = dataManager.title(of: indexPath)
+            header.buttonHandler = {
+                NotificationCenter.default.post(name: .editButtonTouched,
+                                                object: nil,
+                                                userInfo: ["section": indexPath.section])
+            }
+            return header
+        default:
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "EmptyDetailSlideViewHeader", for: indexPath)
         }
-        header.title.text = dataManager.title(of: indexPath)
-        header.buttonHandler = {
-            NotificationCenter.default.post(name: .editButtonTouched,
-                                            object: nil,
-                                            userInfo: ["section" : indexPath.section])
-        }
-        return header
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         switch dataManager.section(of: indexPath) {

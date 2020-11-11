@@ -59,17 +59,6 @@ class IssueListViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
-            if isSuccess {
-                self?.issueListCollectionView.reloadData()
-            } else {
-                print("DataLoadingFail Request again")
-            }
-        }
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate { [weak self] _ in
             self?.updateLayout(viewWidth: size.width)

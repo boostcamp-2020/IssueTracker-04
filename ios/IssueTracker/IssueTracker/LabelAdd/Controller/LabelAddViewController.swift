@@ -29,7 +29,7 @@ class LabelAddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTapToDissmissKeyBoard()
+        addTapToDismissKeyBoard()
         colorTextField.delegate = self
         if let data = labelData {
             prepareForUpdate(data: data)
