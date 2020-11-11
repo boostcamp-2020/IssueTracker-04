@@ -54,9 +54,8 @@ class IssueListViewController: UIViewController {
             if isSuccess {
                 self?.issueListCollectionView.reloadData()
             } else {
-                print("error")
+                print("DataLoadingFail Request again")
             }
-            
         }
     }
     
@@ -77,7 +76,7 @@ class IssueListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "ListToDetail":
+        case "IssueListToDetail":
             //set Issue ID for Detail
             return
         case "ListToIssueAdd":
@@ -114,6 +113,7 @@ class IssueListViewController: UIViewController {
     private func configureCellObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .issueCloseRequested, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .issueDeleteRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRequested(notification:)), name: .searchRequested, object: nil)
     }
     
     private func addButtonAnimate(showing: Bool) {
@@ -161,10 +161,17 @@ class IssueListViewController: UIViewController {
         print("\(issueNo) close")
     }
     
+    @objc private func searchRequested(notification: Notification) {
+        guard let query = notification.userInfo?["Query"] as? String else {
+            return
+        }
+        searchBar.text = query
+    }
+    
     @IBAction func leftBarButtonTouched(_ sender: UIButton) {
         switch mode {
         case .normal:
-            print("Open Filter")
+            performSegue(withIdentifier: "IssueListToFilter", sender: nil)
         case .edit:
             if sender.title(for: .normal) == "Select All" {
                 sender.setTitle("Deselect All", for: .normal)
@@ -231,7 +238,7 @@ extension IssueListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mode {
         case .normal:
-            performSegue(withIdentifier: "ListToDetail", sender: nil) // send selectedIssue ID
+            performSegue(withIdentifier: "IssueListToDetail", sender: nil) // send selectedIssue ID
         case .edit:
             setSelectedIssueCountLabel()
         }

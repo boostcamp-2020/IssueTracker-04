@@ -42,7 +42,7 @@ class IssueListDataSourceManager {
         }
     }
     
-    func loadIssueList(completion: @escaping  (Bool) -> ()) {
+    func loadIssueList(completion: @escaping  (Bool) -> Void) {
         networkManager.requestIssueList { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

@@ -10,14 +10,17 @@ import UIKit
 class ClosedCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var closedButton: UIButton!
-    var closedHandler: (() -> Void)?
+    var touchHandler: (() -> Void)?
     
     func setClosedButtonLabel(flag: Bool) {
-        let string = flag ? "Reopen issue" : "Close issue"
+        let string = flag ? "Reopen Issue" : "Close Issue"
+        let color = flag ? UIColor.systemGreen : UIColor.systemRed
+        
         closedButton.setTitle(string, for: .normal)
+        closedButton.setTitleColor(color, for: .normal)
     }
     
     @IBAction func closedButtonTouched(_ sender: UIButton) {
-        closedHandler?()
+        touchHandler?()
     }
 }

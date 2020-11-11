@@ -25,7 +25,7 @@ class MilestoneAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateTextField.delegate = self
-        addTapToDissmissKeyBoard()
+        addTapToDismissKeyBoard()
         if let data = milestoneData {
             prepareForUpdate(data: data)
         }

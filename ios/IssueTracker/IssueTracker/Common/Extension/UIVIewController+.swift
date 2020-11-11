@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    func addTapToDissmissKeyBoard() {
+    func addTapToDismissKeyBoard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(UIViewController.dismissKeyboard))

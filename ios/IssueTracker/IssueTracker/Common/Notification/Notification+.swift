@@ -15,4 +15,6 @@ extension Notification.Name {
     static let editButtonTouched = Notification.Name("EditButtonTouched")
     static let closedButtonTouched = Notification.Name("ClosedButtonTouched")
     static let milestoneDeleteRequested = Notification.Name("MilestoneDeleteRequested")
+    
+    static let searchRequested = Notification.Name("SearchRequested")
 }
