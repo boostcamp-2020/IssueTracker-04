@@ -1,9 +1,70 @@
 const { statusCode } = require('../../config/statusCode');
+const issueModel = require('../../models').issue;
 const milestoneModel = require('../../models').milestone;
+const fn = require('../../models').Sequelize.fn;
+/**
+ * 
+ {
+  "success": true,
+  "milestones": [
+    {
+      "milestone_no": 0,
+      "milestone_title": "string",
+      "milestone_description": "string",
+      "percent": 0,
+      "open_issue_count": 0,
+      "closed_issue_count": 0
+    }
+  ]
+}
+ */
 
 exports.getMilestoneList = async (req, res, next) => {
+  const issuesGroup = await issueModel.findAll({
+    attributes: ['milestone_no', 'issue_flag', [fn('count', '*'), 'count']],
+    group: ['milestone_no', 'issue_flag'],
+    raw: true,
+  });
   const milestones = await milestoneModel.findAll({ raw: true });
-  return res.status(200).json({ success: true, milestones: milestones });
+  const formatted = formatting(issuesGroup, milestones);
+  return res
+    .status(200)
+    .json({ success: true, milestones: Object.values(formatted) });
+};
+
+const formatting = (issuesGroup, milestones) => {
+  const list = {};
+  listInit(list, milestones);
+  addOpenClosed(list, issuesGroup);
+  addPercent(list);
+  return list;
+};
+
+const listInit = (list, milestones) => {
+  milestones.forEach((e) => {
+    list[e.milestone_no] = { ...e, open_issue_count: 0, closed_issue_count: 0 };
+  });
+};
+
+const addOpenClosed = (list, issuesGroup) => {
+  issuesGroup.forEach((e) => {
+    const cntObj = {};
+    if (e.issue_flag === 1) {
+      cntObj.open_issue_count = e.count;
+    } else {
+      cntObj.closed_issue_count = e.count;
+    }
+    list[e.milestone_no] = { ...list[e.milestone_no], ...cntObj };
+  });
+};
+
+const addPercent = (list) => {
+  Object.keys(list).forEach((key) => {
+    const open = list[key].open_issue_count;
+    const closed = list[key].closed_issue_count;
+    const percent = Math.round((closed / (open + closed)) * 100);
+    list[key] = { ...list[key], percent: percent };
+  });
 };
 
 exports.createMilestone = async (req, res, next) => {
@@ -16,6 +77,6 @@ exports.createMilestone = async (req, res, next) => {
   res.status(statusCode.SUCCESS).json({
     success: true,
     message: 'milestone is inserted',
-    label_no: result.get({ plain: true }).milestone_no,
+    milestone_no: result.get({ plain: true }).milestone_no,
   });
 };

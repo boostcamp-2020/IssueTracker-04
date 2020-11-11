@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define(
+  const issue = sequelize.define(
     'issue',
     {
       issue_no: {
@@ -51,4 +51,12 @@ module.exports = function (sequelize, DataTypes) {
       timestamps: false,
     }
   );
+
+  issue.associate = function (models) {
+    issue.belongsTo(models.milestone, {
+      foreignKey: 'milestone_no',
+    });
+  };
+
+  return issue;
 };
