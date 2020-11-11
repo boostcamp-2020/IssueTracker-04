@@ -62,12 +62,13 @@ class LabelAddViewController: UIViewController {
     @IBAction func saveButtonDidTouch(_ sender: UIButton) {
         let label = Label(labelNo: labelData?.label.labelNo ?? 0, labelTitle: titleTextField.text ?? "", labelColor: "#" + (colorTextField.text ?? ""))
         let labelDetail = LabelDetail(label: label, labelDescription: descriptionTextField.text ?? "")
-        
+
         if let indexPath = indexPath {
             delegate?.labelDidUpdate(label: labelDetail, indexPath: indexPath)
         } else {
             delegate?.labelDidAdd(label: labelDetail)
         }
+        
         dismiss(animated: true)
     }
     

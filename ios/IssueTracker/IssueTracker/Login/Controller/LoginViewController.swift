@@ -50,7 +50,20 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTouched(_ sender: Any) {
-        dismiss(animated: true)
+        loginDidFinish()
+    }
+    
+    func loginDidFinish() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        
+        view.window?.layer.add(transition, forKey: nil)
+        view.window?.rootViewController = mainViewController
     }
     
 }

@@ -14,9 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard UserDefaults.standard.string(forKey: "JWT") != nil else {
-            presentLoginViewController()
             return
         }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        window?.rootViewController = mainViewController
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -24,29 +26,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let code = context.url.absoluteString.components(separatedBy: "code=").last else {
             return
         }
-        NetworkManager.requestLogin(code: code) { result in
+        
+        let networkService = NetworkService()
+        let networkManager = LoginNetworkManager(service: networkService)
+        
+        networkManager.requestLogin(code: code) { result in
             switch result {
-            case .success(let data):
-                let JWT = String(data: data, encoding: .utf8)
-                print(JWT)
+            case .success(let token):
+                UserDefaults.standard.set(token.jwt, forKey: "JWT")
+                DispatchQueue.main.async {
+                    guard let controller = self.window?.rootViewController as? LoginViewController else {
+                        return
+                    }
+                    controller.loginDidFinish()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
-//            UserDefaults.standard.set(JWT, forKey: "JWT")
-//            guard let controller = self.window?.rootViewController as? IssueListViewController else {
-//                return
-//            }
-//            controller.presentingViewController?.dismiss(animated: true)
         }
     }
-    
-    func presentLoginViewController() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController {
-//            loginViewController.modalPresentationStyle = .formSheet
-//            loginViewController.isModalInPresentation = true
-//            window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
-//        }
-    }
-    
 }

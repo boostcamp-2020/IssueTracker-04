@@ -18,7 +18,9 @@ class IssueListNetworkManager {
     }
     
     func requestIssueList(completion: @escaping (Result<[IssueItem], NetworkError>) -> Void) {
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTm8iOjE5LCJpYXQiOjE2MDQ5ODg3MTEsImV4cCI6MTYwNDk5MjMxMX0.Df4OJLyzpHkYltvg_rN0p397eV72D1ps_eX9kdSIxEk"
+        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
+            return
+        }
         //UserDefault 관리객체 만들어서 토큰 얻어오기
         var request = NetworkService.Request(method: .get)
         request.url = URL(string: IssueListNetworkManager.requestURL)

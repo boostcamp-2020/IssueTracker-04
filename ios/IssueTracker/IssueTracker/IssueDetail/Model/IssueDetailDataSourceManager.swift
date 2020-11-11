@@ -33,6 +33,7 @@ class IssueDetailDataSourceManager {
     init(networkManager: IssueDetailNetworkManager = IssueDetailNetworkManager()) {
         self.networkManager = networkManager
         detailItem = DummyDataLoader().loadDetail()
+        
     }
     
     var detailItem: IssueDetail?
