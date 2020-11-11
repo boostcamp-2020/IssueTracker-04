@@ -5,7 +5,7 @@ const { isAuth } = require('../../services/auth/index');
 
 router.post('/api/issue/', isAuth, issue.issueCreate);
 
-router.post('/api/issue/create/', issue.issueCreateAll);
+router.post('/api/issue/create/', isAuth, issue.issueCreateAll);
 
 router.get('/api/issue/list/', isAuth, issue.issueListGet);
 
