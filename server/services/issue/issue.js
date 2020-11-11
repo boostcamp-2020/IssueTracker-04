@@ -4,10 +4,31 @@ const issueUserModel = require('../../models').issue_user_relation;
 const userModel = require('../../models').user;
 const labelModel = require('../../models').label;
 const issueLabelModel = require('../../models').issue_label_relation;
+const issueCommentModel = require('../../models').issue_comment;
 
-exports.issueCreate = (req, res, next) => {
-  console.log(req.body);
-  res.json({ hi: 'hello' });
+exports.issueCreate = async (req, res, next) => {
+  const { issue_title, issue_content } = req.body;
+  const userNo = res.locals.userNo;
+  try {
+    const result = await issueModel.create({
+      issue_title: issue_title,
+      issue_content: issue_content,
+      issue_author_no: userNo,
+      issue_date: new Date(),
+      issue_flag: 1,
+    });
+    await issueCommentModel.create({
+      issue_no: result.issue_no,
+      comment: issue_content,
+      author_no: userNo,
+      comment_date: result.issue_date,
+    });
+    return res
+      .status(200)
+      .json({ success: true, new_issue_no: result.issue_no });
+  } catch (error) {
+    return res.statue(400).json({ success: false });
+  }
 };
 
 const getIssueAssignees = async (issueNo) => {
