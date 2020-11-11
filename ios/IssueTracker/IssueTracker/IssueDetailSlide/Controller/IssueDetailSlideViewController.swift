@@ -32,6 +32,37 @@ class IssueDetailSlideViewController: UIViewController {
         configureCollectionView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let editViewController = segue.destination as? IssueDetailEditViewController,
+              let adapter = adapter else {
+            return
+        }
+        let selectedItems: [DetailEditCellData]
+        let networkManager: DetailNetworkManager
+        let networkService = NetworkService()
+        switch segue.identifier {
+        case "ToEditAssignee":
+            editViewController.mode = .assignee
+            networkManager = AssigneeEditNetworkManager(service: networkService)
+            selectedItems = adapter.dataManager.assignees.map { DetailEditCellData(type: .assignee(image: $0.userImg), itemId: $0.userNo, title: $0.userName) }
+        case "ToEditLabel":
+            editViewController.mode = .label
+            networkManager = LabelEditNetworkManager(service: networkService)
+            selectedItems = adapter.dataManager.labels.map { DetailEditCellData(type: .label(color: $0.labelColor), itemId: $0.labelNo, title: $0.labelTitle) }
+        case "ToEditMilestone":
+            editViewController.mode = .milestone
+            networkManager = MilestoneEditNetworkManager(service: networkService)
+            let milestone = adapter.dataManager.milestone
+            selectedItems = [DetailEditCellData(type: .milestone, itemId: milestone.milestoneNo, title: milestone.milestoneTitle)]
+        default:
+            return
+        }
+        let dataManager = DetailEditDatasourceManager(networkManager: networkManager)
+        dataManager.selectedItems = selectedItems
+        editViewController.delegate = self
+        editViewController.dataManager = dataManager
+    }
+    
     private func configureNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(editButtonTouched(_:)),
@@ -65,6 +96,16 @@ class IssueDetailSlideViewController: UIViewController {
     
     @objc func editButtonTouched(_ notification: Notification) {
         guard let section = notification.userInfo?["section"] as? Int else {
+            return
+        }
+        switch IssueSlideViewDataSourceManager.Section(rawValue: section) {
+        case .assignee:
+            performSegue(withIdentifier: "ToEditAssignee", sender: nil)
+        case .label:
+            performSegue(withIdentifier: "ToEditLabel", sender: nil)
+        case .milestone:
+            performSegue(withIdentifier: "ToEditMilestone", sender: nil)
+        default:
             return
         }
     }
@@ -133,5 +174,19 @@ extension IssueDetailSlideViewController: UICollectionViewDelegateFlowLayout {
 extension IssueDetailSlideViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         collectionView.contentOffset.y <= 0
+    }
+}
+
+extension IssueDetailSlideViewController: IssueDetailEditDelegate {
+    func itemDidUpdate(items: [DetailEditCellData], mode: IssueDetailEditViewController.Mode) {
+        switch mode {
+        case .assignee:
+            adapter?.dataManager.assignees = items.map { Assignee(userNo: $0.itemId, userName: $0.title, userImg: $0.rawData) }
+        case .label:
+            adapter?.dataManager.labels = items.map { Label(labelNo: $0.itemId, labelTitle: $0.title, labelColor: $0.rawData) }
+        case .milestone:
+            adapter?.dataManager.milestone = Milestone(milestoneNo: items[0].itemId, milestoneTitle: items[0].title)
+        }
+        collectionView.reloadSections([mode.rawValue])
     }
 }

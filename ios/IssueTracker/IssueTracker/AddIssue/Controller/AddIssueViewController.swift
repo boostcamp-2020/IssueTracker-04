@@ -21,7 +21,7 @@ class AddIssueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         markDownRendering = MarkDownRendering()
-        addTapToDissmissKeyBoard()
+        addTapToDismissKeyBoard()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
