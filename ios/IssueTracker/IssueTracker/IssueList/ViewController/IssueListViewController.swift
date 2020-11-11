@@ -42,7 +42,7 @@ class IssueListViewController: UIViewController {
             addButtonAnimate(showing: !editing)
         }
     }
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -79,6 +79,12 @@ class IssueListViewController: UIViewController {
         switch segue.identifier {
         case "ListToDetail":
             //set Issue ID for Detail
+            return
+        case "ListToIssueAdd":
+            guard let issueAddViewController = segue.destination as? IssueAddViewController else {
+                return
+            }
+            issueAddViewController.delegate = self
             return
         default:
             return
@@ -190,6 +196,22 @@ class IssueListViewController: UIViewController {
         }
         setSelectedIssueCountLabel()
     }
+}
+
+extension IssueListViewController: IssueAddViewControllerDelegate {
+    
+    func issueSendButtonDidTouch(request: RequestIssueAdd) {
+        collectionViewAdapter?.dataSourceManager.add(issue: request) { [weak self] complete in
+            if complete {
+                guard let count = self?.collectionViewAdapter?.dataSourceManager.itemCount else {
+                    return
+                }
+                let indexPath = IndexPath(item: count - 1, section: 0)
+                self?.issueListCollectionView.insertItems(at: [indexPath])
+            }
+        }
+    }
+    
 }
 
 extension IssueListViewController: UICollectionViewDelegate {

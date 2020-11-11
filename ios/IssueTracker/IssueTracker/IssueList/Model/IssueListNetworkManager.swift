@@ -17,6 +17,27 @@ class IssueListNetworkManager {
         self.service = service
     }
     
+    func requestIssueAdd(issue: RequestIssueAdd, completion: @escaping (Result<ResponseIssueAdd, NetworkError>) -> Void) {
+        completion(.success(ResponseIssueAdd()))
+        return
+        let request = NetworkService.Request(method: .post, url: URL(string: ""))
+        service.request(request: request) { result in
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                guard let issueAddData = try? decoder.decode(ResponseIssueAdd.self, from: data) else {
+                    completion(.failure(NetworkError.invalidData))
+                    return
+                }
+                completion(.success(issueAddData))
+            case .failure(let error):
+                completion(.failure(error))
+                return
+            }
+        }
+    }
+    
     func requestIssueList(completion: @escaping (Result<[IssueItem], NetworkError>) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "JWT") else {
             return

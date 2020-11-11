@@ -110,18 +110,6 @@ class IssueDetailViewController: UIViewController {
     }
 }
 
-extension IssueDetailViewController: UICollectionViewDelegate {
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        print("top offset")
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
-    }
-    
-}
-
 extension IssueDetailViewController: CommentAddViewControllerDelegate {
     
     func sendButtonDidTouch(text: String) {
@@ -130,7 +118,7 @@ extension IssueDetailViewController: CommentAddViewControllerDelegate {
                   let item = self?.detailCollectionViewAdapter.dataManager.detailItem?.comments.count else {
                 return
             }
-            self?.detailCollectionView.reloadItems(at: [IndexPath(item: item - 2, section: 0)])
+            self?.detailCollectionView.insertItems(at: [IndexPath(item: item - 1, section: 0)])
             self?.gestureDidFinish(velocity: 800)
         }
     }
@@ -161,6 +149,7 @@ extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
     }
     
     func scrollCell(to cell: UICollectionViewCell) {
+        //
         if let indexPath = detailCollectionView.indexPath(for: cell) {
             detailCollectionView.scrollToItem(at: indexPath, at: .top, animated: true)
         }

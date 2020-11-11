@@ -30,3 +30,7 @@ class CommentAddViewController: UIViewController {
     }
     
 }
+
+extension CommentAddViewController: UITextViewDelegate {
+    
+}
