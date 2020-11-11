@@ -6,23 +6,22 @@ import { MemberContext } from '../../views/issueCreateView';
 
 function Dropdown(props) {
   const {memberState, memberDispatch} = useContext(MemberContext)
-  const {items, title} = props
+  const {users, title} = props
   const [open, setOpen] = useState(false);
-//   const [selection, setSelection] = useState([]);
   const toggle = () => setOpen(!open);
   Dropdown.handleClickOutside = () => setOpen(false);
 
-  const selectItem = (item) => {
-    if (memberState.some(ele => ele.id === item.id)){
-      const payload = memberState.filter(ele => ele.id !== item.id);
+  const selectItem = (user) => {
+    if (memberState.some(ele => ele.user_no === user.user_no)){
+      const payload = memberState.filter(ele => ele.user_no !== user.user_no);
       memberDispatch({type: "UPDATE", payload})
     } else {
-      memberDispatch({type: "UPDATE", payload:[...memberState,item]})
+      memberDispatch({type: "UPDATE", payload:[...memberState,user]})
     }
   }
   
-  const checkItem = (item) => {
-    return memberState.some(ele => ele.id === item.id)
+  const checkItem = (user) => {
+    return memberState.some(ele => ele.user_no === user.user_no)
   }
 
   return (
@@ -36,11 +35,11 @@ function Dropdown(props) {
       <div>
       {open && (
         <div className="dropdown-list">
-        {items.map(item => (
-          <div className="dropdown-item" key={item.id}>
-          <button className="dropdown-button" type="button" onClick={() => selectItem(item)}>
-          <span>{checkItem(item)&&"✔️"}</span>
-          <span>{item.value}</span>
+        {users.map(user => (
+          <div className="dropdown-item" key={user.user_no}>
+          <button className="dropdown-button" type="button" onClick={() => selectItem(user)}>
+          <span>{checkItem(user)&&"✔️"}</span>
+          <span>{user.user_name}</span>
           </button>
           </div>
         ))}

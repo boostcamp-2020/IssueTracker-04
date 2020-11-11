@@ -13,14 +13,9 @@ export const MemberContext = React.createContext();
 
 const memberReducer = (state, action) => {
   switch (action.type) {
-    // case "INIT": 
-    //   console.log("state",state);
-    //   console.log("payload", action.payload);
-    //   return []
-    //   break
+    case "INIT": 
+      return []
     case "UPDATE":
-      console.log(state)
-      console.log(action.payload);
       return [...action.payload]
     default:
       throw new Error();
@@ -29,10 +24,9 @@ const memberReducer = (state, action) => {
 
 const issueCreateView = () => {
   const [memberState, memberDispatch] = useReducer(memberReducer, []);
-
-
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState('');
+  const [User, setUser] = useState([]);
 
   const onTitleHandler = (e) => {
     setTitle(e.currentTarget.value);
@@ -43,36 +37,37 @@ const issueCreateView = () => {
   };
 
   const onClickHandler = (e) => {
-    console.log("answer",memberState);
     e.preventDefault();
-    console.log("answer",memberState);
+    console.log("answer",memberState, Title, Content);
     console.log("asdfasdf");
     const body={
       issue_title:Title,
       issue_content:Content,
       issue_authoer_no:0
     }
-
     // axios.post('http://localhost:5000/api/issue/create', body).then(response => {
     //   console.log(response);
     // })
-
   };
+  useEffect(()=>{
+    const users = [
+      {
+        user_no: 1,
+        user_name: 'Zigje9',
+      },
+      {
+        user_no: 2,
+        user_name: 'jk',
+      },
+      {
+        user_no: 3,
+        user_name: 'crong',
+      },
+    ];
+    setUser(users)
+  }, []);
 
-  const items = [
-    {
-      id: 1,
-      value: 'Zigje9',
-    },
-    {
-      id: 2,
-      value: 'jk',
-    },
-    {
-      id: 3,
-      value: 'crong',
-    },
-  ];
+  
 
   return (
     <MemberContext.Provider value={{memberState, memberDispatch}}>
@@ -88,7 +83,7 @@ const issueCreateView = () => {
           </div>
         </div>
         <div className="register-column">
-          <Assignees items={items}/>
+          <Assignees users={User} now={memberState}/>
           <hr className="thin-line" />
           <Labels />
           <hr className="thin-line" />
