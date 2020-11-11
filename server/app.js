@@ -16,6 +16,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users/users');
 const authRouter = require('./routes/auth/github');
 const issueRouter = require('./routes/issue/issue');
+const labelRouter = require('./routes/label/label');
+const milestoneRouter = require('./routes/milestone/milestone');
 
 const app = express();
 
@@ -68,6 +70,8 @@ app.use(indexRouter);
 app.use(authRouter);
 app.use(usersRouter);
 app.use(issueRouter);
+app.use(labelRouter);
+app.use(milestoneRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
