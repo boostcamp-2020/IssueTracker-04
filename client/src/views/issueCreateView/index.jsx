@@ -11,6 +11,7 @@ import Milestones from '../../components/sideMilestone';
 
 export const MemberContext = React.createContext();
 export const LabelContext = React.createContext();
+export const MilestoneContext = React.createContext();
 
 const memberReducer = (state, action) => {
   switch (action.type) {
@@ -34,13 +35,26 @@ const labelReducer = (state, action) => {
   }
 }
 
+const milestoneReducer = (state, action) => {
+  switch (action.type) {
+    case "INIT":
+      return []
+    case "UPDATE":
+      return [...action.payload]
+    default:
+      throw new Error();
+  }
+}
+
 const issueCreateView = () => {
   const [memberState, memberDispatch] = useReducer(memberReducer, []);
   const [labelState, labelDispatch] = useReducer(labelReducer, []);
+  const [milestoneState, milestoneDispatch] = useReducer(milestoneReducer, []);
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState('');
   const [User, setUser] = useState([]);
   const [Label, setLabel] = useState([]);
+  const [Milestone, setMilestone] = useState([]);
 
   const onTitleHandler = (e) => {
     setTitle(e.currentTarget.value);
@@ -81,22 +95,33 @@ const issueCreateView = () => {
     setUser(users)
     const labels = [
       {
-        label_no: 4,
+        label_no: 1,
         label_title: "dev",
         label_color: "#ffffff"
       },
       {
-        label_no: 5,
+        label_no: 2,
         label_title: "client",
         label_color: "#111111"
       },
       {
-        label_no: 6,
+        label_no: 3,
         label_title: "ios",
         label_color: "#123456"
       }
     ];
     setLabel(labels)
+    const milestones = [
+      {
+        milestone_no: 1,
+        milestone_title: "스프린트1"
+      },
+      {
+        milestone_no: 2,
+        milestone_title: "스프린트2"
+      }
+    ];
+    setMilestone(milestones)
   }, []);
 
   
@@ -104,26 +129,28 @@ const issueCreateView = () => {
   return (
     <MemberContext.Provider value={{memberState, memberDispatch}}>
       <LabelContext.Provider value={{labelState, labelDispatch}}>
-      <div className="create-view">
-        <div className="input-column">
-          <div className="create-form" >
-            <Titles placeholder="Title" type="title" value={Title} onChange={onTitleHandler}/>
-            <Contents placeholder="Leave a comment" type="content" value={Content} onChange={onContentHandler}/>
-            <div className="create-form-submit">
-              <Cancels />
-              <SubmitButton onClick={onClickHandler}/>
+        <MilestoneContext.Provider value={{milestoneState, milestoneDispatch}}>
+          <div className="create-view">
+            <div className="input-column">
+              <div className="create-form" >
+                <Titles placeholder="Title" type="title" value={Title} onChange={onTitleHandler}/>
+                <Contents placeholder="Leave a comment" type="content" value={Content} onChange={onContentHandler}/>
+                <div className="create-form-submit">
+                  <Cancels />
+                  <SubmitButton onClick={onClickHandler}/>
+                </div>
+              </div>
+            </div>
+            <div className="register-column">
+              <Assignees users={User} now={memberState}/>
+              <hr className="thin-line" />
+              <Labels labels={Label} now={labelState}/>
+              <hr className="thin-line" />
+              <Milestones milestones={Milestone} now={milestoneState}/>
+              <hr className="thin-line" />
             </div>
           </div>
-        </div>
-        <div className="register-column">
-          <Assignees users={User} now={memberState}/>
-          <hr className="thin-line" />
-          <Labels labels={Label} now={labelState}/>
-          <hr className="thin-line" />
-          <Milestones />
-          <hr className="thin-line" />
-        </div>
-      </div>
+        </MilestoneContext.Provider>
       </LabelContext.Provider>    
     </MemberContext.Provider>
   );

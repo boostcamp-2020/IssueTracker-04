@@ -1,27 +1,27 @@
 import React, { useState, useContext } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import './style.scss';
-import { LabelContext } from '../../../views/issueCreateView';
+import { MilestoneContext } from '../../../views/issueCreateView';
 
 
 function Dropdown(props) {
-  const {labelState, labelDispatch} = useContext(LabelContext)
-  const {labels, title} = props
+  const {milestoneState, milestoneDispatch} = useContext(MilestoneContext)
+  const {milestones, title} = props
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
   Dropdown.handleClickOutside = () => setOpen(false);
 
-  const selectItem = (label) => {
-    if (labelState.some(ele => ele.label_no === label.label_no)){
-      const payload = labelState.filter(ele => ele.label_no !== label.label_no);
-      labelDispatch({type: "UPDATE", payload})
+  const selectItem = (milestone) => {
+    if (milestoneState.some(ele => ele.milestone_no === milestone.milestone_no)){
+      const payload = milestoneState.filter(ele => ele.milestone_no !== milestone.milestone_no);
+      milestoneDispatch({type: "UPDATE", payload})
     } else {
-      labelDispatch({type: "UPDATE", payload:[...labelState,label]})
+      milestoneDispatch({type: "UPDATE", payload:[...milestoneState,milestone]})
     }
   }
   
-  const checkItem = (label) => {
-    return labelState.some(ele => ele.label_no === label.label_no)
+  const checkItem = (milestone) => {
+    return milestoneState.some(ele => ele.milestone_no === milestone.milestone_no)
   }
 
   return (
@@ -35,11 +35,11 @@ function Dropdown(props) {
       <div>
       {open && (
         <div className="dropdown-list">
-        {labels.map(label => (
-          <div className="dropdown-item" key={label.label_no}>
-          <button className="dropdown-button" type="button" onClick={() => selectItem(label)}>
-          <span>{checkItem(label)&&"✔️"}</span>
-          <span>{label.label_title}</span>
+        {milestones.map(milestone => (
+          <div className="dropdown-item" key={milestone.milestone_no}>
+          <button className="dropdown-button" type="button" onClick={() => selectItem(milestone)}>
+          <span>{checkItem(milestone)&&"✔️"}</span>
+          <span>{milestone.milestone_title}</span>
           </button>
           </div>
         ))}
