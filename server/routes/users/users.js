@@ -55,6 +55,19 @@ router.get('/api/user', auth.isAuth, async (req, res, next) => {
   }
 });
 
+router.get('/api/userList', auth.isAuth, async (req, res, next) => {
+  try {
+    const users = await userModel.findAll({ raw: true });
+    users.map((ele) => (ele.user_password = undefined));
+    const userList = users;
+    return res.status(200).json({ success: true, userList: userList });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ success: false, message: '사용자 리스트 조회 실패' });
+  }
+});
+
 router.get('/api/user/logout', auth.isAuth, (req, res) => {
   // 삭제된 jwt 관리하기
   res.status(200).json({ success: true, message: '로그아웃' });
