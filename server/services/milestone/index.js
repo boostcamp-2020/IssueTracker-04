@@ -20,16 +20,20 @@ const fn = require('../../models').Sequelize.fn;
  */
 
 exports.getMilestoneList = async (req, res, next) => {
-  const issuesGroup = await issueModel.findAll({
-    attributes: ['milestone_no', 'issue_flag', [fn('count', '*'), 'count']],
-    group: ['milestone_no', 'issue_flag'],
-    raw: true,
-  });
-  const milestones = await milestoneModel.findAll({ raw: true });
-  const formatted = formatting(issuesGroup, milestones);
-  return res
-    .status(200)
-    .json({ success: true, milestones: Object.values(formatted) });
+  try {
+    const issuesGroup = await issueModel.findAll({
+      attributes: ['milestone_no', 'issue_flag', [fn('count', '*'), 'count']],
+      group: ['milestone_no', 'issue_flag'],
+      raw: true,
+    });
+    const milestones = await milestoneModel.findAll({ raw: true });
+    const formatted = formatting(issuesGroup, milestones);
+    return res
+      .status(200)
+      .json({ success: true, milestones: Object.values(formatted) });
+  } catch (error) {
+    return res.status(400).json({ success: false, milestones: null });
+  }
 };
 
 const formatting = (issuesGroup, milestones) => {
@@ -69,14 +73,22 @@ const addPercent = (list) => {
 
 exports.createMilestone = async (req, res, next) => {
   const { milestone_title, milestone_description, due_date } = req.body;
-  const result = await milestoneModel.create({
-    milestone_title: milestone_title,
-    milestone_description: milestone_description,
-    due_date: due_date,
-  });
-  res.status(statusCode.SUCCESS).json({
-    success: true,
-    message: 'milestone is inserted',
-    milestone_no: result.get({ plain: true }).milestone_no,
-  });
+  try {
+    const result = await milestoneModel.create({
+      milestone_title: milestone_title,
+      milestone_description: milestone_description,
+      due_date: due_date,
+    });
+    res.status(statusCode.SUCCESS).json({
+      success: true,
+      message: 'milestone is inserted',
+      milestone_no: result.get({ plain: true }).milestone_no,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: '마일스톤 생성 실패',
+      milestone_no: null,
+    });
+  }
 };

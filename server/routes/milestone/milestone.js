@@ -4,7 +4,11 @@ const milestoneService = require('../../services/milestone');
 const authService = require('../../services/auth');
 
 // 조회
-router.get('/api/milestoneList', milestoneService.getMilestoneList);
+router.get(
+  '/api/milestoneList',
+  authService.isAuth,
+  milestoneService.getMilestoneList
+);
 
 // 추가
 /**
