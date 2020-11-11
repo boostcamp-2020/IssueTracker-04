@@ -1,0 +1,45 @@
+.contents-filterNav {
+  display: flex;
+  border: solid #dfe6e9;
+  border-radius: 10px;
+  height: 50px;
+  margin-top: 20px;
+  background-color: #f6f8fa;
+}
+
+.contents-filterNav-checkBoxArea {
+  flex: 1;
+  display: flex;
+  padding-top: 10px;
+}
+
+.contents-filterNav-middleArea {
+  flex: 20;
+  display: flex;
+  line-height: 40px;
+  padding-left: 0.85%;
+}
+
+.contents-filterNav-buttonsArea {
+  flex: 15;
+}
+
+.contents-filterNav-middleArea-OpenClosedArea {
+  display: flex;
+}
+
+.issue-icon {
+  margin-top: 10px;
+}
+
+.contents-filterNav-buttonsArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-button {
+  flex: 1;
+  background-color: #f6f8fa;
+  border: none;
+}
