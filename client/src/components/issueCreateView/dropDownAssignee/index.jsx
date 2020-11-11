@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import './style.scss';
-import { MemberContext } from '../../views/issueCreateView';
+import { MemberContext } from '../../../views/issueCreateView';
 
 
 function Dropdown(props) {

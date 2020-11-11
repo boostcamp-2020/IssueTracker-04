@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
-import Dropdown from '../dropDown'
+import Dropdown from '../issueCreateView/dropDownAssignee'
 
 const assignees = (props) => {
   const isEmpty = (arr) => {

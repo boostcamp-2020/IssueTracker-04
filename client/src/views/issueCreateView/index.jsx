@@ -10,6 +10,7 @@ import Labels from '../../components/sideLabel';
 import Milestones from '../../components/sideMilestone';
 
 export const MemberContext = React.createContext();
+export const LabelContext = React.createContext();
 
 const memberReducer = (state, action) => {
   switch (action.type) {
@@ -22,11 +23,24 @@ const memberReducer = (state, action) => {
   }
 }
 
+const labelReducer = (state, action) => {
+  switch (action.type) {
+    case "INIT":
+      return []
+    case "UPDATE":
+      return [...action.payload]
+    default:
+      throw new Error();
+  }
+}
+
 const issueCreateView = () => {
   const [memberState, memberDispatch] = useReducer(memberReducer, []);
+  const [labelState, labelDispatch] = useReducer(labelReducer, []);
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState('');
   const [User, setUser] = useState([]);
+  const [Label, setLabel] = useState([]);
 
   const onTitleHandler = (e) => {
     setTitle(e.currentTarget.value);
@@ -65,12 +79,31 @@ const issueCreateView = () => {
       },
     ];
     setUser(users)
+    const labels = [
+      {
+        label_no: 4,
+        label_title: "dev",
+        label_color: "#ffffff"
+      },
+      {
+        label_no: 5,
+        label_title: "client",
+        label_color: "#111111"
+      },
+      {
+        label_no: 6,
+        label_title: "ios",
+        label_color: "#123456"
+      }
+    ];
+    setLabel(labels)
   }, []);
 
   
 
   return (
     <MemberContext.Provider value={{memberState, memberDispatch}}>
+      <LabelContext.Provider value={{labelState, labelDispatch}}>
       <div className="create-view">
         <div className="input-column">
           <div className="create-form" >
@@ -85,12 +118,13 @@ const issueCreateView = () => {
         <div className="register-column">
           <Assignees users={User} now={memberState}/>
           <hr className="thin-line" />
-          <Labels />
+          <Labels labels={Label} now={labelState}/>
           <hr className="thin-line" />
           <Milestones />
           <hr className="thin-line" />
         </div>
       </div>
+      </LabelContext.Provider>    
     </MemberContext.Provider>
   );
 };
