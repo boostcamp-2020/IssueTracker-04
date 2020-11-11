@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import axios from 'axios'
 import './style.scss';
-import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {BrowserRouter as  Router, Route, Link } from 'react-router-dom';
 import Titles from '../../components/issueCreateView/title';
 import Contents from '../../components/content';
 import Cancels from '../../components/issueCreateView/cancel';
@@ -67,64 +67,48 @@ const issueCreateView = () => {
     setContent(e.currentTarget.value);
   };
 
-  const onClickHandler = (e) => {
+  const onClickHandler = async (e) => {
     e.preventDefault();
-    console.log("answer",labelState, milestoneState, memberState, Title, Content);
-    console.log("asdfasdf");
+    const JWT = localStorage.getItem('jwt')
+    const labelList = labelState.map((ele) => ele.label_no)
+    const assigneesList = memberState.map((ele) => ele.user_no)
     const body={
       issue_title:Title,
       issue_content:Content,
-      issue_authoer_no:0
+      milestone_no:milestoneState[0].milestone_no,
+      label_list:labelList,
+      assignees:assigneesList
     }
-    // axios.post('http://localhost:5000/api/issue/create', body).then(response => {
-    //   console.log(response);
-    // })
+    await axios.post('http://101.101.217.9:5000/api/issue/create', body, {
+      headers: {
+        Authorization: `Bearer ${JWT}`
+      }
+    })
   };
-  useEffect(()=>{
-    const users = [
-      {
-        user_no: 1,
-        user_name: 'Zigje9',
-      },
-      {
-        user_no: 2,
-        user_name: 'jk',
-      },
-      {
-        user_no: 3,
-        user_name: 'crong',
-      },
-    ];
-    setUser(users)
-    const labels = [
-      {
-        label_no: 1,
-        label_title: "dev",
-        label_color: "#ffffff"
-      },
-      {
-        label_no: 2,
-        label_title: "client",
-        label_color: "#111111"
-      },
-      {
-        label_no: 3,
-        label_title: "ios",
-        label_color: "#123456"
-      }
-    ];
-    setLabel(labels)
-    const milestones = [
-      {
-        milestone_no: 1,
-        milestone_title: "스프린트1"
-      },
-      {
-        milestone_no: 2,
-        milestone_title: "스프린트2"
-      }
-    ];
-    setMilestone(milestones)
+  useEffect(async ()=>{
+    const JWT = localStorage.getItem('jwt')
+    const userData = await axios.get('http://101.101.217.9:5000/api/userList',{
+      headers: {
+        Authorization: `Bearer ${JWT}`
+
+      } 
+    })
+    setUser(userData.data.userList)
+    const milestoneData = await axios.get('http://101.101.217.9:5000/api/milestoneList',{
+      headers: {
+        Authorization: `Bearer ${JWT}`
+
+      } 
+    })
+    setMilestone(milestoneData.data.milestones);
+    const labelData = await axios.get('http://101.101.217.9:5000/api/labelList',{
+      headers: {
+        Authorization: `Bearer ${JWT}`
+
+      } 
+    })
+    setLabel(labelData.data.labels)
+    
   }, []);
 
   
