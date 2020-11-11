@@ -31,6 +31,50 @@ exports.issueCreate = async (req, res, next) => {
   }
 };
 
+exports.issueCreateAll = async (req, res, next) => {
+  const {
+    assignees,
+    issue_content,
+    issue_title,
+    label_list,
+    milestone_no,
+  } = req.body;
+  const userNo = res.locals.userNo;
+  try {
+    const result = await issueModel.create({
+      issue_title: issue_title,
+      issue_content: issue_content,
+      issue_author_no: userNo,
+      issue_date: new Date(),
+      issue_flag: 1,
+      milestone_no: milestone_no,
+    });
+    await issueCommentModel.create({
+      issue_no: result.issue_no,
+      comment: issue_content,
+      author_no: userNo,
+      comment_date: result.issue_date,
+    });
+    for (let label of label_list) {
+      await issueLabelModel.create({
+        issue_no: result.issue_no,
+        label_no: label,
+      });
+    }
+    for (let assignee of assignees) {
+      await issueUserModel.create({
+        user_no: assignee,
+        issue_no: result.issue_no,
+      });
+    }
+    return res
+      .status(200)
+      .json({ success: true, new_issue_no: result.issue_no });
+  } catch (error) {
+    return res.status(400).json({ success: false });
+  }
+};
+
 const getIssueAssignees = async (issueNo) => {
   issueUserModel.belongsTo(userModel, { foreignKey: 'user_no' });
   const assigneesData = await issueUserModel.findAll({
