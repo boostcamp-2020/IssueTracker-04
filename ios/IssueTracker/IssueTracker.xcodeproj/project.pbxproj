@@ -54,6 +54,12 @@
 		9911FC01255A6C5400E02E4C /* IssueListNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */; };
 		9911FC11255A8ED200E02E4C /* LoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC10255A8ED200E02E4C /* LoginNetworkManager.swift */; };
 		9911FC19255A8F7F00E02E4C /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC18255A8F7F00E02E4C /* JWTToken.swift */; };
+		9911FC26255AD35500E02E4C /* IssueFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC25255AD35500E02E4C /* IssueFilterViewController.swift */; };
+		9911FC2F255AF29C00E02E4C /* IssueFilterDatasourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC2E255AF29C00E02E4C /* IssueFilterDatasourceManager.swift */; };
+		9911FC3A255AF30800E02E4C /* FilterCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC39255AF30800E02E4C /* FilterCellData.swift */; };
+		9911FC3F255AF7D700E02E4C /* FilterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC3E255AF7D700E02E4C /* FilterSection.swift */; };
+		9911FC8A255B7A8A00E02E4C /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC89255B7A8900E02E4C /* DateFormatter+.swift */; };
+		9911FC96255B8EAB00E02E4C /* BadgeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9911FC95255B8EAA00E02E4C /* BadgeTableViewCell.swift */; };
 		9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9562556E805005A2359 /* UIVIewController+.swift */; };
 		9916E97C25575AD1005A2359 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E97B25575AD1005A2359 /* LabelListViewController.swift */; };
 		9916E98725575F2D005A2359 /* SwipableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */; };
@@ -178,6 +184,12 @@
 		9911FC00255A6C5400E02E4C /* IssueListNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListNetworkManager.swift; sourceTree = "<group>"; };
 		9911FC10255A8ED200E02E4C /* LoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkManager.swift; sourceTree = "<group>"; };
 		9911FC18255A8F7F00E02E4C /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
+		9911FC25255AD35500E02E4C /* IssueFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueFilterViewController.swift; sourceTree = "<group>"; };
+		9911FC2E255AF29C00E02E4C /* IssueFilterDatasourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueFilterDatasourceManager.swift; sourceTree = "<group>"; };
+		9911FC39255AF30800E02E4C /* FilterCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellData.swift; sourceTree = "<group>"; };
+		9911FC3E255AF7D700E02E4C /* FilterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSection.swift; sourceTree = "<group>"; };
+		9911FC89255B7A8900E02E4C /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		9911FC95255B8EAA00E02E4C /* BadgeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeTableViewCell.swift; sourceTree = "<group>"; };
 		9916E9562556E805005A2359 /* UIVIewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+.swift"; sourceTree = "<group>"; };
 		9916E97B25575AD1005A2359 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
 		9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -314,6 +326,7 @@
 				99A09B8A2549C0D60082ADF0 /* Common */,
 				375C9010254977E3009E33D1 /* Login */,
 				99A09B522549A24B0082ADF0 /* IssueList */,
+				9911FC23255AD31100E02E4C /* IssueFilter */,
 				9965DC2D2550F3EB00F92FFC /* IssueDetail */,
 				9965DD842554883300F92FFC /* IssueDetailSlide */,
 				37F2784125591470008A9F15 /* IssueDetailSlideEdit */,
@@ -493,6 +506,33 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9911FC23255AD31100E02E4C /* IssueFilter */ = {
+			isa = PBXGroup;
+			children = (
+				9911FC2D255AF27D00E02E4C /* Model */,
+				9911FC24255AD33B00E02E4C /* Controller */,
+			);
+			path = IssueFilter;
+			sourceTree = "<group>";
+		};
+		9911FC24255AD33B00E02E4C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9911FC25255AD35500E02E4C /* IssueFilterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9911FC2D255AF27D00E02E4C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9911FC2E255AF29C00E02E4C /* IssueFilterDatasourceManager.swift */,
+				9911FC39255AF30800E02E4C /* FilterCellData.swift */,
+				9911FC3E255AF7D700E02E4C /* FilterSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9916E964255757FF005A2359 /* LabelList */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +666,7 @@
 				9965DD7B255484BE00F92FFC /* UICollectionReusableView+.swift */,
 				9965DD9E2554A70C00F92FFC /* UICollectionView+.swift */,
 				9916E9562556E805005A2359 /* UIVIewController+.swift */,
+				9911FC89255B7A8900E02E4C /* DateFormatter+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -864,6 +905,7 @@
 				9916E98625575F2D005A2359 /* SwipableCollectionViewCell.swift */,
 				99D977332558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift */,
 				99D99CD3254BB05D008E2BF4 /* RoundAddButton.swift */,
+				9911FC95255B8EAA00E02E4C /* BadgeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1098,6 +1140,7 @@
 				370739562553C1F30024D75F /* IssueDetailSlideViewController.swift in Sources */,
 				9965DD9625548D9A00F92FFC /* IssueSlideVIewCollectionViewAdapter.swift in Sources */,
 				9965DD0A2553EA0B00F92FFC /* IssueSlideViewDataSourceManager.swift in Sources */,
+				9911FC26255AD35500E02E4C /* IssueFilterViewController.swift in Sources */,
 				9916E9572556E805005A2359 /* UIVIewController+.swift in Sources */,
 				375C43DB2554056000C5BE27 /* GithubApplication.swift in Sources */,
 				99A09B802549B2340082ADF0 /* IssueListCollectionViewCell.swift in Sources */,
@@ -1113,12 +1156,14 @@
 				9916EA142557D6D8005A2359 /* LabelAddViewController.swift in Sources */,
 				9916E9E22557BD90005A2359 /* MilestoneDatasourceManger.swift in Sources */,
 				9916EA022557C4F8005A2359 /* LabelDatasourceManager.swift in Sources */,
+				9911FC8A255B7A8A00E02E4C /* DateFormatter+.swift in Sources */,
 				99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */,
 				99D977342558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift in Sources */,
 				378F460A255295D800C94324 /* IssueTextSegmentControl.swift in Sources */,
 				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
 				9965DCA0255294A600F92FFC /* IssueDetailCollectionViewAdapter.swift in Sources */,
 				372E21CF255A6153007FF2E9 /* CommentAddViewController.swift in Sources */,
+				9911FC2F255AF29C00E02E4C /* IssueFilterDatasourceManager.swift in Sources */,
 				99A09B8D2549C0F90082ADF0 /* BadgeLabel.swift in Sources */,
 				375C43C3255404FB00C5BE27 /* LoginManager.swift in Sources */,
 				378F460F2552AEA900C94324 /* IssueTitleTextField.swift in Sources */,
@@ -1130,11 +1175,14 @@
 				9916E98C255779B9005A2359 /* LabelListCell.swift in Sources */,
 				99D99CC5254A6EAF008E2BF4 /* UIColor+.swift in Sources */,
 				9911FB9E255947B300E02E4C /* MilestoneAddViewController.swift in Sources */,
+				9911FC3F255AF7D700E02E4C /* FilterSection.swift in Sources */,
 				9916E98725575F2D005A2359 /* SwipableCollectionViewCell.swift in Sources */,
+				9911FC96255B8EAB00E02E4C /* BadgeTableViewCell.swift in Sources */,
 				99D99CD4254BB05D008E2BF4 /* RoundAddButton.swift in Sources */,
 				9916E9CF25579693005A2359 /* MilestoneDetailView.swift in Sources */,
 				9965DCFF2553DE8500F92FFC /* IssueDetail.swift in Sources */,
 				3756A1C42551427100703715 /* IssueDetailSlideViewHeader.swift in Sources */,
+				9911FC3A255AF30800E02E4C /* FilterCellData.swift in Sources */,
 				37CA36932551362C0076CB57 /* LabelCollectionViewCell.swift in Sources */,
 				375C43B42554045900C5BE27 /* AppleIDLoginButton.swift in Sources */,
 				3747D46A2547EFDF009BA189 /* AppDelegate.swift in Sources */,

@@ -9,15 +9,22 @@ import UIKit
 
 class BadgeTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var badgeLabel: BadgeLabel!
+    
+    func configure(with title: String, color: String) {
+        badgeLabel.text = title
+        let uiColor = UIColor(hexString: color)
+        badgeLabel.backgroundColor = uiColor
+        badgeLabel.borderColor = uiColor
+        badgeLabel.textColor = uiColor.visibleTextColor
+        badgeLabel.font = UIFont.systemFont(ofSize: 13)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configure(with milestoneTitle: String) {
+        badgeLabel.text = milestoneTitle
+        badgeLabel.backgroundColor = .clear
+        badgeLabel.borderColor = .systemGray2
+        badgeLabel.textColor = .systemGray2
+        badgeLabel.font = UIFont.systemFont(ofSize: 15)
     }
-
 }

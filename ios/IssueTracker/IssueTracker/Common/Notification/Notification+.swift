@@ -14,4 +14,6 @@ extension Notification.Name {
     static let labelDeleteRequested = Notification.Name("LabelDeleteRequested")
     
     static let milestoneDeleteRequested = Notification.Name("MilestoneDeleteRequested")
+    
+    static let searchRequested = Notification.Name("SearchRequested")
 }
