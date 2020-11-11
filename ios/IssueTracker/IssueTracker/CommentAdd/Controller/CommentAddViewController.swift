@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol CommentAddViewControllerDelegate {
+protocol CommentAddViewControllerDelegate: class {
     func sendButtonDidTouch(text: String)
 }
 
 class CommentAddViewController: UIViewController {
 
     @IBOutlet weak var commentTextView: UITextView!
-    var delegate: CommentAddViewControllerDelegate?
+    weak var delegate: CommentAddViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class CommentAddViewController: UIViewController {
     
     @IBAction func sendButtonTouched(_ sender: UIButton) {
         delegate?.sendButtonDidTouch(text: commentTextView.text)
+        navigationController?.dismiss(animated: true)
     }
     
 }

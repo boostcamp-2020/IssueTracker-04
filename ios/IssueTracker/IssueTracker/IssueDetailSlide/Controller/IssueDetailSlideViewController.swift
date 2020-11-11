@@ -8,8 +8,10 @@
 import UIKit
 
 protocol IssueDetailSlideViewControllerDelegate: class {
-    func didIssueButtonTouched(flag: Bool)
-    func didAddCommentButtonTouched()
+    func issueButtonDidTouch(flag: Bool)
+    func addCommentButtonDidTouch()
+    func moveAboveCellButtonDidTouch()
+    func moveBelowCellButtonDidTouch()
 }
 
 class IssueDetailSlideViewController: UIViewController {
@@ -70,12 +72,20 @@ class IssueDetailSlideViewController: UIViewController {
     @objc func closedButtonTouched(_ notification: Notification) {
         if let flag = adapter?.dataManager.issueFlag {
             adapter?.dataManager.issueFlag = !flag
-            delegate?.didIssueButtonTouched(flag: !flag)
+            delegate?.issueButtonDidTouch(flag: !flag)
         }
     }
     
     @IBAction func addCommentButtonTouched(_ sender: Any) {
-        delegate?.didAddCommentButtonTouched()
+        delegate?.addCommentButtonDidTouch()
+    }
+    
+    @IBAction func moveAboveCellButtonTouched(_ sender: UIButton) {
+        delegate?.moveAboveCellButtonDidTouch()
+    }
+    
+    @IBAction func moveBelowCellButtonTouched(_ sender: UIButton) {
+        delegate?.moveBelowCellButtonDidTouch()
     }
     
 }

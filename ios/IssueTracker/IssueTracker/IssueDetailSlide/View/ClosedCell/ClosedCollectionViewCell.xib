@@ -21,7 +21,7 @@
                         <rect key="frame" x="16" y="8" width="476" height="106"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                        <state key="normal" title="Closed issue">
+                        <state key="normal" title="Close issue">
                             <color key="titleColor" systemColor="systemRedColor"/>
                         </state>
                         <userDefinedRuntimeAttributes>
