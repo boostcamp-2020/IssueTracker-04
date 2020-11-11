@@ -1,5 +1,5 @@
 //
-//  AddIssueViewController.swift
+//  IssueAddViewController.swift
 //  IssueTracker
 //
 //  Created by Oh Donggeon on 2020/11/04.
@@ -8,18 +8,26 @@
 import UIKit
 import WebKit
 
-class AddIssueViewController: UIViewController {
+protocol IssueAddViewControllerDelegate: class {
+    func issueSendButtonDidTouch(request: RequestIssueAdd)
+}
+
+class IssueAddViewController: UIViewController {
     
     @IBOutlet weak var issueNavItem: IssueNavigationItem!
+    @IBOutlet weak var issueTitleTextField: IssueTitleTextField!
     @IBOutlet weak var markdownTextView: IssueMarkdownTextView!
     @IBOutlet weak var markdownWebView: WKWebView!
     @IBOutlet weak var markDownTextViewPlaceHolder: UILabel!
     @IBOutlet weak var markdownTextViewBottomConstraint: NSLayoutConstraint!
     
     var markDownRendering: MarkDownRendering?
+    var networkManager: IssueAddNetworkManager?
+    weak var delegate: IssueAddViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        networkManager = IssueAddNetworkManager()
         markDownRendering = MarkDownRendering()
         addTapToDismissKeyBoard()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -60,9 +68,18 @@ class AddIssueViewController: UIViewController {
         markdownWebView.isHidden = !isHiddenView
     }
     
+    @IBAction func sendButtonTouched(_ sender: Any) {
+        guard let title = issueTitleTextField.text,
+              let content = markdownTextView.text else {
+            return
+        }
+        delegate?.issueSendButtonDidTouch(request: RequestIssueAdd(issueTitle: title, issueContent: content))
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
-extension AddIssueViewController: UITextViewDelegate {
+extension IssueAddViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         markDownTextViewPlaceHolder.isHidden = true
@@ -92,7 +109,7 @@ extension AddIssueViewController: UITextViewDelegate {
     
 }
 
-extension AddIssueViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+extension IssueAddViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         imagePickerController(picker, didSelect: info[.originalImage] as? UIImage)
@@ -104,7 +121,7 @@ extension AddIssueViewController: UIImagePickerControllerDelegate & UINavigation
     }
 }
 
-extension AddIssueViewController: UITextFieldDelegate {
+extension IssueAddViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIMenuController.shared.menuItems = nil
     }

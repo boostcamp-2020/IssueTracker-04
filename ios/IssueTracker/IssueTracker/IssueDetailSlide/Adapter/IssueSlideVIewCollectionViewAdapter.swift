@@ -72,7 +72,7 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
             guard let optionCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClosedCollectionViewCell.identifier, for: indexPath) as? ClosedCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            optionCell.closedHandler = { [weak self] in
+            optionCell.touchHandler = { [weak self] in
                 if let flag = self?.dataManager.issueFlag {
                     optionCell.setClosedButtonLabel(flag: !flag)
                 }

@@ -10,10 +10,10 @@ import Foundation
 class IssueListDataSourceManager {
     
     var items: [IssueListCellData] = []
+    var networkManager: IssueListNetworkManager
     var itemCount: Int {
         items.count
     }
-    var networkManager: IssueListNetworkManager
     
     init(networkManager: IssueListNetworkManager) {
         self.networkManager = networkManager
@@ -26,6 +26,20 @@ class IssueListDataSourceManager {
     
     subscript(indexPaths: [IndexPath]) -> [IssueListCellData] {
         indexPaths.map { self[$0] }
+    }
+    
+    func add(issue: RequestIssueAdd, completion: @escaping (Bool) -> Void) {
+        networkManager.requestIssueAdd(issue: issue) { [weak self] result in
+            switch result {
+            case .success(let response):
+                let issue = IssueListCellData(issueNo: 0, issueTitle: issue.issueTitle, issueContent: issue.issueContent, milestoneTitle: "", labels: [])
+                self?.items.append(issue)
+                completion(true)
+            case .failure(let error):
+                completion(false)
+            }
+            completion(true)
+        }
     }
     
     func loadIssueList(completion: @escaping  (Bool) -> Void) {

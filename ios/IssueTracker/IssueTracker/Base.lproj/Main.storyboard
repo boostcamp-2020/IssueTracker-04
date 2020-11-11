@@ -45,7 +45,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="lWJ-qa-oZ7" kind="show" id="WXV-6M-jKj"/>
+                                    <segue destination="lWJ-qa-oZ7" kind="show" identifier="ListToIssueAdd" id="WXV-6M-jKj"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5s-vG-8Wc">
@@ -156,7 +156,7 @@
         <!--새 이슈-->
         <scene sceneID="Bhf-mv-hMt">
             <objects>
-                <viewController id="lWJ-qa-oZ7" customClass="AddIssueViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lWJ-qa-oZ7" customClass="IssueAddViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HUl-zX-5ms">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,11 +249,15 @@
                                 <state key="normal">
                                     <imageReference key="image" image="paperplane" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendButtonTouched:" destination="lWJ-qa-oZ7" eventType="touchUpInside" id="SIg-2n-Uwf"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="issueNavItem" destination="cV1-O7-y5b" id="7N0-Z1-Zn1"/>
+                        <outlet property="issueTitleTextField" destination="MbA-B9-Ox9" id="1Xf-hu-lmN"/>
                         <outlet property="markDownTextViewPlaceHolder" destination="pSd-hL-acy" id="N2f-fb-ZK6"/>
                         <outlet property="markdownTextView" destination="49i-6a-Mcw" id="mVC-bI-TBr"/>
                         <outlet property="markdownTextViewBottomConstraint" destination="4mf-6N-drD" id="eAj-Xg-cl5"/>
@@ -458,40 +462,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBF-Sd-DZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2292.753623188406" y="-1761.1607142857142"/>
-        </scene>
-        <!--Github Login View Controller-->
-        <scene sceneID="QGG-4T-b8i">
-            <objects>
-                <viewController id="4is-M5-cSt" customClass="GithubLoginViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EQB-TK-Oc8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJO-00-r7i" customClass="GithubLoginWebView" customModule="IssueTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Scn-lG-uQ5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="kJO-00-r7i" secondAttribute="trailing" id="9Cd-bS-0sB"/>
-                            <constraint firstAttribute="bottom" secondItem="kJO-00-r7i" secondAttribute="bottom" id="HAq-Jj-mwa"/>
-                            <constraint firstItem="kJO-00-r7i" firstAttribute="leading" secondItem="EQB-TK-Oc8" secondAttribute="leading" id="We8-iU-4Je"/>
-                            <constraint firstItem="kJO-00-r7i" firstAttribute="top" secondItem="EQB-TK-Oc8" secondAttribute="top" id="mKY-qF-hIv"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="githubLoginWebView" destination="kJO-00-r7i" id="bAZ-CA-SIM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DmQ-jH-POn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-165.42056074766353" y="-570.19438444924413"/>
         </scene>
         <!--레이블-->
         <scene sceneID="jo0-RT-jzf">
@@ -1415,7 +1385,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ef7-qh-RtM">
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. </string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
