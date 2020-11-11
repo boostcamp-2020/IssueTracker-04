@@ -17,6 +17,7 @@ class MilestoneAddViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: CusorFixTextField!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var containerView: UIView!
     
     var indexPath: IndexPath?
     var milestoneData: MilestoneDetail?
@@ -26,9 +27,23 @@ class MilestoneAddViewController: UIViewController {
         super.viewDidLoad()
         dateTextField.delegate = self
         addTapToDismissKeyBoard()
+        addKeyboardObserver()
         if let data = milestoneData {
             prepareForUpdate(data: data)
         }
+    }
+    
+    override func keyboardWillShow(keyboardHeight: CGFloat) {
+        let topOfkeyboard = view.frame.height - keyboardHeight
+        let bottomOfView = containerView.frame.origin.y + containerView.frame.size.height
+        
+        if bottomOfView > topOfkeyboard {
+            containerView.frame.origin.y += topOfkeyboard - bottomOfView
+        }
+    }
+    
+    override func keyboardWillHide(notification: NSNotification) {
+        containerView.frame.origin.y = view.center.y - containerView.frame.height/2 - 30
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

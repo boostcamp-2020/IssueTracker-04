@@ -525,7 +525,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsy-0l-Ly6">
-                                <rect key="frame" x="57" y="80" width="300" height="300"/>
+                                <rect key="frame" x="57" y="224" width="300" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfU-yA-HRj" customClass="CancelButton" customModule="IssueTracker" customModuleProvider="target">
                                         <rect key="frame" x="16" y="12" width="22" height="22"/>
@@ -684,13 +684,14 @@
                         <viewLayoutGuide key="safeArea" id="KCG-5T-6ma"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Hsy-0l-Ly6" firstAttribute="top" secondItem="KCG-5T-6ma" secondAttribute="top" constant="80" id="Hdz-Lq-VMH"/>
                             <constraint firstItem="Hsy-0l-Ly6" firstAttribute="centerX" secondItem="KCG-5T-6ma" secondAttribute="centerX" id="ZR6-66-zK9"/>
+                            <constraint firstItem="Hsy-0l-Ly6" firstAttribute="centerY" secondItem="KCG-5T-6ma" secondAttribute="centerY" constant="-30" id="m4Q-9g-xIl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="colorBox" destination="u7j-hR-ahd" id="PvI-Tk-myz"/>
                         <outlet property="colorTextField" destination="Tja-Za-kc8" id="nj7-OX-TWD"/>
+                        <outlet property="containerView" destination="Hsy-0l-Ly6" id="Dkm-xo-Kt3"/>
                         <outlet property="descriptionTextField" destination="COg-gJ-f9n" id="iyW-Qk-rcO"/>
                         <outlet property="titleTextField" destination="oiI-1N-JhA" id="jdE-uO-hbj"/>
                     </connections>
@@ -761,7 +762,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wu-ka-Sdt">
-                                <rect key="frame" x="57" y="254" width="300" height="300"/>
+                                <rect key="frame" x="57" y="224" width="300" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTW-2r-D7f" customClass="CancelButton" customModule="IssueTracker" customModuleProvider="target">
                                         <rect key="frame" x="16" y="12" width="22" height="22"/>
@@ -893,10 +894,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2wu-ka-Sdt" firstAttribute="centerX" secondItem="ZxW-0D-hTj" secondAttribute="centerX" id="1rm-r8-nUJ"/>
-                            <constraint firstItem="2wu-ka-Sdt" firstAttribute="centerY" secondItem="ZxW-0D-hTj" secondAttribute="centerY" id="7rU-ap-NoA"/>
+                            <constraint firstItem="2wu-ka-Sdt" firstAttribute="centerY" secondItem="ZxW-0D-hTj" secondAttribute="centerY" constant="-30" id="7rU-ap-NoA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="2wu-ka-Sdt" id="ocD-4s-5jK"/>
                         <outlet property="dateTextField" destination="vFz-yS-1JP" id="w1b-5D-VY3"/>
                         <outlet property="descriptionTextField" destination="QL3-vc-XpU" id="yzX-Rz-hlk"/>
                         <outlet property="titleTextField" destination="Pn5-rb-GF1" id="TYG-yw-jsP"/>
@@ -1423,6 +1425,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="commentTextView" destination="Ef7-qh-RtM" id="Z9e-UW-6Sm"/>
+                        <outlet property="textViewBottomConstant" destination="g35-MM-pcg" id="Jrs-H1-6ER"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jim-8V-MWu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1492,6 +1495,9 @@
         </designable>
         <designable name="PTW-2r-D7f">
             <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="a2V-1B-ZNl">
+            <size key="intrinsicContentSize" width="130" height="30"/>
         </designable>
         <designable name="cWC-ob-1li">
             <size key="intrinsicContentSize" width="30" height="34"/>

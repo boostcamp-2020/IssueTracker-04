@@ -21,15 +21,17 @@ class LabelAddViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var colorTextField: UITextField!
     @IBOutlet weak var colorBox: ColorBox!
+    @IBOutlet weak var containerView: UIView!
     
     weak var delegate: LabelDataDelegate?
     var colorTextFieldManager = ColorTextFieldManager()
     var indexPath: IndexPath?
     var labelData: LabelDetail?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapToDismissKeyBoard()
+        addKeyboardObserver()
         colorTextField.delegate = self
         if let data = labelData {
             prepareForUpdate(data: data)
