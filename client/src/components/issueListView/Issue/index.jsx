@@ -39,19 +39,19 @@ const Issue = (props) => {
         <div className = 'issue-contentsArea'>
             <div className = 'issue-contentsArea-top'>
                 <Link to = {issueDetailLink}>
-                    <text>{title}</text>
+                    {title}
                 </Link>
                 {
                     // label 받은 만큼 label 보여주기
                 }
             </div>
             <div className = 'issue-contentsArea-bottom'>
-                <text>#{issueNum}</text>
-                <text>{isOpened} {time} by {author} </text>
+                #{issueNum}
+                {isOpened} {time} by {author}
                 {
                     // 스프린트 표시할 이미지
                 }
-                <text>{milestone}</text>
+                {milestone}
             </div>
         </div>
         <div className = 'issue-assigneesArea'>
