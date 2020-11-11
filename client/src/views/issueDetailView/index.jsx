@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios'
 import './style.scss';
 import Assignees from '../../components/sideAssignee';
 import Labels from '../../components/sideLabel';
@@ -9,9 +10,25 @@ import IssueControl from '../../components/issueDetailView/issueControl';
 
 const issueDetailView = () => {
   const [Content, setContent] = useState('');
+  const [CommentList, setCommentList] = useState([]);
   const onDetailContentHandler = (e) => {
     setContent(e.currentTarget.value);
   };
+  useEffect( async () => {
+    const JWT = localStorage.getItem('jwt')
+    // 111axios 로 이슈 넘버 정보 받아와서 detail-header 컴포넌트 만들어서 넣기
+    const commentList = await axios.get('http://101.101.217.9:5000/api/comment',{
+      headers: {
+        Authorization: `Bearer ${JWT}`
+      }
+    })
+    // 2222 comment, date, author_no -> name 필요(한번더 요청?)
+    // props 로 comment-container 에 추가 , 컴포넌트 만들기
+
+    // 333 comment 버튼에 이벤트걸고 코멘트 추가 axios 
+
+    // 444 close, reopen 컴포넌트..
+  }, [])
 
   return (
     <div className="detail-view">
@@ -34,11 +51,11 @@ const issueDetailView = () => {
           </div>
         </div>
         <div className="side-container">
-          <Assignees />
+          {/* <Assignees /> */}
           <hr className="thin-line" />
-          <Labels />
+          {/* <Labels /> */}
           <hr className="thin-line" />
-          <Milestones />
+          {/* <Milestones /> */}
           <hr className="thin-line" />
         </div>
       </div>

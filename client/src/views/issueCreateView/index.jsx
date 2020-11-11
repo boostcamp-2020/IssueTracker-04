@@ -79,11 +79,11 @@ const issueCreateView = () => {
       label_list:labelList,
       assignees:assigneesList
     }
-    await axios.post('http://101.101.217.9:5000/api/issue/create', body, {
+    const result = await axios.post('http://101.101.217.9:5000/api/issue/create', body, {
       headers: {
         Authorization: `Bearer ${JWT}`
       }
-    })
+    });
   };
   useEffect(async ()=>{
     const JWT = localStorage.getItem('jwt')
