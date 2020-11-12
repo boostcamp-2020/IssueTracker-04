@@ -149,8 +149,8 @@ exports.issueGet = async (req, res, next) => {
     resData.issue.issue_author_name = user_name;
     resData.detailInfo = {};
     resData.detailInfo.authorImg = user_img;
-    let mileStone = null
-    if(milestoneNo){
+    let mileStone = null;
+    if (milestoneNo) {
       mileStone = await milestoneModel.findOne({
         where: { milestone_no: milestoneNo },
         raw: true,
@@ -158,7 +158,10 @@ exports.issueGet = async (req, res, next) => {
     }
     resData.milestone = {};
     resData.milestone.milestone_no = milestoneNo;
-    resData.milestone.milestone_title = mileStone.milestone_title;
+    resData.milestone.milestone_title = mileStone
+      ? mileStone.milestone_title
+      : null;
+    console.log(issueNo);
     const labelList = await issueLabelModel.findAll({
       where: { issue_no: issueNo },
       raw: true,
@@ -300,19 +303,19 @@ exports.issueListGet = async (req, res, next) => {
 };
 
 exports.issueLabelRelation = async (req, res, next) => {
-  const {issue_no, labels} = req.body
+  const { issue_no, labels } = req.body;
   try {
     await issueLabelModel.destroy({
-      where:{issue_no:issue_no}
-    })
-    for(let label of labels){
+      where: { issue_no: issue_no },
+    });
+    for (let label of labels) {
       await issueLabelModel.create({
-        issue_no:issue_no,
-        label_no:label
-      })
+        issue_no: issue_no,
+        label_no: label,
+      });
     }
-    return res.status(200).json({success: true})
+    return res.status(200).json({ success: true });
   } catch (error) {
-    return res.status(400).json({success: false})
+    return res.status(400).json({ success: false });
   }
-}
+};
