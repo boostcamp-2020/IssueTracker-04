@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,23 +11,24 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueListViewController" customModule="IssueTracker" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueListCollectionViewCell" id="gTV-IL-0wX" customClass="IssueListCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
+            <rect key="frame" x="0.0" y="0.0" width="567" height="111"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
+                <rect key="frame" x="0.0" y="0.0" width="567" height="111"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3C-ba-uik">
-                        <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
+                        <rect key="frame" x="0.0" y="0.0" width="567" height="111"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-VM-vYD">
-                                <rect key="frame" x="0.0" y="0.0" width="65" height="105"/>
+                                <rect key="frame" x="0.0" y="0.0" width="65" height="111"/>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-1i-JiT">
-                                        <rect key="frame" x="22.5" y="41.5" width="20" height="22"/>
+                                        <rect key="frame" x="22.5" y="44.5" width="20" height="22"/>
                                         <state key="normal" image="checkmark.circle" catalog="system"/>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="WYz-1i-JiT" firstAttribute="centerX" secondItem="zh1-VM-vYD" secondAttribute="centerX" id="6uh-8V-0AO"/>
                                     <constraint firstItem="WYz-1i-JiT" firstAttribute="centerY" secondItem="zh1-VM-vYD" secondAttribute="centerY" id="ZFe-1e-G3v"/>
@@ -35,10 +36,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgT-Iy-njt">
-                                <rect key="frame" x="365" y="0.0" width="130" height="105"/>
+                                <rect key="frame" x="567" y="0.0" width="130" height="111"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIj-fl-8vU">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="105"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="111"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
@@ -48,7 +49,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0Y-Zz-b8s">
-                                        <rect key="frame" x="65" y="0.0" width="65" height="105"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="111"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="Delete">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
@@ -58,12 +59,12 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstItem="T0Y-Zz-b8s" firstAttribute="width" secondItem="LgT-Iy-njt" secondAttribute="width" multiplier="0.5" id="AXi-lG-N6D"/>
                                     <constraint firstAttribute="width" constant="130" id="G2n-SG-cJf"/>
                                     <constraint firstItem="oIj-fl-8vU" firstAttribute="leading" secondItem="LgT-Iy-njt" secondAttribute="leading" id="LOq-dD-sxP"/>
-                                    <constraint firstAttribute="trailing" secondItem="T0Y-Zz-b8s" secondAttribute="trailing" id="UzK-jC-p8h"/>
+                                    <constraint firstAttribute="leading" secondItem="T0Y-Zz-b8s" secondAttribute="leading" id="UzK-jC-p8h"/>
                                     <constraint firstItem="oIj-fl-8vU" firstAttribute="top" secondItem="LgT-Iy-njt" secondAttribute="top" id="aY6-5A-qxz"/>
                                     <constraint firstItem="oIj-fl-8vU" firstAttribute="height" secondItem="LgT-Iy-njt" secondAttribute="height" id="bbs-k9-qNp"/>
                                     <constraint firstItem="T0Y-Zz-b8s" firstAttribute="height" secondItem="LgT-Iy-njt" secondAttribute="height" id="jBg-yI-bpC"/>
@@ -72,10 +73,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf2-zy-KwB">
-                                <rect key="frame" x="0.0" y="0.0" width="495" height="105"/>
+                                <rect key="frame" x="0.0" y="0.0" width="567" height="111"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MileStoneTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3h-od-0dS" customClass="BadgeLabel" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="397.5" y="18.5" width="85.5" height="16"/>
+                                        <rect key="frame" x="469.5" y="18.5" width="85.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" id="7r8-mC-u15"/>
                                         </constraints>
@@ -101,7 +102,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="IssueContent  with 2 Lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-yR-4Y4">
-                                        <rect key="frame" x="12" y="44.5" width="471" height="20.5"/>
+                                        <rect key="frame" x="12" y="44.5" width="543" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
                                         <nil key="highlightedColor"/>
@@ -116,7 +117,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="SWr-6f-daR" customClass="LabelContainerView" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="77" width="471" height="20"/>
+                                        <rect key="frame" x="12" y="83" width="543" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="750" constant="20" id="4OT-hT-Djv"/>
                                         </constraints>
@@ -139,7 +140,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="750" constant="339" id="3ur-8Q-wEk"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="leading" secondItem="d3C-ba-uik" secondAttribute="leading" id="DfP-au-2Ux"/>
@@ -151,7 +152,7 @@
                             <constraint firstItem="LgT-Iy-njt" firstAttribute="height" secondItem="qf2-zy-KwB" secondAttribute="height" id="nP9-M5-zAZ"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="height" secondItem="qf2-zy-KwB" secondAttribute="height" id="smf-hh-QPp"/>
                             <constraint firstItem="zh1-VM-vYD" firstAttribute="top" secondItem="d3C-ba-uik" secondAttribute="top" id="uur-95-yae"/>
-                            <constraint firstAttribute="trailing" secondItem="LgT-Iy-njt" secondAttribute="trailing" id="v6B-yz-DzC"/>
+                            <constraint firstItem="qf2-zy-KwB" firstAttribute="trailing" secondItem="LgT-Iy-njt" secondAttribute="leading" id="v6B-yz-DzC"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -163,9 +164,10 @@
                 <constraint firstItem="d3C-ba-uik" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gEZ-lu-480"/>
                 <constraint firstItem="d3C-ba-uik" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uiJ-rL-Zqr"/>
             </constraints>
-            <size key="customSize" width="495" height="105"/>
+            <size key="customSize" width="567" height="111"/>
             <connections>
                 <outlet property="contentLabel" destination="RUg-yR-4Y4" id="5xZ-cJ-TB7"/>
+                <outlet property="deleteLeadingConstraint" destination="UzK-jC-p8h" id="iwz-Rd-YSY"/>
                 <outlet property="labelContainerView" destination="SWr-6f-daR" id="NGh-QM-cM1"/>
                 <outlet property="labelContainerViewHeightConstraint" destination="4OT-hT-Djv" id="fkk-PG-58O"/>
                 <outlet property="leftContainerView" destination="zh1-VM-vYD" id="PCg-fD-36P"/>
@@ -177,7 +179,7 @@
                 <outlet property="selectionButton" destination="WYz-1i-JiT" id="XRN-Bh-657"/>
                 <outlet property="titleLabel" destination="mUw-0T-gIa" id="Tw8-92-59U"/>
             </connections>
-            <point key="canvasLocation" x="-12.318840579710146" y="67.96875"/>
+            <point key="canvasLocation" x="39.855072463768117" y="69.977678571428569"/>
         </collectionViewCell>
     </objects>
     <designables>
@@ -189,9 +191,6 @@
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -1368,7 +1368,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="1Nl-JI-aWy" id="xp5-Um-HXF"/>
+                        <outlet property="editTableView" destination="1Nl-JI-aWy" id="xp5-Um-HXF"/>
                         <outlet property="titleLabel" destination="QcK-AW-c85" id="sbk-6m-y4q"/>
                     </connections>
                 </viewController>
@@ -1495,9 +1495,6 @@
         </designable>
         <designable name="PTW-2r-D7f">
             <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="a2V-1B-ZNl">
-            <size key="intrinsicContentSize" width="130" height="30"/>
         </designable>
         <designable name="cWC-ob-1li">
             <size key="intrinsicContentSize" width="30" height="34"/>

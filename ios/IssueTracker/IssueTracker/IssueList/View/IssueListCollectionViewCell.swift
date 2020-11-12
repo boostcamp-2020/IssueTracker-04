@@ -29,6 +29,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelContainerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var deleteLeadingConstraint: NSLayoutConstraint!
     
     var issueNo: Int?
     var mode: IssueListViewController.Mode = .normal
@@ -61,12 +62,12 @@ class IssueListCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        addSwipeGesture()
+        addGesture()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSwipeGesture()
+        addGesture()
     }
     
     func configure(with data: IssueListCollectionViewCellData) {
@@ -80,24 +81,45 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         issueNo = data.issueNo
     }
     
-    private func addSwipeGesture() {
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(onSwipeLeft(_:)))
-        leftSwipe.direction = .left
-        self.addGestureRecognizer(leftSwipe)
+    private func addGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onGesture))
+        panGesture.cancelsTouchesInView = true
+        panGesture.delegate = self
+        addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func onGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        guard mode == .normal else { return }
         
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(onSwipeRight(_:)))
-        rightSwipe.direction = .right
-        self.addGestureRecognizer(rightSwipe)
-    }
-    
-    @objc private func onSwipeLeft(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        guard mode == .normal else { return }
-        rightContainerViewShowAnimate()
-    }
-    
-    @objc private func onSwipeRight(_ gestureRecognizer: UISwipeGestureRecognizer) {
-        guard mode == .normal else { return }
-        resetViewAnimate()
+        let translation = gestureRecognizer.translation(in: contentView)
+        var newConstant = mainViewLeadingConstraint.constant + translation.x
+        switch gestureRecognizer.state {
+        case .ended:
+            newConstant = abs(newConstant) > rightContainerViewWidth/2 ? -rightContainerViewWidth : 0
+            let velocity = gestureRecognizer.velocity(in: contentView).x
+            
+            if abs(velocity) > 500 {
+                newConstant = velocity < 0 ? -rightContainerViewWidth : 0
+            }
+            
+            mainViewLeadingConstraint.constant = newConstant
+            mainViewTrailingConstraint.constant = -newConstant
+            deleteLeadingConstraint.constant = newConstant/2
+            gestureRecognizer.setTranslation(.zero, in: contentView)
+            animateAfterConstraintChanged()
+        default:
+            if newConstant > 0 {
+                newConstant = 0
+            }
+            
+            if abs(newConstant) > rightContainerViewWidth * 1.2 {
+                newConstant = -rightContainerViewWidth * 1.2
+            }
+            mainViewLeadingConstraint.constant = newConstant
+            mainViewTrailingConstraint.constant = -newConstant
+            deleteLeadingConstraint.constant = newConstant/2
+            gestureRecognizer.setTranslation(.zero, in: contentView)
+        }
     }
     
     func animateAfterConstraintChanged() {
@@ -174,5 +196,14 @@ extension IssueListCollectionViewCell: RightContainerContaining {
     func rightContainerViewShowAnimate() {
         showRightContainerView()
         animateAfterConstraintChanged()
+    }
+}
+
+extension IssueListCollectionViewCell: UIGestureRecognizerDelegate {
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let gesture = gestureRecognizer as? UIPanGestureRecognizer else {
+            return false
+        }
+        return abs((gesture.velocity(in: gestureRecognizer.view)).x) > abs((gesture.velocity(in: gestureRecognizer.view)).y)
     }
 }
