@@ -1,10 +1,10 @@
 matrix:
     include:        
         - language: swift
-          osx_image: xcode11.6
+          osx_image: xcode12.1
           xcode_workspace: IssueTracker.xcworkspace
           xcode_scheme: IssueTracker
-          xcode_destination: platform=iOS Simulator, OS=12.1, name=iPhone 11
+          xcode_destination: platform=iOS Simulator, OS=14.0, name=iPhone 11 pro
           before_install:
               - cd IOS/IssueTracker
               - gem install cocoapods
