@@ -30,22 +30,17 @@ class IssueAddViewController: UIViewController {
         networkManager = IssueAddNetworkManager()
         markDownRendering = MarkDownRendering()
         addTapToDismissKeyBoard()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        addKeyboardObserver()
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        let keyboardHeight = keyboardRectValue.height
-        markdownTextViewBottomConstraint.constant = -keyboardHeight + (tabBarController?.tabBar.frame.size.height ?? 0)
+    @objc override func keyboardWillShow(keyboardHeight: CGFloat) {
+        markdownTextViewBottomConstraint.constant = -keyboardHeight
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.view.layoutIfNeeded()
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc override func keyboardWillHide(notification: NSNotification) {
         markdownTextViewBottomConstraint.constant = 0
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
             self?.view.layoutIfNeeded()

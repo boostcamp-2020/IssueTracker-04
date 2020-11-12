@@ -14,10 +14,27 @@ protocol CommentAddViewControllerDelegate: class {
 class CommentAddViewController: UIViewController {
 
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var textViewBottomConstant: NSLayoutConstraint!
+    
     weak var delegate: CommentAddViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTapToDismissKeyBoard()
+        addKeyboardObserver()
+    }
+    
+    override func keyboardWillShow(keyboardHeight: CGFloat) {
+        textViewBottomConstant.constant = keyboardHeight
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+    override func keyboardWillHide(notification: NSNotification) {
+        textViewBottomConstant.constant = 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func cancelButtonTouched(_ sender: UIButton) {

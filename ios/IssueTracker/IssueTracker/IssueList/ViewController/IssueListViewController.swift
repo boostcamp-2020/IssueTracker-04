@@ -49,6 +49,7 @@ class IssueListViewController: UIViewController {
         configureCellObserver()
         navigationItem.rightBarButtonItem = editButtonItem
         setSelectResultView(editing: false)
+        addTapToDismissKeyBoard()
         
         collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
             if isSuccess {
@@ -224,12 +225,19 @@ extension IssueListViewController: IssueAddViewControllerDelegate {
 extension IssueListViewController: UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
         if mode == .normal {
             addButtonAnimate(showing: false)
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if mode == .normal {
+            addButtonAnimate(showing: true)
+        }
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if mode == .normal {
             addButtonAnimate(showing: true)
         }

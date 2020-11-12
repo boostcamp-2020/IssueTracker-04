@@ -73,6 +73,7 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         titleLabel.text = data.issueTitle
         contentLabel.text = data.issueContent
         milestoneLabel.text = data.milestoneTitle
+        milestoneLabel.isHidden = data.milestoneTitle.count == 0
         labelContainerView.add(labels: data.labels)
         labelRowCount = CGFloat(labelContainerView.labelRows)
         setSelectionButton(isSelected: isSelected)
