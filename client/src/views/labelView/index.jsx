@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
-import LabelList from '@components/labelView/labelList';
-import Header from '@components/labelView/header';
-import GreenBtn from '@components/labelView/greenBtn';
-import WhiteBtn from '@components/labelView/WhiteBtn';
+import LabelList from '../../components/labelView/labelList';
+import Header from '../../components/labelView/header';
+import GreenBtn from '../../components/labelView/greenBtn';
+import WhiteBtn from '../../components/labelView/whiteBtn';
 
 const loginView = () => {
   const labels = [
@@ -14,7 +14,7 @@ const loginView = () => {
     },
     {
       title: 'fix',
-      description: 'Something is working now',
+      description: 'Something is working now now',
       color: '#746244',
     },
   ];
