@@ -9,6 +9,6 @@ router.post('/api/issue/create/', isAuth, issue.issueCreateAll);
 
 router.get('/api/issue/list/', isAuth, issue.issueListGet);
 
-router.get('/api/issue/', isAuth, issue.issueGet);
+router.get('/api/issue/:issue_no', isAuth, issue.issueGet);
 
 module.exports = router;

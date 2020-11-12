@@ -131,7 +131,7 @@ const getIssuesMilestones = async () => {
 
 exports.issueGet = async (req, res, next) => {
   try {
-    const issueNo = req.params;
+    const issueNo = req.params.issue_no;
     const userNo = res.locals.userNo;
     const resData = {};
     const issueData = await issueModel.findOne({
@@ -202,9 +202,9 @@ exports.issueGet = async (req, res, next) => {
       delete commentInfo.author_no;
       resData.comments.push(commentInfo);
     }
-    res.status(200).json({ sucess: true, ...resData });
+    res.status(200).json({ success: true, ...resData });
   } catch (error) {
-    res.statsu(400).json({ success: false });
+    res.status(400).json({ success: false });
   }
 };
 
