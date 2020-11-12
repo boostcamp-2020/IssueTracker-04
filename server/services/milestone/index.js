@@ -53,12 +53,14 @@ const listInit = (list, milestones) => {
 const addOpenClosed = (list, issuesGroup) => {
   issuesGroup.forEach((e) => {
     const cntObj = {};
-    if (e.issue_flag === 1) {
-      cntObj.open_issue_count = e.count;
-    } else {
-      cntObj.closed_issue_count = e.count;
+    if (e.milestone_no) {
+      if (e.issue_flag === 1) {
+        cntObj.open_issue_count = e.count;
+      } else {
+        cntObj.closed_issue_count = e.count;
+      }
+      list[e.milestone_no] = { ...list[e.milestone_no], ...cntObj };
     }
-    list[e.milestone_no] = { ...list[e.milestone_no], ...cntObj };
   });
 };
 
@@ -66,7 +68,9 @@ const addPercent = (list) => {
   Object.keys(list).forEach((key) => {
     const open = list[key].open_issue_count;
     const closed = list[key].closed_issue_count;
-    const percent = Math.round((closed / (open + closed)) * 100);
+    let percent = 0;
+    if (open + closed !== 0)
+      percent = Math.round((closed / (open + closed)) * 100);
     list[key] = { ...list[key], percent: percent };
   });
 };
