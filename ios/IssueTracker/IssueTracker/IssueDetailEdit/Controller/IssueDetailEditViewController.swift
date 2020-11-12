@@ -20,7 +20,7 @@ class IssueDetailEditViewController: UIViewController {
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editTableView: UITableView!
     
     var mode: Mode = .assignee
     
@@ -29,8 +29,8 @@ class IssueDetailEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        editTableView.delegate = self
+        editTableView.dataSource = self
         switch mode {
         case .assignee:
             titleLabel.text = "담당자 편집"
@@ -83,6 +83,13 @@ extension IssueDetailEditViewController: UITableViewDelegate {
         }
         tableView.moveRow(at: indexPath, to: destination)
         (tableView.cellForRow(at: destination)?.accessoryView as? UIImageView)?.image = destination.section == 0 ? .remove : .add
+        if mode == .milestone && indexPath.section == 1 && destination.row != 0 {
+            selectRow(at: IndexPath(row: 0, section: 0))
+        }
+    }
+    
+    private func selectRow(at indexPath: IndexPath) {
+        tableView(editTableView, didSelectRowAt: IndexPath(row: 0, section: 0))
     }
 }
 
