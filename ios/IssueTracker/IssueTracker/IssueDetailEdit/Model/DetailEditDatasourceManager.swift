@@ -89,7 +89,7 @@ class DetailEditDatasourceManager {
             return nil
         }
     }
-    
+   
     func loadItems() {
         unSelectedItems = networkManager.loadData()
     }

@@ -34,11 +34,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             switch result {
             case .success(let token):
                 UserDefaults.standard.set(token.jwt, forKey: "JWT")
-                DispatchQueue.main.async {
-                    guard let controller = self.window?.rootViewController as? LoginViewController else {
-                        return
+                networkManager.requestUserInforamtion { result in
+                    switch result {
+                    case .success(let response):
+                        let user = response.user
+                        UserDefaults.standard.set(user.userId, forKey: "UserId")
+                        UserDefaults.standard.set(user.userName, forKey: "UserName")
+                        UserDefaults.standard.set(user.userNo, forKey: "UserNo")
+                        UserDefaults.standard.set(user.userImg, forKey: "UserImg")
+                        
+                        DispatchQueue.main.async {
+                            guard let controller = self.window?.rootViewController as? LoginViewController else {
+                                return
+                            }
+                            controller.loginDidFinish()
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
-                    controller.loginDidFinish()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
