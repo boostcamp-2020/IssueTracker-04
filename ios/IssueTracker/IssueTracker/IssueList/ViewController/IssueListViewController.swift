@@ -184,16 +184,16 @@ class IssueListViewController: UIViewController {
     }
     
     @objc private func refresh(notification: Notification) {
-        guard let issueNo = notification.userInfo?["IssueNo"] as? Int,
-              let indexPath = collectionViewAdapter?.dataSourceManager.indexPath(of: issueNo) else {
-            return
-        }
+//        guard let issueNo = notification.userInfo?["IssueNo"] as? Int,
+//              let indexPath = collectionViewAdapter?.dataSourceManager.indexPath(of: issueNo) else {
+//            return
+//        }
         collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
             guard isSuccess else {
                 return
             }
             DispatchQueue.main.async {
-                self?.issueListCollectionView.reloadItems(at: [indexPath])
+                self?.issueListCollectionView.reloadSections([0])
             }
         }
     }

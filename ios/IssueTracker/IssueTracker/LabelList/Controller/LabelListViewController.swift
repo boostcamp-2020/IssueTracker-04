@@ -43,6 +43,7 @@ class LabelListViewController: UIViewController {
         adapter?.dataManager.delete(with: labelNo) { [weak self] indexPath in
             DispatchQueue.main.async {
                 self?.collectionView.deleteItems(at: [indexPath])
+                NotificationCenter.default.post(Notification(name: .issueListRefreshRequested))
             }
         }
     }

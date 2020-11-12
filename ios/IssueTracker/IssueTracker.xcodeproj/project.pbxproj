@@ -11,7 +11,6 @@
 		370437CB255D18F90084D457 /* LabelListNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437CA255D18F90084D457 /* LabelListNetworkManager.swift */; };
 		370437D0255D1A100084D457 /* LabelListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437CF255D1A100084D457 /* LabelListResponse.swift */; };
 		370437D5255D21550084D457 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437D4255D21550084D457 /* Status.swift */; };
-		370437DA255D224D0084D457 /* JSONEncoder&Decoder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437D9255D224D0084D457 /* JSONEncoder&Decoder+.swift */; };
 		370437E8255D34AD0084D457 /* MilestoneNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437E7255D34AD0084D457 /* MilestoneNetworkManager.swift */; };
 		370437ED255D36980084D457 /* MilestoneListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437EC255D36980084D457 /* MilestoneListResponse.swift */; };
 		370739562553C1F30024D75F /* IssueDetailSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370739552553C1F30024D75F /* IssueDetailSlideViewController.swift */; };
@@ -145,7 +144,6 @@
 		370437CA255D18F90084D457 /* LabelListNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListNetworkManager.swift; sourceTree = "<group>"; };
 		370437CF255D1A100084D457 /* LabelListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListResponse.swift; sourceTree = "<group>"; };
 		370437D4255D21550084D457 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		370437D9255D224D0084D457 /* JSONEncoder&Decoder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder&Decoder+.swift"; sourceTree = "<group>"; };
 		370437E7255D34AD0084D457 /* MilestoneNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneNetworkManager.swift; sourceTree = "<group>"; };
 		370437EC255D36980084D457 /* MilestoneListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListResponse.swift; sourceTree = "<group>"; };
 		370739552553C1F30024D75F /* IssueDetailSlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailSlideViewController.swift; sourceTree = "<group>"; };
@@ -696,7 +694,6 @@
 				9965DD9E2554A70C00F92FFC /* UICollectionView+.swift */,
 				9916E9562556E805005A2359 /* UIVIewController+.swift */,
 				9911FC89255B7A8900E02E4C /* DateFormatter+.swift */,
-				370437D9255D224D0084D457 /* JSONEncoder&Decoder+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1242,14 +1239,13 @@
 				3747D4742547EFDF009BA189 /* IssueTracker.xcdatamodeld in Sources */,
 				375C43D62554054400C5BE27 /* Constant.swift in Sources */,
 				378F4605255292DD00C94324 /* IssueAddViewController.swift in Sources */,
-				370437DA255D224D0084D457 /* JSONEncoder&Decoder+.swift in Sources */,
 				375C901325497800009E33D1 /* LoginViewController.swift in Sources */,
 				9916EA2F2557FC47005A2359 /* RandomButton.swift in Sources */,
 				996E5ED1255C99A3002C8890 /* LoginResponse.swift in Sources */,
 				9965DC8B25517CD200F92FFC /* String+.swift in Sources */,
 				3738E613255C030500750686 /* IssueAddResponse.swift in Sources */,
 				370437D0255D1A100084D457 /* LabelListResponse.swift in Sources */,
-				3738E613255C030500750686 /* ResponseIssueAdd.swift in Sources */,
+				3738E613255C030500750686 /* IssueAddResponse.swift in Sources */,
 				3756A1E125515FE400703715 /* MileStoneCollectionViewCell.swift in Sources */,
 				9916E9E82557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift in Sources */,
 				9911FC01255A6C5400E02E4C /* IssueListNetworkManager.swift in Sources */,

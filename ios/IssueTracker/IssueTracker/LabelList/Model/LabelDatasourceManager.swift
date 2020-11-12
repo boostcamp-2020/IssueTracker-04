@@ -37,9 +37,11 @@ class LabelDatasourceManager {
     }
     
     func add(label: Label, completion: @escaping ((IndexPath) -> Void)) {
+        var label = label
         networkManager.add(label: label) { [weak self] result in
             switch result {
-            case .success:
+            case .success(let status):
+                label.labelNo = status.labelNo
                 self?.items.append(label)
                 guard let row = self?.items.count else {
                     return
