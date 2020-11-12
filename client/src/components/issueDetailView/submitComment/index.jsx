@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './style.scss';
 
-const submitComment = () => {
-
+const submitComment = ({ onClick }) => {
   return (
-    <button className="submit-comment">
+    <button className="submit-comment" onClick={onClick}>
       Comment
     </button>
   );
