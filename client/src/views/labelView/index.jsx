@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import axios from 'axios';
-import LabelList from '@components/labelView/labelList';
-import Header from '@components/labelView/header';
-import GreenBtn from '@components/labelView/greenBtn';
-import WhiteBtn from '@components/labelView/WhiteBtn';
+import LabelList from '../../components/labelView/labelList';
+import Header from '../../components/labelView/header';
+import GreenBtn from '../../components/labelView/greenBtn';
+import WhiteBtn from '../../components/labelView/whiteBtn';
 
 const loginView = () => {
   const [labels, setLabels] = useState([]);
@@ -23,6 +23,7 @@ const loginView = () => {
   };
 
   useEffect(callLabels, []);
+
 
   return (
     <div className="label-layout">

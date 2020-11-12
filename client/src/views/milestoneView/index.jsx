@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import axios from 'axios';
-import MilestoneList from '@components/milestoneView/milestoneList';
-import Header from '@components/labelView/header';
-import GreenBtn from '@components/labelView/greenBtn';
-import WhiteBtn from '@components/labelView/WhiteBtn';
+import MilestoneList from '../../components/milestoneView/milestoneList';
+import Header from '../../components/labelView/header';
+import GreenBtn from '../../components/labelView/greenBtn';
+import WhiteBtn from '../../components/labelView/whiteBtn';
 
 const milestoneView = () => {
   const mClosedCnt = 0;
