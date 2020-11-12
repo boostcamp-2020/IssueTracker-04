@@ -6,7 +6,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 const clientId = 'f9cee2fa1bd2cbe70a42';
-const redirectUrl = 'http://localhost:3000/';
+const redirectUrl = 'http://www.doldolma.kro.kr';
 const urlForCode = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}`;
 const urlForJwt = 'http://101.101.217.9:5000/api/auth/github/code';
 
