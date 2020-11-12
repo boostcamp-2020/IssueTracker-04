@@ -8,42 +8,77 @@
 import Foundation
 
 class MilestoneDatasourceManager {
-    var items: [MilestoneDetail] = []
+    
+    private let networkManager: MilestoneNetworkManager
+    var items: [Milestone] = []
     var itemCount: Int {
         items.count
     }
     
-    subscript(indexPath: IndexPath) -> MilestoneDetail {
+    subscript(indexPath: IndexPath) -> Milestone {
         items[indexPath.row]
     }
     
-    func loadData() {
-        items = DummyDataLoader().loadMilestones()
+    init(networkManager: MilestoneNetworkManager = MilestoneNetworkManager()) {
+        self.networkManager = networkManager
     }
     
-    func add(item: MilestoneDetail, completion: ((IndexPath) -> Void)?) {
-        //api add
-        //api response == 200
-        items.append(item)
-        completion?(IndexPath(row: items.count - 1, section: 0))
+    func load(completion: @escaping (Bool) -> Void) {
+        networkManager.load { [weak self] result in
+            switch result {
+            case .success(let items):
+                self?.items.append(contentsOf: items)
+                completion(true)
+            case .failure(let error):
+                completion(false)
+                return
+            }
+        }
     }
     
-    func update(item: MilestoneDetail, indexPath: IndexPath, completion: ((IndexPath) -> Void)?) {
-        guard item.milestoneNo == self[indexPath].milestoneNo else {
-            return
+    func add(item: Milestone, completion: @escaping ((IndexPath) -> Void)) {
+        networkManager.add(milestone: item) { [weak self] result in
+            switch result {
+            case .success(let status):
+                self?.items.append(item)
+                guard let count = self?.items.count else { return }
+                completion(IndexPath(row: count - 1, section: 0))
+            case .failure(let status):
+                return
+            }
+        }
+    }
+    
+    func update(item: Milestone, indexPath: IndexPath, completion: @escaping (IndexPath) -> Void) {
+        networkManager.update(milestone: item) { [weak self] result in
+            switch result {
+            case .success(let status):
+                guard item.milestoneNo == self?[indexPath].milestoneNo else {
+                    return
+                }
+                self?.items[indexPath.row] = item
+                completion(indexPath)
+            case .failure(let error):
+                return
+            }
         }
         //api add
         //api response == 200
-        items[indexPath.row] = item
-        completion?(indexPath)
+        
     }
     
-    func delete(with milestoneNo: Int, completion: ((IndexPath) -> Void)?) {
-        //self[indexPath].label.labelNo
-        guard let index = (items.firstIndex { $0.milestoneNo == milestoneNo }) else {
-            return
+    func delete(with milestoneNo: Int, completion: @escaping (IndexPath) -> Void) {
+        networkManager.delete(milestoneNo: milestoneNo) { [weak self] result in
+            switch result {
+            case .success(let status):
+                guard let index = (self?.items.firstIndex { $0.milestoneNo == milestoneNo }) else {
+                    return
+                }
+                self?.items.remove(at: index)
+                completion(IndexPath(row: index, section: 0))
+            case .failure(let error):
+                return
+            }
         }
-        items.remove(at: index)
-        completion?(IndexPath(row: index, section: 0))
     }
 }

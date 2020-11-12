@@ -46,6 +46,11 @@ struct Issue: Codable {
 }
 
 struct Milestone: Codable {
-    let milestoneNo: Int?
-    let milestoneTitle: String?
+    let milestoneNo: Int
+    let milestoneTitle: String
+    let milestoneDescription: String?
+    let dueDate: Date?
+    let percent: Float
+    let openIssueCount: Int
+    let closedIssueCount: Int
 }

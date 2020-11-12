@@ -33,7 +33,7 @@ class MilestoneListCell: SwipeToDeleteCollectionViewCell {
         self.milestoneView = milestoneView
     }
     
-    func configure(with data: MilestoneDetailViewData) {
+    func configure(with data: Milestone) {
         milestoneView?.configure(with: data)
     }
 }

@@ -11,10 +11,10 @@ protocol MilestoneDetailViewData {
     var milestoneNo: Int { get }
     var milestoneTitle: String { get }
     var dueDate: Date? { get }
-    var milestoneDescription: String { get }
-    var percent: Float { get }
-    var openIssueCount: Int { get }
-    var closedIssueCount: Int { get }
+    var milestoneDescription: String? { get }
+    var percent: Double? { get }
+    var openIssueCount: Int? { get }
+    var closedIssueCount: Int? { get }
 }
 
 class MilestoneDetailView: UIView {
@@ -49,13 +49,13 @@ class MilestoneDetailView: UIView {
         self.addSubview(view)
     }
     
-    func configure(with data: MilestoneDetailViewData) {
+    func configure(with data: Milestone) {
         titleLabel.text = data.milestoneTitle
         descriptionLabel.text = data.milestoneDescription
         percentLabel.text = "\(data.percent)%"
         openLabel.text = "open \(data.openIssueCount)"
         closedLabel.text = "closed \(data.closedIssueCount)"
-        progressView.progress = data.percent/100
+        progressView.progress = Float((data.percent ?? 0) / 100) 
         
         if let dueDate = data.dueDate {
             dateLabel.text = dueDate.string + " 까지"

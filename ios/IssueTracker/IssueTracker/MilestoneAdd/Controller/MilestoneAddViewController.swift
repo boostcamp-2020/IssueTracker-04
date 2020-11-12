@@ -8,8 +8,8 @@
 import UIKit
 
 protocol MilestoneDataDelegate: class {
-    func milestoneDidAdd(milestoneDetail: MilestoneDetail)
-    func milestoneDidUpdate(milestoneDetail: MilestoneDetail, indexPath: IndexPath)
+    func milestoneDidAdd(milestoneDetail: Milestone)
+    func milestoneDidUpdate(milestoneDetail: Milestone, indexPath: IndexPath)
 }
 
 class MilestoneAddViewController: UIViewController {
@@ -20,7 +20,7 @@ class MilestoneAddViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     
     var indexPath: IndexPath?
-    var milestoneData: MilestoneDetail?
+    var milestoneData: Milestone?
     weak var delegate: MilestoneDataDelegate?
     
     override func viewDidLoad() {
@@ -52,7 +52,7 @@ class MilestoneAddViewController: UIViewController {
         }
     }
     
-    private func prepareForUpdate(data: MilestoneDetail) {
+    private func prepareForUpdate(data: Milestone) {
         titleTextField.text = data.milestoneTitle
         descriptionTextField.text = data.milestoneDescription
         dateTextField.text = data.dueDate?.string
@@ -69,10 +69,10 @@ class MilestoneAddViewController: UIViewController {
     }
     
     @IBAction func saveButtonTouched(_ sender: UIButton) {
-        let milestoneDetail = MilestoneDetail(milestoneNo: milestoneData?.milestoneNo ?? 0,
+        let milestoneDetail = Milestone(milestoneNo: (milestoneData?.milestoneNo) ?? 0,
                                               milestoneTitle: titleTextField.text ?? "",
-                                              dueDate: Date.make(string: dateTextField.text ?? ""),
                                               milestoneDescription: descriptionTextField.text ?? "",
+                                              dueDate: Date.make(string: dateTextField.text ?? ""),
                                               percent: milestoneData?.percent ?? 0.0,
                                               openIssueCount: milestoneData?.openIssueCount ?? 0,
                                               closedIssueCount: milestoneData?.closedIssueCount ?? 0)
