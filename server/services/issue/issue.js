@@ -142,7 +142,7 @@ exports.issueGet = async (req, res, next) => {
     delete issueData.milestone_no;
     resData.issue = issueData;
     const authName = await userModel.findOne({
-      where: { user_no: userNo },
+      where: { user_no: issueData.issue_author_no },
       raw: true,
     });
     const { user_img, user_name } = authName;
