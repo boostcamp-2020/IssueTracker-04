@@ -242,6 +242,7 @@ exports.issueListGet = async (req, res, next) => {
       };
       if (issueMilestone.milestone == undefined) {
         milestone = {
+          milestone_no: 0,
           milestone_title: '',
         };
       } else {
