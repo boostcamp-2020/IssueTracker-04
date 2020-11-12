@@ -3,7 +3,7 @@ matrix:
         - language: swift
           osx_image: xcode12
           xcode_workspace: IssueTracker.xcworkspace
-          xcode_scheme: IssueTrackerTests
+          xcode_scheme: IssueTracker
           xcode_destination: platform=iOS Simulator,OS=14.0,name=iPhone 11
           before_install:
               - cd IOS/IssueTracker
