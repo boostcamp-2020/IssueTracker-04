@@ -38,6 +38,7 @@
 		378F460A255295D800C94324 /* IssueTextSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F4609255295D800C94324 /* IssueTextSegmentControl.swift */; };
 		378F460F2552AEA900C94324 /* IssueTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F460E2552AEA900C94324 /* IssueTitleTextField.swift */; };
 		378F46172552BD0E00C94324 /* IssueNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378F46162552BD0E00C94324 /* IssueNavigationItem.swift */; };
+		37AEEF83255CF08900C33D67 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 37AEEF82255CF08800C33D67 /* .travis.yml */; };
 		37C205CE254A6C200004D8B5 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 37C205CD254A6C200004D8B5 /* LICENSE.txt */; };
 		37CA368E255135FC0076CB57 /* AssigneeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA368D255135FC0076CB57 /* AssigneeCollectionViewCell.swift */; };
 		37CA36932551362C0076CB57 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA36922551362C0076CB57 /* LabelCollectionViewCell.swift */; };
@@ -173,6 +174,7 @@
 		378F4609255295D800C94324 /* IssueTextSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IssueTextSegmentControl.swift; path = IssueTracker/IssueAdd/View/IssueTextSegmentControl.swift; sourceTree = SOURCE_ROOT; };
 		378F460E2552AEA900C94324 /* IssueTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTitleTextField.swift; sourceTree = "<group>"; };
 		378F46162552BD0E00C94324 /* IssueNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueNavigationItem.swift; sourceTree = "<group>"; };
+		37AEEF82255CF08800C33D67 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .travis.yml; path = ../../.travis.yml; sourceTree = "<group>"; };
 		37C205CD254A6C200004D8B5 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		37CA368D255135FC0076CB57 /* AssigneeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssigneeCollectionViewCell.swift; sourceTree = "<group>"; };
 		37CA36922551362C0076CB57 /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		3747D45D2547EFDF009BA189 = {
 			isa = PBXGroup;
 			children = (
+				37AEEF82255CF08800C33D67 /* .travis.yml */,
 				37E82AEA2547F2BC0084DFE1 /* .swiftlint.yml */,
 				3747D4682547EFDF009BA189 /* IssueTracker */,
 				3747D4822547EFE1009BA189 /* IssueTrackerTests */,
@@ -1051,6 +1054,7 @@
 				9965DC82255152EF00F92FFC /* IssueDetailCollectionViewHeader.xib in Resources */,
 				9916E9D4255796A8005A2359 /* MilestoneDetailView.xib in Resources */,
 				37E82AEB2547F2BC0084DFE1 /* .swiftlint.yml in Resources */,
+				37AEEF83255CF08900C33D67 /* .travis.yml in Resources */,
 				3747D4792547EFE1009BA189 /* LaunchScreen.storyboard in Resources */,
 				99A09B812549B2340082ADF0 /* IssueListCollectionViewCell.xib in Resources */,
 				37F541C125512B570087B428 /* IssueDetailSlideViewHeader.xib in Resources */,
