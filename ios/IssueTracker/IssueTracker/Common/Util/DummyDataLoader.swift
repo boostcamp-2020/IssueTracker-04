@@ -62,16 +62,16 @@ struct DummyDataLoader: NetworkManaging {
         return items
     }
     
-    func loadLabels() -> [LabelDetail] {
+    func loadLabels() -> [Label] {
         guard let dataAsset = NSDataAsset.init(name: "dummyLabels") else {
             return []
         }
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
-        var items: [LabelDetail] = []
+        var items: [Label] = []
         do {
-            items = try decoder.decode([LabelDetail].self, from: dataAsset.data)
+            items = try decoder.decode([Label].self, from: dataAsset.data)
         } catch {
             print(error.localizedDescription)
         }

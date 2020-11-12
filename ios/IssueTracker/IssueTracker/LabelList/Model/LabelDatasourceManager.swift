@@ -8,42 +8,76 @@
 import Foundation
 
 class LabelDatasourceManager {
-    var items: [LabelDetail] = []
+    
+    var items: [Label] = []
     var itemCount: Int {
         items.count
     }
     
-    subscript(indexPath: IndexPath) -> LabelDetail {
+    private var networkManager: LabelListNetworkManager
+    
+    subscript(indexPath: IndexPath) -> Label {
         items[indexPath.row]
     }
     
-    func loadData() {
-        items = DummyDataLoader().loadLabels()
+    init(networkManager: LabelListNetworkManager = LabelListNetworkManager()) {
+        self.networkManager = networkManager
     }
     
-    func add(label: LabelDetail, completion: ((IndexPath) -> Void)?) {
-        //api add
-        //api response == 200
-        items.append(label)
-        completion?(IndexPath(row: items.count - 1, section: 0))
-    }
-    
-    func update(label: LabelDetail, indexPath: IndexPath, completion: ((IndexPath) -> Void)?) {
-        guard label.label.labelNo == self[indexPath].label.labelNo else {
-            return
+    func load(complete: @escaping (Bool) -> Void) {
+        networkManager.loadLabelList { [weak self] result in
+            switch result {
+            case .success(let labels):
+                self?.items.append(contentsOf: labels)
+                complete(true)
+            case .failure:
+                complete(false)
+            }
         }
-        //api add
-        //api response == 200
-        items[indexPath.row] = label
-        completion?(indexPath)
     }
     
-    func delete(with labelNo: Int, completion: ((IndexPath) -> Void)?) {
-        //self[indexPath].label.labelNo
-        guard let index = (items.firstIndex { $0.label.labelNo == labelNo }) else {
-            return
+    func add(label: Label, completion: @escaping ((IndexPath) -> Void)) {
+        networkManager.add(label: label) { [weak self] result in
+            switch result {
+            case .success:
+                self?.items.append(label)
+                guard let row = self?.items.count else {
+                    return
+                }
+                completion(IndexPath(row: row - 1, section: 0))
+            case .failure:
+                return
+            }
         }
-        items.remove(at: index)
-        completion?(IndexPath(row: index, section: 0))
+    }
+    
+    func update(label: Label, indexPath: IndexPath, completion: @escaping ((IndexPath) -> Void)) {
+        networkManager.update(label: label) { [weak self] result in
+            switch result {
+            case .success:
+                guard label.labelNo == self?[indexPath].labelNo else {
+                    return
+                }
+                self?.items[indexPath.row] = label
+                completion(indexPath)
+            case .failure:
+                return
+            }
+        }
+    }
+
+    func delete(with labelNo: Int, completion: @escaping ((IndexPath) -> Void)) {
+        networkManager.delete(labelNo: labelNo) { [weak self] result in
+            switch result {
+            case .success:
+                guard let index = (self?.items.firstIndex { $0.labelNo == labelNo }) else {
+                    return
+                }
+                self?.items.remove(at: index)
+                completion(IndexPath(row: index, section: 0))
+            case .failure:
+                return
+            }
+        }
     }
 }

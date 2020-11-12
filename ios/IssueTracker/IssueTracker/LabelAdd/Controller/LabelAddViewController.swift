@@ -8,8 +8,8 @@
 import UIKit
 
 protocol LabelDataDelegate: class {
-    func labelDidAdd(label: LabelDetail)
-    func labelDidUpdate(label: LabelDetail, indexPath: IndexPath)
+    func labelDidAdd(label: Label)
+    func labelDidUpdate(label: Label, indexPath: IndexPath)
 }
 
 class LabelAddViewController: UIViewController {
@@ -26,7 +26,7 @@ class LabelAddViewController: UIViewController {
     weak var delegate: LabelDataDelegate?
     var colorTextFieldManager = ColorTextFieldManager()
     var indexPath: IndexPath?
-    var labelData: LabelDetail?
+    var labelData: Label?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +57,10 @@ class LabelAddViewController: UIViewController {
         containerView.frame.origin.y = view.center.y - containerView.frame.height/2 - 30
     }
     
-    func prepareForUpdate(data: LabelDetail) {
-        titleTextField.text = data.label.labelTitle
+    func prepareForUpdate(data: Label) {
+        titleTextField.text = data.labelTitle
         descriptionTextField.text = data.labelDescription
-        colorTextField.text = String(data.label.labelColor.dropFirst())
+        colorTextField.text = String(data.labelColor.dropFirst())
         colorBox.configure(with: colorTextField.text ?? "")
     }
     
@@ -75,13 +75,12 @@ class LabelAddViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTouch(_ sender: UIButton) {
-        let label = Label(labelNo: labelData?.label.labelNo ?? 0, labelTitle: titleTextField.text ?? "", labelColor: "#" + (colorTextField.text ?? ""))
-        let labelDetail = LabelDetail(label: label, labelDescription: descriptionTextField.text ?? "")
+        let label = Label(labelNo: labelData?.labelNo ?? 0, labelTitle: titleTextField.text ?? "", labelColor: "#" + (colorTextField.text ?? ""), labelDescription: descriptionTextField.text ?? "")
 
         if let indexPath = indexPath {
-            delegate?.labelDidUpdate(label: labelDetail, indexPath: indexPath)
+            delegate?.labelDidUpdate(label: label, indexPath: indexPath)
         } else {
-            delegate?.labelDidAdd(label: labelDetail)
+            delegate?.labelDidAdd(label: label)
         }
         
         dismiss(animated: true)

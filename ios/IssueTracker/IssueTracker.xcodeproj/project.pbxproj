@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		21446B4D4868330A64C92F9E /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ADE7AA72D20F3B7A2F0FDE0 /* Pods_IssueTracker.framework */; };
+		370437CB255D18F90084D457 /* LabelListNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437CA255D18F90084D457 /* LabelListNetworkManager.swift */; };
+		370437D0255D1A100084D457 /* LabelListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437CF255D1A100084D457 /* LabelListResponse.swift */; };
+		370437D5255D21550084D457 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437D4255D21550084D457 /* Status.swift */; };
+		370437DA255D224D0084D457 /* JSONEncoder&Decoder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370437D9255D224D0084D457 /* JSONEncoder&Decoder+.swift */; };
 		370739562553C1F30024D75F /* IssueDetailSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370739552553C1F30024D75F /* IssueDetailSlideViewController.swift */; };
 		372E21CF255A6153007FF2E9 /* CommentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21CE255A6153007FF2E9 /* CommentAddViewController.swift */; };
 		3738E5E8255BCC9900750686 /* IssueAddNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738E5E7255BCC9900750686 /* IssueAddNetworkManager.swift */; };
@@ -75,7 +79,6 @@
 		9916E9DA2557B5FD005A2359 /* MilestoneDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9D92557B5FD005A2359 /* MilestoneDetail.swift */; };
 		9916E9E22557BD90005A2359 /* MilestoneDatasourceManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9E12557BD90005A2359 /* MilestoneDatasourceManger.swift */; };
 		9916E9E82557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9E72557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift */; };
-		9916E9FA2557C303005A2359 /* LabelDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916E9F92557C303005A2359 /* LabelDetail.swift */; };
 		9916EA022557C4F8005A2359 /* LabelDatasourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916EA012557C4F8005A2359 /* LabelDatasourceManager.swift */; };
 		9916EA082557C8B9005A2359 /* LabelCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916EA072557C8B9005A2359 /* LabelCollectionViewAdapter.swift */; };
 		9916EA142557D6D8005A2359 /* LabelAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916EA132557D6D8005A2359 /* LabelAddViewController.swift */; };
@@ -136,6 +139,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370437CA255D18F90084D457 /* LabelListNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListNetworkManager.swift; sourceTree = "<group>"; };
+		370437CF255D1A100084D457 /* LabelListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListResponse.swift; sourceTree = "<group>"; };
+		370437D4255D21550084D457 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		370437D9255D224D0084D457 /* JSONEncoder&Decoder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder&Decoder+.swift"; sourceTree = "<group>"; };
 		370739552553C1F30024D75F /* IssueDetailSlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailSlideViewController.swift; sourceTree = "<group>"; };
 		371B0FEE25495A8D00AFF5E4 /* IssueTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IssueTracker.entitlements; sourceTree = "<group>"; };
 		372E21CE255A6153007FF2E9 /* CommentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +217,6 @@
 		9916E9D92557B5FD005A2359 /* MilestoneDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDetail.swift; sourceTree = "<group>"; };
 		9916E9E12557BD90005A2359 /* MilestoneDatasourceManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDatasourceManger.swift; sourceTree = "<group>"; };
 		9916E9E72557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCollectionViewAdapter.swift; sourceTree = "<group>"; };
-		9916E9F92557C303005A2359 /* LabelDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDetail.swift; sourceTree = "<group>"; };
 		9916EA012557C4F8005A2359 /* LabelDatasourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDatasourceManager.swift; sourceTree = "<group>"; };
 		9916EA072557C8B9005A2359 /* LabelCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		9916EA132557D6D8005A2359 /* LabelAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAddViewController.swift; sourceTree = "<group>"; };
@@ -622,8 +628,10 @@
 		9916E9F82557C2F5005A2359 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9916E9F92557C303005A2359 /* LabelDetail.swift */,
 				9916EA012557C4F8005A2359 /* LabelDatasourceManager.swift */,
+				370437CA255D18F90084D457 /* LabelListNetworkManager.swift */,
+				370437CF255D1A100084D457 /* LabelListResponse.swift */,
+				370437D4255D21550084D457 /* Status.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -680,6 +688,7 @@
 				9965DD9E2554A70C00F92FFC /* UICollectionView+.swift */,
 				9916E9562556E805005A2359 /* UIVIewController+.swift */,
 				9911FC89255B7A8900E02E4C /* DateFormatter+.swift */,
+				370437D9255D224D0084D457 /* JSONEncoder&Decoder+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1147,7 +1156,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9916E9FA2557C303005A2359 /* LabelDetail.swift in Sources */,
 				9965DCA8255294F700F92FFC /* IssueDetailDataSourceManager.swift in Sources */,
 				9965DC81255152EF00F92FFC /* IssueDetailCollectionViewHeader.swift in Sources */,
 				9965DD9F2554A70C00F92FFC /* UICollectionView+.swift in Sources */,
@@ -1176,6 +1184,7 @@
 				9911FC8A255B7A8A00E02E4C /* DateFormatter+.swift in Sources */,
 				99A09B5C2549A34C0082ADF0 /* IssueItem.swift in Sources */,
 				99D977342558F452009028A1 /* SwipeToDeleteCollectionViewCell.swift in Sources */,
+				370437D5255D21550084D457 /* Status.swift in Sources */,
 				378F460A255295D800C94324 /* IssueTextSegmentControl.swift in Sources */,
 				99D99CB2254A5FDA008E2BF4 /* LabelContainerView.swift in Sources */,
 				9965DCA0255294A600F92FFC /* IssueDetailCollectionViewAdapter.swift in Sources */,
@@ -1212,6 +1221,7 @@
 				3738E5E8255BCC9900750686 /* IssueAddNetworkManager.swift in Sources */,
 				9965DC6D25512F2200F92FFC /* CommentCell.swift in Sources */,
 				9965DC7B2551502400F92FFC /* IssueDetailCollectionView.swift in Sources */,
+				370437CB255D18F90084D457 /* LabelListNetworkManager.swift in Sources */,
 				99A09B542549A2740082ADF0 /* IssueListViewController.swift in Sources */,
 				99A09B792549AFBB0082ADF0 /* IssueListCollectionViewAdapter.swift in Sources */,
 				9916E9C725579547005A2359 /* MilestoneListCell.swift in Sources */,
@@ -1219,10 +1229,12 @@
 				3747D4742547EFDF009BA189 /* IssueTracker.xcdatamodeld in Sources */,
 				375C43D62554054400C5BE27 /* Constant.swift in Sources */,
 				378F4605255292DD00C94324 /* IssueAddViewController.swift in Sources */,
+				370437DA255D224D0084D457 /* JSONEncoder&Decoder+.swift in Sources */,
 				375C901325497800009E33D1 /* LoginViewController.swift in Sources */,
 				9916EA2F2557FC47005A2359 /* RandomButton.swift in Sources */,
 				996E5ED1255C99A3002C8890 /* LoginResponse.swift in Sources */,
 				9965DC8B25517CD200F92FFC /* String+.swift in Sources */,
+				370437D0255D1A100084D457 /* LabelListResponse.swift in Sources */,
 				3738E613255C030500750686 /* ResponseIssueAdd.swift in Sources */,
 				3756A1E125515FE400703715 /* MileStoneCollectionViewCell.swift in Sources */,
 				9916E9E82557BE4D005A2359 /* MilestoneCollectionViewAdapter.swift in Sources */,

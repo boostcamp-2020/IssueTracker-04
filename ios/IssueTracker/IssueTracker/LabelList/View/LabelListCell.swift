@@ -82,8 +82,8 @@ class LabelListCell: SwipeToDeleteCollectionViewCell {
         accessory.tintColor = .systemGray2
     }
     
-    func configure(with data: LabelListCellData) {
-        badgeLabel?.configure(with: data.label)
+    func configure(with data: Label) {
+        badgeLabel?.configure(with: data)
         descriptionLabel?.text = data.labelDescription
     }
 }
