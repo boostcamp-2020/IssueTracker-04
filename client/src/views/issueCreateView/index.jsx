@@ -84,8 +84,16 @@ const issueCreateView = () => {
         Authorization: `Bearer ${JWT}`
       }
     });
+    if(result.data.success){
+      location.href = `/issues-detail?issue_no=${result.data.new_issue_no}`
+    }
+    else{
+      location.reload();
+    }
   };
   useEffect(async ()=>{
+    console.log(window.location.href)
+    const tt = window.location.href
     const JWT = localStorage.getItem('jwt')
     const userData = await axios.get('http://101.101.217.9:5000/api/userList',{
       headers: {

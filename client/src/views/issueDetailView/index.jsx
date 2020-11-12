@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 import './style.scss';
+import qs from 'qs';
 import Assignees from '../../components/sideAssignee';
 import Labels from '../../components/sideLabel';
 import Milestones from '../../components/sideMilestone';
@@ -14,14 +15,18 @@ const issueDetailView = () => {
   const onDetailContentHandler = (e) => {
     setContent(e.currentTarget.value);
   };
-  useEffect( async () => {
+  useEffect(() => {
+    const { issue_no } = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+    console.log(issue_no)
     const JWT = localStorage.getItem('jwt')
     // 111axios 로 이슈 넘버 정보 받아와서 detail-header 컴포넌트 만들어서 넣기
-    const commentList = await axios.get('http://101.101.217.9:5000/api/comment',{
-      headers: {
-        Authorization: `Bearer ${JWT}`
-      }
-    })
+    // const commentList = await axios.get('http://101.101.217.9:5000/api/comment',{
+    //   headers: {
+    //     Authorization: `Bearer ${JWT}`
+    //   }
+    // })
     // 2222 comment, date, author_no -> name 필요(한번더 요청?)
     // props 로 comment-container 에 추가 , 컴포넌트 만들기
 
