@@ -149,10 +149,13 @@ exports.issueGet = async (req, res, next) => {
     resData.issue.issue_author_name = user_name;
     resData.detailInfo = {};
     resData.detailInfo.authorImg = user_img;
-    const mileStone = await milestoneModel.findOne({
-      where: { milestone_no: milestoneNo },
-      raw: true,
-    });
+    let mileStone = null
+    if(milestoneNo){
+      mileStone = await milestoneModel.findOne({
+        where: { milestone_no: milestoneNo },
+        raw: true,
+      });
+    }
     resData.milestone = {};
     resData.milestone.milestone_no = milestoneNo;
     resData.milestone.milestone_title = mileStone.milestone_title;
@@ -295,3 +298,21 @@ exports.issueListGet = async (req, res, next) => {
     res.status(400).json({ message: 'get issue error' });
   }
 };
+
+exports.issueLabelRelation = async (req, res, next) => {
+  const {issue_no, labels} = req.body
+  try {
+    await issueLabelModel.destroy({
+      where:{issue_no:issue_no}
+    })
+    for(let label of labels){
+      await issueLabelModel.create({
+        issue_no:issue_no,
+        label_no:label
+      })
+    }
+    return res.status(200).json({success: true})
+  } catch (error) {
+    return res.status(400).json({success: false})
+  }
+}
