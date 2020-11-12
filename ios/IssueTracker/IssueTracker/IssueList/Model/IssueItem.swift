@@ -22,7 +22,7 @@ struct IssueItem: Codable {
     let milestone: Milestone
     
     func cellData() -> IssueListCellData {
-        return IssueListCellData(issueNo: issue.issueNo, issueTitle: issue.issueTitle, issueContent: issue.issueTitle, milestoneTitle: milestone.milestoneTitle, labels: labels)
+        return IssueListCellData(issueNo: issue.issueNo, issueTitle: issue.issueTitle, issueContent: issue.issueTitle, milestoneTitle: milestone.milestoneTitle ?? "" , labels: labels)
     }
 }
 

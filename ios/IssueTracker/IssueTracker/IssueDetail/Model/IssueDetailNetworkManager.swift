@@ -9,34 +9,76 @@ import Foundation
 
 struct IssueDetailNetworkManager {
     
+    static let issueDetailRequestURL = "http://101.101.217.9:5000/api/issue/"
+    static let addCommentRequestURL = "http://101.101.217.9:5000/api/comment"
+    
     private let networkService: NetworkService
     
-    init(networkService: NetworkService = NetworkService()) {
+    init(networkService: NetworkService) {
         self.networkService = networkService
     }
-    // - TODO: 네트워크 연결 필요
-    func addComment(text: String, completion: @escaping (Result<Comment, NetworkError>) -> Void) {
-        let request = NetworkService.Request(method: .put, url: URL(string: ""))
+   
+    func addComment(comment: Comment, completion: @escaping (Result<Comment, NetworkError>) -> Void) {
+        guard let token = UserDefaults.standard.string(forKey: "JWT"),
+              let url = URL(string: Self.addCommentRequestURL) else {
+            return
+        }
         
+        var request = NetworkService.Request(method: .post)
+        request.url = url
+        request.headers = ["Authorization": "Bearer " + token, "Content-Type": "application/json"]
+        let commentRequest = AddCommentRequest(issueNo: comment.issueNo ?? 0, comment: comment.comment)
+        request.body = try? JSONEncoder.custom.encode(commentRequest)
         networkService.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let comment = try? JSONDecoder().decode(Comment.self, from: data) else {
+                guard let response = try? JSONDecoder.custom.decode(AddCommentResponse.self, from: data)
+                else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
-                completion(.success(comment))
+                let addedComment = Comment(issueNo: comment.issueNo, commentNo: response.commentNo, comment: comment.comment, authorName: comment.authorName, authorImg: comment.authorImg, commentDate: comment.commentDate)
+                completion(.success(addedComment))
             case .failure(let error):
                 completion(.failure(error))
             }
-            completion(.success(Comment(commentNo: 0, comment: text, authorName: "Test", authorImg: "img", commentDate: Date())))
         }
     }
     
-    func requestIssueDetail(completion: (IssueDetail) -> Void) {
-//        let request = NetworkService.Request(method: .get, url: URL(""))
-//        networkService.request(request: , completion: )
-        completion(DummyDataLoader().loadDetail()!)
+    func requestIssueDetail(issueNo: Int, completion: @escaping (Result<IssueDetail, NetworkError>) -> Void) {
+        guard let token = UserDefaults.standard.string(forKey: "JWT"),
+              let url = URL(string: Self.issueDetailRequestURL + "\(issueNo)")  else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        print(issueNo)
+        var request = NetworkService.Request(method: .get)
+        request.url = url
+        request.headers = ["Authorization": "Bearer " + token]
+        networkService.request(request: request) { result in
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder.custom
+                guard let item = try?  decoder.decode(IssueDetail.self, from: data) else {
+                    completion(.failure(.invalidData))
+                    return
+                }
+                completion(.success(item))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+            
+        }
     }
-    
+}
+
+struct AddCommentResponse: Codable {
+    var success: Bool
+    var message: String
+    var commentNo: Int
+}
+
+struct AddCommentRequest: Codable {
+    var issueNo: Int
+    var comment: String
 }

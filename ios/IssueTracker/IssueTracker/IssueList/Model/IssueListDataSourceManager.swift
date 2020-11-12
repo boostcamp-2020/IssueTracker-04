@@ -28,12 +28,12 @@ class IssueListDataSourceManager {
         indexPaths.map { self[$0] }
     }
     
-    func add(issue: RequestIssueAdd, completion: @escaping (Bool) -> Void) {
+    func add(issue: IssueAddRequest, completion: @escaping (Bool) -> Void) {
         networkManager.requestIssueAdd(issue: issue) { [weak self] result in
             switch result {
             case .success(let response):
-                let issue = IssueListCellData(issueNo: 0, issueTitle: issue.issueTitle, issueContent: issue.issueContent, milestoneTitle: "", labels: [])
-                self?.items.append(issue)
+                let issue = IssueListCellData(issueNo: response.newIssueNo, issueTitle: issue.issueTitle, issueContent: issue.issueContent, milestoneTitle: "", labels: [])
+                self?.items.insert(issue, at: 0)
                 completion(true)
             case .failure(let error):
                 completion(false)
@@ -72,6 +72,16 @@ class IssueListDataSourceManager {
         items = items.indices
             .filter { !deleteIndex.contains($0) }
             .map { items[$0] }
+    }
+    
+    func indexPath(of issueNo: Int) -> IndexPath {
+        var firstIndex = 0
+        items.enumerated().forEach { index, item in
+            if item.issueNo == issueNo {
+                firstIndex = index
+            }
+        }
+        return IndexPath(row: firstIndex, section: 0)
     }
     
     func closeIssue(indexPath: IndexPath) {

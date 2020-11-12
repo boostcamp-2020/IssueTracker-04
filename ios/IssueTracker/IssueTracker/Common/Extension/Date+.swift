@@ -27,6 +27,10 @@ extension Date {
             return fromDate.string
         }
         
+        if sec < 5 {
+            return "now"
+        }
+        
         if sec < 60 {
             return "\(sec) seconds ago"
         }

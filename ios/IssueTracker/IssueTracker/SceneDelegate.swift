@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         UserDefaults.standard.set(user.userId, forKey: "UserId")
                         UserDefaults.standard.set(user.userName, forKey: "UserName")
                         UserDefaults.standard.set(user.userNo, forKey: "UserNo")
-                        UserDefaults.standard.set(user.userImg, forKey: "UserImg")
+                        UserDefaults.standard.set(user.userImg, forKey: "UserImage")
                         
                         DispatchQueue.main.async {
                             guard let controller = self.window?.rootViewController as? LoginViewController else {

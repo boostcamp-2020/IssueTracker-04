@@ -46,10 +46,12 @@ class NetworkService {
         
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.httpBody = request.body
-        request.headers?.forEach { key, value in
-            urlRequest.setValue(value, forHTTPHeaderField: key)
-        }
-        session.dataTask(with: urlRequest) { (data, response, error) in
+        urlRequest.allHTTPHeaderFields = request.headers
+//        request.headers?.forEach { key, value in
+//            urlRequest.addValue(value, forHTTPHeaderField: key)
+//            
+//        }
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completion(.failure(NetworkError.requestFailed(error: error)))
                 return
@@ -64,6 +66,8 @@ class NetworkService {
                 return
             }
             completion(.success(data))
-        }.resume()
+        }
+        task.resume()
+        
     }
 }

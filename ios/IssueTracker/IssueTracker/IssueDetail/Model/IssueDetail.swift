@@ -17,6 +17,7 @@ struct IssueDetail: Codable {
 }
 
 struct Comment: Codable, CommentCellData {
+    let issueNo: Int?
     let commentNo: Int
     let comment, authorName, authorImg: String
     let commentDate: Date
@@ -45,6 +46,6 @@ struct Issue: Codable {
 }
 
 struct Milestone: Codable {
-    let milestoneNo: Int
-    let milestoneTitle: String
+    let milestoneNo: Int?
+    let milestoneTitle: String?
 }
