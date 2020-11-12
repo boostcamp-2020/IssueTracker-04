@@ -34,8 +34,9 @@ exports.getCommentList = async (req, res, next) => {
 };
 
 exports.addComment = async (req, res, next) => {
-  const { issue_no, comment, author_no, comment_date } = req.body;
-
+  const { issue_no, comment } = req.body;
+  const author_no = res.locals.userNo
+  const comment_date= new Date();
   try {
     const newComment = await issueCommentModel.create({
       issue_no: issue_no,

@@ -28,7 +28,7 @@ exports.issueCreate = async (req, res, next) => {
       .status(200)
       .json({ success: true, new_issue_no: result.issue_no });
   } catch (error) {
-    return res.statue(400).json({ success: false });
+    return res.status(400).json({ success: false });
   }
 };
 
@@ -121,7 +121,7 @@ const getIssuesMilestones = async () => {
     include: [
       {
         model: milestoneModel,
-        required: true,
+        // required: true,
         //attributes: ['milestone_title'],
       },
     ],
@@ -240,10 +240,16 @@ exports.issueListGet = async (req, res, next) => {
         issue_author_no: issueMilestone.dataValues.issue_author_no,
         issue_author_name: issue_author_name.user_name,
       };
-      milestone = {
-        milestone_no: issueMilestone.milestone.dataValues.milestone_no,
-        milestone_title: issueMilestone.milestone.dataValues.milestone_title,
-      };
+      if (issueMilestone.milestone == undefined) {
+        milestone = {
+          milestone_title: '',
+        };
+      } else {
+        milestone = {
+          milestone_no: issueMilestone.milestone.dataValues.milestone_no,
+          milestone_title: issueMilestone.milestone.dataValues.milestone_title,
+        };
+      }
 
       if (issueAssigneesData.length != 0) {
         for (const issueAssignee of issueAssigneesData) {
