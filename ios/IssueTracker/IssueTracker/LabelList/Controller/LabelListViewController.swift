@@ -23,6 +23,17 @@ class LabelListViewController: UIViewController {
         collectionView.dataSource = adapter
         
         NotificationCenter.default.addObserver(self, selector: #selector(labelDeleteButtonTouched(notification:)), name: .labelDeleteRequested, object: nil)
+        loadLabels()
+    }
+
+    func loadLabels() {
+        adapter?.dataManager.load { [weak self] complete in
+            DispatchQueue.main.async {
+                if complete {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
     }
     
     @objc private func labelDeleteButtonTouched(notification: Notification) {
@@ -30,7 +41,9 @@ class LabelListViewController: UIViewController {
             return
         }
         adapter?.dataManager.delete(with: labelNo) { [weak self] indexPath in
-            self?.collectionView.deleteItems(at: [indexPath])
+            DispatchQueue.main.async {
+                self?.collectionView.deleteItems(at: [indexPath])
+            }
         }
     }
     
@@ -68,19 +81,24 @@ extension LabelListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension LabelListViewController: LabelDataDelegate {
-    func labelDidAdd(label: LabelDetail) {
+    
+    func labelDidAdd(label: Label) {
         adapter?.dataManager.add(label: label) { [weak self] indexPath in
-            self?.collectionView.performBatchUpdates({
-                self?.collectionView.insertItems(at: [indexPath])
-            }, completion: { _ in
-                self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-            })
+            DispatchQueue.main.async {
+                self?.collectionView.performBatchUpdates({
+                    self?.collectionView.insertItems(at: [indexPath])
+                }, completion: { _ in
+                    self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                })
+            }
         }
     }
     
-    func labelDidUpdate(label: LabelDetail, indexPath: IndexPath) {
+    func labelDidUpdate(label: Label, indexPath: IndexPath) {
         adapter?.dataManager.update(label: label, indexPath: indexPath) { [weak self] indexPath in
-            self?.collectionView.reloadItems(at: [indexPath])
+            DispatchQueue.main.async {
+                self?.collectionView.reloadItems(at: [indexPath])
+            }
         }
     }
 }

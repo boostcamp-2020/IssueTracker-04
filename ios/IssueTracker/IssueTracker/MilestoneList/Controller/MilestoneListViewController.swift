@@ -19,11 +19,21 @@ class MilestoneListViewController: UIViewController {
         
         let adapter = MilestoneCollectionViewAdapter(dataManager: MilestoneDatasourceManager())
         self.adapter = adapter
-        adapter.loadData()
         collectionView.dataSource = adapter
         collectionView.register(MilestoneListCell.self, forCellWithReuseIdentifier: MilestoneListCell.identifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(milestoneDeleteRequested(notification:)), name: .milestoneDeleteRequested, object: nil)
+        loadMilestones()
+    }
+    
+    func loadMilestones() {
+        adapter?.dataManager.load() { [weak self] complete in
+            DispatchQueue.main.async {
+                if complete {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,8 +53,10 @@ class MilestoneListViewController: UIViewController {
         guard let milestoneNo = notification.userInfo?["MilestoneNo"] as? Int else {
             return
         }
-        adapter?.dataManager.delete(with: milestoneNo) { [weak self] in
-            self?.collectionView.deleteItems(at: [$0])
+        adapter?.dataManager.delete(with: milestoneNo) { [weak self] indexPath in
+            DispatchQueue.main.async {
+                self?.collectionView.deleteItems(at: [indexPath])
+            }
         }
     }
 }
@@ -68,19 +80,23 @@ extension MilestoneListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MilestoneListViewController: MilestoneDataDelegate {
-    func milestoneDidAdd(milestoneDetail: MilestoneDetail) {
+    func milestoneDidAdd(milestoneDetail: Milestone) {
         adapter?.dataManager.add(item: milestoneDetail) { [weak self] indexPath in
-            self?.collectionView.performBatchUpdates({
-                self?.collectionView.insertItems(at: [indexPath])
-            }, completion: { _ in
-                self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-            })
+            DispatchQueue.main.async {
+                self?.collectionView.performBatchUpdates({
+                    self?.collectionView.insertItems(at: [indexPath])
+                }, completion: { _ in
+                    self?.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                })
+            }
         }
     }
     
-    func milestoneDidUpdate(milestoneDetail: MilestoneDetail, indexPath: IndexPath) {
+    func milestoneDidUpdate(milestoneDetail: Milestone, indexPath: IndexPath) {
         adapter?.dataManager.update(item: milestoneDetail, indexPath: indexPath) { [weak self] indexPath in
-            self?.collectionView.reloadItems(at: [indexPath])
+            DispatchQueue.main.async {
+                self?.collectionView.reloadItems(at: [indexPath])
+            }
         }
     }
 }
