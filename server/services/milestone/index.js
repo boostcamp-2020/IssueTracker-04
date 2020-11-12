@@ -96,3 +96,36 @@ exports.createMilestone = async (req, res, next) => {
     });
   }
 };
+
+exports.updateMilestone = async (req, res, next) => {
+  const { milestone_no } = req.params;
+  const { milestone_title, milestone_description, due_date } = req.body;
+
+  try {
+    const milestone = await milestoneModel.update(
+      {
+        milestone_title: milestone_title,
+        milestone_description: milestone_description,
+        due_date: due_date,
+      },
+      { where: { milestone_no: milestone_no } }
+    );
+
+    res.status(200).json({ success: true, message: 'update succeed' });
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'update fail' });
+  }
+};
+
+exports.deleteMilestone = async (req, res, next) => {
+  const { milestone_no } = req.params;
+  try {
+    const milestone = await milestoneModel.destroy({
+      where: { milestone_no: milestone_no },
+    });
+
+    res.status(200).json({ success: true, message: 'delete succeed' });
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'delete fail' });
+  }
+};

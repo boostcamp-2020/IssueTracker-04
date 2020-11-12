@@ -33,3 +33,35 @@ exports.createLabel = async (req, res, next) => {
     });
   }
 };
+
+exports.updateLabel = async (req, res, next) => {
+  const { label_no } = req.params;
+  const { label_title, label_color, label_description } = req.body;
+  try {
+    const label = await labelModel.update(
+      {
+        label_title: label_title,
+        label_color: label_color,
+        label_description: label_description,
+      },
+      { where: { label_no: label_no } }
+    );
+
+    res.status(200).json({ success: true, message: 'update succeed' });
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'update fail' });
+  }
+};
+
+exports.deleteLabel = async (req, res, next) => {
+  const { label_no } = req.params;
+  try {
+    const label = await labelModel.destroy({
+      where: { label_no: label_no },
+    });
+
+    res.status(200).json({ success: true, message: 'delete succeed' });
+  } catch (error) {
+    res.status(400).json({ success: false, message: 'delete fail' });
+  }
+};

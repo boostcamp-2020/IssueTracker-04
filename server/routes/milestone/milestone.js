@@ -24,4 +24,16 @@ router.post(
   milestoneService.createMilestone
 );
 
+router.put(
+  '/api/milestone/:milestone_no',
+  authService.isAuth,
+  milestoneService.updateMilestone
+);
+
+router.delete(
+  '/api/milestone/:milestone_no',
+  authService.isAuth,
+  milestoneService.deleteMilestone
+);
+
 module.exports = router;

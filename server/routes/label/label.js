@@ -16,6 +16,18 @@ router.get('/api/labelList', authService.isAuth, labelService.getLabelList);
   "label_description": "string"
   }
  */
-router.post('/api/label/', authService.isAuth, labelService.createLabel);
+router.post('/api/label', authService.isAuth, labelService.createLabel);
+
+router.put(
+  '/api/label/:label_no',
+  authService.isAuth,
+  labelService.updateLabel
+);
+
+router.delete(
+  '/api/label/:label_no',
+  authService.isAuth,
+  labelService.deleteLabel
+);
 
 module.exports = router;

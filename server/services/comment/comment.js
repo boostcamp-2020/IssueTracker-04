@@ -44,7 +44,11 @@ exports.addComment = async (req, res, next) => {
       comment_date: comment_date,
     });
 
-    res.status(200).json({ success: true, message: 'update succeed' });
+    res.status(200).json({
+      success: true,
+      message: 'update succeed',
+      comment_no: newComment.get({ plain: true }).comment_no,
+    });
   } catch (err) {
     console.log(err);
     res.status(400).json({ success: false, message: 'add comment error' });
