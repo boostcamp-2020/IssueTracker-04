@@ -129,6 +129,85 @@ const getIssuesMilestones = async () => {
   return issuesMilestonesData;
 };
 
+exports.issueGet = async (req, res, next) => {
+  try {
+    const issueNo = req.params;
+    const userNo = res.locals.userNo;
+    const resData = {};
+    const issueData = await issueModel.findOne({
+      where: { issue_no: issueNo },
+      raw: true,
+    });
+    const milestoneNo = issueData.milestone_no;
+    delete issueData.milestone_no;
+    resData.issue = issueData;
+    const authName = await userModel.findOne({
+      where: { user_no: userNo },
+      raw: true,
+    });
+    const { user_img, user_name } = authName;
+    resData.issue.issue_author_name = user_name;
+    resData.detailInfo = {};
+    resData.detailInfo.authorImg = user_img;
+    const mileStone = await milestoneModel.findOne({
+      where: { milestone_no: milestoneNo },
+      raw: true,
+    });
+    resData.milestone = {};
+    resData.milestone.milestone_no = milestoneNo;
+    resData.milestone.milestone_title = mileStone.milestone_title;
+    const labelList = await issueLabelModel.findAll({
+      where: { issue_no: issueNo },
+      raw: true,
+    });
+    const labelNumList = labelList.map((ele) => ele.label_no);
+    resData.labels = [];
+    for (let labelNum of labelNumList) {
+      let labelData = await labelModel.findOne({
+        where: { label_no: labelNum },
+        raw: true,
+      });
+      resData.labels.push(labelData);
+    }
+    const userList = await issueUserModel.findAll({
+      where: { issue_no: issueNo },
+      raw: true,
+    });
+    const userNumList = userList.map((ele) => ele.user_no);
+    resData.assignees = [];
+    for (let userNum of userNumList) {
+      let userData = await userModel.findOne({
+        where: { user_no: userNum },
+        raw: true,
+      });
+      delete userData.user_password;
+      delete userData.oauth_site;
+      delete userData.user_id;
+      resData.assignees.push(userData);
+    }
+    const commentList = await issueCommentModel.findAll({
+      where: { issue_no: issueNo },
+      raw: true,
+    });
+    resData.comments = [];
+    for (let commentInfo of commentList) {
+      let userData = await userModel.findOne({
+        where: { user_no: commentInfo.author_no },
+        raw: true,
+      });
+      let { user_img, user_name } = userData;
+      commentInfo.author_name = user_name;
+      commentInfo.author_img = user_img;
+      delete commentInfo.issue_no;
+      delete commentInfo.author_no;
+      resData.comments.push(commentInfo);
+    }
+    res.status(200).json({ sucess: true, ...resData });
+  } catch (error) {
+    res.statsu(400).json({ success: false });
+  }
+};
+
 exports.issueListGet = async (req, res, next) => {
   try {
     const issuesMilestonesData = await getIssuesMilestones();
