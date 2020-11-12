@@ -9,6 +9,8 @@ import Foundation
 
 class LoginNetworkManager {
     
+    static let userInfoURL = "http://101.101.217.9:5000/api/user" 
+    
     var service: NetworkService
     
     init(service: NetworkService) {
@@ -37,6 +39,33 @@ class LoginNetworkManager {
                 }
                 completion(.success(token))
             case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func requestUserInforamtion(completion: @escaping ((Result<LoginResponse, NetworkError>) -> Void)) {
+        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
+            return
+        }
+        //UserDefault 관리객체 만들어서 토큰 얻어오기
+        var request = NetworkService.Request(method: .get)
+        request.url = URL(string: Self.userInfoURL)
+        request.headers = ["Authorization": "Bearer " + token]
+        service.request(request: request) { result in
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.custom)
+                var response: LoginResponse
+                do {
+                    response = try decoder.decode(LoginResponse.self, from: data)
+                    completion(.success(response))
+                } catch {
+                    completion(.failure(NetworkError.invalidData))
+                }
+            case.failure(let error):
                 completion(.failure(error))
             }
         }
