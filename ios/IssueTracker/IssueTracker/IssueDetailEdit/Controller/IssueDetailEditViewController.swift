@@ -39,7 +39,13 @@ class IssueDetailEditViewController: UIViewController {
         case .milestone:
             titleLabel.text = "마일스톤 편집"
         }
-        dataManager?.loadItems()
+        dataManager?.loadItems { [weak self] isSuccess in
+            if isSuccess {
+                DispatchQueue.main.async {
+                    self?.editTableView?.reloadData()
+                }
+            }
+        }
     }
     
     @IBAction func cancelButtonDidTouch(_ sender: UIButton) {

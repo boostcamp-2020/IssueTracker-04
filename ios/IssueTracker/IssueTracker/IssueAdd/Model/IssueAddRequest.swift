@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RequestIssueAdd {
-    private(set) var issueTitle: String
-    private(set) var issueContent: String
+struct IssueAddRequest: Codable {
+    let issueTitle: String
+    let issueContent: String
 }

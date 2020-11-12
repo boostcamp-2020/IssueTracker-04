@@ -90,8 +90,21 @@ class DetailEditDatasourceManager {
         }
     }
    
-    func loadItems() {
-        unSelectedItems = networkManager.loadData()
+    func loadItems(completion: @escaping (Bool) -> Void) {
+        networkManager.loadData { [weak self] result in
+            switch result {
+            case .success(let datas):
+                var unselected = datas
+                self?.selectedItems.forEach { selected in
+                    unselected = unselected.filter { $0.itemId != selected.itemId }
+                }
+                self?.unSelectedItems = unselected
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
     }
     
     func updateItems(completion: ((Bool) -> Void)) {

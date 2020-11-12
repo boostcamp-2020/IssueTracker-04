@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct ResponseIssueAdd: Codable {
-    
+struct IssueAddResponse: Codable {
+    var success: Bool
+    var newIssueNo: Int
 }

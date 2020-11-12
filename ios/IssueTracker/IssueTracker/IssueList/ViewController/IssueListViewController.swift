@@ -51,11 +51,14 @@ class IssueListViewController: UIViewController {
         setSelectResultView(editing: false)
         addTapToDismissKeyBoard()
         
+        //refresh()
         collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
-            if isSuccess {
+            guard isSuccess else {
+                print("Data Load Fail")
+                return
+            }
+            DispatchQueue.main.async {
                 self?.issueListCollectionView.reloadData()
-            } else {
-                print("DataLoadingFail Request again")
             }
         }
     }
@@ -78,7 +81,17 @@ class IssueListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "IssueListToDetail":
-            //set Issue ID for Detail
+            guard let indexPath = sender as? IndexPath,
+                  let adpater = collectionViewAdapter,
+            let issueDetailViewController = segue.destination as? IssueDetailViewController else {
+                return
+            }
+            let issueNo = adpater.dataSourceManager[indexPath].issueNo
+            let issueTitle = adpater.dataSourceManager[indexPath].issueTitle
+            
+            issueDetailViewController.issueTitle = issueTitle
+            issueDetailViewController.issueNo = issueNo
+            
             return
         case "ListToIssueAdd":
             guard let issueAddViewController = segue.destination as? IssueAddViewController else {
@@ -115,6 +128,7 @@ class IssueListViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .issueCloseRequested, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .issueDeleteRequested, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(searchRequested(notification:)), name: .searchRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: .issueListRefreshRequested, object: nil)
     }
     
     private func addButtonAnimate(showing: Bool) {
@@ -169,6 +183,21 @@ class IssueListViewController: UIViewController {
         searchBar.text = query
     }
     
+    @objc private func refresh(notification: Notification) {
+//        guard let issueNo = notification.userInfo?["IssueNo"] as? Int,
+//              let indexPath = collectionViewAdapter?.dataSourceManager.indexPath(of: issueNo) else {
+//            return
+//        }
+        collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
+            guard isSuccess else {
+                return
+            }
+            DispatchQueue.main.async {
+                self?.issueListCollectionView.reloadSections([0])
+            }
+        }
+    }
+    
     @IBAction func leftBarButtonTouched(_ sender: UIButton) {
         switch mode {
         case .normal:
@@ -208,14 +237,15 @@ class IssueListViewController: UIViewController {
 
 extension IssueListViewController: IssueAddViewControllerDelegate {
     
-    func issueSendButtonDidTouch(request: RequestIssueAdd) {
+    func issueSendButtonDidTouch(request: IssueAddRequest) {
         collectionViewAdapter?.dataSourceManager.add(issue: request) { [weak self] complete in
             if complete {
                 guard let count = self?.collectionViewAdapter?.dataSourceManager.itemCount else {
                     return
                 }
-                let indexPath = IndexPath(item: count - 1, section: 0)
-                self?.issueListCollectionView.insertItems(at: [indexPath])
+                DispatchQueue.main.async {
+                    self?.issueListCollectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                }
             }
         }
     }
@@ -237,16 +267,16 @@ extension IssueListViewController: UICollectionViewDelegate {
         }
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if mode == .normal {
-            addButtonAnimate(showing: true)
-        }
-    }
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        if mode == .normal && abs(velocity.y) < 10 {
+//            addButtonAnimate(showing: true)
+//        }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mode {
         case .normal:
-            performSegue(withIdentifier: "IssueListToDetail", sender: nil) // send selectedIssue ID
+            performSegue(withIdentifier: "IssueListToDetail", sender: indexPath) // send selectedIssue ID
         case .edit:
             setSelectedIssueCountLabel()
         }

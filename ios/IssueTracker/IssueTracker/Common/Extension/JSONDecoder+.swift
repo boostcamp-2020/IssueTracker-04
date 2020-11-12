@@ -1,8 +1,8 @@
 //
-//  JSONEncoder.swift
+//  JsonDecoder+.swift
 //  IssueTracker
 //
-//  Created by Oh Donggeon on 2020/11/12.
+//  Created by Byoung-Hwi Yoon on 2020/11/12.
 //
 
 import Foundation
@@ -15,6 +15,7 @@ extension JSONDecoder {
         return decoder
     }()
 }
+
 extension JSONEncoder {
     static let custom: JSONEncoder = {
         let encoder = JSONEncoder()

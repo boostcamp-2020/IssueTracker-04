@@ -30,10 +30,8 @@ class IssueDetailDataSourceManager {
     
     private let networkManager: IssueDetailNetworkManager
     
-    init(networkManager: IssueDetailNetworkManager = IssueDetailNetworkManager()) {
+    init(networkManager: IssueDetailNetworkManager) {
         self.networkManager = networkManager
-        detailItem = DummyDataLoader().loadDetail()
-        
     }
     
     var detailItem: IssueDetail?
@@ -48,17 +46,30 @@ class IssueDetailDataSourceManager {
     var commentCount: Int {
         detailItem?.comments.count ?? 0
     }
-    // - TODO: UserDefault로 authorName, Img 가져오도록 해야 함
-    func addComment(text: String, completion: @escaping (Bool) -> Void) {
-        networkManager.addComment(text: text) { [weak self] comment in
-            switch comment {
+    
+    func loadDetailItem(issueNo: Int, completion: @escaping (Result<IssueDetail, NetworkError>) -> Void) {
+        networkManager.requestIssueDetail(issueNo: issueNo) { [weak self] result in
+            switch result {
+            case .success(let item):
+                self?.detailItem = item
+                completion(result)
+            case .failure(let error):
+                completion(result)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func addComment(comment: Comment, completion: @escaping (Bool) -> Void) {
+        networkManager.addComment(comment: comment) { [weak self] result in
+            switch result {
             case .success(let comment):
                 self?.detailItem?.comments.append(comment)
                 completion(true)
             case .failure(let error):
+                print(error.localizedDescription)
                 completion(false)
             }
-            
         }
     }
     

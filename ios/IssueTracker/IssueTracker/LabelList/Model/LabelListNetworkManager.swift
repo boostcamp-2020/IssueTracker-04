@@ -41,7 +41,7 @@ struct LabelListNetworkManager {
         }
     }
     
-    func add(label: Label, completion: @escaping (Result<Status, NetworkError>) -> Void) {
+    func add(label: Label, completion: @escaping (Result<LabelAddStatus, NetworkError>) -> Void) {
         guard let token = UserDefaults.standard.string(forKey: "JWT") else {
             return
         }
@@ -54,7 +54,8 @@ struct LabelListNetworkManager {
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(Status.self, from: data) else {
+                guard let status = try? JSONDecoder.custom.decode(LabelAddStatus.self, from: data) else {
+                    print("invaliddata")
                     completion(.failure(NetworkError.invalidData))
                     return
                 }

@@ -25,6 +25,9 @@ class IssueDetailSlideViewController: UIViewController {
         }
     }
     
+    var networkManager: DetailEditNetworkManager?
+    var issueNo: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNotification()
@@ -53,7 +56,7 @@ class IssueDetailSlideViewController: UIViewController {
             editViewController.mode = .milestone
             networkManager = MilestoneEditNetworkManager(service: networkService)
             let milestone = adapter.dataManager.milestone
-            selectedItems = [DetailEditCellData(type: .milestone, itemId: milestone.milestoneNo, title: milestone.milestoneTitle)]
+            selectedItems = [DetailEditCellData(type: .milestone, itemId: milestone.milestoneNo ?? 0, title: milestone.milestoneTitle ?? "")]
         default:
             return
         }
@@ -182,11 +185,23 @@ extension IssueDetailSlideViewController: IssueDetailEditDelegate {
         switch mode {
         case .assignee:
             adapter?.dataManager.assignees = items.map { Assignee(userNo: $0.itemId, userName: $0.title, userImg: $0.rawData) }
+            collectionView.reloadSections([mode.rawValue])
         case .label:
-            adapter?.dataManager.labels = items.map { Label(labelNo: $0.itemId, labelTitle: $0.title, labelColor: $0.rawData) }
+            let labels = items.map { Label(labelNo: $0.itemId, labelTitle: $0.title, labelColor: $0.rawData) }
+            networkManager?.labelUpdateRequest(issueNo: issueNo, labels: labels) { [weak self] isSuccess in
+                if isSuccess {
+                    self?.adapter?.dataManager.labels = labels
+                    NotificationCenter.default.post(Notification(name: .issueListRefreshRequested, object: nil, userInfo: ["IssueNo": self?.issueNo ?? 0]))
+                    DispatchQueue.main.async {
+                        self?.collectionView.reloadSections([mode.rawValue])
+                    }
+                }
+            }
+            
         case .milestone:
-            adapter?.dataManager.milestone = Milestone(milestoneNo: items[0].itemId, milestoneTitle: items[0].title, milestoneDescription: "", dueDate: Date(), percent: 0, openIssueCount: 0, closedIssueCount: 0)
+            adapter?.dataManager.milestone = Milestone(milestoneNo: items[0].itemId, milestoneTitle: items[0].title)
+            collectionView.reloadSections([mode.rawValue])
         }
-        collectionView.reloadSections([mode.rawValue])
+        
     }
 }

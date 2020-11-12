@@ -16,6 +16,7 @@ class IssueDetailViewController: UIViewController {
     
     var slideViewPanGesture = UIPanGestureRecognizer()
     var issueTitle: String = "IssueTitle"
+    var issueNo: Int = 0
     var detailCollectionViewAdapter: IssueDetailCollectionViewAdapter!
     
     var minimumSlideViewVisibleHeight: CGFloat = 92
@@ -26,8 +27,24 @@ class IssueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureGestureRecognizer()
-        configureCollectionView()
-        configureSlideView()
+        let networkService = NetworkService()
+        let networkManager = IssueDetailNetworkManager(networkService: networkService)
+        let dataManager = IssueDetailDataSourceManager(networkManager: networkManager)
+        detailCollectionViewAdapter = IssueDetailCollectionViewAdapter(dataManager: dataManager)
+        
+        detailCollectionViewAdapter.dataManager.loadDetailItem(issueNo: issueNo) { result in
+            switch result {
+            case .success(let _):
+                DispatchQueue.main.async { [weak self] in
+                    self?.configureCollectionView()
+                    self?.detailCollectionView.reloadData()
+                    self?.configureSlideView()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
     }
     
     private func configureGestureRecognizer() {
@@ -49,14 +66,17 @@ class IssueDetailViewController: UIViewController {
         slideViewDataManager.milestone = detailItem.milestone
         slideViewDataManager.issueFlag = issueInfo.isOpen
         
+        let networkService = NetworkService()
+        let networkManager = DetailEditNetworkManager(service: networkService)
+        
+        slideViewController.issueNo = issueNo
+        slideViewController.networkManager = networkManager
         slideViewController.adapter = IssueSlideVIewCollectionViewAdapter(dataManager: slideViewDataManager)
         slideViewController.reloadData()
         slideViewPanGesture.delegate = slideViewController
     }
     
     private func configureCollectionView() {
-        let dataManager = IssueDetailDataSourceManager()
-        detailCollectionViewAdapter = IssueDetailCollectionViewAdapter(dataManager: dataManager)
         detailCollectionView.delegate = self
         detailCollectionView.dataSource = detailCollectionViewAdapter
         detailCollectionView.setHeaderSize(with: issueTitle, width: detailCollectionView.frame.width)
@@ -117,13 +137,20 @@ extension IssueDetailViewController: UICollectionViewDelegate {
 extension IssueDetailViewController: CommentAddViewControllerDelegate {
     
     func sendButtonDidTouch(text: String) {
-        detailCollectionViewAdapter.dataManager.addComment(text: text) { [weak self] isSuccess in
+        guard let name = UserDefaults.standard.string(forKey: "UserName"),
+              let image = UserDefaults.standard.string(forKey: "UserImage") else {
+            return
+        }
+        let comment = Comment(issueNo: issueNo, commentNo: 0, comment: text, authorName: name, authorImg: image, commentDate: Date())
+        detailCollectionViewAdapter.dataManager.addComment(comment: comment) { [weak self] isSuccess in
             guard isSuccess,
                   let item = self?.detailCollectionViewAdapter.dataManager.detailItem?.comments.count else {
                 return
             }
-            self?.detailCollectionView.insertItems(at: [IndexPath(item: item - 1, section: 0)])
-            self?.gestureDidFinish(velocity: 800)
+            DispatchQueue.main.async {
+                self?.detailCollectionView.insertItems(at: [IndexPath(item: item - 1, section: 0)])
+                self?.gestureDidFinish(velocity: 800)
+            }
         }
     }
 }
