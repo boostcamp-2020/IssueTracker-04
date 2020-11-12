@@ -13,10 +13,6 @@ class MilestoneCollectionViewAdapter: NSObject {
     init(dataManager: MilestoneDatasourceManager) {
         self.dataManager = dataManager
     }
-    
-    func loadData() {
-        dataManager.loadData()
-    }
 }
 
 extension MilestoneCollectionViewAdapter: UICollectionViewDataSource {

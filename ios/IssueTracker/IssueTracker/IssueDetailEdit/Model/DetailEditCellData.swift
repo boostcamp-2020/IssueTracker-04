@@ -8,6 +8,7 @@
 import Foundation
 
 struct DetailEditCellData {
+    
     enum DataType {
         case assignee(image: String)
         case label(color: String)

@@ -46,16 +46,16 @@ struct DummyDataLoader: NetworkManaging {
         return item
     }
     
-    func loadMilestones() -> [MilestoneDetail] {
+    func loadMilestones() -> [Milestone] {
         guard let dataAsset = NSDataAsset.init(name: "dummyMilestones") else {
             return []
         }
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
-        var items: [MilestoneDetail] = []
+        var items: [Milestone] = []
         do {
-            items = try decoder.decode([MilestoneDetail].self, from: dataAsset.data)
+            items = try decoder.decode([Milestone].self, from: dataAsset.data)
         } catch {
             print(error.localizedDescription)
         }

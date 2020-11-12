@@ -31,7 +31,7 @@ class IssueSlideViewDataSourceManager {
     
     var assignees: [Assignee] = []
     var labels: [Label] = []
-    var milestone: Milestone = Milestone(milestoneNo: 0, milestoneTitle: "")
+    var milestone: Milestone = Milestone(milestoneNo: 0, milestoneTitle: "", milestoneDescription: "", dueDate: Date(), percent: 0, openIssueCount: 1, closedIssueCount: 3)
     var issueFlag: Bool = false
     
     var numberOfSection: Int {

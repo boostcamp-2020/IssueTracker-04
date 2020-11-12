@@ -185,7 +185,7 @@ extension IssueDetailSlideViewController: IssueDetailEditDelegate {
         case .label:
             adapter?.dataManager.labels = items.map { Label(labelNo: $0.itemId, labelTitle: $0.title, labelColor: $0.rawData) }
         case .milestone:
-            adapter?.dataManager.milestone = Milestone(milestoneNo: items[0].itemId, milestoneTitle: items[0].title)
+            adapter?.dataManager.milestone = Milestone(milestoneNo: items[0].itemId, milestoneTitle: items[0].title, milestoneDescription: "", dueDate: Date(), percent: 0, openIssueCount: 0, closedIssueCount: 0)
         }
         collectionView.reloadSections([mode.rawValue])
     }
