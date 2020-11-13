@@ -1,0 +1,18 @@
+.header {
+  height: 100px;
+  background-color: rgb(110, 110, 110);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.home-link {
+  all: unset;
+  color: inherit;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

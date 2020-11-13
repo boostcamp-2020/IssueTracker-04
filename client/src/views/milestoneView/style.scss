@@ -1,0 +1,19 @@
+.milestone-container {
+  width: 90%;
+  margin: 20px auto;
+  position: relative;
+}
+
+.label-milestone-btns {
+  width: fit-content;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.absolute-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

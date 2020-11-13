@@ -1,0 +1,75 @@
+.detail-view {
+  border: 0.5px solid red;
+  height: 100vh;
+}
+
+.detail-header {
+  height: 15vh;
+  border: 0.5px solid #818991;
+  display: flex;
+  align-items: center;
+  div {
+    margin: 10px;
+  }
+}
+
+.detail-body {
+  height: 85vh;
+  border: 0.5px solid blue;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-container {
+  width: 80vw;
+  border: 0.5px solid #818991;
+}
+
+.comment-list {
+  height: 50vh;
+  border: 0.5px solid #818991;
+}
+
+.comment-form {
+  height: 34vh;
+  border: 0.5px solid #818991;
+}
+
+.comment-form-submit {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3%;
+  margin-top: 1%;
+}
+
+.side-container {
+  border: 0.5px solid #818991;
+  width: 20vw;
+  height: 9vh;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.commentRow {
+  border: 1px solid #acacac;
+  border-radius: 5px;
+  display: flex;
+}
+
+.comment-left {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.comment-right {
+  flex: 11 1 auto;
+}
+
+.thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}

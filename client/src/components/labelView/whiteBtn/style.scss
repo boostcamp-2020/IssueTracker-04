@@ -1,0 +1,13 @@
+.white-btn {
+  all: unset;
+  padding: 10px;
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.white-btn.checked {
+  color: #ffffff;
+  background-color: rgb(44, 118, 255);
+}

@@ -1,0 +1,44 @@
+.label-row {
+  display: flex;
+  border-top: 1px solid var(--border-color);
+  padding: 10px;
+}
+
+.edit-delete-btn {
+  all: unset;
+  float: right;
+  margin-right: 10px;
+  &:hover {
+    text-decoration: underline;
+    color: #3493ff;
+    cursor: pointer;
+  }
+}
+
+.labelTitle {
+  all: unset;
+  padding: 5px;
+  background-color: #dddddd;
+  border-radius: 5px;
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.label-row div {
+  flex: auto;
+}
+
+.col-3 {
+  width: calc(3 / 12 * 100%);
+}
+
+.col-2 {
+  width: calc(2 / 12 * 100%);
+}
+
+.col-7 {
+  width: calc(7 / 12 * 100%);
+}
