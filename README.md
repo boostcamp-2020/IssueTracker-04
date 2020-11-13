@@ -30,6 +30,8 @@
 ### 배포링크 
 - 돌돌마 WEB 링크 (http://www.doldolma.kro.kr)
 
+- 돌돌마 IOS 링크 (https://kr.object.ncloudstorage.com/issuetracker04/version2/download.html)
+
   
 ### 문서
 
