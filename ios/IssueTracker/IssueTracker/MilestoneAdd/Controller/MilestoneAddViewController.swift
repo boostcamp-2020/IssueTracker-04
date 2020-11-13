@@ -72,7 +72,7 @@ class MilestoneAddViewController: UIViewController {
         let milestoneDetail = Milestone(milestoneNo: (milestoneData?.milestoneNo) ?? 0,
                                               milestoneTitle: titleTextField.text ?? "",
                                               milestoneDescription: descriptionTextField.text ?? "",
-                                              dueDate: Date.make(string: dateTextField.text ?? ""),
+                                              dueDate: Date.create(with: dateTextField.text ?? ""),
                                               percent: milestoneData?.percent ?? 0.0,
                                               openIssueCount: milestoneData?.openIssueCount ?? 0,
                                               closedIssueCount: milestoneData?.closedIssueCount ?? 0)

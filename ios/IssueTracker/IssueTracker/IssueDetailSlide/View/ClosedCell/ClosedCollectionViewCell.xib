@@ -30,7 +30,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <action selector="closedButtonTouched:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OcG-SL-XBy"/>
+                            <action selector="closeButtonTouched:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OcG-SL-XBy"/>
                         </connections>
                     </button>
                 </subviews>
@@ -44,7 +44,7 @@
             </constraints>
             <size key="customSize" width="508" height="122"/>
             <connections>
-                <outlet property="closedButton" destination="7BC-ZN-Ggq" id="PZK-fa-Gnh"/>
+                <outlet property="closeButton" destination="7BC-ZN-Ggq" id="PZK-fa-Gnh"/>
             </connections>
             <point key="canvasLocation" x="469.56521739130437" y="140.625"/>
         </collectionViewCell>

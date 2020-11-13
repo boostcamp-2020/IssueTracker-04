@@ -33,7 +33,7 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
             }
             header.title.text = dataManager.title(of: indexPath)
             header.buttonHandler = {
-                NotificationCenter.default.post(name: .editButtonTouched,
+                NotificationCenter.default.post(name: .bottomSheetEditButtonTouched,
                                                 object: nil,
                                                 userInfo: ["section": indexPath.section])
             }
@@ -51,7 +51,12 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
             guard let assigneeCell = collectionView.dequeueReusableCell(withReuseIdentifier: AssigneeCollectionViewCell.identifier, for: indexPath) as? AssigneeCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            assigneeCell.nameLabel.text = dataManager.assignees[indexPath.row].userName
+            let assignee = dataManager.assignees[indexPath.row]
+            assigneeCell.nameLabel.text = assignee.userName
+            ImageLoader.shared.load(url: assignee.userImg, to: assigneeCell.imageView)
+            assigneeCell.imageView.clipsToBounds = true
+            assigneeCell.imageView.layer.cornerRadius = 15
+            
             return assigneeCell
             
         case .label:
@@ -72,11 +77,12 @@ class IssueSlideVIewCollectionViewAdapter: NSObject, UICollectionViewDataSource 
             guard let optionCell = collectionView.dequeueReusableCell(withReuseIdentifier: ClosedCollectionViewCell.identifier, for: indexPath) as? ClosedCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            optionCell.setCloseButtonLabel(flag: dataManager.issueFlag)
             optionCell.touchHandler = { [weak self] in
                 if let flag = self?.dataManager.issueFlag {
-                    optionCell.setClosedButtonLabel(flag: !flag)
+                    optionCell.setCloseButtonLabel(flag: !flag)
                 }
-                NotificationCenter.default.post(name: .closedButtonTouched,
+                NotificationCenter.default.post(name: .bottomSheetCloseButtonTouched,
                                                 object: nil)
             }
             return optionCell

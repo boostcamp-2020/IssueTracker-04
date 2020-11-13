@@ -28,7 +28,7 @@ class IssueDetailViewController: UIViewController {
         super.viewDidLoad()
         configureGestureRecognizer()
         let networkService = NetworkService()
-        let networkManager = IssueDetailNetworkManager(networkService: networkService)
+        let networkManager = IssueDetailNetworkManager(service: networkService, userData: UserData())
         let dataManager = IssueDetailDataSourceManager(networkManager: networkManager)
         detailCollectionViewAdapter = IssueDetailCollectionViewAdapter(dataManager: dataManager)
         
@@ -67,7 +67,7 @@ class IssueDetailViewController: UIViewController {
         slideViewDataManager.issueFlag = issueInfo.isOpen
         
         let networkService = NetworkService()
-        let networkManager = DetailEditNetworkManager(service: networkService)
+        let networkManager = DetailEditNetworkManager(service: networkService, userData: UserData())
         
         slideViewController.issueNo = issueNo
         slideViewController.networkManager = networkManager
@@ -77,7 +77,6 @@ class IssueDetailViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        detailCollectionView.delegate = self
         detailCollectionView.dataSource = detailCollectionViewAdapter
         detailCollectionView.setHeaderSize(with: issueTitle, width: detailCollectionView.frame.width)
         detailCollectionView.reloadData()
@@ -130,26 +129,24 @@ class IssueDetailViewController: UIViewController {
     }
 }
 
-extension IssueDetailViewController: UICollectionViewDelegate {
-    
-}
-
 extension IssueDetailViewController: CommentAddViewControllerDelegate {
     
     func sendButtonDidTouch(text: String) {
-        guard let name = UserDefaults.standard.string(forKey: "UserName"),
-              let image = UserDefaults.standard.string(forKey: "UserImage") else {
-            return
-        }
-        let comment = Comment(issueNo: issueNo, commentNo: 0, comment: text, authorName: name, authorImg: image, commentDate: Date())
+        let user = UserData()
+        let comment = Comment(issueNo: issueNo, commentNo: 0, comment: text, authorName: user.name, authorImg: user.image, commentDate: Date())
         detailCollectionViewAdapter.dataManager.addComment(comment: comment) { [weak self] isSuccess in
             guard isSuccess,
-                  let item = self?.detailCollectionViewAdapter.dataManager.detailItem?.comments.count else {
+                  let commentCount = self?.detailCollectionViewAdapter.dataManager.detailItem?.comments.count else {
                 return
             }
             DispatchQueue.main.async {
-                self?.detailCollectionView.insertItems(at: [IndexPath(item: item - 1, section: 0)])
-                self?.gestureDidFinish(velocity: 800)
+                let indexPath = IndexPath(row: commentCount - 1, section: 0)
+                self?.detailCollectionView.performBatchUpdates({
+                    self?.detailCollectionView.insertItems(at: [indexPath])
+                }, completion: { _ in
+                    self?.detailCollectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                    self?.gestureDidFinish(velocity: 800)
+                })
             }
         }
     }
@@ -168,21 +165,32 @@ extension IssueDetailViewController: IssueDetailSlideViewControllerDelegate {
     }
     
     func moveAboveCellButtonDidTouch() {
-        if let topVisibleCell = detailCollectionView.visibleCells.first {
-            scrollCell(to: topVisibleCell)
+        guard let topIndexPath = detailCollectionView.indexPathsForVisibleItems.min()  else {
+            return
         }
+        
+        if topIndexPath.row == 0 && detailCollectionView.contentOffset.y <= detailCollectionView.cellForItem(at: topIndexPath)?.frame.origin.y ?? 0 {
+            detailCollectionView.setContentOffset(.zero, animated: true)
+            return
+        }
+        
+        detailCollectionView.scrollToItem(at: IndexPath(row: topIndexPath.row, section: 0), at: .top, animated: true)
     }
     
     func moveBelowCellButtonDidTouch() {
-        if let bottomVisibleCell = detailCollectionView.visibleCells.last {
-            scrollCell(to: bottomVisibleCell)
+        guard let bottomIndexPath = detailCollectionView.indexPathsForVisibleItems.max() else {
+            return
         }
+        
+        if bottomIndexPath.row + 1 == detailCollectionViewAdapter.dataManager.commentCount {
+            return
+        }
+        
+        detailCollectionView.scrollToItem(at: IndexPath(row: bottomIndexPath.row + 1, section: 0), at: .bottom, animated: true)
     }
     
     func scrollCell(to cell: UICollectionViewCell) {
-        if let indexPath = detailCollectionView.indexPath(for: cell) {
-            detailCollectionView.scrollToItem(at: indexPath, at: .top, animated: true)
-        }
+        
     }
     
 }

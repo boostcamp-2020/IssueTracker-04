@@ -17,7 +17,6 @@ class IssueListDataSourceManager {
     
     init(networkManager: IssueListNetworkManager) {
         self.networkManager = networkManager
-        //loadIssueList()
     }
     
     subscript(indexPath: IndexPath) -> IssueListCellData {
@@ -36,6 +35,7 @@ class IssueListDataSourceManager {
                 self?.items.insert(issue, at: 0)
                 completion(true)
             case .failure(let error):
+                print(error.localizedDescription)
                 completion(false)
             }
             completion(true)

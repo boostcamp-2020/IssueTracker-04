@@ -27,6 +27,7 @@ class IssueDetailCollectionViewAdapter: NSObject, UICollectionViewDataSource {
         
         cell.configure(with: item)
         cell.cellWidth = collectionView.frame.width
+        ImageLoader.shared.load(url: item.authorImg, to: cell.authorImageView)
         
         return cell
     }
@@ -39,6 +40,7 @@ class IssueDetailCollectionViewAdapter: NSObject, UICollectionViewDataSource {
         
         header.configure(with: item)
         header.viewWidth = collectionView.frame.width
+        
         return header
     }
     

@@ -7,24 +7,23 @@
 
 import Foundation
 
-class DetailEditNetworkManager {
+struct LabelUpdateRequest: Codable {
+    var issueNo: Int
+    var labels: [Int]
+}
+
+struct UpdateResponse: Codable {
+    var success: Bool
+}
+
+class DetailEditNetworkManager: NetworkManager {
     
-    static let labelUpdateRequestURL = "http://101.101.217.9:5000/api/ilrelation"
-    
-    let service: NetworkService
-    
-    init(service: NetworkService) {
-        self.service = service
-    }
-    
+    static let labelUpdateRequestURL = baseURL + "/api/ilrelation"
+  
     func labelUpdateRequest(issueNo: Int, labels: [Label], completion: @escaping (Bool) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT"),
-              let url = URL(string: Self.labelUpdateRequestURL) else {
-            return
-        }
-        var request = NetworkService.Request(method: .post)
-        request.url = url
-        request.headers = ["Authorization": "Bearer " + token, "Content-Type": "application/json"]
+        var request = NetworkRequest(method: .post)
+        request.url = URL(string: Self.labelUpdateRequestURL)
+        request.headers = baseHeader
         let labelNos = labels.map { $0.labelNo }
         let updateRequest = LabelUpdateRequest(issueNo: issueNo, labels: labelNos)
         request.body = try? JSONEncoder.custom.encode(updateRequest)
@@ -44,13 +43,4 @@ class DetailEditNetworkManager {
             }
         }
     }
-}
-
-struct LabelUpdateRequest: Codable {
-    var issueNo: Int
-    var labels: [Int]
-}
-
-struct UpdateResponse: Codable {
-    var success: Bool
 }

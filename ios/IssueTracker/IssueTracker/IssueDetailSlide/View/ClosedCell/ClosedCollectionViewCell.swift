@@ -9,18 +9,25 @@ import UIKit
 
 class ClosedCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var closedButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     var touchHandler: (() -> Void)?
     
-    func setClosedButtonLabel(flag: Bool) {
-        let string = flag ? "Reopen Issue" : "Close Issue"
-        let color = flag ? UIColor.systemGreen : UIColor.systemRed
+    func setCloseButtonLabel(flag: Bool) {
+        let string = flag ? "Close Issue" : "Reopen Issue"
+        let color: UIColor = flag ? .systemRed : .systemGreen
+        let image: UIImage? =  flag ? UIImage(systemName: "exclamationmark.triangle") : UIImage(systemName: "exclamationmark.arrow.circlepath")
         
-        closedButton.setTitle(string, for: .normal)
-        closedButton.setTitleColor(color, for: .normal)
+        UIView.setAnimationsEnabled(false)
+        closeButton.setTitle(string, for: .normal)
+        closeButton.setTitleColor(color, for: .normal)
+        closeButton.setImage(image, for: .normal)
+        closeButton.tintColor = color
+        layoutIfNeeded()
+        UIView.setAnimationsEnabled(true)
+       
     }
     
-    @IBAction func closedButtonTouched(_ sender: UIButton) {
+    @IBAction func closeButtonTouched(_ sender: UIButton) {
         touchHandler?()
     }
 }

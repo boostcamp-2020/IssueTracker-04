@@ -51,7 +51,6 @@ class IssueListViewController: UIViewController {
         setSelectResultView(editing: false)
         addTapToDismissKeyBoard()
         
-        //refresh()
         collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
             guard isSuccess else {
                 print("Data Load Fail")
@@ -115,7 +114,7 @@ class IssueListViewController: UIViewController {
     
     private func configureCollectionView() {
         let networkService = NetworkService()
-        let networkManager = IssueListNetworkManager(service: networkService)
+        let networkManager = IssueListNetworkManager(service: networkService, userData: UserData())
         
         let dataSourceManager = IssueListDataSourceManager(networkManager: networkManager)
         
@@ -127,7 +126,7 @@ class IssueListViewController: UIViewController {
     private func configureCellObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .issueCloseRequested, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .issueDeleteRequested, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(searchRequested(notification:)), name: .searchRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRequested(notification:)), name: .issueListSearchRequested, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: .issueListRefreshRequested, object: nil)
     }
     
@@ -164,8 +163,17 @@ class IssueListViewController: UIViewController {
         guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
             return
         }
-        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] in
-            self?.issueListCollectionView.deleteItems(at: [$0])
+        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] index in
+            self?.issueListCollectionView.performBatchUpdates {
+                self?.issueListCollectionView.deleteItems(at: [index])
+            } completion: { _ in
+//                let context = UICollectionViewFlowLayoutInvalidationContext()
+//                context.invalidateFlowLayoutAttributes = false
+//                self?.issueListCollectionView.collectionViewLayout.invalidateLayout(with: context)
+//                UIView.animate(withDuration: 0.3) {
+//                    self?.issueListCollectionView.layoutIfNeeded()
+//                }
+            }
         }
     }
     
@@ -184,15 +192,12 @@ class IssueListViewController: UIViewController {
     }
     
     @objc private func refresh(notification: Notification) {
-//        guard let issueNo = notification.userInfo?["IssueNo"] as? Int,
-//              let indexPath = collectionViewAdapter?.dataSourceManager.indexPath(of: issueNo) else {
-//            return
-//        }
         collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
             guard isSuccess else {
                 return
             }
             DispatchQueue.main.async {
+                self?.issueListCollectionView.collectionViewLayout.invalidateLayout()
                 self?.issueListCollectionView.reloadSections([0])
             }
         }
@@ -240,9 +245,6 @@ extension IssueListViewController: IssueAddViewControllerDelegate {
     func issueSendButtonDidTouch(request: IssueAddRequest) {
         collectionViewAdapter?.dataSourceManager.add(issue: request) { [weak self] complete in
             if complete {
-                guard let count = self?.collectionViewAdapter?.dataSourceManager.itemCount else {
-                    return
-                }
                 DispatchQueue.main.async {
                     self?.issueListCollectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
                 }
@@ -266,12 +268,6 @@ extension IssueListViewController: UICollectionViewDelegate {
             addButtonAnimate(showing: true)
         }
     }
-    
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        if mode == .normal && abs(velocity.y) < 10 {
-//            addButtonAnimate(showing: true)
-//        }
-//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mode {

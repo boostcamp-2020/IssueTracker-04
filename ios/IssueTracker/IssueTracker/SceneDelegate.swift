@@ -28,20 +28,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let networkService = NetworkService()
-        let networkManager = LoginNetworkManager(service: networkService)
+        let networkManager = LoginNetworkManager(service: networkService, userData: UserData())
         
         networkManager.requestLogin(code: code) { result in
+            var userData = UserData()
             switch result {
             case .success(let token):
-                UserDefaults.standard.set(token.jwt, forKey: "JWT")
+                userData.token = token.jwt
                 networkManager.requestUserInforamtion { result in
                     switch result {
                     case .success(let response):
                         let user = response.user
-                        UserDefaults.standard.set(user.userId, forKey: "UserId")
-                        UserDefaults.standard.set(user.userName, forKey: "UserName")
-                        UserDefaults.standard.set(user.userNo, forKey: "UserNo")
-                        UserDefaults.standard.set(user.userImg, forKey: "UserImage")
+                        userData.usserNo = user.userNo
+                        userData.userId = user.userId
+                        userData.name = user.userName
+                        userData.image = user.userImg
                         
                         DispatchQueue.main.async {
                             guard let controller = self.window?.rootViewController as? LoginViewController else {

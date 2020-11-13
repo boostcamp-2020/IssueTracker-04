@@ -7,30 +7,31 @@
 
 import Foundation
 
-struct LabelListNetworkManager {
+struct ResultResponse: Codable {
+    private(set) var success: Bool
+    private(set) var message: String?
+}
+
+struct LabelAddResultResponse: Codable {
+    private(set) var success: Bool
+    private(set) var message: String?
+    private(set) var labelNo: Int
+}
+
+class LabelListNetworkManager: NetworkManager {
     
-    var service: NetworkService
-    var loadLabelListUrlString: String = Constant.URL.baseURL + "api/labelList"
-    var modifyLabelUrlString: String = Constant.URL.baseURL + "api/label"
-    
-    init(service: NetworkService = NetworkService()) {
-        self.service = service
-    }
+    static let labelListRequestURL = baseURL + "/api/labelList"
+    static let labelModifyRequestUrl = baseURL + "/api/label"
     
     func loadLabelList(completion: @escaping (Result<[Label], NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let request = NetworkService.Request(method: .get,
-                                             url: URL(string: loadLabelListUrlString),
-                                             headers: ["Authorization": "Bearer " + token])
+        var request = NetworkRequest(method: .get)
+        request.url = URL(string: Self.labelListRequestURL)
+        request.headers = baseHeader
+    
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                
-                guard let responseData = try? decoder.decode(LabelListResponse.self, from: data) else {
+                guard let responseData = try? JSONDecoder.custom.decode(LabelResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
@@ -41,21 +42,15 @@ struct LabelListNetworkManager {
         }
     }
     
-    func add(label: Label, completion: @escaping (Result<LabelAddStatus, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let json = try? JSONEncoder.custom.encode(label)
-        let request = NetworkService.Request(method: .post,
-                                             url: URL(string: modifyLabelUrlString),
-                                             headers: ["Content-Type": "application/json",
-                                                       "Authorization": "Bearer " + token],
-                                             body: json)
+    func add(label: Label, completion: @escaping (Result<LabelAddResultResponse, NetworkError>) -> Void) {
+        var request = NetworkRequest(method: .post)
+        request.url = URL(string: Self.labelModifyRequestUrl)
+        request.headers = baseHeader
+        request.body = try? JSONEncoder.custom.encode(label)
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(LabelAddStatus.self, from: data) else {
-                    print("invaliddata")
+                guard let status = try? JSONDecoder.custom.decode(LabelAddResultResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
@@ -66,20 +61,15 @@ struct LabelListNetworkManager {
         }
     }
     
-    func update(label: Label, completion: @escaping (Result<Status, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let json = try? JSONEncoder.custom.encode(label)
-        let request = NetworkService.Request(method: .put,
-                                             url: URL(string: modifyLabelUrlString + "/\(label.labelNo)"),
-                                             headers: ["Content-Type": "application/json",
-                                                       "Authorization": "Bearer " + token],
-                                             body: json)
+    func update(label: Label, completion: @escaping (Result<ResultResponse, NetworkError>) -> Void) {
+        var request = NetworkRequest(method: .put)
+        request.url = URL(string: Self.labelModifyRequestUrl + "/\(label.labelNo)")
+        request.headers = baseHeader
+        request.body = try? JSONEncoder.custom.encode(label)
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(Status.self, from: data) else {
+                guard let status = try? JSONDecoder.custom.decode(ResultResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
@@ -90,18 +80,14 @@ struct LabelListNetworkManager {
         }
     }
     
-    func delete(labelNo: Int, completion: @escaping (Result<Status, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let request = NetworkService.Request(method: .delete,
-                                             url: URL(string: modifyLabelUrlString + "/\(labelNo)"),
-                                             headers: ["Content-Type": "application/json",
-                                                       "Authorization": "Bearer " + token])
+    func delete(labelNo: Int, completion: @escaping (Result<ResultResponse, NetworkError>) -> Void) {
+        var request = NetworkRequest(method: .delete)
+        request.url = URL(string: Self.labelModifyRequestUrl + "/\(labelNo)")
+        request.headers = baseHeader
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(Status.self, from: data) else {
+                guard let status = try? JSONDecoder.custom.decode(ResultResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }

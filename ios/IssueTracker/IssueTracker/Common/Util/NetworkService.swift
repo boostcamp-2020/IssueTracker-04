@@ -7,6 +7,14 @@
 
 import Foundation
 
+enum RequestMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case patch = "PATCH"
+    case delete = "DELETE"
+}
+
 enum NetworkError: Error {
     case invalidURL
     case invalidData
@@ -14,22 +22,18 @@ enum NetworkError: Error {
     case requestFailed(error: Error)
 }
 
-class NetworkService {
-    
-    struct Request {
-        var method: RequestMethod
-        var url: URL?
-        var headers: [String: String]?
-        var body: Data?
-    }
-    
-    enum RequestMethod: String {
-        case get = "GET"
-        case post = "POST"
-        case put = "PUT"
-        case patch = "PATCH"
-        case delete = "DELETE"
-    }
+struct NetworkRequest {
+    var method: RequestMethod
+    var url: URL?
+    var headers: [String: String]?
+    var body: Data?
+}
+
+protocol NetworkProviding {
+    func request(request: NetworkRequest, completion: @escaping (Result<Data, NetworkError>) -> Void)
+}
+
+class NetworkService: NetworkProviding {
     
     private let session: URLSession
     
@@ -37,7 +41,7 @@ class NetworkService {
         self.session = session
     }
     
-    func request(request: Request, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+    func request(request: NetworkRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = request.url else {
             completion(.failure(NetworkError.invalidURL))
             return
@@ -47,10 +51,7 @@ class NetworkService {
         urlRequest.httpMethod = request.method.rawValue
         urlRequest.httpBody = request.body
         urlRequest.allHTTPHeaderFields = request.headers
-//        request.headers?.forEach { key, value in
-//            urlRequest.addValue(value, forHTTPHeaderField: key)
-//            
-//        }
+        
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             if let error = error {
                 completion(.failure(NetworkError.requestFailed(error: error)))

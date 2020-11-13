@@ -11,7 +11,7 @@ extension Date {
     
     static let formatter = DateFormatter()
     
-    static func make(string: String) -> Date? {
+    static func create(with string: String) -> Date? {
         return Date.formatter.date(from: string)
     }
     

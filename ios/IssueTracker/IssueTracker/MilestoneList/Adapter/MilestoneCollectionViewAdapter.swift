@@ -27,7 +27,7 @@ extension MilestoneCollectionViewAdapter: UICollectionViewDataSource {
         let item = dataManager[indexPath]
         cell.configure(with: item)
         cell.deleteHandler = {
-            NotificationCenter.default.post(name: .milestoneDeleteRequested, object: nil, userInfo: ["MilestoneNo": item.milestoneNo])
+            NotificationCenter.default.post(name: .milestoneDeleteRequested, object: nil, userInfo: ["MilestoneNo": item.milestoneNo ?? 0])
         }
         return cell
     }

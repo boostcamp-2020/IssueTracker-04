@@ -7,23 +7,16 @@
 
 import Foundation
 
-class LoginNetworkManager {
+class LoginNetworkManager: NetworkManager {
     
-    static let userInfoURL = "http://101.101.217.9:5000/api/user" 
-    
-    var service: NetworkService
-    
-    init(service: NetworkService) {
-        self.service = service
-    }
+    static let userInfoURL = baseURL + "/api/user"
     
     func requestLogin(code: String, completion: @escaping (Result<JWTToken, NetworkError>) -> Void) {
         let bodys = ["client": "ios", "code": code]
         let headers = ["Content-Type": "application/json; charset=utf-8"]
         let json = try? JSONSerialization.data(withJSONObject: bodys)
-        let service = NetworkService()
         
-        var request = NetworkService.Request(method: .post)
+        var request = NetworkRequest(method: .post)
         request.url = URL(string: Constant.URL.baseURL + Constant.URL.code)
         request.headers = headers
         request.body = json
@@ -31,9 +24,7 @@ class LoginNetworkManager {
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                guard let token = try? decoder.decode(JWTToken.self, from: data) else {
+                guard let token = try? JSONDecoder.custom.decode(JWTToken.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
@@ -45,26 +36,17 @@ class LoginNetworkManager {
     }
     
     func requestUserInforamtion(completion: @escaping ((Result<LoginResponse, NetworkError>) -> Void)) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        //UserDefault 관리객체 만들어서 토큰 얻어오기
-        var request = NetworkService.Request(method: .get)
+        var request = NetworkRequest(method: .get)
         request.url = URL(string: Self.userInfoURL)
-        request.headers = ["Authorization": "Bearer " + token]
+        request.headers = baseHeader
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                decoder.dateDecodingStrategy = .formatted(DateFormatter.custom)
-                var response: LoginResponse
-                do {
-                    response = try decoder.decode(LoginResponse.self, from: data)
-                    completion(.success(response))
-                } catch {
+                guard let response = try? JSONDecoder.custom.decode(LoginResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
+                    return
                 }
+                completion(.success(response))
             case.failure(let error):
                 completion(.failure(error))
             }

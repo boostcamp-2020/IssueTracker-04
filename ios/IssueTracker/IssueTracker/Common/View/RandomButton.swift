@@ -30,5 +30,4 @@ class RandomButton: UIButton {
         contentMode = .center
         imageView?.contentMode = .scaleAspectFit
     }
-
 }

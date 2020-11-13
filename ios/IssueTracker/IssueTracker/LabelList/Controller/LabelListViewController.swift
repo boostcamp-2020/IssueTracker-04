@@ -17,8 +17,10 @@ class LabelListViewController: UIViewController {
         super.viewDidLoad()
         collectionView.register(LabelListCell.self, forCellWithReuseIdentifier: LabelListCell.identifier)
         collectionView.delegate = self
-        
-        let adapter = LabelCollectionViewAdapter(dataManager: LabelDatasourceManager())
+        let networkService = NetworkService()
+        let networkManager = LabelListNetworkManager(service: networkService, userData: UserData())
+        let dataManager = LabelDatasourceManager(networkManager: networkManager)
+        let adapter = LabelCollectionViewAdapter(dataManager: dataManager)
         self.adapter = adapter
         collectionView.dataSource = adapter
         
@@ -99,6 +101,7 @@ extension LabelListViewController: LabelDataDelegate {
         adapter?.dataManager.update(label: label, indexPath: indexPath) { [weak self] indexPath in
             DispatchQueue.main.async {
                 self?.collectionView.reloadItems(at: [indexPath])
+                NotificationCenter.default.post(Notification(name: .issueListRefreshRequested))
             }
         }
     }

@@ -20,7 +20,7 @@ class IssueFilterViewController: UIViewController {
     }
     
     @IBAction func doneButtonTouched(_ sender: UIButton) {
-        NotificationCenter.default.post(Notification(name: .searchRequested, object: nil, userInfo: ["Query": dataManager.searchQuery]))
+        NotificationCenter.default.post(Notification(name: .issueListSearchRequested, object: nil, userInfo: ["Query": dataManager.searchQuery]))
         dismiss(animated: true)
     }
     
@@ -131,6 +131,15 @@ extension IssueFilterViewController: UITableViewDataSource {
         }
         returnCell.textLabel?.font = UIFont.systemFont(ofSize: 15)
         returnCell.accessoryType = isSelected ? .checkmark : .none
+        
+        if indexPath.section == 1 && (
+            item.type == .option(type: .author) ||
+            item.type == .option(type: .label) ||
+            item.type == .option(type: .milestone) ||
+            item.type == .option(type: .assignee)
+        ) {
+            returnCell.accessoryType = .none
+        }
         
         return returnCell
     }

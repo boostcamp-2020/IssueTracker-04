@@ -331,7 +331,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="UserCell" textLabel="WNm-VN-3vX" imageView="4Lq-qr-g2d" style="IBUITableViewCellStyleDefault" id="GrC-Cl-eRu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="UserCell" textLabel="WNm-VN-3vX" imageView="2Uw-zB-HJg" style="IBUITableViewCellStyleDefault" id="GrC-Cl-eRu">
                                         <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GrC-Cl-eRu" id="afw-5x-mCh">
@@ -339,14 +339,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WNm-VN-3vX">
-                                                    <rect key="frame" x="60" y="0.0" width="334" height="43.5"/>
+                                                    <rect key="frame" x="57" y="0.0" width="337" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="github_logo" id="4Lq-qr-g2d">
-                                                    <rect key="frame" x="20" y="9" width="25" height="25"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="person.circle.fill" catalog="system" id="2Uw-zB-HJg">
+                                                    <rect key="frame" x="22" y="12" width="20" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -1514,6 +1514,7 @@
         <image name="github_logo" width="25" height="25"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="signpost.left" catalog="system" width="128" height="118"/>
         <image name="tag" catalog="system" width="128" height="119"/>
         <image name="title_black" width="762" height="128"/>

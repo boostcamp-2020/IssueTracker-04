@@ -52,9 +52,9 @@ class MilestoneDetailView: UIView {
     func configure(with data: Milestone) {
         titleLabel.text = data.milestoneTitle
         descriptionLabel.text = data.milestoneDescription
-        percentLabel.text = "\(data.percent)%"
-        openLabel.text = "open \(data.openIssueCount)"
-        closedLabel.text = "closed \(data.closedIssueCount)"
+        percentLabel.text = "\(data.percent ?? 0)%"
+        openLabel.text = "open \(data.openIssueCount ?? 0)"
+        closedLabel.text = "closed \(data.closedIssueCount ?? 0)"
         progressView.progress = Float((data.percent ?? 0) / 100) 
         
         if let dueDate = data.dueDate {

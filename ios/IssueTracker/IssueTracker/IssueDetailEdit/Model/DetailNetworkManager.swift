@@ -8,29 +8,22 @@
 import Foundation
 
 protocol DetailNetworkManager {
-    var service: NetworkService { get set }
     func loadData(completion: @escaping (Result<[DetailEditCellData], NetworkError>) -> Void)
 }
 
-class AssigneeEditNetworkManager: DetailNetworkManager {
+struct UserResponse: Codable {
+    var success: Bool
+    var userList: [User]
+}
+
+class AssigneeEditNetworkManager: NetworkManager, DetailNetworkManager {
     
-    static let requestURL = "http://101.101.217.9:5000/api/userList"
-    
-    var service: NetworkService
-    
-    init(service: NetworkService) {
-        self.service = service
-    }
+    static let userListRequestURL = baseURL + "/api/userList"
     
     func loadData(completion: @escaping (Result<[DetailEditCellData], NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT"),
-              let url = URL(string: Self.requestURL) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        var request = NetworkService.Request(method: .get)
-        request.url = url
-        request.headers = ["Authorization": "Bearer " + token]
+        var request = NetworkRequest(method: .get)
+        request.url = URL(string: Self.userListRequestURL)
+        request.headers = baseHeader
         
         service.request(request: request) { result in
             switch result {
@@ -49,25 +42,19 @@ class AssigneeEditNetworkManager: DetailNetworkManager {
     }
 }
 
-class LabelEditNetworkManager: DetailNetworkManager {
+struct LabelResponse: Codable {
+    var success: Bool
+    var labels: [Label]
+}
+
+class LabelEditNetworkManager: NetworkManager, DetailNetworkManager {
     
-    static let requestURL = "http://101.101.217.9:5000/api/labelList"
-    
-    var service: NetworkService
-    
-    init(service: NetworkService) {
-        self.service = service
-    }
+    static let labelListRequestURL = baseURL + "/api/labelList"
     
     func loadData(completion: @escaping (Result<[DetailEditCellData], NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT"),
-              let url = URL(string: Self.requestURL) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        var request = NetworkService.Request(method: .get)
-        request.url = url
-        request.headers = ["Authorization": "Bearer " + token]
+        var request = NetworkRequest(method: .get)
+        request.url = URL(string: Self.labelListRequestURL)
+        request.headers = baseHeader
         
         service.request(request: request) { result in
             switch result {
@@ -83,29 +70,22 @@ class LabelEditNetworkManager: DetailNetworkManager {
                 completion(.failure(error))
             }
         }
-     
     }
 }
 
-class MilestoneEditNetworkManager: DetailNetworkManager {
+struct MilestoneResponse: Codable {
+    var success: Bool
+    var milestones: [Milestone]
+}
+
+class MilestoneEditNetworkManager: NetworkManager, DetailNetworkManager {
     
-    static let requestURL = "http://101.101.217.9:5000/api/milestoneList"
-    
-    var service: NetworkService
-    
-    init(service: NetworkService) {
-        self.service = service
-    }
+    static let milestoneRequestURL = baseURL + "/api/milestoneList"
     
     func loadData(completion: @escaping (Result<[DetailEditCellData], NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT"),
-              let url = URL(string: Self.requestURL) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        var request = NetworkService.Request(method: .get)
-        request.url = url
-        request.headers = ["Authorization": "Bearer " + token]
+        var request = NetworkRequest(method: .get)
+        request.url = URL(string: Self.milestoneRequestURL)
+        request.headers = baseHeader
         
         service.request(request: request) { result in
             switch result {
@@ -122,19 +102,4 @@ class MilestoneEditNetworkManager: DetailNetworkManager {
             }
         }
     }
-}
-
-struct UserResponse: Codable {
-    var success: Bool
-    var userList: [User]
-}
-
-struct MilestoneResponse: Codable {
-    var success: Bool
-    var milestones: [Milestone]
-}
-
-struct LabelResponse: Codable {
-    var success: Bool
-    var labels: [Label]
 }

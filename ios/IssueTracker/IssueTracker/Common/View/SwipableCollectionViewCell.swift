@@ -123,7 +123,6 @@ class SwipableCollectionViewCell: UICollectionViewCell {
             UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve) { [weak self] in
                 self?.layoutIfNeeded()
             }
-        
         default:
             return
         }

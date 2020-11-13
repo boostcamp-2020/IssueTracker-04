@@ -46,15 +46,15 @@ class IssueDetailSlideViewController: UIViewController {
         switch segue.identifier {
         case "ToEditAssignee":
             editViewController.mode = .assignee
-            networkManager = AssigneeEditNetworkManager(service: networkService)
+            networkManager = AssigneeEditNetworkManager(service: networkService, userData: UserData())
             selectedItems = adapter.dataManager.assignees.map { DetailEditCellData(type: .assignee(image: $0.userImg), itemId: $0.userNo, title: $0.userName) }
         case "ToEditLabel":
             editViewController.mode = .label
-            networkManager = LabelEditNetworkManager(service: networkService)
+            networkManager = LabelEditNetworkManager(service: networkService, userData: UserData())
             selectedItems = adapter.dataManager.labels.map { DetailEditCellData(type: .label(color: $0.labelColor), itemId: $0.labelNo, title: $0.labelTitle) }
         case "ToEditMilestone":
             editViewController.mode = .milestone
-            networkManager = MilestoneEditNetworkManager(service: networkService)
+            networkManager = MilestoneEditNetworkManager(service: networkService, userData: UserData())
             let milestone = adapter.dataManager.milestone
             selectedItems = [DetailEditCellData(type: .milestone, itemId: milestone.milestoneNo ?? 0, title: milestone.milestoneTitle ?? "")]
         default:
@@ -69,11 +69,11 @@ class IssueDetailSlideViewController: UIViewController {
     private func configureNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(editButtonTouched(_:)),
-                                               name: .editButtonTouched,
+                                               name: .bottomSheetEditButtonTouched,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(closedButtonTouched(_:)),
-                                               name: .closedButtonTouched,
+                                               selector: #selector(closeButtonTouched(_:)),
+                                               name: .bottomSheetCloseButtonTouched,
                                                object: nil)
     }
     
@@ -113,7 +113,7 @@ class IssueDetailSlideViewController: UIViewController {
         }
     }
     
-    @objc func closedButtonTouched(_ notification: Notification) {
+    @objc func closeButtonTouched(_ notification: Notification) {
         if let flag = adapter?.dataManager.issueFlag {
             adapter?.dataManager.issueFlag = !flag
             delegate?.issueButtonDidTouch(flag: !flag)
@@ -191,13 +191,12 @@ extension IssueDetailSlideViewController: IssueDetailEditDelegate {
             networkManager?.labelUpdateRequest(issueNo: issueNo, labels: labels) { [weak self] isSuccess in
                 if isSuccess {
                     self?.adapter?.dataManager.labels = labels
-                    NotificationCenter.default.post(Notification(name: .issueListRefreshRequested, object: nil, userInfo: ["IssueNo": self?.issueNo ?? 0]))
+                    NotificationCenter.default.post(Notification(name: .issueListRefreshRequested))
                     DispatchQueue.main.async {
                         self?.collectionView.reloadSections([mode.rawValue])
                     }
                 }
             }
-            
         case .milestone:
             adapter?.dataManager.milestone = Milestone(milestoneNo: items[0].itemId, milestoneTitle: items[0].title)
             collectionView.reloadSections([mode.rawValue])

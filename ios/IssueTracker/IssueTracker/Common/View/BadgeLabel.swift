@@ -29,7 +29,7 @@ class BadgeLabel: UILabel {
         guard let text = text else {
             return leftInset + rightInset
         }
-        return (CGFloat(text.count) * estimaedTextSize) + leftInset + rightInset
+        return text.estimatedBadgeLabelWidth(height: 15) + leftInset + rightInset
     }
 
     init(text: String, backgroundColor: UIColor) {

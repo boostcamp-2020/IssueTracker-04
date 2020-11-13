@@ -15,12 +15,3 @@ extension JSONDecoder {
         return decoder
     }()
 }
-
-extension JSONEncoder {
-    static let custom: JSONEncoder = {
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        encoder.dateEncodingStrategy = .formatted(DateFormatter.custom)
-        return encoder
-    }()
-}

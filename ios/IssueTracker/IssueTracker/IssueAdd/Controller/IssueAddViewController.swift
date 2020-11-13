@@ -22,12 +22,10 @@ class IssueAddViewController: UIViewController {
     @IBOutlet weak var markdownTextViewBottomConstraint: NSLayoutConstraint!
     
     var markDownRendering: MarkDownRendering?
-    var networkManager: IssueAddNetworkManager?
     weak var delegate: IssueAddViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkManager = IssueAddNetworkManager()
         markDownRendering = MarkDownRendering()
         addTapToDismissKeyBoard()
         addKeyboardObserver()

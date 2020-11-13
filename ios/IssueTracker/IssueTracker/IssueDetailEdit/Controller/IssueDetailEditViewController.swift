@@ -119,6 +119,12 @@ extension IssueDetailEditViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.textLabel?.text = item.title
+            let cellImage: UIImageView = UIImageView(frame: CGRect(x: 8, y: 5, width: 36, height: 36))
+            cellImage.clipsToBounds = true
+            cellImage.layer.cornerRadius = 18
+            cellImage.contentMode = .scaleToFill
+            ImageLoader.shared.load(url: image, to: cellImage)
+            cell.addSubview(cellImage)
             cell.accessoryView = indexPath.section == 0 ? UIImageView(image: UIImage.remove) : UIImageView(image: UIImage.add)
             return cell
         case .label(let color):

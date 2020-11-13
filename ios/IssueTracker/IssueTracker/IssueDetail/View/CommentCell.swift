@@ -43,5 +43,7 @@ class CommentCell: UICollectionViewCell {
         authorLabel.text = data.authorName
         dateLabel.text = Date().difference(with: data.commentDate)
         commentLabel.text = data.comment
+        authorImageView.clipsToBounds = true
+        authorImageView.layer.cornerRadius = authorImageView.frame.width/2
     }
 }

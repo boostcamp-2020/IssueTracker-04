@@ -22,7 +22,7 @@ class IssueDetailCollectionViewHeader: UICollectionReusableView {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var issueTitleLabel: UILabel!
     @IBOutlet weak var issueNumberLabel: UILabel!
-    @IBOutlet weak var issueStatusButton: UIButton!
+    @IBOutlet weak var issueStatusButton: IssueStatusBadge!
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
@@ -46,9 +46,6 @@ class IssueDetailCollectionViewHeader: UICollectionReusableView {
         authorNameLabel.text = data.issueAuthorID
         issueTitleLabel.text = data.issueTitle
         issueNumberLabel.text = "#\(data.issueNo)"
-        let title = data.isOpen ? "closed" : "open"
-        let image = data.isOpen ? UIImage(systemName: "checkmark") : UIImage(systemName: "exclamationmark.circle")
-        issueStatusButton.setAttributedTitle(NSAttributedString(string: title), for: .normal)
-        issueStatusButton.setImage(image, for: .normal)
+        issueStatusButton.isOpen = data.isOpen
     }
 }

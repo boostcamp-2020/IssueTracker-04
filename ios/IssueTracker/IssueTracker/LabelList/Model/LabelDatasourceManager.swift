@@ -20,7 +20,7 @@ class LabelDatasourceManager {
         items[indexPath.row]
     }
     
-    init(networkManager: LabelListNetworkManager = LabelListNetworkManager()) {
+    init(networkManager: LabelListNetworkManager) {
         self.networkManager = networkManager
     }
     

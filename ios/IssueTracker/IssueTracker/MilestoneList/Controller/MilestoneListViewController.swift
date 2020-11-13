@@ -16,8 +16,11 @@ class MilestoneListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        let networkService = NetworkService()
+        let networkManager = MilestoneNetworkManager(service: networkService, userData: UserData())
+        let dataManager = MilestoneDatasourceManager(networkManager: networkManager)
         
-        let adapter = MilestoneCollectionViewAdapter(dataManager: MilestoneDatasourceManager())
+        let adapter = MilestoneCollectionViewAdapter(dataManager: dataManager)
         self.adapter = adapter
         collectionView.dataSource = adapter
         collectionView.register(MilestoneListCell.self, forCellWithReuseIdentifier: MilestoneListCell.identifier)

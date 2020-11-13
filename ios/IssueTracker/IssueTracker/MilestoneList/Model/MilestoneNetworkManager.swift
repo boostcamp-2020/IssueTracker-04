@@ -7,27 +7,23 @@
 
 import Foundation
 
-struct MilestoneNetworkManager {
-    
-    private let service: NetworkService
-    private let loadMilestoneUrlString = Constant.URL.baseURL + "api/milestoneList"
-    private let modifyMilestoneUrlString = Constant.URL.baseURL + "api/milestone"
-    
-    init(service: NetworkService = NetworkService()) {
-        self.service = service
-    }
+struct MilestoneResultResponse: Codable {
+    let success: Bool
+    let milestoneNo: Int
+}
+
+class MilestoneNetworkManager: NetworkManager {
+    static let milestoneListRequsetURL = baseURL + "/api/milestoneList"
+    static let milestoneModifyRequestURL = baseURL + "/api/milestone"
     
     func load(completion: @escaping (Result<[Milestone], NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let request = NetworkService.Request(method: .get,
-                                             url: URL(string: loadMilestoneUrlString),
-                                             headers: ["Authorization": "Bearer " + token])
+        var request = NetworkRequest(method: .get)
+        request.url = URL(string: Self.milestoneListRequsetURL)
+        request.headers = baseHeader
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let milestoneListResponse = try? JSONDecoder.custom.decode(MilestoneListResponse.self, from: data) else {
+                guard let milestoneListResponse = try? JSONDecoder.custom.decode(MilestoneResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
@@ -38,70 +34,59 @@ struct MilestoneNetworkManager {
         }
     }
     
-    func add(milestone: Milestone, completion: @escaping (Result<Status, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let json = try? JSONEncoder.custom.encode(milestone)
-        let request = NetworkService.Request(method: .post,
-                                             url: URL(string: modifyMilestoneUrlString),
-                                             headers: ["Authorization": "Bearer " + token,
-                                                       "Content-Type": "application/json"],
-                                             body: json)
+    func add(milestone: Milestone, completion: @escaping (Result<MilestoneResultResponse, NetworkError>) -> Void) {
+        var request = NetworkRequest(method: .post)
+        request.url = URL(string: Self.milestoneModifyRequestURL)
+        request.headers = baseHeader
+        request.body = try? JSONEncoder.custom.encode(milestone)
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(Status.self, from: data) else {
+                guard let response = try? JSONDecoder.custom.decode(MilestoneResultResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
-                completion(.success(status))
+                completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
-    func update(milestone: Milestone, completion: @escaping (Result<Status, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
+    func update(milestone: Milestone, completion: @escaping (Result<MilestoneResultResponse, NetworkError>) -> Void) {
+        guard let milstoneNo = milestone.milestoneNo else {
+            completion(.failure(.invalidData))
             return
         }
-        let json = try? JSONEncoder.custom.encode(milestone)
-        let request = NetworkService.Request(method: .put,
-                                             url: URL(string: modifyMilestoneUrlString + "/\(milestone.milestoneNo)"),
-                                             headers: ["Authorization": "Bearer " + token,
-                                                       "Content-Type": "application/json"],
-                                             body: json)
+        var request = NetworkRequest(method: .put)
+        request.url = URL(string: Self.milestoneModifyRequestURL + "/\(milstoneNo)")
+        request.body = try? JSONEncoder.custom.encode(milestone)
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(Status.self, from: data) else {
+                guard let response = try? JSONDecoder.custom.decode(MilestoneResultResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
-                completion(.success(status))
+                completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
-    func delete(milestoneNo: Int, completion: @escaping (Result<Status, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        let request = NetworkService.Request(method: .delete,
-                                             url: URL(string: modifyMilestoneUrlString + "/\(milestoneNo)"),
-                                             headers: ["Authorization": "Bearer " + token,
-                                                       "Content-Type": "application/json"])
+    func delete(milestoneNo: Int, completion: @escaping (Result<ResultResponse, NetworkError>) -> Void) {
+        var request = NetworkRequest(method: .delete)
+        request.url = URL(string: Self.milestoneModifyRequestURL + "/\(milestoneNo)")
+        request.headers = baseHeader
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                guard let status = try? JSONDecoder.custom.decode(Status.self, from: data) else {
+                guard let response = try? JSONDecoder.custom.decode(ResultResponse.self, from: data) else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
-                completion(.success(status))
+                completion(.success(response))
             case .failure(let error):
                 completion(.failure(error))
             }

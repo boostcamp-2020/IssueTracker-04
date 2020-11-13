@@ -7,26 +7,25 @@
 
 import Foundation
 
-class IssueListNetworkManager {
+struct IssueAddRequest: Codable {
+    let issueTitle: String
+    let issueContent: String
+}
+
+struct IssueAddResponse: Codable {
+    var success: Bool
+    var newIssueNo: Int
+}
+
+class IssueListNetworkManager: NetworkManager {
     
-    static let listRequestURL = "http://101.101.217.9:5000/api/issue/list"
-    static let addRequestURL = "http://101.101.217.9:5000/api/issue"
-    
-    var service: NetworkService
-    
-    init(service: NetworkService) {
-        self.service = service
-    }
+    static let listRequestURL = baseURL + "/api/issue/list"
+    static let addRequestURL = baseURL + "/api/issue"
     
     func requestIssueAdd(issue: IssueAddRequest, completion: @escaping (Result<IssueAddResponse, NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT"),
-              let url = URL(string: Self.addRequestURL) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        var request = NetworkService.Request(method: .post)
-        request.url = url
-        request.headers = ["Authorization": "Bearer " + token, "Content-Type": "application/json"]
+        var request = NetworkRequest(method: .post)
+        request.url = URL(string: Self.addRequestURL)
+        request.headers = baseHeader
         let json = try? JSONEncoder.custom.encode(issue)
         request.body = json
         service.request(request: request) { result in
@@ -45,24 +44,15 @@ class IssueListNetworkManager {
     }
     
     func requestIssueList(completion: @escaping (Result<[IssueItem], NetworkError>) -> Void) {
-        guard let token = UserDefaults.standard.string(forKey: "JWT") else {
-            return
-        }
-        //UserDefault 관리객체 만들어서 토큰 얻어오기
-        var request = NetworkService.Request(method: .get)
-        request.url = URL(string: IssueListNetworkManager.listRequestURL)
-        request.headers = ["Authorization": "Bearer " + token]
+        var request = NetworkRequest(method: .get)
+        request.url = URL(string: Self.listRequestURL)
+        request.headers = baseHeader
         service.request(request: request) { result in
             switch result {
             case .success(let data):
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                decoder.dateDecodingStrategy = .formatted(DateFormatter.custom)
-                var items = [IssueItem]()
-                do {
-                    items = try decoder.decode([IssueItem].self, from: data)
-                } catch {
-                    completion(.failure(NetworkError.invalidData))
+                guard let items = try? JSONDecoder.custom.decode([IssueItem].self, from: data) else {
+                    completion(.failure(.invalidData))
+                    return
                 }
                 completion(.success(items))
             case.failure(let error):

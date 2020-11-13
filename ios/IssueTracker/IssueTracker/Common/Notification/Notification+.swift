@@ -8,14 +8,20 @@
 import Foundation
 
 extension Notification.Name {
+    //IssueListView
     static let issueDeleteRequested = Notification.Name("IssueDeleteRequested")
     static let issueCloseRequested = Notification.Name("IssueCloseRequested")
-    static let issueFlagValueChanged = Notification.Name("IssueFlagValueChanged")
+    static let issueListSearchRequested = Notification.Name("SearchRequested")
+    static let issueListRefreshRequested = Notification.Name("IssueListRefreshRequested")
+
+    //IssueDetailBottomSheet
+    static let bottomSheetEditButtonTouched = Notification.Name("BottomSheetEditButtonTouched")
+    static let bottomSheetCloseButtonTouched = Notification.Name("BottomSheetCloseButtonTouched")
+    
+    //LabelListView
     static let labelDeleteRequested = Notification.Name("LabelDeleteRequested")
-    static let editButtonTouched = Notification.Name("EditButtonTouched")
-    static let closedButtonTouched = Notification.Name("ClosedButtonTouched")
+    
+    //MilestoneView
     static let milestoneDeleteRequested = Notification.Name("MilestoneDeleteRequested")
     
-    static let searchRequested = Notification.Name("SearchRequested")
-    static let issueListRefreshRequested = Notification.Name("IssueListRefreshRequested")
 }

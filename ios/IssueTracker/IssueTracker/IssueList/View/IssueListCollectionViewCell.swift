@@ -60,6 +60,10 @@ class IssueListCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private var rightContainerViewWidth: CGFloat {
+        rightContainerView.frame.width
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         addGesture()
@@ -174,27 +178,6 @@ extension IssueListCollectionViewCell: LeftContainerContaining {
     
     func leftContainerViewShowAnimate() {
         showLeftContainerView()
-        animateAfterConstraintChanged()
-    }
-}
-
-extension IssueListCollectionViewCell: RightContainerContaining {
-    
-    private var rightContainerViewWidth: CGFloat {
-        rightContainerView.frame.width
-    }
-    
-    private var rightShowOrigin: CGPoint {
-        CGPoint(x: leftContainerViewWidth + rightContainerViewWidth, y: 0)
-    }
-    
-    func showRightContainerView() {
-        mainViewLeadingConstraint.constant = -rightContainerViewWidth
-        mainViewTrailingConstraint.constant = rightContainerViewWidth
-    }
-    
-    func rightContainerViewShowAnimate() {
-        showRightContainerView()
         animateAfterConstraintChanged()
     }
 }

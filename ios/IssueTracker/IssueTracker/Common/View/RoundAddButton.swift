@@ -15,7 +15,7 @@ class RoundAddButton: UIButton {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        updateLayerProperties()
+        configureShadow()
     }
     
     override init(frame: CGRect) {
@@ -44,7 +44,7 @@ class RoundAddButton: UIButton {
         plusPath.stroke()
     }
     
-    func updateLayerProperties() {
+    func configureShadow() {
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
         layer.shadowOffset = CGSize(width: 2, height: 6)
         layer.shadowOpacity = 0.5

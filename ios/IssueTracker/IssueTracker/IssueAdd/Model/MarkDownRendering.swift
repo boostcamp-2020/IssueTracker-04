@@ -10,9 +10,8 @@ import Foundation
 struct MarkDownRendering {
     
     func renderToHTML(from markdownString: String, compeletion: ((String) -> Void)?) {
-        guard let json = try? JSONSerialization.data(withJSONObject: ["text": "\(markdownString)"],
-                                                     options: []) else { return }
-        let request = NetworkService.Request(method: .post,
+        let json = try? JSONSerialization.data(withJSONObject: ["text": "\(markdownString)"], options: [])
+        let request = NetworkRequest(method: .post,
                                url: URL(string: "https://api.github.com/markdown"),
                                headers: ["Accept": "application/vnd.github.v3+json"],
                                body: json)
