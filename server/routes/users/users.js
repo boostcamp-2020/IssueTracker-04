@@ -6,8 +6,6 @@ const auth = require('../../services/auth');
 
 // 로컬 회원가입
 router.post('/api/users/signup', async (req, res, next) => {
-  // const { id, pw, name} = req.query;
-
   // 패스워드 암호화: bcrypt
   const userData = {
     user_id: 'test2',
@@ -39,19 +37,38 @@ router.delete('/api/users/signup', async (req, res, next) => {
   }
 });
 
-// 조회, API 이름 바꿀 것
-router.get('/api/users/user', auth.isAuth, async (req, res, next) => {
+// 조회
+router.get('/api/user', auth.isAuth, async (req, res, next) => {
   const userNo = res.locals.userNo;
   try {
-    const result = await userModel.findOne({ where: { user_no: userNo } });
-    res.status(201).json({ success: true, user: result.dataValues });
+    const user = await userModel.findOne({
+      where: { user_no: userNo },
+      raw: true,
+    });
+    delete user.user_password;
+    res.status(200).json({ success: true, user: user });
   } catch (error) {
     console.log(error);
-    res.status(201).json({ success: false, message: "Can't read user" });
+    res
+      .status(400)
+      .json({ success: false, message: '사용자 정보를 찾을 수 없음' });
   }
 });
 
-router.get('/api/users/logout', (req, res) => {
+router.get('/api/userList', auth.isAuth, async (req, res, next) => {
+  try {
+    const users = await userModel.findAll({ raw: true });
+    users.map((ele) => (ele.user_password = undefined));
+    const userList = users;
+    return res.status(200).json({ success: true, userList: userList });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ success: false, message: '사용자 리스트 조회 실패' });
+  }
+});
+
+router.get('/api/user/logout', auth.isAuth, (req, res) => {
   // 삭제된 jwt 관리하기
   res.status(200).json({ success: true, message: '로그아웃' });
 });
