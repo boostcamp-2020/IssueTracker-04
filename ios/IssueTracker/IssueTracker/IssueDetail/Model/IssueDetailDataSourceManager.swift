@@ -10,7 +10,7 @@ import Foundation
 struct IssueInfo: DetailHeaderData {
     let issueNo: Int
     let issueTitle, issueContent: String
-    let issueFlag: Bool
+    let isOpen: Bool
     let issueDate: Date
     let issueAuthorNo: Int
     let issueAuthorID: String
@@ -19,7 +19,7 @@ struct IssueInfo: DetailHeaderData {
         issueNo = detail.issue.issueNo
         issueTitle = detail.issue.issueTitle
         issueContent = detail.issue.issueContent
-        issueFlag = detail.issue.issueFlag
+        isOpen = detail.issue.isOpen
         issueDate = detail.issue.issueDate
         issueAuthorNo = detail.issue.issueAuthorNo
         issueAuthorID = detail.issue.issueAuthorName
@@ -28,8 +28,10 @@ struct IssueInfo: DetailHeaderData {
 
 class IssueDetailDataSourceManager {
     
-    init() {
-        detailItem = DummyDataLoader().loadDetail()
+    private let networkManager: IssueDetailNetworkManager
+    
+    init(networkManager: IssueDetailNetworkManager) {
+        self.networkManager = networkManager
     }
     
     var detailItem: IssueDetail?
@@ -43,6 +45,36 @@ class IssueDetailDataSourceManager {
     
     var commentCount: Int {
         detailItem?.comments.count ?? 0
+    }
+    
+    func loadDetailItem(issueNo: Int, completion: @escaping (Result<IssueDetail, NetworkError>) -> Void) {
+        networkManager.requestIssueDetail(issueNo: issueNo) { [weak self] result in
+            switch result {
+            case .success(let item):
+                self?.detailItem = item
+                completion(result)
+            case .failure(let error):
+                completion(result)
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func addComment(comment: Comment, completion: @escaping (Bool) -> Void) {
+        networkManager.addComment(comment: comment) { [weak self] result in
+            switch result {
+            case .success(let comment):
+                self?.detailItem?.comments.append(comment)
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
+    }
+    
+    func setIssueFlag(_ flag: Bool) {
+        detailItem?.issue.isOpen = flag
     }
     
     subscript(indexPath: IndexPath) -> Comment? {

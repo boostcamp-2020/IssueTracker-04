@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol IssueDetailSlideViewDelegate {
-    
-}
-
 @IBDesignable
 class IssueDetailSlideView: UIView {
     

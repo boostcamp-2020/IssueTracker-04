@@ -11,21 +11,18 @@ protocol DetailHeaderData {
     var issueNo: Int { get }
     var issueTitle: String { get }
     var issueContent: String { get }
-    var issueFlag: Bool { get }
+    var isOpen: Bool { get }
     var issueDate: Date { get }
     var issueAuthorID: String { get }
 }
 
 class IssueDetailCollectionViewHeader: UICollectionReusableView {
-
-    static var identifier: String {
-        String(describing: Self.self)
-    }
     
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var issueTitleLabel: UILabel!
     @IBOutlet weak var issueNumberLabel: UILabel!
+    @IBOutlet weak var issueStatusButton: IssueStatusBadge!
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var containerViewWidthConstraint: NSLayoutConstraint!
@@ -49,5 +46,6 @@ class IssueDetailCollectionViewHeader: UICollectionReusableView {
         authorNameLabel.text = data.issueAuthorID
         issueTitleLabel.text = data.issueTitle
         issueNumberLabel.text = "#\(data.issueNo)"
+        issueStatusButton.isOpen = data.isOpen
     }
 }

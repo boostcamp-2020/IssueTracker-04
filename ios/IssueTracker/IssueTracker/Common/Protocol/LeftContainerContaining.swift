@@ -11,8 +11,3 @@ protocol LeftContainerContaining {
     func leftContainerViewShowAnimate()
     func resetViewAnimate()
 }
-
-protocol RightContainerContaining {
-    func rightContainerViewShowAnimate()
-    func resetViewAnimate()
-}

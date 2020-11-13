@@ -16,6 +16,12 @@ extension UIColor {
             hex.remove(at: hex.startIndex)
         }
         
+        if hex.count < 6 {
+            let base = "000000"
+            let end = base.index(base.startIndex, offsetBy: 6 - hex.count)
+            hex = String(base[base.startIndex..<end]) + hex
+        }
+  
         if hex.count == 6 {
             Scanner(string: hex).scanHexInt64(&rgbValue)
         }
@@ -29,13 +35,15 @@ extension UIColor {
     }
     
     var visibleTextColor: UIColor {
+        luma >= 128/255 ? UIColor.black : UIColor.white
+    }
+    
+    var luma: CGFloat {
         let ciColor = CIColor(color: self)
         let red = ciColor.red
         let green = ciColor.green
         let blue = ciColor.blue
         
-        let yiq = ((red * 299) + (green * 587) + (blue * 114))/1000
-        
-        return yiq >= 128/255 ? UIColor.black : UIColor.white
+        return ((red * 299) + (green * 587) + (blue * 114))/1000
     }
 }

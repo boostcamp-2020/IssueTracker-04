@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class BadgeLabel: UILabel {
 
     @IBInspectable var topInset: CGFloat = 2.0
@@ -28,7 +29,7 @@ class BadgeLabel: UILabel {
         guard let text = text else {
             return leftInset + rightInset
         }
-        return (CGFloat(text.count) * estimaedTextSize) + leftInset + rightInset
+        return text.estimatedBadgeLabelWidth(height: 15) + leftInset + rightInset
     }
 
     init(text: String, backgroundColor: UIColor) {
@@ -40,6 +41,11 @@ class BadgeLabel: UILabel {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setBorder()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setBorder()
     }
     

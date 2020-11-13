@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,15 +18,16 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNz-ht-JN4">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dRg-HU-wZI">
-                            <rect key="frame" x="16" y="16" width="36" height="35"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRg-HU-wZI">
+                            <rect key="frame" x="16" y="16" width="36" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="L1y-mO-2Yx"/>
                                 <constraint firstAttribute="height" priority="999" constant="36" id="UVu-6G-mIw"/>
                             </constraints>
+                            <imageReference key="image" image="github_logo" symbolScale="default"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diQ-Zs-epO">
-                            <rect key="frame" x="60" y="24.5" width="46" height="18"/>
+                            <rect key="frame" x="60" y="22" width="46" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" id="7sm-sf-UhF"/>
                             </constraints>
@@ -42,12 +44,12 @@
                             <color key="textColor" systemColor="systemGray2Color"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS5-aq-pvm">
-                            <rect key="frame" x="16" y="108" width="60" height="20"/>
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS5-aq-pvm" customClass="IssueStatusBadge" customModule="IssueTracker" customModuleProvider="target">
+                            <rect key="frame" x="16" y="103" width="70" height="25"/>
                             <color key="backgroundColor" red="0.94117647058823528" green="0.98431372549019602" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="FQX-iU-moe"/>
-                                <constraint firstAttribute="width" constant="60" id="rz6-NL-Xb0"/>
+                                <constraint firstAttribute="height" constant="25" id="FQX-iU-moe"/>
+                                <constraint firstAttribute="width" constant="70" id="rz6-NL-Xb0"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="tintColor" red="0.42745098039215684" green="0.63529411764705879" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -56,7 +58,7 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oG-7d-lL0">
-                            <rect key="frame" x="16" y="67" width="343" height="25"/>
+                            <rect key="frame" x="16" y="62" width="343" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="999" constant="25" id="N5c-0q-pwi"/>
                             </constraints>
@@ -97,12 +99,18 @@
                 <outlet property="containerView" destination="xNz-ht-JN4" id="GGY-XT-yqD"/>
                 <outlet property="containerViewWidthConstraint" destination="eLi-FK-cTk" id="fpq-qz-NX5"/>
                 <outlet property="issueNumberLabel" destination="0XF-Uu-cHC" id="6BW-0a-J8e"/>
+                <outlet property="issueStatusButton" destination="NS5-aq-pvm" id="rEH-dS-vzt"/>
                 <outlet property="issueTitleLabel" destination="5oG-7d-lL0" id="KSZ-8a-hBi"/>
                 <outlet property="issueTitleLableHeightConstraint" destination="N5c-0q-pwi" id="iqV-da-LK1"/>
             </connections>
             <point key="canvasLocation" x="177.536231884058" y="103.79464285714285"/>
         </collectionReusableView>
     </objects>
+    <designables>
+        <designable name="NS5-aq-pvm">
+            <size key="intrinsicContentSize" width="51" height="19"/>
+        </designable>
+    </designables>
     <resources>
         <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
         <image name="github_logo" width="25" height="25"/>

@@ -8,16 +8,17 @@
 import Foundation
 
 struct IssueDetail: Codable {
-    let issue: Issue
+    var issue: Issue
     let detailInfo: DetailInfo
     let milestone: Milestone
     let labels: [Label]
     let assignees: [Assignee]
-    let comments: [Comment]
+    var comments: [Comment]
 }
 
 struct Comment: Codable, CommentCellData {
-    let commentNo: Int
+    let issueNo: Int?
+    var commentNo: Int
     let comment, authorName, authorImg: String
     let commentDate: Date
 }
@@ -29,13 +30,37 @@ struct DetailInfo: Codable {
 struct Issue: Codable {
     let issueNo: Int
     let issueTitle, issueContent: String
-    let issueFlag: Bool
+    var issueFlag: Int
     let issueDate: Date
     let issueAuthorNo: Int
     let issueAuthorName: String
+    
+    var isOpen: Bool {
+        get {
+            issueFlag == 1
+        }
+        set {
+            issueFlag = newValue ? 1 : 0
+        }
+    }
 }
 
 struct Milestone: Codable {
-    let milestoneNo: Int
-    let milestoneTitle: String
+    var milestoneNo: Int?
+    let milestoneTitle: String?
+    let milestoneDescription: String?
+    let dueDate: Date?
+    let percent: Float?
+    let openIssueCount: Int?
+    let closedIssueCount: Int?
+    
+    init(milestoneNo: Int? = 0, milestoneTitle: String? = "", milestoneDescription: String? = "", dueDate: Date? = Date(), percent: Float = 0, openIssueCount: Int = 0, closedIssueCount: Int = 0) {
+        self.milestoneNo = milestoneNo
+        self.milestoneTitle = milestoneTitle
+        self.milestoneDescription = milestoneDescription
+        self.dueDate = dueDate
+        self.percent = percent
+        self.openIssueCount = openIssueCount
+        self.closedIssueCount = closedIssueCount
+    }
 }

@@ -42,13 +42,24 @@ class IssueListViewController: UIViewController {
             addButtonAnimate(showing: !editing)
         }
     }
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         configureCellObserver()
         navigationItem.rightBarButtonItem = editButtonItem
         setSelectResultView(editing: false)
+        addTapToDismissKeyBoard()
+        
+        collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
+            guard isSuccess else {
+                print("Data Load Fail")
+                return
+            }
+            DispatchQueue.main.async {
+                self?.issueListCollectionView.reloadData()
+            }
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -68,8 +79,24 @@ class IssueListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "ListToDetail":
-            //set Issue ID for Detail
+        case "IssueListToDetail":
+            guard let indexPath = sender as? IndexPath,
+                  let adpater = collectionViewAdapter,
+            let issueDetailViewController = segue.destination as? IssueDetailViewController else {
+                return
+            }
+            let issueNo = adpater.dataSourceManager[indexPath].issueNo
+            let issueTitle = adpater.dataSourceManager[indexPath].issueTitle
+            
+            issueDetailViewController.issueTitle = issueTitle
+            issueDetailViewController.issueNo = issueNo
+            
+            return
+        case "ListToIssueAdd":
+            guard let issueAddViewController = segue.destination as? IssueAddViewController else {
+                return
+            }
+            issueAddViewController.delegate = self
             return
         default:
             return
@@ -86,14 +113,21 @@ class IssueListViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        collectionViewAdapter = IssueListCollectionViewAdapter(dataSourceManager: IssueListDataSourceManager(networkManager: DummyDataLoader()))
+        let networkService = NetworkService()
+        let networkManager = IssueListNetworkManager(service: networkService, userData: UserData())
+        
+        let dataSourceManager = IssueListDataSourceManager(networkManager: networkManager)
+        
+        collectionViewAdapter = IssueListCollectionViewAdapter(dataSourceManager: dataSourceManager)
         issueListCollectionView.dataSource = collectionViewAdapter
         issueListCollectionView.delegate = self
     }
   
     private func configureCellObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .cellCloseButtonDidTouch, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .cellDeleteButtonDidTouch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cellCloseButtonTouched(notification:)), name: .issueCloseRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cellDeleteButtonTouched(notification:)), name: .issueDeleteRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRequested(notification:)), name: .issueListSearchRequested, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: .issueListRefreshRequested, object: nil)
     }
     
     private func addButtonAnimate(showing: Bool) {
@@ -129,8 +163,17 @@ class IssueListViewController: UIViewController {
         guard let issueNo = notification.userInfo?["IssueNo"] as? Int else {
             return
         }
-        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] in
-            self?.issueListCollectionView.deleteItems(at: [$0])
+        collectionViewAdapter?.dataSourceManager.deleteIssue(by: issueNo) { [weak self] index in
+            self?.issueListCollectionView.performBatchUpdates {
+                self?.issueListCollectionView.deleteItems(at: [index])
+            } completion: { _ in
+//                let context = UICollectionViewFlowLayoutInvalidationContext()
+//                context.invalidateFlowLayoutAttributes = false
+//                self?.issueListCollectionView.collectionViewLayout.invalidateLayout(with: context)
+//                UIView.animate(withDuration: 0.3) {
+//                    self?.issueListCollectionView.layoutIfNeeded()
+//                }
+            }
         }
     }
     
@@ -141,10 +184,29 @@ class IssueListViewController: UIViewController {
         print("\(issueNo) close")
     }
     
+    @objc private func searchRequested(notification: Notification) {
+        guard let query = notification.userInfo?["Query"] as? String else {
+            return
+        }
+        searchBar.text = query
+    }
+    
+    @objc private func refresh(notification: Notification) {
+        collectionViewAdapter?.dataSourceManager.loadIssueList {[weak self] isSuccess in
+            guard isSuccess else {
+                return
+            }
+            DispatchQueue.main.async {
+                self?.issueListCollectionView.collectionViewLayout.invalidateLayout()
+                self?.issueListCollectionView.reloadSections([0])
+            }
+        }
+    }
+    
     @IBAction func leftBarButtonTouched(_ sender: UIButton) {
         switch mode {
         case .normal:
-            print("Open Filter")
+            performSegue(withIdentifier: "IssueListToFilter", sender: nil)
         case .edit:
             if sender.title(for: .normal) == "Select All" {
                 sender.setTitle("Deselect All", for: .normal)
@@ -178,9 +240,24 @@ class IssueListViewController: UIViewController {
     }
 }
 
+extension IssueListViewController: IssueAddViewControllerDelegate {
+    
+    func issueSendButtonDidTouch(request: IssueAddRequest) {
+        collectionViewAdapter?.dataSourceManager.add(issue: request) { [weak self] complete in
+            if complete {
+                DispatchQueue.main.async {
+                    self?.issueListCollectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+                }
+            }
+        }
+    }
+    
+}
+
 extension IssueListViewController: UICollectionViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
         if mode == .normal {
             addButtonAnimate(showing: false)
         }
@@ -195,7 +272,7 @@ extension IssueListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch mode {
         case .normal:
-            performSegue(withIdentifier: "ListToDetail", sender: nil) // send selectedIssue ID
+            performSegue(withIdentifier: "IssueListToDetail", sender: indexPath) // send selectedIssue ID
         case .edit:
             setSelectedIssueCountLabel()
         }

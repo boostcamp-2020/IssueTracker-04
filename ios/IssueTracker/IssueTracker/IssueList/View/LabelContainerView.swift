@@ -15,8 +15,10 @@ class LabelContainerView: UIView {
     @IBOutlet weak var labelsStackView: UIStackView!
     var labelStackViews: [UIStackView] = []
     var labelRows: Int {
-        labelStackViews.count
+        hasLabel ? labelStackViews.count : 0
     }
+    
+    var hasLabel = false
     
     var maxWidth: CGFloat = 0.0
     var stackViewSpacing: CGFloat = 5.0
@@ -41,6 +43,7 @@ class LabelContainerView: UIView {
     
     func add(labels: [Label]) {
         var currentWidth: CGFloat = 0
+        hasLabel = !labels.isEmpty
         addStackView()
         labels.forEach {
             let badgeLabel = BadgeLabel(text: $0.labelTitle, backgroundColor: UIColor(hexString: $0.labelColor))
