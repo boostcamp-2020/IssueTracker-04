@@ -26,7 +26,10 @@
   <a href="https://github.com/boostcamp-2020/IssueTracker-04/pulls">
     <img alt="pr tracking" src="https://img.shields.io/github/issues-pr/boostcamp-2020/IssueTracker-04"/>
   </a>
-  
+
+## Introduction
+- GitHub의 이슈트래커를 Clone한 프로젝트 입니다. 
+
 ### 배포링크 
 - 돌돌마 WEB 링크 (http://www.doldolma.kro.kr)
 
